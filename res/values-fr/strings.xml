@@ -21,7 +21,7 @@
     <string name="donate_summary">pour m\'aider dans mon travail :)</string>
     <string name="feedback_summary">votre aide est la bienvenue</string>
     <string-array name="button_actions">
-        <item>nothing</item>
+        <item>aucune</item>
         <item>faire sonner le téléphone</item>
     </string-array>
     <string-array name="button_actions_values">
