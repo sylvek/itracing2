@@ -13,9 +13,9 @@
     <string name="link_background_summary">loss link between device and keyring</string>
     <string name="battery_info">battery info</string>
     <string name="immediate_alert_summary">click here to alert the keyring</string>
-    <string name="welcome_text">Welcome on iTracing2.\n\nThis application allow you to communicate with your iSee (Quintic PROXR) bluetooth device.\n
-        If like me, the poorest application "iTracing" disturb you, enjoy to use my own version :)\n\n
-        Please click on the DETECT button to found you iSee device (it must be named "Quintic PROXR").</string>
+    <string name="welcome_text">Welcome on iTracing2.\n\nThis application allows you to communicate with your iSee (Quintic PROXR) bluetooth device.\n
+        If like me, the poorest application "iTracing" disturbs you, enjoy to use my own version :)\n\n
+        Please click on the DETECT button to find you iSee device (it must be named "Quintic PROXR").</string>
     <string name="donate">donate (PayPal)</string>
     <string name="feedback">feedback</string>
     <string name="donate_summary">to support my work :)</string>
