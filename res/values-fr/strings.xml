@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">iTracing2</string>
+    <string name="ble_not_supported">désolé, votre matériel ne supporte pas le Bluetooth LE</string>
+    <string name="action_scan_start">detection</string>
+    <string name="beacon_not_found">porte-clé iSee non trouvé</string>
+    <string name="action_connect">connexion</string>
+    <string name="immediate_alert">faire sonner le porte-clé</string>
+    <string name="link_background">lien permanent</string>
+    <string name="stop_ring">arrêter la sonnerie</string>
+    <string name="button_action">bouton sur le porte-clé</string>
+    <string name="button_action_summary">quelle est l\'action associée ?</string>
+    <string name="link_background_summary">lien entre le porte-clé et le smartphone</string>
+    <string name="battery_info">niveau de batterie</string>
+    <string name="immediate_alert_summary">cliquer ici pour faire sonner le porte-clé</string>
+    <string name="welcome_text">Bienvenu iTracing2.\n\nCette application permet de communiquer avec votre appareil iSee (Quintic PROXR).\n
+        Si comme moi, l\'application "iTracing" vous dérange, libre à vous d\'utiliser ma version :)\n\n
+        Cliquer sur DETECTION pour trouver votre porte-clé iSee (il doit se nommer \"Quintic PROXR\").</string>
+    <string name="donate">faire un don (PayPal)</string>
+    <string name="feedback">retour d\'expérience</string>
+    <string name="donate_summary">pour m\'aider dans mon travail :)</string>
+    <string name="feedback_summary">votre aide est la bienvenue</string>
+    <string-array name="button_actions">
+        <item>nothing</item>
+        <item>faire sonner le téléphone</item>
+    </string-array>
+    <string-array name="button_actions_values">
+        <item></item>
+        <item>RING_PHONE</item>
+    </string-array>
+</resources>
