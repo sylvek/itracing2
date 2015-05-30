@@ -76,6 +76,7 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        getActionBar().setDisplayShowHomeEnabled(true);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
 
