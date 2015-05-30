@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:gravity="center_vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/link_background"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/link_loss_background" android:layout_gravity="center_horizontal" android:checked="false"
+            android:onClick="onLinkLoss"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/immediate_alert"
+            android:id="@+id/immediate_alert" android:layout_gravity="center_horizontal"
+            android:onClick="onImmediateAlert" android:enabled="false"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="-%"
+            android:id="@+id/percent" android:layout_gravity="center_horizontal"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/button_action_summary"
+            android:id="@+id/button_action_text" android:layout_gravity="center_horizontal"/>
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/button_actions"
+            android:layout_gravity="center_horizontal"
+            android:enabled="false"
+            android:id="@+id/button_action"/>
+</LinearLayout>

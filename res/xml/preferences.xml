@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreference
+            android:key="link_background"
+            android:title="@string/link_background"
+            android:summary="@string/link_background_summary"/>
+    <ListPreference
+            android:key="action_button_list"
+            android:title="@string/button_action"
+            android:summary="@string/button_action_summary"
+            android:entries="@array/button_actions"
+            android:entryValues="@array/button_actions_values"
+            android:dependency="link_background"/>
+    <Preference
+            android:title="@string/immediate_alert"
+            android:summary="@string/immediate_alert_summary"
+            android:enabled="false"
+            android:key="action_button"/>
+    <Preference
+            android:title="@string/battery_info"
+            android:key="battery_info"/>
+    <Preference
+            android:title="@string/feedback"
+            android:summary="@string/feedback_summary"
+            android:key="feedback"/>
+    <Preference
+            android:title="@string/donate"
+            android:summary="@string/donate_summary"
+            android:key="donate"/>
+</PreferenceScreen>

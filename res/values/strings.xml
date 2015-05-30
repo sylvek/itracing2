@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">iTracing2</string>
+    <string name="ble_not_supported">sorry bluetooth LE is not supported on your device</string>
+    <string name="action_scan_start">detect</string>
+    <string name="beacon_not_found">iSee keyring not found</string>
+    <string name="action_connect">connect</string>
+    <string name="immediate_alert">ring the keyring</string>
+    <string name="link_background">link background</string>
+    <string name="stop_ring">stop ring</string>
+    <string name="button_action">button action</string>
+    <string name="button_action_summary">what is the button action ?</string>
+    <string name="link_background_summary">loss link between device and keyring</string>
+    <string name="battery_info">battery info</string>
+    <string name="immediate_alert_summary">click here to alert the keyring</string>
+    <string name="welcome_text">Welcome on iTracing2.\n\nThis application allow you to communicate with your iSee (Quintic PROXR) bluetooth device.\n
+        If like me, the poorest application "iTracing" disturb you, enjoy to use my own version :)\n\n
+        Please click on the DETECT button to found you iSee device (it must be named "Quintic PROXR").</string>
+    <string name="donate">donate (PayPal)</string>
+    <string name="feedback">feedback</string>
+    <string name="donate_summary">to support my work :)</string>
+    <string name="feedback_summary">feel free to improve this product</string>
+    <string-array name="button_actions">
+        <item>nothing</item>
+        <item>ring the phone</item>
+    </string-array>
+    <string-array name="button_actions_values">
+        <item></item>
+        <item>RING_PHONE</item>
+    </string-array>
+</resources>
