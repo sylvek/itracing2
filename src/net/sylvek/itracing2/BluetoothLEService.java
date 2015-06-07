@@ -11,7 +11,9 @@ import android.bluetooth.BluetoothGattService;
 import android.bluetooth.BluetoothProfile;
 import android.content.Intent;
 import android.os.Binder;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.SystemClock;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
@@ -35,12 +37,20 @@ public class BluetoothLEService extends Service {
     public static final String SERVICES_DISCOVERED = "SERVICES_DISCOVERED";
 
     public static final String TAG = BluetoothLEService.class.toString();
+    public static final String ACTION_PREFIX = "net.sylvek.itracing2.action.";
+    private static final long DELAY_DOUBLE_CLICK = 300;
 
     private BluetoothGatt bluetoothGatt = null;
 
     private BluetoothGattService immediateAlertService;
 
     private BluetoothGattCharacteristic batteryCharacteristic;
+
+    private long lastChange;
+
+    private Runnable r;
+
+    private Handler handler = new Handler();
 
     private BluetoothGattCallback bluetoothGattCallback = new BluetoothGattCallback() {
         @Override
@@ -94,8 +104,27 @@ public class BluetoothLEService extends Service {
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic)
         {
             Log.d(TAG, "onCharacteristicChanged()");
-            String action = Preferences.getActionButton(getApplicationContext());
-            sendBroadcast(new Intent("net.sylvek.itracing2.action." + action));
+
+            final long now = SystemClock.elapsedRealtime();
+            if (lastChange + DELAY_DOUBLE_CLICK > now) {
+                Log.d(TAG, "onCharacteristicChanged() - double click");
+                lastChange = 0;
+                handler.removeCallbacks(r);
+                String action = Preferences.getActionDoubleButton(getApplicationContext());
+                sendBroadcast(new Intent(ACTION_PREFIX + action));
+            } else {
+                lastChange = now;
+                r = new Runnable() {
+                    @Override
+                    public void run()
+                    {
+                        Log.d(TAG, "onCharacteristicChanged() - simple click");
+                        String action = Preferences.getActionSimpleButton(getApplicationContext());
+                        sendBroadcast(new Intent(ACTION_PREFIX + action));
+                    }
+                };
+                handler.postDelayed(r, DELAY_DOUBLE_CLICK);
+            }
         }
 
         @Override
@@ -160,7 +189,7 @@ public class BluetoothLEService extends Service {
             final BluetoothDevice device = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(Preferences.getKeyringUUID(this));
             this.bluetoothGatt = device.connectGatt(this, true, bluetoothGattCallback);
         } else {
-            Log.d(TAG,"connect() - discovering services");
+            Log.d(TAG, "connect() - discovering services");
             this.bluetoothGatt.discoverServices();
         }
     }

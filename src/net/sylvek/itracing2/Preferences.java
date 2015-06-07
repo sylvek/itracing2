@@ -11,7 +11,8 @@ public class Preferences {
 
     public static final String KEYRING_UUID = "keyring_uuid";
     public static final String LINK_OPTION = "link_background";
-    public static final String ACTION_BUTTON_LIST = "action_button_list";
+    public static final String ACTION_SIMPLE_BUTTON_LIST = "action_simple_button_list";
+    public static final String ACTION_DOUBLE_BUTTON_LIST = "action_double_button_list";
     public static final String ACTION_BUTTON = "action_button";
     public static final String BATTERY_INFO = "battery_info";
     public static final String DONATE = "donate";
@@ -35,9 +36,15 @@ public class Preferences {
         return defaultSharedPreferences.getBoolean(LINK_OPTION, false);
     }
 
-    public static String getActionButton(Context context)
+    public static String getActionSimpleButton(Context context)
     {
         final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        return defaultSharedPreferences.getString(ACTION_BUTTON_LIST, null);
+        return defaultSharedPreferences.getString(ACTION_SIMPLE_BUTTON_LIST, null);
+    }
+
+    public static String getActionDoubleButton(Context context)
+    {
+        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        return defaultSharedPreferences.getString(ACTION_DOUBLE_BUTTON_LIST, null);
     }
 }

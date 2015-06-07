@@ -5,11 +5,20 @@
             android:title="@string/link_background"
             android:summary="@string/link_background_summary"/>
     <ListPreference
-            android:key="action_button_list"
-            android:title="@string/button_action"
-            android:summary="@string/button_action_summary"
+            android:key="action_simple_button_list"
+            android:title="@string/simple_button_action"
+            android:summary="@string/simple_button_action_summary"
             android:entries="@array/button_actions"
             android:entryValues="@array/button_actions_values"
+            android:defaultValue="NOTHING"
+            android:dependency="link_background"/>
+    <ListPreference
+            android:key="action_double_button_list"
+            android:title="@string/double_button_action"
+            android:summary="@string/double_button_action_summary"
+            android:entries="@array/button_actions"
+            android:entryValues="@array/button_actions_values"
+            android:defaultValue="NOTHING"
             android:dependency="link_background"/>
     <Preference
             android:title="@string/immediate_alert"

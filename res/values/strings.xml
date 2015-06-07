@@ -8,8 +8,10 @@
     <string name="immediate_alert">ring the keyring</string>
     <string name="link_background">link background</string>
     <string name="stop_ring">stop ring</string>
-    <string name="button_action">button action</string>
-    <string name="button_action_summary">what is the button action ?</string>
+    <string name="simple_button_action">simple click button action</string>
+    <string name="simple_button_action_summary">what is the button action ?</string>
+    <string name="double_button_action">double click button action</string>
+    <string name="double_button_action_summary">what is the button action ?</string>
     <string name="link_background_summary">loss link between device and keyring</string>
     <string name="battery_info">battery info</string>
     <string name="immediate_alert_summary">click here to alert the keyring</string>
@@ -25,7 +27,7 @@
         <item>ring the phone</item>
     </string-array>
     <string-array name="button_actions_values">
-        <item></item>
+        <item>NOTHING</item>
         <item>RING_PHONE</item>
     </string-array>
 </resources>
