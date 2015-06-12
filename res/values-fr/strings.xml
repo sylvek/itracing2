@@ -22,12 +22,15 @@
     <string name="feedback">retour d\'expérience</string>
     <string name="donate_summary">pour m\'aider dans mon travail :)</string>
     <string name="feedback_summary">votre aide est la bienvenue</string>
+    <string name="display_last_position">afficher la dernière position enregistrée</string>
     <string-array name="button_actions">
         <item>aucune</item>
         <item>faire sonner le téléphone</item>
+        <item>capturer ma position</item>
     </string-array>
     <string-array name="button_actions_values">
-        <item></item>
+        <item>NOTHING</item>
         <item>RING_PHONE</item>
+        <item>CAPTURE_POSITION</item>
     </string-array>
 </resources>

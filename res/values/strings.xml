@@ -22,12 +22,15 @@
     <string name="feedback">feedback</string>
     <string name="donate_summary">to support my work :)</string>
     <string name="feedback_summary">feel free to improve this product</string>
+    <string name="display_last_position">display the last recorded position</string>
     <string-array name="button_actions">
         <item>nothing</item>
         <item>ring the phone</item>
+        <item>capture my position</item>
     </string-array>
     <string-array name="button_actions_values">
         <item>NOTHING</item>
         <item>RING_PHONE</item>
+        <item>CAPTURE_POSITION</item>
     </string-array>
 </resources>
