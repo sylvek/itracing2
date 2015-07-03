@@ -27,7 +27,7 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
 
     private static final long SCAN_PERIOD = 10000; // 10 seconds
 
-    private static final List<String> DEFAULT_DEVICE_NAME = new ArrayList<>();
+    private static final List<String> DEFAULT_DEVICE_NAME = new ArrayList<String>();
 
     static {
         DEFAULT_DEVICE_NAME.add("Quintic PROXR");
