@@ -56,12 +56,21 @@ public class BluetoothLEService extends Service {
         @Override
         public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState)
         {
-            Log.d(TAG, "onConnectionStateChange()");
+            Log.d(TAG, "onConnectionStateChange() status => " + status);
             if (BluetoothGatt.GATT_SUCCESS == status) {
-                Log.d(TAG, "onConnectionStateChange => " + newState);
+                Log.d(TAG, "onConnectionStateChange() newState => " + newState);
                 if (newState == BluetoothProfile.STATE_CONNECTED) {
                     broadcaster.sendBroadcast(new Intent(GATT_CONNECTED));
                     gatt.discoverServices();
+                }
+            }
+
+            final boolean actionOnPowerOff = Preferences.isActionOnPowerOff(BluetoothLEService.this);
+            if (actionOnPowerOff || status == 8) {
+                Log.d(TAG, "onConnectionStateChange() newState => " + newState);
+                if (newState == BluetoothProfile.STATE_DISCONNECTED) {
+                    String action = Preferences.getActionOutOfBand(getApplicationContext());
+                    sendBroadcast(new Intent(ACTION_PREFIX + action));
                 }
             }
         }

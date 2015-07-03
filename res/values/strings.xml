@@ -3,7 +3,7 @@
     <string name="app_name">iTracing2</string>
     <string name="ble_not_supported">sorry bluetooth LE is not supported on your device</string>
     <string name="action_scan_start">detect</string>
-    <string name="beacon_not_found">iSee keyring not found</string>
+    <string name="beacon_not_found">keyring not found</string>
     <string name="action_connect">connect</string>
     <string name="immediate_alert">ring the keyring</string>
     <string name="link_background">link background</string>
@@ -23,6 +23,10 @@
     <string name="donate_summary">to support my work :)</string>
     <string name="feedback_summary">feel free to improve this product</string>
     <string name="display_last_position">display the last recorded position</string>
+    <string name="out_of_band_action">out of band action</string>
+    <string name="out_of_band_action_summary">what is the action ?</string>
+    <string name="action_on_power_off">link is lost on power off</string>
+    <string name="action_on_power_off_summary">the link is lost if keyring or bluetooth is powering off</string>
     <string-array name="button_actions">
         <item>nothing</item>
         <item>ring the phone</item>

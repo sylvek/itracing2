@@ -13,6 +13,8 @@ public class Preferences {
     public static final String LINK_OPTION = "link_background";
     public static final String ACTION_SIMPLE_BUTTON_LIST = "action_simple_button_list";
     public static final String ACTION_DOUBLE_BUTTON_LIST = "action_double_button_list";
+    public static final String ACTION_OUT_OF_BAND_LIST = "action_out_of_band_list";
+    public static final String ACTION_ON_POWER_OFF = "action_on_power_off";
     public static final String ACTION_BUTTON = "action_button";
     public static final String BATTERY_INFO = "battery_info";
     public static final String DONATE = "donate";
@@ -46,5 +48,17 @@ public class Preferences {
     {
         final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         return defaultSharedPreferences.getString(ACTION_DOUBLE_BUTTON_LIST, null);
+    }
+
+    public static String getActionOutOfBand(Context context)
+    {
+        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        return defaultSharedPreferences.getString(ACTION_OUT_OF_BAND_LIST, null);
+    }
+
+    public static boolean isActionOnPowerOff(Context context)
+    {
+        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        return defaultSharedPreferences.getBoolean(ACTION_ON_POWER_OFF, false);
     }
 }

@@ -1,5 +1,8 @@
 package net.sylvek.itracing2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -24,7 +27,12 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
 
     private static final long SCAN_PERIOD = 10000; // 10 seconds
 
-    private static final String DEFAULT_DEVICE_NAME = "Quintic PROXR";
+    private static final List<String> DEFAULT_DEVICE_NAME = new ArrayList<>();
+
+    static {
+        DEFAULT_DEVICE_NAME.add("Quintic PROXR");
+        DEFAULT_DEVICE_NAME.add("Cigii IT-02 Smart Bluetooth Tracker");
+    }
 
     private final FirstTimeFragment firstTimeFragment = FirstTimeFragment.instance();
     private final DashboardFragment dashboardFragment = DashboardFragment.instance();
@@ -43,7 +51,7 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
             final String uuid = device.getAddress();
             final String name = device.getName();
 
-            if (DEFAULT_DEVICE_NAME.equals(name)) {
+            if (DEFAULT_DEVICE_NAME.contains(name)) {
                 Preferences.setKeyringUUID(WelcomeActivity.this, uuid);
                 setRefreshing(false);
                 showDashboard();
