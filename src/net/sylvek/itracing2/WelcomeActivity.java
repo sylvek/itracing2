@@ -1,5 +1,6 @@
 package net.sylvek.itracing2;
 
+import java.lang.ref.PhantomReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -240,6 +243,30 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
         unbindService(serviceConnection);
     }
 
+    @Override
+    public void onDonate()
+    {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=5GMSU5NPUKCTU&lc=FR&item_name=itracing2&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"));
+        startActivity(browserIntent);
+    }
+
+    @Override
+    public void onFeedBack()
+    {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/sylvek/itracing2/issues"));
+        startActivity(browserIntent);
+    }
+
+    @Override
+    public void onRingStone()
+    {
+        Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_RINGTONE);
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, getString(R.string.ring_tone));
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, Uri.parse(Preferences.getRingtone(this)));
+        startActivityForResult(intent, 5);
+    }
+
     private void setRefreshing(final boolean refreshing)
     {
         mSwipeRefreshLayout.post(new Runnable() {
@@ -249,5 +276,16 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
                 mSwipeRefreshLayout.setRefreshing(refreshing);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (resultCode == Activity.RESULT_OK && requestCode == 5) {
+            Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+            if (uri != null) {
+                Preferences.setRingtone(this, uri.toString());
+            }
+        }
     }
 }

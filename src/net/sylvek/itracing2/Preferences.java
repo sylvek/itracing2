@@ -2,6 +2,8 @@ package net.sylvek.itracing2;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 
 /**
@@ -19,6 +21,7 @@ public class Preferences {
     public static final String BATTERY_INFO = "battery_info";
     public static final String DONATE = "donate";
     public static final String FEEDBACK = "feedback";
+    public static final String RINGTONE = "ring_tone";
 
     public static String getKeyringUUID(Context context)
     {
@@ -60,5 +63,18 @@ public class Preferences {
     {
         final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         return defaultSharedPreferences.getBoolean(ACTION_ON_POWER_OFF, false);
+    }
+
+    public static String getRingtone(Context context)
+    {
+        final Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALL);
+        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        return defaultSharedPreferences.getString(RINGTONE, sound.toString());
+    }
+
+    public static void setRingtone(Context context, String uri)
+    {
+        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        defaultSharedPreferences.edit().putString(RINGTONE, uri).commit();
     }
 }

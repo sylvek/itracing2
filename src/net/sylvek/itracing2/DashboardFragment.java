@@ -1,8 +1,6 @@
 package net.sylvek.itracing2;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -49,8 +47,7 @@ public class DashboardFragment extends PreferenceFragment {
             @Override
             public boolean onPreferenceClick(Preference preference)
             {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=5GMSU5NPUKCTU&lc=FR&item_name=itracing2&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"));
-                startActivity(browserIntent);
+                presenter.onDonate();
                 return true;
             }
         });
@@ -58,8 +55,15 @@ public class DashboardFragment extends PreferenceFragment {
             @Override
             public boolean onPreferenceClick(Preference preference)
             {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/sylvek/itracing2/issues"));
-                startActivity(browserIntent);
+                presenter.onFeedBack();
+                return true;
+            }
+        });
+        findPreference(Preferences.RINGTONE).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference)
+            {
+                presenter.onRingStone();
                 return true;
             }
         });
@@ -115,5 +119,11 @@ public class DashboardFragment extends PreferenceFragment {
         void onDashboardStarted();
 
         void onDashboardStopped();
+
+        void onDonate();
+
+        void onFeedBack();
+
+        void onRingStone();
     }
 }

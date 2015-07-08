@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import net.sylvek.itracing2.Preferences;
 import net.sylvek.itracing2.R;
 
 /**
@@ -23,7 +24,7 @@ public class StartRingPhone extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent)
     {
         if (currentRingtone == null) {
-            Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALL);
+            Uri sound = Uri.parse(Preferences.getRingtone(context));
             currentRingtone = RingtoneManager.getRingtone(context, sound);
         }
         currentRingtone.play();

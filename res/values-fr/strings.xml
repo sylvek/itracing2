@@ -27,6 +27,8 @@
     <string name="out_of_band_action_summary">quelle est l\'action associée ?</string>
     <string name="action_on_power_off">perte de liaison à l\'extinction</string>
     <string name="action_on_power_off_summary">perte de liaison si porte-clé ou bluetooth s\'éteint</string>
+    <string name="ring_tone_summary">sélectionner la sonnerie en rapport aux actions</string>
+    <string name="ring_tone">sonnerie</string>
     <string-array name="button_actions">
         <item>aucune</item>
         <item>faire sonner le téléphone</item>
