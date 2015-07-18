@@ -110,6 +110,11 @@ public class DashboardFragment extends PreferenceFragment {
         findPreference(Preferences.BATTERY_INFO).setSummary(percent);
     }
 
+    public void setRssi(String rssi)
+    {
+        findPreference(Preferences.RSSI_INFO).setSummary(rssi);
+    }
+
     public interface OnDashboardListener {
 
         void onImmediateAlert();

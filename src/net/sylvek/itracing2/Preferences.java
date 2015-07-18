@@ -19,6 +19,7 @@ public class Preferences {
     public static final String ACTION_ON_POWER_OFF = "action_on_power_off";
     public static final String ACTION_BUTTON = "action_button";
     public static final String BATTERY_INFO = "battery_info";
+    public static final String RSSI_INFO = "rssi_info";
     public static final String DONATE = "donate";
     public static final String FEEDBACK = "feedback";
     public static final String RINGTONE = "ring_tone";

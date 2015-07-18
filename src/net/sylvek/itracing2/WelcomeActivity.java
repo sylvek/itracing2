@@ -144,6 +144,16 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
                         }
                     });
                 }
+
+                if (BluetoothLEService.RSSI_RECEIVED.equals(intent.getAction())) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run()
+                        {
+                            dashboardFragment.setRssi(intent.getStringExtra(BluetoothLEService.RSSI_RECEIVED));
+                        }
+                    });
+                }
             }
         };
     }
@@ -223,6 +233,7 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
         LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter(BluetoothLEService.IMMEDIATE_ALERT_AVAILABLE));
         LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter(BluetoothLEService.BATTERY_LEVEL));
         LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter(BluetoothLEService.SERVICES_DISCOVERED));
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter(BluetoothLEService.RSSI_RECEIVED));
 
         // bind service
         bindService(new Intent(this, BluetoothLEService.class), serviceConnection, BIND_AUTO_CREATE);

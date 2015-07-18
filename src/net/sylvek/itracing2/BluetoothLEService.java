@@ -35,6 +35,7 @@ public class BluetoothLEService extends Service {
     public static final String BATTERY_LEVEL = "BATTERY_LEVEL";
     public static final String GATT_CONNECTED = "GATT_CONNECTED";
     public static final String SERVICES_DISCOVERED = "SERVICES_DISCOVERED";
+    public static final String RSSI_RECEIVED = "RSSI_RECEIVED";
 
     public static final String TAG = BluetoothLEService.class.toString();
     public static final String ACTION_PREFIX = "net.sylvek.itracing2.action.";
@@ -76,9 +77,18 @@ public class BluetoothLEService extends Service {
         }
 
         @Override
+        public void onReadRemoteRssi(BluetoothGatt gatt, int rssi, int status)
+        {
+            final Intent rssiIntent = new Intent(RSSI_RECEIVED);
+            rssiIntent.putExtra(RSSI_RECEIVED, rssi + "dBm");
+            broadcaster.sendBroadcast(rssiIntent);
+        }
+
+        @Override
         public void onServicesDiscovered(BluetoothGatt gatt, int status)
         {
             Log.d(TAG, "onServicesDiscovered()");
+            gatt.readRemoteRssi();
             broadcaster.sendBroadcast(new Intent(SERVICES_DISCOVERED));
             if (BluetoothGatt.GATT_SUCCESS == status) {
                 for (final BluetoothGattService service : gatt.getServices()) {
