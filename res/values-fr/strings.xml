@@ -31,6 +31,7 @@
     <string name="ring_tone">sonnerie</string>
     <string name="rssi_info">qualité du signal</string>
     <string name="actions">action depuis le porte-clés</string>
+    <string name="select_device">sélectionner un appareil</string>
     <string-array name="button_actions">
         <item>aucune</item>
         <item>faire sonner le téléphone</item>

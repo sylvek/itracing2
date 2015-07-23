@@ -31,6 +31,7 @@
     <string name="ring_tone">ring tone</string>
     <string name="rssi_info">rssi info</string>
     <string name="actions">keyring\'s actions</string>
+    <string name="select_device">select a device</string>
     <string-array name="button_actions">
         <item>nothing</item>
         <item>ring the phone</item>

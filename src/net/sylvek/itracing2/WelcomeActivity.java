@@ -1,16 +1,19 @@
 package net.sylvek.itracing2;
 
-import java.lang.ref.PhantomReference;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
@@ -22,6 +25,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFirstTimeListener, DashboardFragment.OnDashboardListener {
@@ -46,6 +50,8 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
     private BluetoothLEService service;
     private Runnable stopScan;
 
+    private final Map<String, String> devices = new HashMap<String, String>();
+
     private BluetoothAdapter.LeScanCallback mLeScanCallback = new BluetoothAdapter.LeScanCallback() {
 
         @Override
@@ -54,13 +60,21 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
             final String uuid = device.getAddress();
             final String name = device.getName();
 
+            devices.put((name == null) ? uuid : name, uuid);
+
             if (DEFAULT_DEVICE_NAME.contains(name)) {
-                Preferences.setKeyringUUID(WelcomeActivity.this, uuid);
-                setRefreshing(false);
-                showDashboard();
+                selectDevice(uuid);
             }
         }
     };
+
+    private void selectDevice(String uuid)
+    {
+        devices.clear();
+        Preferences.setKeyringUUID(WelcomeActivity.this, uuid);
+        setRefreshing(false);
+        showDashboard();
+    }
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
@@ -190,6 +204,10 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
                 mBluetoothAdapter.stopLeScan(mLeScanCallback);
                 setRefreshing(false);
                 Toast.makeText(WelcomeActivity.this, R.string.beacon_not_found, Toast.LENGTH_LONG).show();
+
+                if (!devices.isEmpty()) {
+                    displayListScannedDevices();
+                }
             }
         };
         mHandler.postDelayed(stopScan, SCAN_PERIOD);
@@ -298,5 +316,35 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
                 Preferences.setRingtone(this, uri.toString());
             }
         }
+    }
+
+    private void displayListScannedDevices()
+    {
+        final AlertDialog.Builder builderSingle = new AlertDialog.Builder(this);
+        builderSingle.setIcon(R.drawable.ic_launcher);
+        builderSingle.setTitle(R.string.select_device);
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_singlechoice);
+        arrayAdapter.addAll(devices.keySet());
+        builderSingle.setNegativeButton(android.R.string.cancel,
+                new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        dialog.dismiss();
+                    }
+                });
+
+        builderSingle.setAdapter(arrayAdapter,
+                new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        final String device = arrayAdapter.getItem(which);
+                        selectDevice(devices.get(device));
+                    }
+                });
+        builderSingle.show();
     }
 }
