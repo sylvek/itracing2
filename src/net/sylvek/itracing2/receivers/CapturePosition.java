@@ -41,7 +41,7 @@ public class CapturePosition extends BroadcastReceiver {
                     .setContentText(context.getString(R.string.display_last_position))
                     .setContentTitle(context.getString(R.string.app_name))
                     .setSmallIcon(R.drawable.ic_launcher)
-                    .setAutoCancel(true)
+                    .setAutoCancel(false)
                     .setContentIntent(PendingIntent.getActivity(context, 0, mapIntent, PendingIntent.FLAG_UPDATE_CURRENT))
                     .build();
             notificationManager.notify(NOTIFICATION_ID, notification);
