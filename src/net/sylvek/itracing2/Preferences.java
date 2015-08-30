@@ -68,7 +68,7 @@ public class Preferences {
 
     public static String getRingtone(Context context)
     {
-        final Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALL);
+        final Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
         final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         return defaultSharedPreferences.getString(RINGTONE, sound.toString());
     }

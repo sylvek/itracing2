@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.widget.Toast;
 import net.sylvek.itracing2.Preferences;
 import net.sylvek.itracing2.R;
 
@@ -27,6 +28,12 @@ public class StartRingPhone extends BroadcastReceiver {
             Uri sound = Uri.parse(Preferences.getRingtone(context));
             currentRingtone = RingtoneManager.getRingtone(context, sound);
         }
+
+        if (currentRingtone == null) {
+            Toast.makeText(context, R.string.ring_tone_not_found, Toast.LENGTH_LONG).show();
+            return;
+        }
+
         currentRingtone.play();
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
