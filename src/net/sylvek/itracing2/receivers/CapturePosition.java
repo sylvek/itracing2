@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -16,7 +17,11 @@ import net.sylvek.itracing2.R;
  */
 public class CapturePosition extends BroadcastReceiver {
 
+    static final Criteria criteria = new Criteria();
+
     static final int NOTIFICATION_ID = 453436;
+
+    static final long MAX_AGE = 10000; // 10 seconds
 
     @Override
     public void onReceive(Context context, Intent intent)
@@ -26,9 +31,17 @@ public class CapturePosition extends BroadcastReceiver {
         final LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         for (final String provider : locationManager.getAllProviders()) {
             final Location location = locationManager.getLastKnownLocation(provider);
-            if (location != null && (bestLocation == null || location.getAccuracy() < bestLocation.getAccuracy())) {
+            final long now = System.currentTimeMillis();
+            if (location != null
+                    && (bestLocation == null || location.getTime() > bestLocation.getTime())
+                    && location.getTime() > now - MAX_AGE) {
                 bestLocation = location;
             }
+        }
+
+        if (bestLocation == null) {
+            final PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            locationManager.requestSingleUpdate(criteria, pendingIntent);
         }
 
         if (bestLocation != null) {
