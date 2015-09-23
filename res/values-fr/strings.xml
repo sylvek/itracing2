@@ -8,6 +8,7 @@
     <string name="immediate_alert">faire sonner le porte-clés</string>
     <string name="link_background">lien permanent</string>
     <string name="stop_ring">arrêter la sonnerie</string>
+    <string name="stop_vibrate">arrêter la vibration</string>
     <string name="simple_button_action">simple clic sur le porte-clés</string>
     <string name="simple_button_action_summary">quelle est l\'action associée ?</string>
     <string name="double_button_action">double clic sur le porte-clés</string>
@@ -33,14 +34,17 @@
     <string name="actions">action depuis le porte-clés</string>
     <string name="select_device">sélectionner un appareil</string>
     <string name="ring_tone_not_found">sonnerie non trouvée, s\'il vous plait, sélectionnez-en une autre</string>
+    <string name="vibrator_not_found">vibrateur non trouvé! assurez-vous que vous disposez de cette fonctionnalité sur votre téléphone.</string>
     <string-array name="button_actions">
         <item>aucune</item>
         <item>faire sonner le téléphone</item>
+        <item>faire vibrer le téléphone</item>
         <item>capturer ma position</item>
     </string-array>
     <string-array name="button_actions_values">
         <item>NOTHING</item>
         <item>RING_PHONE</item>
+        <item>VIBRATE_PHONE</item>
         <item>CAPTURE_POSITION</item>
     </string-array>
 </resources>

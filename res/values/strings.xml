@@ -8,6 +8,7 @@
     <string name="immediate_alert">ring the keyring</string>
     <string name="link_background">link background</string>
     <string name="stop_ring">stop ring</string>
+    <string name="stop_vibrate">stop vibration</string>
     <string name="simple_button_action">simple click button action</string>
     <string name="simple_button_action_summary">what is the button action ?</string>
     <string name="double_button_action">double click button action</string>
@@ -36,14 +37,17 @@
     <string name="actions">keyring\'s actions</string>
     <string name="select_device">select a device</string>
     <string name="ring_tone_not_found">ring tone not found! please select an another, be sure you have a default ring tone, or that sound volume is up.</string>
+    <string name="vibrator_not_found">vibrator not found! please be sure that you have this feature on your phone.</string>
     <string-array name="button_actions">
         <item>nothing</item>
         <item>ring the phone</item>
+        <item>vibrate the phone</item>
         <item>capture my position</item>
     </string-array>
     <string-array name="button_actions_values">
         <item>NOTHING</item>
         <item>RING_PHONE</item>
+        <item>VIBRATE_PHONE</item>
         <item>CAPTURE_POSITION</item>
     </string-array>
 </resources>
