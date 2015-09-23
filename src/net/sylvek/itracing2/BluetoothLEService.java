@@ -16,6 +16,7 @@ import android.os.IBinder;
 import android.os.SystemClock;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Created by sylvek on 18/05/2015.
@@ -196,9 +197,17 @@ public class BluetoothLEService extends Service {
 
     public void immediateAlert()
     {
+        if (immediateAlertService == null || immediateAlertService.getCharacteristics() == null || immediateAlertService.getCharacteristics().size() == 0) {
+            somethingGoesWrong();
+        }
         final BluetoothGattCharacteristic characteristic = immediateAlertService.getCharacteristics().get(0);
         characteristic.setValue(HIGH_ALERT, BluetoothGattCharacteristic.FORMAT_UINT8, 0);
         this.bluetoothGatt.writeCharacteristic(characteristic);
+    }
+
+    private void somethingGoesWrong()
+    {
+        Toast.makeText(this, R.string.something_goes_wrong, Toast.LENGTH_LONG).show();
     }
 
     public void connect()

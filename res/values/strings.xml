@@ -38,6 +38,7 @@
     <string name="select_device">select a device</string>
     <string name="ring_tone_not_found">ring tone not found! please select an another, be sure you have a default ring tone, or that sound volume is up.</string>
     <string name="vibrator_not_found">vibrator not found! please be sure that you have this feature on your phone.</string>
+    <string name="something_goes_wrong">something goes wrong!</string>
     <string-array name="button_actions">
         <item>nothing</item>
         <item>ring the phone</item>
