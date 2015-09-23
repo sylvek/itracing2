@@ -21,6 +21,7 @@
         Please click on the DETECT button to find you iSee device (it should be named "Quintic PROXR").\n\n
         If nothing is detected, a box appears containing all detected compatibles devices.\n
         If this box is empty, you should reboot your iTag (because is a cheap device) and retry.\n\n
+        Note that loss link and iTag button feature are available only with "background link" option.\n\n
         Keep in mind that i develop iTracing2 only on my free time ;-)</string>
     <string name="donate">donate (PayPal)</string>
     <string name="feedback">feedback</string>
