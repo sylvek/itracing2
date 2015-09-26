@@ -199,6 +199,7 @@ public class BluetoothLEService extends Service {
     {
         if (immediateAlertService == null || immediateAlertService.getCharacteristics() == null || immediateAlertService.getCharacteristics().size() == 0) {
             somethingGoesWrong();
+            return;
         }
         final BluetoothGattCharacteristic characteristic = immediateAlertService.getCharacteristics().get(0);
         characteristic.setValue(HIGH_ALERT, BluetoothGattCharacteristic.FORMAT_UINT8, 0);
