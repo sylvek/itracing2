@@ -18,6 +18,8 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.UUID;
+
 /**
  * Created by sylvek on 18/05/2015.
  */
@@ -37,6 +39,13 @@ public class BluetoothLEService extends Service {
     public static final String GATT_CONNECTED = "GATT_CONNECTED";
     public static final String SERVICES_DISCOVERED = "SERVICES_DISCOVERED";
     public static final String RSSI_RECEIVED = "RSSI_RECEIVED";
+
+    public static final String IMMIDIATE_ALERT_SERVICE = "00001802-0000-1000-8000-00805f9b34fb";
+    public static final String FINDME_SERVICE = "0000ffe0-0000-1000-8000-00805f9b34fb";
+    public static final String LINK_LOSS_SERVICE = "00001803-0000-1000-8000-00805f9b34fb";
+    public static final String CLIENT_CHARACTERISTIC_CONFIG = "00002902-0000-1000-8000-00805f9b34fb";
+    public static final String ALERT_LEVEL_CHARACTERISTIC = "00002a06-0000-1000-8000-00805f9b34fb";
+    public static final String FIND_ME_CHARACTERISTIC = "0000ffe1-0000-1000-8000-00805f9b34fb";
 
     public static final String TAG = BluetoothLEService.class.toString();
     public static final String ACTION_PREFIX = "net.sylvek.itracing2.action.";
@@ -103,11 +112,15 @@ public class BluetoothLEService extends Service {
                     }
 
                     if (service.getUuid().toString().startsWith(BUTTON_PREFIX)) {
-                        final BluetoothGattCharacteristic characteristic = service.getCharacteristics().get(0);
-                        final BluetoothGattDescriptor descriptor = characteristic.getDescriptors().get(0);
-                        gatt.setCharacteristicNotification(characteristic, true);
-                        descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
-                        gatt.writeDescriptor(descriptor);
+                        if(!service.getCharacteristics().isEmpty()) {
+                            final BluetoothGattCharacteristic characteristic = service.getCharacteristics().get(0);
+                            if(!characteristic.getDescriptors().isEmpty()) {
+                                final BluetoothGattDescriptor descriptor = characteristic.getDescriptors().get(0);
+                                gatt.setCharacteristicNotification(characteristic, true);
+                                descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
+                                gatt.writeDescriptor(descriptor);
+                            }
+                        }
                     }
                 }
             }
@@ -230,4 +243,6 @@ public class BluetoothLEService extends Service {
         this.bluetoothGatt.close();
         this.bluetoothGatt = null;
     }
+
+
 }
