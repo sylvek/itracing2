@@ -57,6 +57,8 @@ public class BluetoothLEService extends Service {
 
     private BluetoothGattCharacteristic batteryCharacteristic;
 
+    private BluetoothGattCharacteristic buttonCharacteristic;
+
     private long lastChange;
 
     private Runnable r;
@@ -82,6 +84,7 @@ public class BluetoothLEService extends Service {
                 if (newState == BluetoothProfile.STATE_DISCONNECTED) {
                     String action = Preferences.getActionOutOfBand(getApplicationContext());
                     sendBroadcast(new Intent(ACTION_PREFIX + action));
+                    enablePeerDeviceNotifyMe(gatt, true);
                 }
             }
         }
@@ -101,6 +104,7 @@ public class BluetoothLEService extends Service {
             gatt.readRemoteRssi();
             broadcaster.sendBroadcast(new Intent(SERVICES_DISCOVERED));
             if (BluetoothGatt.GATT_SUCCESS == status) {
+                enablePeerDeviceNotifyMe(gatt, true);
                 for (final BluetoothGattService service : gatt.getServices()) {
                     if (service.getUuid().toString().startsWith(IMMEDIATE_ALERT_PREFIX)) {
                         immediateAlertService = service;
@@ -109,17 +113,13 @@ public class BluetoothLEService extends Service {
 
                     if (service.getUuid().toString().startsWith(BATTERY_PREFIX)) {
                         batteryCharacteristic = service.getCharacteristics().get(0);
+                        gatt.readCharacteristic(batteryCharacteristic);
                     }
 
                     if (service.getUuid().toString().startsWith(BUTTON_PREFIX)) {
                         if(!service.getCharacteristics().isEmpty()) {
-                            final BluetoothGattCharacteristic characteristic = service.getCharacteristics().get(0);
-                            if(!characteristic.getDescriptors().isEmpty()) {
-                                final BluetoothGattDescriptor descriptor = characteristic.getDescriptors().get(0);
-                                gatt.setCharacteristicNotification(characteristic, true);
-                                descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
-                                gatt.writeDescriptor(descriptor);
-                            }
+                            buttonCharacteristic = service.getCharacteristics().get(0);
+                            setCharacteristicNotification(gatt,buttonCharacteristic,true);
                         }
                     }
                 }
@@ -130,7 +130,8 @@ public class BluetoothLEService extends Service {
         public void onDescriptorWrite(BluetoothGatt gatt, BluetoothGattDescriptor descriptor, int status)
         {
             Log.d(TAG, "onDescriptorWrite()");
-            gatt.readCharacteristic(batteryCharacteristic);
+            //gatt.readCharacteristic(buttonCharacteristic);
+
         }
 
         @Override
@@ -169,6 +170,44 @@ public class BluetoothLEService extends Service {
             broadcaster.sendBroadcast(batteryLevel);
         }
     };
+
+    private void setCharacteristicNotification(BluetoothGatt bluetoothgatt, BluetoothGattCharacteristic bluetoothgattcharacteristic, boolean flag)
+    {
+        bluetoothgatt.setCharacteristicNotification(bluetoothgattcharacteristic, flag);
+        if (UUID.fromString(FIND_ME_CHARACTERISTIC).equals(bluetoothgattcharacteristic.getUuid()))
+        {
+            BluetoothGattDescriptor desciptor = bluetoothgattcharacteristic.getDescriptor(UUID.fromString(CLIENT_CHARACTERISTIC_CONFIG));
+            desciptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
+            bluetoothgatt.writeDescriptor(desciptor);
+        }
+    }
+
+    public void enablePeerDeviceNotifyMe(BluetoothGatt bluetoothgatt, boolean flag)
+    {
+        BluetoothGattCharacteristic bluetoothgattcharacteristic = getCharacteristic(bluetoothgatt, UUID.fromString(FINDME_SERVICE), UUID.fromString(FIND_ME_CHARACTERISTIC));
+        if (bluetoothgattcharacteristic != null && (bluetoothgattcharacteristic.getProperties() | 0x10) > 0)
+        {
+            setCharacteristicNotification(bluetoothgatt, bluetoothgattcharacteristic, flag);
+        }
+    }
+
+    private BluetoothGattCharacteristic getCharacteristic(BluetoothGatt bluetoothgatt, UUID uuid, UUID uuid1)
+    {
+        if (bluetoothgatt == null)
+        {
+            bluetoothgatt = null;
+        } else
+        {
+            BluetoothGattService service = bluetoothgatt.getService(uuid);
+            if (service == null)
+            {
+                return null;
+            }
+            BluetoothGattCharacteristic characteristic = service.getCharacteristic(uuid1);
+            return characteristic;
+        }
+        return null;
+    }
 
     public class BackgroundBluetoothLEBinder extends Binder {
         public BluetoothLEService service()
