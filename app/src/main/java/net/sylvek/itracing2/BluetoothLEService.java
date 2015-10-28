@@ -137,6 +137,7 @@ public class BluetoothLEService extends Service {
         public void onDescriptorWrite(BluetoothGatt gatt, BluetoothGattDescriptor descriptor, int status)
         {
             Log.d(TAG, "onDescriptorWrite()");
+            gatt.readCharacteristic(batteryCharacteristic);
         }
 
         @Override
@@ -174,7 +175,7 @@ public class BluetoothLEService extends Service {
                 final Intent batteryLevel = new Intent(BATTERY_LEVEL);
                 batteryLevel.putExtra(BATTERY_LEVEL, Integer.valueOf(characteristic.getValue()[0]) + "%");
                 broadcaster.sendBroadcast(batteryLevel);
-           
+
 
         }
     };
@@ -214,20 +215,6 @@ public class BluetoothLEService extends Service {
 //            }
 //        }
 //    }
-
-    /**
-     * Retrieves the EXTRA_UUID parameter.
-     * If a string of length 4 is detected, a 16-bit hex UUID is assumed and
-     * the default Bluetooth UUID is appended.
-     * @hide
-     */
-    static private UUID getUuidExtra(String uuidStr) {
-
-        if (uuidStr != null && uuidStr.length() == 4) {
-            uuidStr = String.format("0000%s-0000-1000-8000-00805f9b34fb", uuidStr);
-        }
-        return (uuidStr != null) ? UUID.fromString(uuidStr) : null;
-    }
 
     private BluetoothGattCharacteristic getCharacteristic(BluetoothGatt bluetoothgatt, UUID uuid, UUID uuid1)
     {
