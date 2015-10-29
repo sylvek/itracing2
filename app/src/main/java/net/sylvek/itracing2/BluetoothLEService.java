@@ -1,5 +1,7 @@
 package net.sylvek.itracing2;
 
+import java.util.UUID;
+
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -18,8 +20,6 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.util.UUID;
-
 /**
  * Created by sylvek on 18/05/2015.
  */
@@ -29,23 +29,18 @@ public class BluetoothLEService extends Service {
     public static final int MEDIUM_ALERT = 0x01;
     public static final int HIGH_ALERT = 0x02;
 
-    public static final String IMMEDIATE_ALERT_PREFIX = "00001802";
-    public static final String BATTERY_PREFIX = "0000180f";
-    public static final String LINK_LOSS_PREFIX = "00001803";
-    public static final String BUTTON_PREFIX = "0000ffe0";
-
     public static final String IMMEDIATE_ALERT_AVAILABLE = "IMMEDIATE_ALERT_AVAILABLE";
     public static final String BATTERY_LEVEL = "BATTERY_LEVEL";
     public static final String GATT_CONNECTED = "GATT_CONNECTED";
     public static final String SERVICES_DISCOVERED = "SERVICES_DISCOVERED";
     public static final String RSSI_RECEIVED = "RSSI_RECEIVED";
 
-    public static final String IMMIDIATE_ALERT_SERVICE = "00001802-0000-1000-8000-00805f9b34fb";
-    public static final String FINDME_SERVICE = "0000ffe0-0000-1000-8000-00805f9b34fb";
-    public static final String LINK_LOSS_SERVICE = "00001803-0000-1000-8000-00805f9b34fb";
-    public static final String CLIENT_CHARACTERISTIC_CONFIG = "00002902-0000-1000-8000-00805f9b34fb";
-    public static final String ALERT_LEVEL_CHARACTERISTIC = "00002a06-0000-1000-8000-00805f9b34fb";
-    public static final String FIND_ME_CHARACTERISTIC = "0000ffe1-0000-1000-8000-00805f9b34fb";
+    public static final UUID IMMEDIATE_ALERT_SERVICE = UUID.fromString("00001802-0000-1000-8000-00805f9b34fb");
+    public static final UUID FIND_ME_SERVICE = UUID.fromString("0000ffe0-0000-1000-8000-00805f9b34fb");
+    public static final UUID LINK_LOSS_SERVICE = UUID.fromString("00001803-0000-1000-8000-00805f9b34fb");
+    public static final UUID CLIENT_CHARACTERISTIC_CONFIG = UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
+    public static final UUID ALERT_LEVEL_CHARACTERISTIC = UUID.fromString("00002a06-0000-1000-8000-00805f9b34fb");
+    public static final UUID FIND_ME_CHARACTERISTIC = UUID.fromString("0000ffe1-0000-1000-8000-00805f9b34fb");
 
     public static final String TAG = BluetoothLEService.class.toString();
     public static final String ACTION_PREFIX = "net.sylvek.itracing2.action.";
@@ -108,28 +103,25 @@ public class BluetoothLEService extends Service {
             if (BluetoothGatt.GATT_SUCCESS == status) {
 
                 for (BluetoothGattService service : gatt.getServices()) {
-                    if (service.getUuid().toString().startsWith(IMMEDIATE_ALERT_PREFIX)) {
+                    if (IMMEDIATE_ALERT_SERVICE.equals(service.getUuid())) {
                         immediateAlertService = service;
                         broadcaster.sendBroadcast(new Intent(IMMEDIATE_ALERT_AVAILABLE));
+                        gatt.readCharacteristic(getCharacteristic(gatt, IMMEDIATE_ALERT_SERVICE, ALERT_LEVEL_CHARACTERISTIC));
                     }
 
-                    if (service.getUuid().toString().startsWith(BATTERY_PREFIX)) {
+                    if (BATTERY_SERVICE.equals(service.getUuid())) {
                         batteryCharacteristic = service.getCharacteristics().get(0);
                         gatt.readCharacteristic(batteryCharacteristic);
                     }
 
-                    if (service.getUuid().toString().startsWith(BUTTON_PREFIX)) {
-                        if(!service.getCharacteristics().isEmpty()) {
+                    if (FIND_ME_SERVICE.equals(service.getUuid())) {
+                        if (!service.getCharacteristics().isEmpty()) {
                             buttonCharacteristic = service.getCharacteristics().get(0);
-                            setCharacteristicNotification(gatt,buttonCharacteristic,true);
+                            setCharacteristicNotification(gatt, buttonCharacteristic, true);
                         }
                     }
                 }
-               enablePeerDeviceNotifyMe(gatt, true);
-
-               UUID uuid = UUID.fromString(IMMIDIATE_ALERT_SERVICE);
-               UUID uuid1 = UUID.fromString(ALERT_LEVEL_CHARACTERISTIC);
-               gatt.readCharacteristic(getCharacteristic(gatt, uuid, uuid1));
+                enablePeerDeviceNotifyMe(gatt, true);
             }
         }
 
@@ -172,9 +164,9 @@ public class BluetoothLEService extends Service {
         {
             Log.d(TAG, "onCharacteristicRead()");
 
-                final Intent batteryLevel = new Intent(BATTERY_LEVEL);
-                batteryLevel.putExtra(BATTERY_LEVEL, Integer.valueOf(characteristic.getValue()[0]) + "%");
-                broadcaster.sendBroadcast(batteryLevel);
+            final Intent batteryLevel = new Intent(BATTERY_LEVEL);
+            batteryLevel.putExtra(BATTERY_LEVEL, Integer.valueOf(characteristic.getValue()[0]) + "%");
+            broadcaster.sendBroadcast(batteryLevel);
 
 
         }
@@ -183,54 +175,32 @@ public class BluetoothLEService extends Service {
     private void setCharacteristicNotification(BluetoothGatt bluetoothgatt, BluetoothGattCharacteristic bluetoothgattcharacteristic, boolean flag)
     {
         bluetoothgatt.setCharacteristicNotification(bluetoothgattcharacteristic, flag);
-        if (UUID.fromString(FIND_ME_CHARACTERISTIC).equals(bluetoothgattcharacteristic.getUuid()))
-        {
-            BluetoothGattDescriptor desciptor = bluetoothgattcharacteristic.getDescriptor(UUID.fromString(CLIENT_CHARACTERISTIC_CONFIG));
-            if(desciptor != null) {
-                desciptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
-                bluetoothgatt.writeDescriptor(desciptor);
+        if (FIND_ME_CHARACTERISTIC.equals(bluetoothgattcharacteristic.getUuid())) {
+            BluetoothGattDescriptor descriptor = bluetoothgattcharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIG);
+            if (descriptor != null) {
+                descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
+                bluetoothgatt.writeDescriptor(descriptor);
             }
         }
     }
 
     public void enablePeerDeviceNotifyMe(BluetoothGatt bluetoothgatt, boolean flag)
     {
-        BluetoothGattCharacteristic bluetoothgattcharacteristic = getCharacteristic(bluetoothgatt, UUID.fromString(FINDME_SERVICE), UUID.fromString(FIND_ME_CHARACTERISTIC));
-        if (bluetoothgattcharacteristic != null && (bluetoothgattcharacteristic.getProperties() | 0x10) > 0)
-        {
+        BluetoothGattCharacteristic bluetoothgattcharacteristic = getCharacteristic(bluetoothgatt, FIND_ME_SERVICE, FIND_ME_CHARACTERISTIC);
+        if (bluetoothgattcharacteristic != null && (bluetoothgattcharacteristic.getProperties() | 0x10) > 0) {
             setCharacteristicNotification(bluetoothgatt, bluetoothgattcharacteristic, flag);
         }
     }
 
-//    public void findPeerDevice(byte byte0, String s)
-//    {
-//        BluetoothGattCharacteristic bluetoothgattcharacteristic;
-//        if (byte0 == 0 || byte0 == 1 || byte0 == 2)
-//        {
-//            if ((bluetoothgattcharacteristic = getCharacteristic(s, UUID.fromString(IMMIDIATE_ALERT_SERVICE), UUID.fromString(ALERT_LEVEL_CHARACTERISTIC))) != null && (bluetoothgattcharacteristic.getProperties() | 8) > 0)
-//            {
-//                bluetoothgattcharacteristic.setValue(new byte[] {byte0});
-//                ((BluetoothGatt)mMapBleGatt.get(s)).writeCharacteristic(bluetoothgattcharacteristic);
-//                return;
-//            }
-//        }
-//    }
-
-    private BluetoothGattCharacteristic getCharacteristic(BluetoothGatt bluetoothgatt, UUID uuid, UUID uuid1)
+    private BluetoothGattCharacteristic getCharacteristic(BluetoothGatt bluetoothgatt, UUID serviceUuid, UUID characteristicUuid)
     {
-        if (bluetoothgatt == null)
-        {
-            bluetoothgatt = null;
-        } else
-        {
-            BluetoothGattService service = bluetoothgatt.getService(uuid);
-            if (service == null)
-            {
-                return null;
+        if (bluetoothgatt != null) {
+            BluetoothGattService service = bluetoothgatt.getService(serviceUuid);
+            if (service != null) {
+                return service.getCharacteristic(characteristicUuid);
             }
-            BluetoothGattCharacteristic characteristic = service.getCharacteristic(uuid1);
-            return characteristic;
         }
+
         return null;
     }
 
@@ -292,7 +262,7 @@ public class BluetoothLEService extends Service {
     {
         if (this.bluetoothGatt == null) {
             Log.d(TAG, "connect() - connecting GATT");
-             mDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(Preferences.getKeyringUUID(this));
+            mDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(Preferences.getKeyringUUID(this));
             this.bluetoothGatt = mDevice.connectGatt(this, true, bluetoothGattCallback);
         } else {
             Log.d(TAG, "connect() - discovering services");
@@ -307,6 +277,5 @@ public class BluetoothLEService extends Service {
         this.bluetoothGatt.close();
         this.bluetoothGatt = null;
     }
-
 
 }
