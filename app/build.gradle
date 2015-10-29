@@ -8,13 +8,23 @@ android {
         applicationId "net.sylvek.itracing2"
         minSdkVersion 18
         targetSdkVersion 21
-        versionCode 14
-        versionName "1.14"
+        versionCode 15
+        versionName "1.15"
+    }
+    signingConfigs {
+        release {
+            def pass = System.console().readPassword("\nPlease enter key passphrase: ")
+            storeFile file("../sylvek.key")
+            storePassword new String(pass)
+            keyAlias "android"
+            keyPassword new String(pass)
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
