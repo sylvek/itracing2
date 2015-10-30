@@ -6,5 +6,5 @@
             android:id="@+id/action_scan"
             android:orderInCategory="100"
             android:showAsAction="always"
-            android:title="@string/action_scan_start"/>
+            android:title="@string/action_scan_start" tools:ignore="AppCompatResource"/>
 </menu>

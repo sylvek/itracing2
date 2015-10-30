@@ -39,6 +39,7 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
     static {
         DEFAULT_DEVICE_NAME.add("Quintic PROXR");
         DEFAULT_DEVICE_NAME.add("Cigii IT-02 Smart Bluetooth Tracker");
+        DEFAULT_DEVICE_NAME.add("MLE-15");
     }
 
     private final FirstTimeFragment firstTimeFragment = FirstTimeFragment.instance();
@@ -91,6 +92,7 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
         public void onServiceDisconnected(ComponentName componentName)
         {
             service.disconnect();
+            setRefreshing(false);
         }
     };
 

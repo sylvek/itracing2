@@ -1,0 +1,14 @@
+# itracing2
+itracing2 by sylvek, moved to gradle, planned support for MHL - 16
+
+Some characteristic from original MHL-16 app 
+```
+IMMIDIATE_ALERT_SERVICE = "00001802-0000-1000-8000-00805f9b34fb";
+FINDME_SERVICE = "0000ffe0-0000-1000-8000-00805f9b34fb";
+LINK_LOSS_SERVICE = "00001803-0000-1000-8000-00805f9b34fb";
+CLIENT_CHARACTERISTIC_CONFIG = "00002902-0000-1000-8000-00805f9b34fb";
+ALERT_LEVEL_CHARACTERISTIC = "00002a06-0000-1000-8000-00805f9b34fb";
+FIND_ME_CHARACTERISTIC = "0000ffe1-0000-1000-8000-00805f9b34fb";
+
+mRssiThreshold = (int)(-4D * (double)(float)mRssiThresholdMeter - 48.82D - 8D);
+```

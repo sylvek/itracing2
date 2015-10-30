@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "net.sylvek.itracing2"
+        minSdkVersion 18
+        targetSdkVersion 21
+        versionCode 15
+        versionName "1.15"
+    }
+    signingConfigs {
+        release {
+            storeFile file("../sylvek.key")
+            storePassword ''
+            keyAlias "android"
+            keyPassword ''
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:21.0.3'
+}
+
+gradle.taskGraph.whenReady { taskGraph ->
+    if (taskGraph.hasTask(':app:assembleRelease')) {
+        def pass = new String(System.console().readPassword("\nPlease enter key passphrase: "))
+        android.signingConfigs.release.storePassword = pass
+        android.signingConfigs.release.keyPassword = pass
+    }
+}
