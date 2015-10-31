@@ -39,7 +39,7 @@ public class DashboardFragment extends PreferenceFragment {
             @Override
             public boolean onPreferenceClick(Preference preference)
             {
-                final boolean activate = preference.getTitle().equals(R.string.start_immediate_alert);
+                final boolean activate = preference.getTitle().equals(getString(R.string.start_immediate_alert));
                 preference.setTitle((activate) ? R.string.stop_immediate_alert : R.string.start_immediate_alert);
                 presenter.onImmediateAlert(activate);
                 return true;
