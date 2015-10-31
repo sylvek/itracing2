@@ -5,7 +5,8 @@
     <string name="action_scan_start">detection</string>
     <string name="beacon_not_found">porte-clés non trouvé</string>
     <string name="action_connect">connexion</string>
-    <string name="immediate_alert">faire sonner le porte-clés</string>
+    <string name="start_immediate_alert">faire sonner le porte-clés</string>
+    <string name="stop_immediate_alert">arrêter la sonnerie du porte-clés</string>
     <string name="link_background">lien permanent</string>
     <string name="stop_ring">arrêter la sonnerie</string>
     <string name="stop_vibrate">arrêter la vibration</string>

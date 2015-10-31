@@ -41,7 +41,7 @@
                 android:dependency="link_background"/>
     </PreferenceScreen>
     <Preference
-            android:title="@string/immediate_alert"
+            android:title="@string/start_immediate_alert"
             android:summary="@string/immediate_alert_summary"
             android:enabled="false"
             android:key="action_button"/>

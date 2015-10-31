@@ -230,9 +230,9 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
     }
 
     @Override
-    public void onImmediateAlert()
+    public void onImmediateAlert(final boolean activate)
     {
-        service.immediateAlert();
+        service.immediateAlert((activate) ? BluetoothLEService.HIGH_ALERT : BluetoothLEService.NO_ALERT);
     }
 
     @Override

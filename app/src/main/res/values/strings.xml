@@ -5,7 +5,8 @@
     <string name="action_scan_start">detect</string>
     <string name="beacon_not_found">keyring not found</string>
     <string name="action_connect">connect</string>
-    <string name="immediate_alert">ring the keyring</string>
+    <string name="start_immediate_alert">start ring the keyring</string>
+    <string name="stop_immediate_alert">stop ring the keyring</string>
     <string name="link_background">link background</string>
     <string name="stop_ring">stop ring</string>
     <string name="stop_vibrate">stop vibration</string>
