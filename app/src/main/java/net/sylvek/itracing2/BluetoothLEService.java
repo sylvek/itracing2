@@ -243,14 +243,14 @@ public class BluetoothLEService extends Service {
         Log.d(TAG, "onDestroy()");
     }
 
-    public void immediateAlert()
+    public void immediateAlert(int alertType)
     {
         if (immediateAlertService == null || immediateAlertService.getCharacteristics() == null || immediateAlertService.getCharacteristics().size() == 0) {
             somethingGoesWrong();
             return;
         }
         final BluetoothGattCharacteristic characteristic = immediateAlertService.getCharacteristics().get(0);
-        characteristic.setValue(HIGH_ALERT, BluetoothGattCharacteristic.FORMAT_UINT8, 0);
+        characteristic.setValue(alertType, BluetoothGattCharacteristic.FORMAT_UINT8, 0);
         this.bluetoothGatt.writeCharacteristic(characteristic);
     }
 
