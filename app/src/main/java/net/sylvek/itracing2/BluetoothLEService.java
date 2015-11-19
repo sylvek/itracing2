@@ -46,6 +46,7 @@ public class BluetoothLEService extends Service {
     public static final String TAG = BluetoothLEService.class.toString();
     public static final String ACTION_PREFIX = "net.sylvek.itracing2.action.";
     private static final long DELAY_DOUBLE_CLICK = 300;
+    public static final long TRACK_REMOTE_RSSI_DELAY_MILLIS = 5000L;
 
     private BluetoothDevice mDevice;
 
@@ -62,6 +63,8 @@ public class BluetoothLEService extends Service {
     private Runnable r;
 
     private Handler handler = new Handler();
+
+    private Runnable trackRemoteRssi = null;
 
     private BluetoothGattCallback bluetoothGattCallback = new BluetoothGattCallback() {
         @Override
@@ -96,10 +99,12 @@ public class BluetoothLEService extends Service {
         }
 
         @Override
-        public void onServicesDiscovered(BluetoothGatt gatt, int status)
+        public void onServicesDiscovered(final BluetoothGatt gatt, int status)
         {
             Log.d(TAG, "onServicesDiscovered()");
-            gatt.readRemoteRssi();
+
+            launchTrackingRemoteRssi(gatt);
+
             broadcaster.sendBroadcast(new Intent(SERVICES_DISCOVERED));
             if (BluetoothGatt.GATT_SUCCESS == status) {
 
@@ -124,6 +129,23 @@ public class BluetoothLEService extends Service {
                 }
                 enablePeerDeviceNotifyMe(gatt, true);
             }
+        }
+
+        private void launchTrackingRemoteRssi(final BluetoothGatt gatt)
+        {
+            if (trackRemoteRssi != null) {
+                handler.removeCallbacks(trackRemoteRssi);
+            }
+
+            trackRemoteRssi = new Runnable() {
+                @Override
+                public void run()
+                {
+                    gatt.readRemoteRssi();
+                    handler.postDelayed(this, TRACK_REMOTE_RSSI_DELAY_MILLIS);
+                }
+            };
+            handler.post(trackRemoteRssi);
         }
 
         @Override
@@ -239,6 +261,10 @@ public class BluetoothLEService extends Service {
     @Override
     public void onDestroy()
     {
+        if (trackRemoteRssi != null) {
+            handler.removeCallbacks(trackRemoteRssi);
+        }
+
         super.onDestroy();
         Log.d(TAG, "onDestroy()");
     }
