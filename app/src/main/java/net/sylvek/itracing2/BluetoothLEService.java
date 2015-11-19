@@ -94,7 +94,8 @@ public class BluetoothLEService extends Service {
         public void onReadRemoteRssi(BluetoothGatt gatt, int rssi, int status)
         {
             final Intent rssiIntent = new Intent(RSSI_RECEIVED);
-            rssiIntent.putExtra(RSSI_RECEIVED, rssi + "dBm");
+            final int quality = 2 * (rssi + 100);
+            rssiIntent.putExtra(RSSI_RECEIVED, quality + "%");
             broadcaster.sendBroadcast(rssiIntent);
         }
 
