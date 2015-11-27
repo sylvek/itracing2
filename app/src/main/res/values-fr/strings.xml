@@ -37,6 +37,8 @@
     <string name="ring_tone_not_found">sonnerie non trouvée, s\'il vous plait, sélectionnez-en une autre</string>
     <string name="vibrator_not_found">vibrateur non trouvé! assurez-vous que vous disposez de cette fonctionnalité sur votre téléphone.</string>
     <string name="something_goes_wrong">quelque chose n\'a pas fonctionné comme prévu!</string>
+    <string name="double_button_delay">délai en millisecondes</string>
+    <string name="double_button_delay_summary">délai entre deux clics sur le bouton</string>
     <string-array name="button_actions">
         <item>aucune</item>
         <item>faire sonner le téléphone</item>

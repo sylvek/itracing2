@@ -39,6 +39,13 @@
                 android:summary="@string/ring_tone_summary"
                 android:key="ring_tone"
                 android:dependency="link_background"/>
+        <EditTextPreference
+                android:title="@string/double_button_delay"
+                android:summary="@string/double_button_delay_summary"
+                android:inputType="number"
+                android:key="double_button_delay"
+                android:defaultValue="@string/default_double_button_delay"
+                android:dependency="link_background"/>
     </PreferenceScreen>
     <Preference
             android:title="@string/start_immediate_alert"

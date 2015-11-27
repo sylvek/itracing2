@@ -23,6 +23,7 @@ public class Preferences {
     public static final String DONATE = "donate";
     public static final String FEEDBACK = "feedback";
     public static final String RINGTONE = "ring_tone";
+    private static final String DOUBLE_BUTTON_DELAY = "double_button_delay";
 
     public static String getKeyringUUID(Context context)
     {
@@ -77,5 +78,12 @@ public class Preferences {
     {
         final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         defaultSharedPreferences.edit().putString(RINGTONE, uri).commit();
+    }
+
+    public static long getDoubleButtonDelay(Context context)
+    {
+        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        final String defaultDoubleButtonDelay = context.getString(R.string.default_double_button_delay);
+        return Long.valueOf(defaultSharedPreferences.getString(DOUBLE_BUTTON_DELAY, defaultDoubleButtonDelay));
     }
 }

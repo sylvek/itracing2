@@ -41,6 +41,9 @@
     <string name="ring_tone_not_found">ring tone not found! please select an another, be sure you have a default ring tone, or that sound volume is up.</string>
     <string name="vibrator_not_found">vibrator not found! please be sure that you have this feature on your phone.</string>
     <string name="something_goes_wrong">something goes wrong!</string>
+    <string name="double_button_delay">delay in milliseconds</string>
+    <string name="double_button_delay_summary">delay between two clicks over button</string>
+    <string name="default_double_button_delay">300</string>
     <string-array name="button_actions">
         <item>nothing</item>
         <item>ring the phone</item>

@@ -45,7 +45,6 @@ public class BluetoothLEService extends Service {
 
     public static final String TAG = BluetoothLEService.class.toString();
     public static final String ACTION_PREFIX = "net.sylvek.itracing2.action.";
-    private static final long DELAY_DOUBLE_CLICK = 300;
     public static final long TRACK_REMOTE_RSSI_DELAY_MILLIS = 5000L;
 
     private BluetoothDevice mDevice;
@@ -160,9 +159,10 @@ public class BluetoothLEService extends Service {
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic)
         {
             Log.d(TAG, "onCharacteristicChanged()");
+            final long delayDoubleClick = Preferences.getDoubleButtonDelay(getApplicationContext());
 
             final long now = SystemClock.elapsedRealtime();
-            if (lastChange + DELAY_DOUBLE_CLICK > now) {
+            if (lastChange + delayDoubleClick > now) {
                 Log.d(TAG, "onCharacteristicChanged() - double click");
                 lastChange = 0;
                 handler.removeCallbacks(r);
@@ -179,7 +179,7 @@ public class BluetoothLEService extends Service {
                         sendBroadcast(new Intent(ACTION_PREFIX + action));
                     }
                 };
-                handler.postDelayed(r, DELAY_DOUBLE_CLICK);
+                handler.postDelayed(r, delayDoubleClick);
             }
         }
 
