@@ -15,7 +15,7 @@ import net.sylvek.itracing2.R;
  */
 public class StartVibratePhone extends BroadcastReceiver {
 
-    static final int NOTIFICATION_ID = 453436;
+    static final int NOTIFICATION_ID = 453437;
     private static final long[] VIBRATE_PATTERN = new long[]{0, 1000, 100, 2000, 100, 3000, 100, 2000, 100};
     private static final int VIBRATE_REPEAT = 0;
 
