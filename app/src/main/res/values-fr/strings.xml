@@ -39,6 +39,7 @@
     <string name="something_goes_wrong">quelque chose n\'a pas fonctionné comme prévu!</string>
     <string name="double_button_delay">délai en millisecondes</string>
     <string name="double_button_delay_summary">délai entre deux clics sur le bouton</string>
+    <string name="default_double_button_delay">300</string>
     <string-array name="button_actions">
         <item>aucune</item>
         <item>faire sonner le téléphone</item>
