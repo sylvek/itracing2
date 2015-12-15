@@ -46,6 +46,11 @@
                 android:key="double_button_delay"
                 android:defaultValue="@string/default_double_button_delay"
                 android:dependency="link_background"/>
+        <EditTextPreference
+                android:title="@string/custom_action"
+                android:summary="@string/custom_action_summary"
+                android:key="custom_action"
+                android:dependency="link_background"/>
     </PreferenceScreen>
     <Preference
             android:title="@string/start_immediate_alert"

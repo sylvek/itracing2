@@ -40,16 +40,20 @@
     <string name="double_button_delay">délai en millisecondes</string>
     <string name="double_button_delay_summary">délai entre deux clics sur le bouton</string>
     <string name="default_double_button_delay">300</string>
+    <string name="custom_action">action personnalisée</string>
+    <string name="custom_action_summary">http(s)://..</string>
     <string-array name="button_actions">
         <item>aucune</item>
         <item>faire sonner le téléphone</item>
         <item>faire vibrer le téléphone</item>
         <item>capturer ma position</item>
+        <item>appeler une URL</item>
     </string-array>
     <string-array name="button_actions_values">
         <item>NOTHING</item>
         <item>RING_PHONE</item>
         <item>VIBRATE_PHONE</item>
         <item>CAPTURE_POSITION</item>
+        <item>CUSTOM_ACTION</item>
     </string-array>
 </resources>

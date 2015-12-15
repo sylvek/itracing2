@@ -24,6 +24,7 @@ public class Preferences {
     public static final String FEEDBACK = "feedback";
     public static final String RINGTONE = "ring_tone";
     private static final String DOUBLE_BUTTON_DELAY = "double_button_delay";
+    private static final String CUSTOM_ACTION = "custom_action";
 
     public static String getKeyringUUID(Context context)
     {
@@ -85,5 +86,11 @@ public class Preferences {
         final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         final String defaultDoubleButtonDelay = context.getString(R.string.default_double_button_delay);
         return Long.valueOf(defaultSharedPreferences.getString(DOUBLE_BUTTON_DELAY, defaultDoubleButtonDelay));
+    }
+
+    public static String getCustomAction(Context context)
+    {
+        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        return defaultSharedPreferences.getString(CUSTOM_ACTION, "");
     }
 }

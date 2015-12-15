@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher"
                  android:theme="@android:style/Theme.DeviceDefault.Light">
@@ -38,6 +39,11 @@
         <receiver android:name=".receivers.CapturePosition">
             <intent-filter>
                 <action android:name="net.sylvek.itracing2.action.CAPTURE_POSITION"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receivers.CustomAction">
+            <intent-filter>
+                <action android:name="net.sylvek.itracing2.action.CUSTOM_ACTION"/>
             </intent-filter>
         </receiver>
         <receiver android:name=".receivers.StopRingPhone"/>
