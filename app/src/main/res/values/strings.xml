@@ -45,13 +45,13 @@
     <string name="double_button_delay_summary">delay between two clicks over button</string>
     <string name="default_double_button_delay">300</string>
     <string name="custom_action">custom action</string>
-    <string name="custom_action_summary">http(s)://..</string>
+    <string name="custom_action_summary">http(s)://.. or intent action string</string>
     <string-array name="button_actions">
         <item>nothing</item>
         <item>ring the phone</item>
         <item>vibrate the phone</item>
         <item>capture my position</item>
-        <item>call a url</item>
+        <item>call a url or brodcast intent action</item>
     </string-array>
     <string-array name="button_actions_values">
         <item>NOTHING</item>

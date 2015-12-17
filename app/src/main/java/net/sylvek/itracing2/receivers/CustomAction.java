@@ -31,6 +31,10 @@ public class CustomAction extends BroadcastReceiver {
         if (action.startsWith("http://")) {
             new CallUrl<HttpsURLConnection>(action).start();
         }
+
+        if (!action.isEmpty()) {
+            context.sendBroadcast(new Intent(action));
+        }
     }
 
     private class CallUrl<T extends HttpURLConnection> extends Thread {
