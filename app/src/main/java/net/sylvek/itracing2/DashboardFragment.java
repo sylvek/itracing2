@@ -69,6 +69,14 @@ public class DashboardFragment extends PreferenceFragment {
                 return true;
             }
         });
+        findPreference(Preferences.REMOVE).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference)
+            {
+                presenter.onRemove();
+                return true;
+            }
+        });
     }
 
     @Override
@@ -132,5 +140,7 @@ public class DashboardFragment extends PreferenceFragment {
         void onFeedBack();
 
         void onRingStone();
+
+        void onRemove();
     }
 }

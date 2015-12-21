@@ -28,7 +28,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFirstTimeListener, DashboardFragment.OnDashboardListener {
+public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFirstTimeListener, DashboardFragment.OnDashboardListener, ConfirmAlertDialogFragment.OnConfirmAlertDialogListener {
 
     private final static int REQUEST_ENABLE_BT = 1;
 
@@ -298,6 +298,12 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
         startActivityForResult(intent, 5);
     }
 
+    @Override
+    public void onRemove()
+    {
+        ConfirmAlertDialogFragment.instance(R.string.confirm_remove_keyring).show(getFragmentManager(), "dialog");
+    }
+
     private void setRefreshing(final boolean refreshing)
     {
         mSwipeRefreshLayout.post(new Runnable() {
@@ -348,5 +354,22 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
                     }
                 });
         builderSingle.show();
+    }
+
+    @Override
+    public void doPositiveClick()
+    {
+        if (Preferences.clearAll(this)) {
+            setRefreshing(false);
+            service.disconnect();
+            showFirstTime();
+        }
+
+    }
+
+    @Override
+    public void doNegativeClick()
+    {
+        // nothing to do.
     }
 }

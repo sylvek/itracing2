@@ -42,6 +42,9 @@
     <string name="default_double_button_delay">300</string>
     <string name="custom_action">action personnalisée</string>
     <string name="custom_action_summary">http(s)://..</string>
+    <string name="remove">supprimer le porte-clés</string>
+    <string name="remove_summary">supprime le porte-clés de cet appareil</string>
+    <string name="confirm_remove_keyring">Confirmer pour supprimer ce porte-clés</string>
     <string-array name="button_actions">
         <item>aucune</item>
         <item>faire sonner le téléphone</item>

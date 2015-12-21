@@ -46,6 +46,9 @@
     <string name="default_double_button_delay">300</string>
     <string name="custom_action">custom action</string>
     <string name="custom_action_summary">http(s)://.. or intent action string</string>
+    <string name="remove">remove the keyring</string>
+    <string name="remove_summary">remove the keyring from this device</string>
+    <string name="confirm_remove_keyring">Confirm to remove this keyring</string>
     <string-array name="button_actions">
         <item>nothing</item>
         <item>ring the phone</item>

@@ -290,8 +290,12 @@ public class BluetoothLEService extends Service {
     {
         if (this.bluetoothGatt == null) {
             Log.d(TAG, "connect() - connecting GATT");
-            mDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(Preferences.getKeyringUUID(this));
-            this.bluetoothGatt = mDevice.connectGatt(this, true, bluetoothGattCallback);
+            final String keyringUUID = Preferences.getKeyringUUID(this);
+            if (keyringUUID != null) {
+                Log.d(TAG, "connect() - to device " + keyringUUID);
+                mDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(keyringUUID);
+                this.bluetoothGatt = mDevice.connectGatt(this, true, bluetoothGattCallback);
+            }
         } else {
             Log.d(TAG, "connect() - discovering services");
             this.bluetoothGatt.discoverServices();
@@ -301,9 +305,11 @@ public class BluetoothLEService extends Service {
     public void disconnect()
     {
         Log.d(TAG, "disconnect()");
-        this.bluetoothGatt.disconnect();
-        this.bluetoothGatt.close();
-        this.bluetoothGatt = null;
+        if (this.bluetoothGatt != null) {
+            this.bluetoothGatt.disconnect();
+            this.bluetoothGatt.close();
+            this.bluetoothGatt = null;
+        }
     }
 
 }

@@ -22,6 +22,7 @@ public class Preferences {
     public static final String RSSI_INFO = "rssi_info";
     public static final String DONATE = "donate";
     public static final String FEEDBACK = "feedback";
+    public static final String REMOVE = "remove";
     public static final String RINGTONE = "ring_tone";
     private static final String DOUBLE_BUTTON_DELAY = "double_button_delay";
     private static final String CUSTOM_ACTION = "custom_action";
@@ -92,5 +93,11 @@ public class Preferences {
     {
         final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         return defaultSharedPreferences.getString(CUSTOM_ACTION, "");
+    }
+
+    public static boolean clearAll(Context context)
+    {
+        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        return defaultSharedPreferences.edit().clear().commit();
     }
 }
