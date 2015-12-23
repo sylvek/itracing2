@@ -40,6 +40,7 @@ public class WelcomeActivity extends Activity implements FirstTimeFragment.OnFir
         DEFAULT_DEVICE_NAME.add("Quintic PROXR");
         DEFAULT_DEVICE_NAME.add("Cigii IT-02 Smart Bluetooth Tracker");
         DEFAULT_DEVICE_NAME.add("MLE-15");
+        DEFAULT_DEVICE_NAME.add("iTAG");
     }
 
     private final FirstTimeFragment firstTimeFragment = FirstTimeFragment.instance();
