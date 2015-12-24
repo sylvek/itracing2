@@ -28,7 +28,7 @@ public class CustomAction extends BroadcastReceiver {
             new CallUrl<>(action).start();
         }
 
-        if (action.startsWith("http://")) {
+        if (action.startsWith("https://")) {
             new CallUrl<HttpsURLConnection>(action).start();
         }
 
