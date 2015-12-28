@@ -17,9 +17,9 @@
     <string name="link_background_summary">lien entre le porte-clés et le smartphone</string>
     <string name="battery_info">niveau de batterie</string>
     <string name="immediate_alert_summary">cliquer ici pour faire sonner le porte-clés</string>
-    <string name="welcome_text">Bienvenu iTracing2.\n\nCette application permet de communiquer avec votre appareil iSee (Quintic PROXR).\n
+    <string name="welcome_text">Bienvenue sur iTracing2.\n\nCette application permet de communiquer avec vos appareils bluetooth iSee (Quintic PROXR).\n
         Si comme moi, l\'application "iTracing" vous dérange, libre à vous d\'utiliser ma version :)\n\n
-        Cliquer sur DETECTION pour trouver votre porte-clés iSee (il doit se nommer \"Quintic PROXR\").</string>
+        Cliquer sur la loupe pour trouver votre porte-clés iSee (il doit se nommer \"Quintic PROXR\").</string>
     <string name="donate">faire un don (PayPal)</string>
     <string name="feedback">retour d\'expérience</string>
     <string name="donate_summary">pour m\'aider dans mon travail :)</string>
@@ -43,7 +43,6 @@
     <string name="custom_action">action personnalisée</string>
     <string name="custom_action_summary">http(s)://..</string>
     <string name="remove">supprimer le porte-clés</string>
-    <string name="remove_summary">supprime le porte-clés de cet appareil</string>
     <string name="confirm_remove_keyring">Confirmer pour supprimer ce porte-clés</string>
     <string-array name="button_actions">
         <item>aucune</item>

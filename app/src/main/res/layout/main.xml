@@ -4,7 +4,7 @@
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="net.sylvek.itracing2.WelcomeActivity"
+        tools:context="net.sylvek.itracing2.DevicesActivity"
         tools:ignore="MergeRootFrame">
     <FrameLayout android:id="@+id/container"
                  android:layout_width="match_parent"

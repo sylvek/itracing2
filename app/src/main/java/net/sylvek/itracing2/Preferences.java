@@ -22,82 +22,64 @@ public class Preferences {
     public static final String RSSI_INFO = "rssi_info";
     public static final String DONATE = "donate";
     public static final String FEEDBACK = "feedback";
-    public static final String REMOVE = "remove";
     public static final String RINGTONE = "ring_tone";
     private static final String DOUBLE_BUTTON_DELAY = "double_button_delay";
     private static final String CUSTOM_ACTION = "custom_action";
 
-    public static String getKeyringUUID(Context context)
+    private static SharedPreferences getSharedPreferences(Context context, String address)
     {
-        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        return defaultSharedPreferences.getString(KEYRING_UUID, null);
+        return context.getSharedPreferences(address, Context.MODE_PRIVATE);
     }
 
-    public static void setKeyringUUID(Context context, String uuid)
+    public static boolean getLinkBackgroundEnabled(Context context, String address)
     {
-        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        defaultSharedPreferences.edit().putString(KEYRING_UUID, uuid).commit();
+        return getSharedPreferences(context, address).getBoolean(LINK_OPTION, false);
     }
 
-    public static boolean getLinkBackgroundEnabled(Context context)
+    public static String getActionSimpleButton(Context context, String address)
     {
-        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        return defaultSharedPreferences.getBoolean(LINK_OPTION, false);
+        return getSharedPreferences(context, address).getString(ACTION_SIMPLE_BUTTON_LIST, null);
     }
 
-    public static String getActionSimpleButton(Context context)
+    public static String getActionDoubleButton(Context context, String address)
     {
-        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        return defaultSharedPreferences.getString(ACTION_SIMPLE_BUTTON_LIST, null);
+        return getSharedPreferences(context, address).getString(ACTION_DOUBLE_BUTTON_LIST, null);
     }
 
-    public static String getActionDoubleButton(Context context)
+    public static String getActionOutOfBand(Context context, String address)
     {
-        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        return defaultSharedPreferences.getString(ACTION_DOUBLE_BUTTON_LIST, null);
+        return getSharedPreferences(context, address).getString(ACTION_OUT_OF_BAND_LIST, null);
     }
 
-    public static String getActionOutOfBand(Context context)
+    public static boolean isActionOnPowerOff(Context context, String address)
     {
-        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        return defaultSharedPreferences.getString(ACTION_OUT_OF_BAND_LIST, null);
+        return getSharedPreferences(context, address).getBoolean(ACTION_ON_POWER_OFF, false);
     }
 
-    public static boolean isActionOnPowerOff(Context context)
-    {
-        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        return defaultSharedPreferences.getBoolean(ACTION_ON_POWER_OFF, false);
-    }
-
-    public static String getRingtone(Context context)
+    public static String getRingtone(Context context, String address)
     {
         final Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        return defaultSharedPreferences.getString(RINGTONE, sound.toString());
+        return getSharedPreferences(context, address).getString(RINGTONE, sound.toString());
     }
 
-    public static void setRingtone(Context context, String uri)
+    public static void setRingtone(Context context, String address, String uri)
     {
-        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        defaultSharedPreferences.edit().putString(RINGTONE, uri).commit();
+        getSharedPreferences(context, address).edit().putString(RINGTONE, uri).commit();
     }
 
-    public static long getDoubleButtonDelay(Context context)
+    public static long getDoubleButtonDelay(Context context, String address)
     {
-        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         final String defaultDoubleButtonDelay = context.getString(R.string.default_double_button_delay);
-        return Long.valueOf(defaultSharedPreferences.getString(DOUBLE_BUTTON_DELAY, defaultDoubleButtonDelay));
+        return Long.valueOf(getSharedPreferences(context, address).getString(DOUBLE_BUTTON_DELAY, defaultDoubleButtonDelay));
     }
 
-    public static String getCustomAction(Context context)
+    public static String getCustomAction(Context context, String address)
     {
-        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        return defaultSharedPreferences.getString(CUSTOM_ACTION, "");
+        return getSharedPreferences(context, address).getString(CUSTOM_ACTION, "");
     }
 
-    public static boolean clearAll(Context context)
+    public static boolean clearAll(Context context, String address)
     {
-        final SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        return defaultSharedPreferences.edit().clear().commit();
+        return getSharedPreferences(context, address).edit().clear().commit();
     }
 }

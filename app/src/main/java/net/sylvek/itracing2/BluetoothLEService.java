@@ -1,5 +1,6 @@
 package net.sylvek.itracing2;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 import android.app.Service;
@@ -12,6 +13,7 @@ import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.bluetooth.BluetoothProfile;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
@@ -19,6 +21,7 @@ import android.os.SystemClock;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
+import net.sylvek.itracing2.database.Devices;
 
 /**
  * Created by sylvek on 18/05/2015.
@@ -49,7 +52,7 @@ public class BluetoothLEService extends Service {
 
     private BluetoothDevice mDevice;
 
-    private BluetoothGatt bluetoothGatt = null;
+    private HashMap<String, BluetoothGatt> bluetoothGatt = new HashMap<>();
 
     private BluetoothGattService immediateAlertService;
 
@@ -65,7 +68,15 @@ public class BluetoothLEService extends Service {
 
     private Runnable trackRemoteRssi = null;
 
-    private BluetoothGattCallback bluetoothGattCallback = new BluetoothGattCallback() {
+    private class CustomBluetoothGattCallback extends BluetoothGattCallback {
+
+        private final String address;
+
+        CustomBluetoothGattCallback(final String address)
+        {
+            this.address = address;
+        }
+
         @Override
         public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState)
         {
@@ -78,12 +89,15 @@ public class BluetoothLEService extends Service {
                 }
             }
 
-            final boolean actionOnPowerOff = Preferences.isActionOnPowerOff(BluetoothLEService.this);
+            final boolean actionOnPowerOff = Preferences.isActionOnPowerOff(BluetoothLEService.this, this.address);
             if (actionOnPowerOff || status == 8) {
                 Log.d(TAG, "onConnectionStateChange() newState => " + newState);
                 if (newState == BluetoothProfile.STATE_DISCONNECTED) {
-                    String action = Preferences.getActionOutOfBand(getApplicationContext());
-                    sendBroadcast(new Intent(ACTION_PREFIX + action));
+                    String action = Preferences.getActionOutOfBand(getApplicationContext(), this.address);
+                    final Intent intent = new Intent(ACTION_PREFIX + action);
+                    intent.putExtra(Devices.ADDRESS, this.address);
+                    sendBroadcast(intent);
+                    Log.d(TAG, "onCharacteristicChanged() - sendBroadcast " + action + " to " + this.address);
                     enablePeerDeviceNotifyMe(gatt, false);
                 }
             }
@@ -159,15 +173,18 @@ public class BluetoothLEService extends Service {
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic)
         {
             Log.d(TAG, "onCharacteristicChanged()");
-            final long delayDoubleClick = Preferences.getDoubleButtonDelay(getApplicationContext());
+            final long delayDoubleClick = Preferences.getDoubleButtonDelay(getApplicationContext(), this.address);
 
             final long now = SystemClock.elapsedRealtime();
             if (lastChange + delayDoubleClick > now) {
                 Log.d(TAG, "onCharacteristicChanged() - double click");
                 lastChange = 0;
                 handler.removeCallbacks(r);
-                String action = Preferences.getActionDoubleButton(getApplicationContext());
-                sendBroadcast(new Intent(ACTION_PREFIX + action));
+                String action = Preferences.getActionDoubleButton(getApplicationContext(), this.address);
+                final Intent intent = new Intent(ACTION_PREFIX + action);
+                intent.putExtra(Devices.ADDRESS, this.address);
+                sendBroadcast(intent);
+                Log.d(TAG, "onCharacteristicChanged() - sendBroadcast " + action + " to " + this.address);
             } else {
                 lastChange = now;
                 r = new Runnable() {
@@ -175,8 +192,11 @@ public class BluetoothLEService extends Service {
                     public void run()
                     {
                         Log.d(TAG, "onCharacteristicChanged() - simple click");
-                        String action = Preferences.getActionSimpleButton(getApplicationContext());
-                        sendBroadcast(new Intent(ACTION_PREFIX + action));
+                        String action = Preferences.getActionSimpleButton(getApplicationContext(), CustomBluetoothGattCallback.this.address);
+                        final Intent intent = new Intent(ACTION_PREFIX + action);
+                        intent.putExtra(Devices.ADDRESS, CustomBluetoothGattCallback.this.address);
+                        sendBroadcast(intent);
+                        Log.d(TAG, "onCharacteristicChanged() - sendBroadcast " + action + " to " + CustomBluetoothGattCallback.this.address);
                     }
                 };
                 handler.postDelayed(r, delayDoubleClick);
@@ -194,7 +214,9 @@ public class BluetoothLEService extends Service {
 
 
         }
-    };
+    }
+
+    ;
 
     private void setCharacteristicNotification(BluetoothGatt bluetoothgatt, BluetoothGattCharacteristic bluetoothgattcharacteristic, boolean flag)
     {
@@ -270,7 +292,7 @@ public class BluetoothLEService extends Service {
         Log.d(TAG, "onDestroy()");
     }
 
-    public void immediateAlert(int alertType)
+    public void immediateAlert(String address, int alertType)
     {
         if (immediateAlertService == null || immediateAlertService.getCharacteristics() == null || immediateAlertService.getCharacteristics().size() == 0) {
             somethingGoesWrong();
@@ -278,7 +300,7 @@ public class BluetoothLEService extends Service {
         }
         final BluetoothGattCharacteristic characteristic = immediateAlertService.getCharacteristics().get(0);
         characteristic.setValue(alertType, BluetoothGattCharacteristic.FORMAT_UINT8, 0);
-        this.bluetoothGatt.writeCharacteristic(characteristic);
+        this.bluetoothGatt.get(address).writeCharacteristic(characteristic);
     }
 
     private void somethingGoesWrong()
@@ -288,27 +310,39 @@ public class BluetoothLEService extends Service {
 
     public void connect()
     {
-        if (this.bluetoothGatt == null) {
-            Log.d(TAG, "connect() - connecting GATT");
-            final String keyringUUID = Preferences.getKeyringUUID(this);
-            if (keyringUUID != null) {
-                Log.d(TAG, "connect() - to device " + keyringUUID);
-                mDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(keyringUUID);
-                this.bluetoothGatt = mDevice.connectGatt(this, true, bluetoothGattCallback);
-            }
-        } else {
-            Log.d(TAG, "connect() - discovering services");
-            this.bluetoothGatt.discoverServices();
+        final Cursor cursor = Devices.findDevices(this);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            do {
+                final String address = cursor.getString(0);
+                if (!this.bluetoothGatt.containsKey(address)) {
+                    Log.d(TAG, "connect() - to device " + address);
+                    mDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(address);
+                    this.bluetoothGatt.put(address, mDevice.connectGatt(this, true, new CustomBluetoothGattCallback(address)));
+                } else {
+                    Log.d(TAG, "connect() - discovering services for " + address);
+                    this.bluetoothGatt.get(address).discoverServices();
+                }
+            } while (cursor.moveToNext());
         }
     }
 
     public void disconnect()
     {
-        Log.d(TAG, "disconnect()");
-        if (this.bluetoothGatt != null) {
-            this.bluetoothGatt.disconnect();
-            this.bluetoothGatt.close();
-            this.bluetoothGatt = null;
+        for (BluetoothGatt bluetoothGatt : this.bluetoothGatt.values()) {
+            bluetoothGatt.disconnect();
+            bluetoothGatt.close();
+        }
+        this.bluetoothGatt.clear();
+    }
+
+    public void disconnect(final String address)
+    {
+        if (this.bluetoothGatt.containsKey(address)) {
+            Log.d(TAG, "disconnect() " + address);
+            this.bluetoothGatt.get(address).disconnect();
+            this.bluetoothGatt.get(address).close();
+            this.bluetoothGatt.remove(address);
         }
     }
 
