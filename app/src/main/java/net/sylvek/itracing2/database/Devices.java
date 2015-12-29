@@ -1,5 +1,6 @@
 package net.sylvek.itracing2.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -46,6 +47,13 @@ public class Devices {
     public static void removeDevice(Context context, String address)
     {
         Devices.getDevicesHelperInstance(context).getWritableDatabase().delete(Devices.TABLE, "address = ?", new String[]{address});
+    }
+
+    public static void updateDevice(Context context, String address, String name)
+    {
+        final ContentValues contentValues = new ContentValues();
+        contentValues.put(Devices.NAME, name);
+        Devices.getDevicesHelperInstance(context).getWritableDatabase().update(Devices.TABLE, contentValues, "address = ?", new String[]{address});
     }
 
     public static class DevicesHelper extends SQLiteOpenHelper {

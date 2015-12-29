@@ -21,7 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 import net.sylvek.itracing2.database.Devices;
 
-public class DevicesActivity extends CommonActivity implements DevicesFragment.OnDevicesListener {
+public class DevicesActivity extends CommonActivity implements DevicesFragment.OnDevicesListener, EditTextAlertDialogFragment.OnConfirmAlertDialogListener {
 
     public static final String TAG = DevicesActivity.class.toString();
 
@@ -154,6 +154,12 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
         startActivity(intent);
     }
 
+    @Override
+    public void onChangeDeviceName(String name, String address)
+    {
+        EditTextAlertDialogFragment.instance(R.string.confirm_change_name, name, address).show(getFragmentManager(), "dialog");
+    }
+
     private void displayListScannedDevices()
     {
         final AlertDialog.Builder builderSingle = new AlertDialog.Builder(this);
@@ -180,5 +186,17 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
                     }
                 });
         builderSingle.show();
+    }
+
+    @Override
+    public void doPositiveClick(String address, String name)
+    {
+        Devices.updateDevice(this, address, name);
+        devicesFragment.refresh();
+    }
+
+    @Override
+    public void doNegativeClick()
+    {
     }
 }

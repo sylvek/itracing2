@@ -87,6 +87,16 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
                 presenter.onDevice(address.getText().toString());
             }
         });
+        getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                final TextView name = (TextView) view.findViewById(android.R.id.text1);
+                final TextView address = (TextView) view.findViewById(android.R.id.text2);
+                presenter.onChangeDeviceName(name.getText().toString(), address.getText().toString());
+                return true;
+            }
+        });
     }
 
     @Override
@@ -140,6 +150,8 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
         void onDevicesStopped();
 
         void onDevice(String address);
+
+        void onChangeDeviceName(String name, String address);
     }
 
     class DevicesCursorAdapter extends SimpleCursorAdapter {

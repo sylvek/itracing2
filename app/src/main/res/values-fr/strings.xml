@@ -44,6 +44,7 @@
     <string name="custom_action_summary">http(s)://..</string>
     <string name="remove">supprimer le porte-clés</string>
     <string name="confirm_remove_keyring">Confirmer pour supprimer ce porte-clés</string>
+    <string name="confirm_change_name">Changer le nom du porte-clés</string>
     <string-array name="button_actions">
         <item>aucune</item>
         <item>faire sonner le téléphone</item>
