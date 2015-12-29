@@ -216,7 +216,7 @@ public class DashboardActivity extends CommonActivity implements DashboardFragme
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_RING_STONE) {
             Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
             if (uri != null) {
-                Preferences.setRingtone(this, uri.toString(), address);
+                Preferences.setRingtone(this, address, uri.toString());
             }
         }
     }
