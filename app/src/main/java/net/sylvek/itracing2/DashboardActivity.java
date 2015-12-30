@@ -164,20 +164,6 @@ public class DashboardActivity extends CommonActivity implements DashboardFragme
     }
 
     @Override
-    public void onDonate()
-    {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.me/SylvainMaucourt"));
-        startActivity(browserIntent);
-    }
-
-    @Override
-    public void onFeedBack()
-    {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/sylvek/itracing2/issues"));
-        startActivity(browserIntent);
-    }
-
-    @Override
     public void onRingStone()
     {
         Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);

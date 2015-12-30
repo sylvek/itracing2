@@ -53,22 +53,6 @@ public class DashboardFragment extends PreferenceFragment {
                 return true;
             }
         });
-        findPreference(Preferences.DONATE).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference)
-            {
-                presenter.onDonate();
-                return true;
-            }
-        });
-        findPreference(Preferences.FEEDBACK).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference)
-            {
-                presenter.onFeedBack();
-                return true;
-            }
-        });
         findPreference(Preferences.RINGTONE).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference)
@@ -144,10 +128,6 @@ public class DashboardFragment extends PreferenceFragment {
         void onDashboardStarted();
 
         void onDashboardStopped();
-
-        void onDonate();
-
-        void onFeedBack();
 
         void onRingStone();
 

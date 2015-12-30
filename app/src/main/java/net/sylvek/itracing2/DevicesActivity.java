@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
@@ -14,6 +15,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -21,7 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 import net.sylvek.itracing2.database.Devices;
 
-public class DevicesActivity extends CommonActivity implements DevicesFragment.OnDevicesListener, EditTextAlertDialogFragment.OnConfirmAlertDialogListener {
+public class DevicesActivity extends CommonActivity implements DevicesFragment.OnDevicesListener, EditTextAlertDialogFragment.OnConfirmAlertDialogListener, ConfirmAlertDialogFragment.OnConfirmAlertDialogListener {
 
     public static final String TAG = DevicesActivity.class.toString();
 
@@ -30,6 +32,8 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     private static final long SCAN_PERIOD = 10000; // 10 seconds
 
     private static final List<String> DEFAULT_DEVICE_NAME = new ArrayList<>();
+
+    private final Random random = new Random();
 
     static {
         DEFAULT_DEVICE_NAME.add("Quintic PROXR");
@@ -137,6 +141,9 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     @Override
     public void onDevicesStarted()
     {
+        if (random.nextInt(100) > 80) { // displayed 20% time
+            ConfirmAlertDialogFragment.instance(R.string.donate, R.string.donate_summary).show(getFragmentManager(), null);
+        }
     }
 
     @Override
@@ -158,6 +165,20 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     public void onChangeDeviceName(String name, String address)
     {
         EditTextAlertDialogFragment.instance(R.string.confirm_change_name, name, address).show(getFragmentManager(), "dialog");
+    }
+
+    @Override
+    public void onFeedback()
+    {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/sylvek/itracing2/issues"));
+        startActivity(browserIntent);
+    }
+
+    @Override
+    public void onDonate()
+    {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.me/SylvainMaucourt"));
+        startActivity(browserIntent);
     }
 
     private void displayListScannedDevices()
@@ -193,6 +214,12 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     {
         Devices.updateDevice(this, address, name);
         devicesFragment.refresh();
+    }
+
+    @Override
+    public void doPositiveClick()
+    {
+        onDonate();
     }
 
     @Override

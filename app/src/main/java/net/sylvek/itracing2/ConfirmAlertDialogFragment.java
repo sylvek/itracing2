@@ -12,6 +12,7 @@ import android.os.Bundle;
 public class ConfirmAlertDialogFragment extends DialogFragment {
 
     public static final String TITLE = "title";
+    public static final String MESSAGE = "message";
 
     public static ConfirmAlertDialogFragment instance(int title)
     {
@@ -22,13 +23,25 @@ public class ConfirmAlertDialogFragment extends DialogFragment {
         return frag;
     }
 
+    public static ConfirmAlertDialogFragment instance(int title, int message)
+    {
+        ConfirmAlertDialogFragment frag = new ConfirmAlertDialogFragment();
+        Bundle args = new Bundle();
+        args.putInt(TITLE, title);
+        args.putInt(MESSAGE, message);
+        frag.setArguments(args);
+        return frag;
+    }
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
         int title = getArguments().getInt(TITLE);
+        int message = getArguments().getInt(MESSAGE);
 
         return new AlertDialog.Builder(getActivity())
                 .setTitle(title)
+                .setMessage(message)
                 .setPositiveButton(android.R.string.ok,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton)

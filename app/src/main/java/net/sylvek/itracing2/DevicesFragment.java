@@ -59,6 +59,14 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
             this.presenter.onScanStart();
             return true;
         }
+        if (item.getItemId() == R.id.action_feedback) {
+            this.presenter.onFeedback();
+            return true;
+        }
+        if (item.getItemId() == R.id.action_donate) {
+            this.presenter.onDonate();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -152,6 +160,10 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
         void onDevice(String address);
 
         void onChangeDeviceName(String name, String address);
+
+        void onFeedback();
+
+        void onDonate();
     }
 
     class DevicesCursorAdapter extends SimpleCursorAdapter {
