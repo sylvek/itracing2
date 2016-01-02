@@ -294,6 +294,7 @@ public class BluetoothLEService extends Service {
 
     public void immediateAlert(String address, int alertType)
     {
+        Log.d(TAG, "immediateAlert() - the device " + address);
         if (immediateAlertService == null || immediateAlertService.getCharacteristics() == null || immediateAlertService.getCharacteristics().size() == 0) {
             somethingGoesWrong();
             return;
@@ -303,40 +304,36 @@ public class BluetoothLEService extends Service {
         this.bluetoothGatt.get(address).writeCharacteristic(characteristic);
     }
 
-    private void somethingGoesWrong()
+    private synchronized void somethingGoesWrong()
     {
         Toast.makeText(this, R.string.something_goes_wrong, Toast.LENGTH_LONG).show();
     }
 
-    public void connect()
+    public synchronized void connect()
     {
         final Cursor cursor = Devices.findDevices(this);
         if (cursor != null) {
             cursor.moveToFirst();
             do {
                 final String address = cursor.getString(0);
-                if (!this.bluetoothGatt.containsKey(address)) {
-                    Log.d(TAG, "connect() - to device " + address);
-                    mDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(address);
-                    this.bluetoothGatt.put(address, mDevice.connectGatt(this, true, new CustomBluetoothGattCallback(address)));
-                } else {
-                    Log.d(TAG, "connect() - discovering services for " + address);
-                    this.bluetoothGatt.get(address).discoverServices();
-                }
+                this.connect(address);
             } while (cursor.moveToNext());
         }
     }
 
-    public void disconnect()
+    public synchronized void connect(final String address)
     {
-        for (BluetoothGatt bluetoothGatt : this.bluetoothGatt.values()) {
-            bluetoothGatt.disconnect();
-            bluetoothGatt.close();
+        if (!this.bluetoothGatt.containsKey(address)) {
+            Log.d(TAG, "connect() - to device " + address);
+            mDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(address);
+            this.bluetoothGatt.put(address, mDevice.connectGatt(this, true, new CustomBluetoothGattCallback(address)));
+        } else {
+            Log.d(TAG, "connect() - discovering services for " + address);
+            this.bluetoothGatt.get(address).discoverServices();
         }
-        this.bluetoothGatt.clear();
     }
 
-    public void disconnect(final String address)
+    public synchronized void disconnect(final String address)
     {
         if (this.bluetoothGatt.containsKey(address)) {
             Log.d(TAG, "disconnect() " + address);

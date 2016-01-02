@@ -36,7 +36,7 @@ public class DashboardActivity extends CommonActivity implements DashboardFragme
         {
             if (iBinder instanceof BluetoothLEService.BackgroundBluetoothLEBinder) {
                 service = ((BluetoothLEService.BackgroundBluetoothLEBinder) iBinder).service();
-                service.connect();
+                service.connect(DashboardActivity.this.address);
                 setRefreshing(true);
             }
         }
@@ -44,7 +44,7 @@ public class DashboardActivity extends CommonActivity implements DashboardFragme
         @Override
         public void onServiceDisconnected(ComponentName componentName)
         {
-            service.disconnect();
+            service.disconnect(DashboardActivity.this.address);
             setRefreshing(false);
         }
     };
@@ -151,7 +151,7 @@ public class DashboardActivity extends CommonActivity implements DashboardFragme
             @Override
             public void onRefresh()
             {
-                service.connect();
+                service.connect(DashboardActivity.this.address);
             }
         });
     }

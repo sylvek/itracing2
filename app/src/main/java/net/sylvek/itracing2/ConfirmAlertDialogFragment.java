@@ -37,11 +37,9 @@ public class ConfirmAlertDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
         int title = getArguments().getInt(TITLE);
-        int message = getArguments().getInt(MESSAGE);
 
-        return new AlertDialog.Builder(getActivity())
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
                 .setTitle(title)
-                .setMessage(message)
                 .setPositiveButton(android.R.string.ok,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton)
@@ -57,8 +55,14 @@ public class ConfirmAlertDialogFragment extends DialogFragment {
                                 ((OnConfirmAlertDialogListener) getActivity()).doNegativeClick();
                             }
                         }
-                )
-                .create();
+                );
+
+        if (getArguments().containsKey(MESSAGE)) {
+            int message = getArguments().getInt(MESSAGE);
+            builder.setMessage(message);
+        }
+
+        return builder.create();
     }
 
     public interface OnConfirmAlertDialogListener {

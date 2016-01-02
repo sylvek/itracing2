@@ -7,14 +7,14 @@
     <string name="action_connect">connect</string>
     <string name="start_immediate_alert">start ringing the keyring</string>
     <string name="stop_immediate_alert">stop ringing the keyring</string>
-    <string name="link_background">link background</string>
+    <string name="link_background">allways-on</string>
     <string name="stop_ring">stop ring</string>
     <string name="stop_vibrate">stop vibration</string>
     <string name="simple_button_action">simple button click</string>
     <string name="simple_button_action_summary">what is the button action ?</string>
     <string name="double_button_action">double button click</string>
     <string name="double_button_action_summary">what is the button action ?</string>
-    <string name="link_background_summary">loss link between device and keyring</string>
+    <string name="link_background_summary">allows to activate more options</string>
     <string name="battery_info">battery info</string>
     <string name="immediate_alert_summary">click here to alert the keyring</string>
     <string name="welcome_text">Welcome on iTracing2.\n\nThis application allows you to communicate with your iSee (Quintic PROXR) bluetooth device.\n
