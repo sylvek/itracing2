@@ -45,6 +45,7 @@
     <string name="remove">supprimer le porte-clés</string>
     <string name="confirm_remove_keyring">Confirmer pour supprimer ce porte-clés</string>
     <string name="confirm_change_name">Changer le nom du porte-clés</string>
+    <string name="device_is_connecting">%1$s se connecte…</string>
     <string-array name="button_actions">
         <item>aucune</item>
         <item>faire sonner le téléphone</item>

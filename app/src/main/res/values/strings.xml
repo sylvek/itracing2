@@ -49,6 +49,7 @@
     <string name="remove">remove the keyring</string>
     <string name="confirm_remove_keyring">Confirm to remove this keyring</string>
     <string name="confirm_change_name">Confirm to change the keyring name</string>
+    <string name="device_is_connecting">%1$s is connecting…</string>
     <string-array name="button_actions">
         <item>nothing</item>
         <item>ring the phone</item>

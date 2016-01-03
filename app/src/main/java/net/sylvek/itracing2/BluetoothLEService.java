@@ -316,7 +316,9 @@ public class BluetoothLEService extends Service {
             cursor.moveToFirst();
             do {
                 final String address = cursor.getString(0);
+                final String name = cursor.getString(1);
                 this.connect(address);
+                Toast.makeText(this, getString(R.string.device_is_connecting, name), Toast.LENGTH_LONG).show();
             } while (cursor.moveToNext());
         }
     }

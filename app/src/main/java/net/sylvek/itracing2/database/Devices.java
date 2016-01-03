@@ -41,7 +41,7 @@ public class Devices {
 
     public static Cursor findDevices(Context context)
     {
-        return Devices.getDevicesHelperInstance(context).getWritableDatabase().query(true, Devices.TABLE, new String[]{Devices.ADDRESS}, null, null, null, null, null, null);
+        return Devices.getDevicesHelperInstance(context).getWritableDatabase().query(true, Devices.TABLE, new String[]{Devices.ADDRESS, Devices.NAME}, null, null, null, null, null, null);
     }
 
     public static void removeDevice(Context context, String address)
