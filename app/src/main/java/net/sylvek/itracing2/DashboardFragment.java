@@ -32,7 +32,7 @@ public class DashboardFragment extends PreferenceFragment {
         this.setHasOptionsMenu(true);
         final String address = getArguments().getString(Devices.ADDRESS);
         this.getPreferenceManager().setSharedPreferencesName(address);
-        this.addPreferencesFromResource(R.xml.preferences);
+        this.addPreferencesFromResource(R.xml.device_preferences);
         findPreference(Preferences.LINK_OPTION).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue)

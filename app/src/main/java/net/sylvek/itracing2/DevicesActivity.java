@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -95,6 +96,10 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
         mHandler = new Handler();
 
         showDevices();
+
+        if (!isMyServiceRunning(BluetoothLEService.class)) {
+            startService(new Intent(this, BluetoothLEService.class));
+        }
     }
 
     private void showDevices()
@@ -225,5 +230,16 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     @Override
     public void doNegativeClick()
     {
+    }
+
+    private boolean isMyServiceRunning(Class<?> serviceClass)
+    {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

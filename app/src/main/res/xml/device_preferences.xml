@@ -4,7 +4,7 @@
             android:key="link_background"
             android:title="@string/link_background"
             android:summary="@string/link_background_summary"/>
-    <PreferenceScreen android:title="@string/actions">
+    <PreferenceScreen android:title="@string/actions" android:dependency="link_background">
         <ListPreference
                 android:key="action_simple_button_list"
                 android:title="@string/simple_button_action"

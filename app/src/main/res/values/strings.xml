@@ -50,12 +50,14 @@
     <string name="confirm_remove_keyring">Confirm to remove this keyring</string>
     <string name="confirm_change_name">Confirm to change the keyring name</string>
     <string name="device_is_connecting">%1$s is connecting…</string>
+    <string name="link_loss_disabled">disable this feature may occurs ringing your key ring</string>
+    <string name="foreground_started">started in foreground mode</string>
     <string-array name="button_actions">
         <item>nothing</item>
         <item>ring the phone</item>
         <item>vibrate the phone</item>
         <item>capture my position</item>
-        <item>call a url or brodcast intent action</item>
+        <item>call a url or broadcast intent action</item>
     </string-array>
     <string-array name="button_actions_values">
         <item>NOTHING</item>

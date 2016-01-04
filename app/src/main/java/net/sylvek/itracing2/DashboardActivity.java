@@ -14,6 +14,7 @@ import android.os.IBinder;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import net.sylvek.itracing2.database.Devices;
 
 /**
@@ -44,8 +45,7 @@ public class DashboardActivity extends CommonActivity implements DashboardFragme
         @Override
         public void onServiceDisconnected(ComponentName componentName)
         {
-            service.disconnect(DashboardActivity.this.address);
-            setRefreshing(false);
+            Log.d(BluetoothLEService.TAG, "onServiceDisconnected()");
         }
     };
 
@@ -127,11 +127,8 @@ public class DashboardActivity extends CommonActivity implements DashboardFragme
     @Override
     public void onLinkLoss(boolean checked)
     {
-        final Intent service = new Intent(this, BluetoothLEService.class);
-        if (checked) {
-            startService(service);
-        } else {
-            stopService(service);
+        if (!checked) {
+            AlertDialogFragment.instance(R.string.app_name, R.string.link_loss_disabled).show(getFragmentManager(), null);
         }
     }
 
@@ -159,6 +156,10 @@ public class DashboardActivity extends CommonActivity implements DashboardFragme
     @Override
     public void onDashboardStopped()
     {
+        this.service.disconnect(this.address);
+
+        this.setRefreshing(false);
+
         LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
         unbindService(serviceConnection);
     }

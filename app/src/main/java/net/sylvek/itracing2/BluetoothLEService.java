@@ -3,6 +3,8 @@ package net.sylvek.itracing2;
 import java.util.HashMap;
 import java.util.UUID;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -49,6 +51,7 @@ public class BluetoothLEService extends Service {
     public static final String TAG = BluetoothLEService.class.toString();
     public static final String ACTION_PREFIX = "net.sylvek.itracing2.action.";
     public static final long TRACK_REMOTE_RSSI_DELAY_MILLIS = 5000L;
+    public static final int FOREGROUND_ID = 1664;
 
     private BluetoothDevice mDevice;
 
@@ -86,6 +89,10 @@ public class BluetoothLEService extends Service {
                 if (newState == BluetoothProfile.STATE_CONNECTED) {
                     broadcaster.sendBroadcast(new Intent(GATT_CONNECTED));
                     gatt.discoverServices();
+                }
+
+                if (newState == BluetoothProfile.STATE_DISCONNECTED) {
+                    gatt.close();
                 }
             }
 
@@ -216,8 +223,6 @@ public class BluetoothLEService extends Service {
         }
     }
 
-    ;
-
     private void setCharacteristicNotification(BluetoothGatt bluetoothgatt, BluetoothGattCharacteristic bluetoothgattcharacteristic, boolean flag)
     {
         bluetoothgatt.setCharacteristicNotification(bluetoothgattcharacteristic, flag);
@@ -270,14 +275,29 @@ public class BluetoothLEService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId)
     {
+        this.setForeground();
         this.connect();
         return START_STICKY;
+    }
+
+    private void setForeground()
+    {
+        final Notification notification = new Notification.Builder(this)
+                .setSmallIcon(R.drawable.ic_launcher)
+                .setContentTitle(getText(R.string.app_name))
+                .setTicker(getText(R.string.foreground_started))
+                .setContentText(getText(R.string.foreground_started))
+                .setAutoCancel(false)
+                .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, DevicesActivity.class), 0))
+                .setShowWhen(false).build();
+        this.startForeground(FOREGROUND_ID, notification);
     }
 
     @Override
     public void onCreate()
     {
         super.onCreate();
+        Log.d(TAG, "onCreate()");
         this.broadcaster = LocalBroadcastManager.getInstance(this);
     }
 
@@ -317,8 +337,10 @@ public class BluetoothLEService extends Service {
             do {
                 final String address = cursor.getString(0);
                 final String name = cursor.getString(1);
-                this.connect(address);
-                Toast.makeText(this, getString(R.string.device_is_connecting, name), Toast.LENGTH_LONG).show();
+                if (Preferences.getLinkBackgroundEnabled(this, address)) {
+                    this.connect(address);
+                    Toast.makeText(this, getString(R.string.device_is_connecting, name), Toast.LENGTH_LONG).show();
+                }
             } while (cursor.moveToNext());
         }
     }
@@ -326,7 +348,7 @@ public class BluetoothLEService extends Service {
     public synchronized void connect(final String address)
     {
         if (!this.bluetoothGatt.containsKey(address)) {
-            Log.d(TAG, "connect() - to device " + address);
+            Log.d(TAG, "connect() - (new link) to device " + address);
             mDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(address);
             this.bluetoothGatt.put(address, mDevice.connectGatt(this, true, new CustomBluetoothGattCallback(address)));
         } else {
@@ -338,11 +360,12 @@ public class BluetoothLEService extends Service {
     public synchronized void disconnect(final String address)
     {
         if (this.bluetoothGatt.containsKey(address)) {
-            Log.d(TAG, "disconnect() " + address);
-            this.bluetoothGatt.get(address).disconnect();
-            this.bluetoothGatt.get(address).close();
-            this.bluetoothGatt.remove(address);
+            Log.d(TAG, "disconnect() - to device " + address);
+            if (!Preferences.getLinkBackgroundEnabled(this, address)) {
+                Log.d(TAG, "disconnect() - no background linked for " + address);
+                this.bluetoothGatt.get(address).disconnect();
+                this.bluetoothGatt.remove(address);
+            }
         }
     }
-
 }
