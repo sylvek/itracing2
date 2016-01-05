@@ -10,9 +10,9 @@
     <string name="link_background">allways-on</string>
     <string name="stop_ring">stop ring</string>
     <string name="stop_vibrate">stop vibration</string>
-    <string name="simple_button_action">simple button click</string>
+    <string name="simple_button_action">simple click options</string>
     <string name="simple_button_action_summary">what is the button action ?</string>
-    <string name="double_button_action">double button click</string>
+    <string name="double_button_action">double click options</string>
     <string name="double_button_action_summary">what is the button action ?</string>
     <string name="link_background_summary">allows to activate more options</string>
     <string name="battery_info">battery info</string>
@@ -41,8 +41,8 @@
     <string name="ring_tone_not_found">ring tone not found! please select an another, be sure you have a default ring tone, or that sound volume is up.</string>
     <string name="vibrator_not_found">vibrator not found! please be sure that you have this feature on your phone.</string>
     <string name="something_goes_wrong">something goes wrong!</string>
-    <string name="double_button_delay">delay in milliseconds</string>
-    <string name="double_button_delay_summary">delay between two clicks over button</string>
+    <string name="double_button_delay">Double click delay</string>
+    <string name="double_button_delay_summary">delay between two clicks (300ms if empty)</string>
     <string name="default_double_button_delay">300</string>
     <string name="custom_action">custom action</string>
     <string name="custom_action_summary">http(s)://.. or intent action string</string>
