@@ -33,16 +33,6 @@ public class DashboardFragment extends PreferenceFragment {
         final String address = getArguments().getString(Devices.ADDRESS);
         this.getPreferenceManager().setSharedPreferencesName(address);
         this.addPreferencesFromResource(R.xml.device_preferences);
-        findPreference(Preferences.LINK_OPTION).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue)
-            {
-                if (newValue instanceof Boolean) {
-                    presenter.onLinkLoss((Boolean) newValue);
-                }
-                return true;
-            }
-        });
         findPreference(Preferences.ACTION_BUTTON).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference)
@@ -122,8 +112,6 @@ public class DashboardFragment extends PreferenceFragment {
     public interface OnDashboardListener {
 
         void onImmediateAlert(String address, boolean activate);
-
-        void onLinkLoss(boolean checked);
 
         void onDashboardStarted();
 

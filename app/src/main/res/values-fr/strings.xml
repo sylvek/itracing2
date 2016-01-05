@@ -45,8 +45,6 @@
     <string name="remove">supprimer le porte-clés</string>
     <string name="confirm_remove_keyring">Confirmer pour supprimer ce porte-clés</string>
     <string name="confirm_change_name">Changer le nom du porte-clés</string>
-    <string name="device_is_connecting">%1$s se connecte…</string>
-    <string name="link_loss_disabled">désactiver cette option pourrait faire sonner votre porte-clés</string>
     <string name="foreground_started">démarré en premier plan</string>
     <string-array name="button_actions">
         <item>aucune</item>

@@ -33,7 +33,12 @@ public class Preferences {
 
     public static boolean getLinkBackgroundEnabled(Context context, String address)
     {
-        return getSharedPreferences(context, address).getBoolean(LINK_OPTION, false);
+        return getSharedPreferences(context, address).getBoolean(LINK_OPTION, true);
+    }
+
+    public static void setLinkBackgroundEnabled(Context context, String address, boolean enabled)
+    {
+        getSharedPreferences(context, address).edit().putBoolean(LINK_OPTION, enabled).commit();
     }
 
     public static String getActionSimpleButton(Context context, String address)

@@ -20,6 +20,7 @@ public abstract class CommonActivity extends Activity {
         getActionBar().setDisplayShowHomeEnabled(true);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+        mSwipeRefreshLayout.setEnabled(false);
     }
 
     protected void setRefreshing(final boolean refreshing)
@@ -31,10 +32,5 @@ public abstract class CommonActivity extends Activity {
                 mSwipeRefreshLayout.setRefreshing(refreshing);
             }
         });
-    }
-
-    protected void setOnRefreshListener(final SwipeRefreshLayout.OnRefreshListener listener)
-    {
-        mSwipeRefreshLayout.setOnRefreshListener(listener);
     }
 }

@@ -287,7 +287,6 @@ public class BluetoothLEService extends Service {
                 .setContentTitle(getText(R.string.app_name))
                 .setTicker(getText(R.string.foreground_started))
                 .setContentText(getText(R.string.foreground_started))
-                .setAutoCancel(false)
                 .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, DevicesActivity.class), 0))
                 .setShowWhen(false).build();
         this.startForeground(FOREGROUND_ID, notification);
@@ -332,14 +331,12 @@ public class BluetoothLEService extends Service {
     public synchronized void connect()
     {
         final Cursor cursor = Devices.findDevices(this);
-        if (cursor != null) {
+        if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
                 final String address = cursor.getString(0);
-                final String name = cursor.getString(1);
                 if (Preferences.getLinkBackgroundEnabled(this, address)) {
                     this.connect(address);
-                    Toast.makeText(this, getString(R.string.device_is_connecting, name), Toast.LENGTH_LONG).show();
                 }
             } while (cursor.moveToNext());
         }
@@ -366,6 +363,15 @@ public class BluetoothLEService extends Service {
                 this.bluetoothGatt.get(address).disconnect();
                 this.bluetoothGatt.remove(address);
             }
+        }
+    }
+
+    public synchronized void remove(final String address)
+    {
+        if (this.bluetoothGatt.containsKey(address)) {
+            Log.d(TAG, "remove() - to device " + address);
+            this.bluetoothGatt.get(address).disconnect();
+            this.bluetoothGatt.remove(address);
         }
     }
 }

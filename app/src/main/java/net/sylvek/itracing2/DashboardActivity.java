@@ -125,14 +125,6 @@ public class DashboardActivity extends CommonActivity implements DashboardFragme
     }
 
     @Override
-    public void onLinkLoss(boolean checked)
-    {
-        if (!checked) {
-            AlertDialogFragment.instance(R.string.app_name, R.string.link_loss_disabled).show(getFragmentManager(), null);
-        }
-    }
-
-    @Override
     public void onDashboardStarted()
     {
         // register events
@@ -143,14 +135,6 @@ public class DashboardActivity extends CommonActivity implements DashboardFragme
 
         // bind service
         bindService(new Intent(this, BluetoothLEService.class), serviceConnection, BIND_AUTO_CREATE);
-
-        setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh()
-            {
-                service.connect(DashboardActivity.this.address);
-            }
-        });
     }
 
     @Override
@@ -185,7 +169,7 @@ public class DashboardActivity extends CommonActivity implements DashboardFragme
     {
         if (Preferences.clearAll(this, address)) {
             this.setRefreshing(false);
-            this.service.disconnect(address);
+            this.service.remove(address);
             Devices.removeDevice(this, address);
             NavUtils.navigateUpFromSameTask(this);
         }

@@ -170,7 +170,7 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
         public DevicesCursorAdapter(Context context)
         {
             super(context,
-                    android.R.layout.simple_expandable_list_item_2, null,
+                    R.layout.expandable_list_item_with_options, null,
                     new String[]{
                             Devices.NAME,
                             Devices.ADDRESS
