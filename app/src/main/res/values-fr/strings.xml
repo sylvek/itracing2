@@ -45,7 +45,11 @@
     <string name="remove">supprimer le porte-clés</string>
     <string name="confirm_remove_keyring">Confirmer pour supprimer ce porte-clés</string>
     <string name="confirm_change_name">Changer le nom du porte-clés</string>
+    <string name="link_loss_disabled">désactiver cette option pourrait faire sonner votre porte-clés</string>
     <string name="foreground_started">démarré en premier plan</string>
+    <string name="preferences">préférences</string>
+    <string name="action_foreground_summary">améliore le lien entre le téléphone et les porte-clés</string>
+    <string name="action_foreground">service en premier plan</string>
     <string-array name="button_actions">
         <item>aucune</item>
         <item>faire sonner le téléphone</item>

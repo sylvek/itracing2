@@ -49,7 +49,11 @@
     <string name="remove">remove the keyring</string>
     <string name="confirm_remove_keyring">Confirm to remove this keyring</string>
     <string name="confirm_change_name">Confirm to change the keyring name</string>
+    <string name="link_loss_disabled">disable this feature may occurs ringing your key ring</string>
     <string name="foreground_started">started in foreground mode</string>
+    <string name="preferences">preferences</string>
+    <string name="action_foreground_summary">improves the link between the smartphone and the devices</string>
+    <string name="action_foreground">foreground mode</string>
     <string-array name="button_actions">
         <item>nothing</item>
         <item>ring the phone</item>

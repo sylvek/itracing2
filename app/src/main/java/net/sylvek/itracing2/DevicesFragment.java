@@ -8,6 +8,7 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import net.sylvek.itracing2.database.Devices;
 import net.sylvek.itracing2.database.SQLiteCursorLoader;
@@ -23,6 +25,8 @@ import net.sylvek.itracing2.database.SQLiteCursorLoader;
  * Created by sylvek on 18/05/2015.
  */
 public class DevicesFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
+
+    public static final String TAG = DevicesFragment.class.toString();
 
     private OnDevicesListener presenter;
     private DevicesCursorAdapter mAdapter;
@@ -65,6 +69,10 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
         }
         if (item.getItemId() == R.id.action_donate) {
             this.presenter.onDonate();
+            return true;
+        }
+        if (item.getItemId() == R.id.action_preferences) {
+            this.presenter.onPreferences();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -164,21 +172,52 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
         void onFeedback();
 
         void onDonate();
+
+        void onDeviceStateChanged(String address, boolean enabled);
+
+        void onPreferences();
     }
 
     class DevicesCursorAdapter extends SimpleCursorAdapter {
+
         public DevicesCursorAdapter(Context context)
         {
             super(context,
                     R.layout.expandable_list_item_with_options, null,
                     new String[]{
                             Devices.NAME,
-                            Devices.ADDRESS
+                            Devices.ADDRESS,
+                            Devices.ENABLED
                     },
                     new int[]{
                             android.R.id.text1,
                             android.R.id.text2
                     }, 0);
+        }
+
+        @Override
+        public void bindView(View view, Context context, Cursor cursor)
+        {
+            super.bindView(view, context, cursor);
+            final TextView address = (TextView) view.findViewById(android.R.id.text2);
+            final CheckBox button = (CheckBox) view.findViewById(android.R.id.selectedIcon);
+
+            final String device = address.getText().toString();
+            final int column = cursor.getColumnIndex(Devices.ENABLED);
+            final boolean enabled = cursor.getInt(column) == 1;
+
+            Log.d(TAG, "device: " + device + " enabled: " + enabled);
+
+            button.setChecked(enabled);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view)
+                {
+                    final boolean b = button.isChecked();
+                    Log.d(TAG, "onClick() device: " + device + " enabled: " + b);
+                    presenter.onDeviceStateChanged(device, b);
+                }
+            });
         }
     }
 }

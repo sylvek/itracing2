@@ -11,8 +11,6 @@ import android.preference.PreferenceManager;
  */
 public class Preferences {
 
-    public static final String KEYRING_UUID = "keyring_uuid";
-    public static final String LINK_OPTION = "link_background";
     public static final String ACTION_SIMPLE_BUTTON_LIST = "action_simple_button_list";
     public static final String ACTION_DOUBLE_BUTTON_LIST = "action_double_button_list";
     public static final String ACTION_OUT_OF_BAND_LIST = "action_out_of_band_list";
@@ -20,25 +18,15 @@ public class Preferences {
     public static final String ACTION_BUTTON = "action_button";
     public static final String BATTERY_INFO = "battery_info";
     public static final String RSSI_INFO = "rssi_info";
-    public static final String DONATE = "donate";
-    public static final String FEEDBACK = "feedback";
     public static final String RINGTONE = "ring_tone";
+    public static final String FOREGROUND = "action_foreground";
     private static final String DOUBLE_BUTTON_DELAY = "double_button_delay";
     private static final String CUSTOM_ACTION = "custom_action";
+    private static final String DONATED = "donated";
 
     private static SharedPreferences getSharedPreferences(Context context, String address)
     {
         return context.getSharedPreferences(address, Context.MODE_PRIVATE);
-    }
-
-    public static boolean getLinkBackgroundEnabled(Context context, String address)
-    {
-        return getSharedPreferences(context, address).getBoolean(LINK_OPTION, true);
-    }
-
-    public static void setLinkBackgroundEnabled(Context context, String address, boolean enabled)
-    {
-        getSharedPreferences(context, address).edit().putBoolean(LINK_OPTION, enabled).commit();
     }
 
     public static String getActionSimpleButton(Context context, String address)
@@ -86,5 +74,20 @@ public class Preferences {
     public static boolean clearAll(Context context, String address)
     {
         return getSharedPreferences(context, address).edit().clear().commit();
+    }
+
+    public static boolean isForegroundEnabled(Context context)
+    {
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(FOREGROUND, false);
+    }
+
+    public static boolean isDonated(Context context)
+    {
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(DONATED, false);
+    }
+
+    public static void setDonated(Context context, boolean donated)
+    {
+        PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean(DONATED, donated).commit();
     }
 }

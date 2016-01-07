@@ -3,6 +3,10 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="net.sylvek.itracing2.DevicesActivity">
     <item
+            android:title="@string/preferences"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:id="@+id/action_preferences" tools:ignore="AppCompatResource"/>
+    <item
             android:title="@string/feedback"
             android:icon="@android:drawable/ic_menu_help"
             android:id="@+id/action_feedback" tools:ignore="AppCompatResource"/>

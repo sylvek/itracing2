@@ -17,11 +17,12 @@ public class Devices {
 
     private static final String DATABASE_NAME = "itracing2DB";
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
-    private static final String DATABASE_CREATE = "create table devices ( _id integer primary key, name text not null, address text not null);";
+    private static final String DATABASE_CREATE = "create table devices ( _id integer primary key, name text not null, address text not null, enabled boolean not null default 0);";
     public static final String SELECT_DEVICES = "select * from devices";
     public static final String TABLE = "devices";
+    public static final String ENABLED = "enabled";
 
     private static DevicesHelper instance;
 
@@ -56,6 +57,19 @@ public class Devices {
         Devices.getDevicesHelperInstance(context).getWritableDatabase().update(Devices.TABLE, contentValues, "address = ?", new String[]{address});
     }
 
+    public static boolean isEnabled(Context context, String address)
+    {
+        final Cursor c = Devices.getDevicesHelperInstance(context).getWritableDatabase().query(true, Devices.TABLE, new String[]{Devices.ENABLED}, ADDRESS + " = ?", new String[]{address}, null, null, null, null);
+        return c != null && c.moveToFirst() && c.getInt(0) == 1;
+    }
+
+    public static void setEnabled(Context context, String address, boolean enabled)
+    {
+        final ContentValues contentValues = new ContentValues();
+        contentValues.put(Devices.ENABLED, (enabled) ? 1 : 0);
+        Devices.getDevicesHelperInstance(context).getWritableDatabase().update(Devices.TABLE, contentValues, "address = ?", new String[]{address});
+    }
+
     public static class DevicesHelper extends SQLiteOpenHelper {
 
         private DevicesHelper(Context context)
@@ -70,8 +84,11 @@ public class Devices {
         }
 
         @Override
-        public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1)
+        public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion)
         {
+            if (oldVersion == 1 && newVersion == 2) {
+                sqLiteDatabase.execSQL("ALTER TABLE " + TABLE + " ADD COLUMN " + ENABLED + " boolean not null default 0");
+            }
         }
     }
 }

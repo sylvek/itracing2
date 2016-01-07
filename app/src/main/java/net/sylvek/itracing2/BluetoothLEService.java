@@ -83,9 +83,9 @@ public class BluetoothLEService extends Service {
         @Override
         public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState)
         {
-            Log.d(TAG, "onConnectionStateChange() status => " + status);
+            Log.d(TAG, "onConnectionStateChange() address: " + address + " status => " + status);
             if (BluetoothGatt.GATT_SUCCESS == status) {
-                Log.d(TAG, "onConnectionStateChange() newState => " + newState);
+                Log.d(TAG, "onConnectionStateChange() address: " + address + " newState => " + newState);
                 if (newState == BluetoothProfile.STATE_CONNECTED) {
                     broadcaster.sendBroadcast(new Intent(GATT_CONNECTED));
                     gatt.discoverServices();
@@ -98,13 +98,13 @@ public class BluetoothLEService extends Service {
 
             final boolean actionOnPowerOff = Preferences.isActionOnPowerOff(BluetoothLEService.this, this.address);
             if (actionOnPowerOff || status == 8) {
-                Log.d(TAG, "onConnectionStateChange() newState => " + newState);
+                Log.d(TAG, "onConnectionStateChange() address: " + address + " newState => " + newState);
                 if (newState == BluetoothProfile.STATE_DISCONNECTED) {
                     String action = Preferences.getActionOutOfBand(getApplicationContext(), this.address);
                     final Intent intent = new Intent(ACTION_PREFIX + action);
                     intent.putExtra(Devices.ADDRESS, this.address);
                     sendBroadcast(intent);
-                    Log.d(TAG, "onCharacteristicChanged() - sendBroadcast " + action + " to " + this.address);
+                    Log.d(TAG, "onCharacteristicChanged() address: " + address + " - sendBroadcast " + action + " to " + this.address);
                     enablePeerDeviceNotifyMe(gatt, false);
                 }
             }
@@ -275,21 +275,25 @@ public class BluetoothLEService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId)
     {
-        this.setForeground();
+        this.setForegroundEnabled(Preferences.isForegroundEnabled(this));
         this.connect();
         return START_STICKY;
     }
 
-    private void setForeground()
+    public void setForegroundEnabled(boolean enabled)
     {
-        final Notification notification = new Notification.Builder(this)
-                .setSmallIcon(R.drawable.ic_launcher)
-                .setContentTitle(getText(R.string.app_name))
-                .setTicker(getText(R.string.foreground_started))
-                .setContentText(getText(R.string.foreground_started))
-                .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, DevicesActivity.class), 0))
-                .setShowWhen(false).build();
-        this.startForeground(FOREGROUND_ID, notification);
+        if (enabled) {
+            final Notification notification = new Notification.Builder(this)
+                    .setSmallIcon(R.drawable.ic_launcher)
+                    .setContentTitle(getText(R.string.app_name))
+                    .setTicker(getText(R.string.foreground_started))
+                    .setContentText(getText(R.string.foreground_started))
+                    .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, DevicesActivity.class), 0))
+                    .setShowWhen(false).build();
+            this.startForeground(FOREGROUND_ID, notification);
+        } else {
+            this.stopForeground(true);
+        }
     }
 
     @Override
@@ -335,7 +339,7 @@ public class BluetoothLEService extends Service {
             cursor.moveToFirst();
             do {
                 final String address = cursor.getString(0);
-                if (Preferences.getLinkBackgroundEnabled(this, address)) {
+                if (Devices.isEnabled(this, address)) {
                     this.connect(address);
                 }
             } while (cursor.moveToNext());
@@ -358,7 +362,7 @@ public class BluetoothLEService extends Service {
     {
         if (this.bluetoothGatt.containsKey(address)) {
             Log.d(TAG, "disconnect() - to device " + address);
-            if (!Preferences.getLinkBackgroundEnabled(this, address)) {
+            if (!Devices.isEnabled(this, address)) {
                 Log.d(TAG, "disconnect() - no background linked for " + address);
                 this.bluetoothGatt.get(address).disconnect();
                 this.bluetoothGatt.remove(address);

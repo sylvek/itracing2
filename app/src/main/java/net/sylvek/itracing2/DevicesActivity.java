@@ -11,14 +11,17 @@ import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
+import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -28,11 +31,29 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
 
     public static final String TAG = DevicesActivity.class.toString();
 
+    private BluetoothLEService service;
+
     private final static int REQUEST_ENABLE_BT = 1;
 
     private static final long SCAN_PERIOD = 10000; // 10 seconds
 
     private static final List<String> DEFAULT_DEVICE_NAME = new ArrayList<>();
+
+    private ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder)
+        {
+            if (iBinder instanceof BluetoothLEService.BackgroundBluetoothLEBinder) {
+                service = ((BluetoothLEService.BackgroundBluetoothLEBinder) iBinder).service();
+            }
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName)
+        {
+            Log.d(BluetoothLEService.TAG, "onServiceDisconnected()");
+        }
+    };
 
     private final Random random = new Random();
 
@@ -62,10 +83,6 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
             Log.d(TAG, "device " + name + " with address " + address + " found");
             if (!Devices.containsDevice(DevicesActivity.this, address)) {
                 devices.put((name == null) ? address : name, address);
-            }
-
-            if (DEFAULT_DEVICE_NAME.contains(name)) {
-                mHandler.post(stopScan);
             }
         }
     };
@@ -146,9 +163,12 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     @Override
     public void onDevicesStarted()
     {
-        if (random.nextInt(100) > 80) { // displayed 20% time
+        if (random.nextInt(100) > 80 && !Preferences.isDonated(this)) { // displayed 20% time
             ConfirmAlertDialogFragment.instance(R.string.donate, R.string.donate_summary).show(getFragmentManager(), null);
         }
+
+        // bind service
+        bindService(new Intent(this, BluetoothLEService.class), serviceConnection, BIND_AUTO_CREATE);
     }
 
     @Override
@@ -156,6 +176,8 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     {
         mBluetoothAdapter.stopLeScan(mLeScanCallback);
         mHandler.removeCallbacks(stopScan);
+
+        unbindService(serviceConnection);
     }
 
     @Override
@@ -182,8 +204,30 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     @Override
     public void onDonate()
     {
+        Preferences.setDonated(this, true);
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.me/SylvainMaucourt"));
         startActivity(browserIntent);
+    }
+
+    @Override
+    public void onDeviceStateChanged(String address, boolean enabled)
+    {
+        if (service != null) {
+            Devices.setEnabled(this, address, enabled);
+
+            if (enabled) {
+                service.connect(address);
+            } else {
+                AlertDialogFragment.instance(R.string.app_name, R.string.link_loss_disabled).show(getFragmentManager(), null);
+                service.disconnect(address);
+            }
+        }
+    }
+
+    @Override
+    public void onPreferences()
+    {
+        startActivity(new Intent(this, PreferencesActivity.class));
     }
 
     private void displayListScannedDevices()
