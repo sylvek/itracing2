@@ -139,7 +139,9 @@ public class DashboardActivity extends CommonActivity implements DashboardFragme
     @Override
     public void onDashboardStopped()
     {
-        this.service.disconnect(this.address);
+        if (this.service != null) {
+            this.service.disconnect(this.address);
+        }
 
         this.setRefreshing(false);
 
