@@ -5,22 +5,23 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 /**
  * Created by sylvek on 29/12/2015.
  */
-public class EditTextAlertDialogFragment extends DialogFragment {
+public class DeviceAlertDialogFragment extends DialogFragment {
 
-    public static final String TITLE = "title";
     public static final String NAME = "name";
     public static final String ADDRESS = "address";
 
-    public static EditTextAlertDialogFragment instance(int title, String name, String address)
+    public static DeviceAlertDialogFragment instance(String name, String address)
     {
-        EditTextAlertDialogFragment frag = new EditTextAlertDialogFragment();
+        DeviceAlertDialogFragment frag = new DeviceAlertDialogFragment();
         Bundle args = new Bundle();
-        args.putInt(TITLE, title);
         args.putString(NAME, name);
         args.putString(ADDRESS, address);
         frag.setArguments(args);
@@ -30,18 +31,26 @@ public class EditTextAlertDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
-        final int title = getArguments().getInt(TITLE);
         final String name = getArguments().getString(NAME);
         final String address = getArguments().getString(ADDRESS);
 
-        final EditText editText = new EditText(getActivity());
+        final LayoutInflater inflater = LayoutInflater.from(getActivity());
+        final View alertView = inflater.inflate(R.layout.device_alertbox, null);
+
+        final EditText editText = (EditText) alertView.findViewById(R.id.editText);
         editText.setText(name);
-        editText.setSingleLine();
-        editText.setPadding(25, 25, 25, 25);
+
+        final Button alert = (Button) alertView.findViewById(R.id.button);
+        alert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                ((OnConfirmAlertDialogListener) getActivity()).doNeutralClick(address);
+            }
+        });
 
         return new AlertDialog.Builder(getActivity())
-                .setTitle(title)
-                .setView(editText)
+                .setView(alertView)
                 .setPositiveButton(android.R.string.ok,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton)
@@ -66,5 +75,7 @@ public class EditTextAlertDialogFragment extends DialogFragment {
         void doPositiveClick(final String address, final String text);
 
         void doNegativeClick();
+
+        void doNeutralClick(final String address);
     }
 }

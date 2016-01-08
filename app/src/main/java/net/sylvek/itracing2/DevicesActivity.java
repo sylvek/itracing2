@@ -27,7 +27,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 import net.sylvek.itracing2.database.Devices;
 
-public class DevicesActivity extends CommonActivity implements DevicesFragment.OnDevicesListener, EditTextAlertDialogFragment.OnConfirmAlertDialogListener, ConfirmAlertDialogFragment.OnConfirmAlertDialogListener {
+public class DevicesActivity extends CommonActivity implements DevicesFragment.OnDevicesListener, DeviceAlertDialogFragment.OnConfirmAlertDialogListener, ConfirmAlertDialogFragment.OnConfirmAlertDialogListener {
 
     public static final String TAG = DevicesActivity.class.toString();
 
@@ -191,7 +191,7 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     @Override
     public void onChangeDeviceName(String name, String address)
     {
-        EditTextAlertDialogFragment.instance(R.string.confirm_change_name, name, address).show(getFragmentManager(), "dialog");
+        DeviceAlertDialogFragment.instance(name, address).show(getFragmentManager(), "dialog");
     }
 
     @Override
@@ -274,6 +274,12 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     @Override
     public void doNegativeClick()
     {
+    }
+
+    @Override
+    public void doNeutralClick(String address)
+    {
+        this.service.immediateAlert(address, BluetoothLEService.HIGH_ALERT);
     }
 
     private boolean isMyServiceRunning(Class<?> serviceClass)
