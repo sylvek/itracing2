@@ -3,23 +3,23 @@
     <string name="app_name">iTracing2</string>
     <string name="ble_not_supported">désolé, votre matériel ne supporte pas le Bluetooth LE</string>
     <string name="action_scan_start">detection</string>
-    <string name="beacon_not_found">porte-clés non trouvé</string>
+    <string name="beacon_not_found">trousseau de clés non trouvé</string>
     <string name="action_connect">connexion</string>
-    <string name="start_immediate_alert">faire sonner le porte-clés</string>
-    <string name="stop_immediate_alert">arrêter la sonnerie du porte-clés</string>
-    <string name="link_background">lien permanent</string>
+    <string name="start_immediate_alert">faire sonner le trousseau de clés</string>
+    <string name="stop_immediate_alert">arrêter la sonnerie du trousseau de clés</string>
+    <string name="link_background">toujours actif</string>
     <string name="stop_ring">arrêter la sonnerie</string>
     <string name="stop_vibrate">arrêter la vibration</string>
-    <string name="simple_button_action">simple clic sur le porte-clés</string>
+    <string name="simple_button_action">simple clic sur le trousseau de clés</string>
     <string name="simple_button_action_summary">quelle est l\'action associée ?</string>
-    <string name="double_button_action">double clic sur le porte-clés</string>
+    <string name="double_button_action">double clic sur le trousseau de clés</string>
     <string name="double_button_action_summary">quelle est l\'action associée ?</string>
-    <string name="link_background_summary">lien entre le porte-clés et le smartphone</string>
+    <string name="link_background_summary">permet d\'activer des options supplémentaires</string>
     <string name="battery_info">niveau de batterie</string>
-    <string name="immediate_alert_summary">cliquer ici pour faire sonner le porte-clés</string>
-    <string name="welcome_text">Bienvenu iTracing2.\n\nCette application permet de communiquer avec votre appareil iSee (Quintic PROXR).\n
+    <string name="immediate_alert_summary">cliquer ici pour faire sonner le trousseau de clés</string>
+    <string name="welcome_text">Bienvenue sur iTracing2.\n\nCette application permet de communiquer avec vos appareils bluetooth iSee (Quintic PROXR).\n
         Si comme moi, l\'application "iTracing" vous dérange, libre à vous d\'utiliser ma version :)\n\n
-        Cliquer sur DETECTION pour trouver votre porte-clés iSee (il doit se nommer \"Quintic PROXR\").</string>
+        Cliquer sur la loupe pour trouver votre porte-clés iSee (il doit se nommer \"Quintic PROXR\").</string>
     <string name="donate">faire un don (PayPal)</string>
     <string name="feedback">retour d\'expérience</string>
     <string name="donate_summary">pour m\'aider dans mon travail :)</string>
@@ -42,15 +42,22 @@
     <string name="default_double_button_delay">300</string>
     <string name="custom_action">action personnalisée</string>
     <string name="custom_action_summary">http(s)://..</string>
-    <string name="remove">supprimer le porte-clés</string>
-    <string name="remove_summary">supprime le porte-clés de cet appareil</string>
-    <string name="confirm_remove_keyring">Confirmer pour supprimer ce porte-clés</string>
+    <string name="remove">supprimer le trousseau de clés</string>
+    <string name="confirm_remove_keyring">Confirmer pour supprimer ce trousseau de clés</string>
+    <string name="confirm_change_name">Changer le nom du trousseau de clés</string>
+    <string name="link_loss_disabled">désactiver cette option pourrait faire sonner votre trousseau de clés</string>
+    <string name="foreground_started">démarré en premier plan</string>
+    <string name="preferences">préférences</string>
+    <string name="action_foreground_summary">améliore le lien entre le téléphone et les trousseaux de clés</string>
+    <string name="action_foreground">service en premier plan</string>
+    <string name="ring_the_device">sonner le trousseau de clés</string>
     <string-array name="button_actions">
         <item>aucune</item>
         <item>faire sonner le téléphone</item>
         <item>faire vibrer le téléphone</item>
         <item>capturer ma position</item>
         <item>appeler une URL</item>
+        <item>envoyer un message technique</item>
     </string-array>
     <string-array name="button_actions_values">
         <item>NOTHING</item>
@@ -58,5 +65,6 @@
         <item>VIBRATE_PHONE</item>
         <item>CAPTURE_POSITION</item>
         <item>CUSTOM_ACTION</item>
+        <item>BROADCAST_INTENT</item>
     </string-array>
 </resources>

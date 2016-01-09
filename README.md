@@ -1,18 +1,17 @@
 # itracing2
 itracing2 is a free and open source application that allow to (really?) use iTag devices.
 
-It can run in background, so you are not mandatory to launch itracing2 after booting your phone.
-By checking "background link", you could use the button on front of your itag.
+This application runs in background, so you do not have to launch it after each boot up.
 
-several actions are available:
+several actions are available :
 
 * capture your current position
 * ringing your phone
 * vibrate your phone
+* call a custom URL (GET action)
 
-launch the camera is not allowed unless re-write a camera app inside itracing2 (so, this is not my priority)
+Manipulate the camera is not allowed unless re-write a entire app (so, this is not my priority)
 
-several users tell me to add multi-devices support. I bought an another chinese iTag, and
-i hope to write this feature soon.
+Several users told me to add multi-devices support… [a beta version is available!](https://play.google.com/apps/testing/net.sylvek.itracing2)
 
-*don't remember that is a personal project and feel free to participate :)*
+**don't remember that is a personal project and feel free to participate :)**

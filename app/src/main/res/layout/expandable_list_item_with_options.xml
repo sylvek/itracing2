@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TwoLineListItem xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:layout_width="match_parent"
+                 android:layout_height="?android:attr/listPreferredItemHeight"
+                 android:paddingTop="2dip"
+                 android:paddingBottom="2dip"
+                 android:paddingStart="?android:attr/expandableListPreferredItemPaddingLeft"
+                 android:mode="twoLine">
+
+    <CheckBox android:id="@android:id/selectedIcon"
+              android:layout_width="wrap_content"
+              android:layout_alignParentRight="true"
+              android:focusable="false"
+              android:checked="false"
+              android:layout_height="match_parent"
+              android:paddingRight="16dp"/>
+
+    <TextView android:id="@android:id/text1"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="6dip"
+              android:textAppearance="?android:attr/textAppearanceListItem"
+              android:textAlignment="viewStart"
+    />
+
+    <TextView android:id="@android:id/text2"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_below="@android:id/text1"
+              android:layout_alignStart="@android:id/text1"
+              android:textAppearance="?android:attr/textAppearanceSmall"
+              android:textAlignment="viewStart"
+    />
+
+</TwoLineListItem>

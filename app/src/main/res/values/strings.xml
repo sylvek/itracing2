@@ -7,19 +7,19 @@
     <string name="action_connect">connect</string>
     <string name="start_immediate_alert">start ringing the keyring</string>
     <string name="stop_immediate_alert">stop ringing the keyring</string>
-    <string name="link_background">link background</string>
+    <string name="link_background">allways-on</string>
     <string name="stop_ring">stop ring</string>
     <string name="stop_vibrate">stop vibration</string>
-    <string name="simple_button_action">simple button click</string>
+    <string name="simple_button_action">simple click options</string>
     <string name="simple_button_action_summary">what is the button action ?</string>
-    <string name="double_button_action">double button click</string>
+    <string name="double_button_action">double click options</string>
     <string name="double_button_action_summary">what is the button action ?</string>
-    <string name="link_background_summary">loss link between device and keyring</string>
+    <string name="link_background_summary">allows to activate more options</string>
     <string name="battery_info">battery info</string>
     <string name="immediate_alert_summary">click here to alert the keyring</string>
     <string name="welcome_text">Welcome on iTracing2.\n\nThis application allows you to communicate with your iSee (Quintic PROXR) bluetooth device.\n
         If like me, the poorest application "iTracing" disturbs you, enjoy to use my own version :)\n\n
-        Please click on the DETECT button to find you iSee device (it should be named "Quintic PROXR").\n\n
+        Please click on the magnifying glass button to find you iSee device (it should be named "Quintic PROXR").\n\n
         If nothing is detected, a box appears containing all detected compatibles devices.\n
         If this box is empty, you should reboot your iTag (because is a cheap device) and retry.\n\n
         Note that loss link and iTag button feature are available only with "background link" option.\n\n
@@ -41,20 +41,27 @@
     <string name="ring_tone_not_found">ring tone not found! please select an another, be sure you have a default ring tone, or that sound volume is up.</string>
     <string name="vibrator_not_found">vibrator not found! please be sure that you have this feature on your phone.</string>
     <string name="something_goes_wrong">something goes wrong!</string>
-    <string name="double_button_delay">delay in milliseconds</string>
-    <string name="double_button_delay_summary">delay between two clicks over button</string>
+    <string name="double_button_delay">Double click delay</string>
+    <string name="double_button_delay_summary">delay between two clicks (300ms if empty)</string>
     <string name="default_double_button_delay">300</string>
     <string name="custom_action">custom action</string>
     <string name="custom_action_summary">http(s)://.. or intent action string</string>
     <string name="remove">remove the keyring</string>
-    <string name="remove_summary">remove the keyring from this device</string>
     <string name="confirm_remove_keyring">Confirm to remove this keyring</string>
+    <string name="confirm_change_name">Confirm to change the keyring name</string>
+    <string name="link_loss_disabled">disable this feature may occurs ringing your key ring</string>
+    <string name="foreground_started">started in foreground mode</string>
+    <string name="preferences">preferences</string>
+    <string name="action_foreground_summary">improves the link between the smartphone and the devices</string>
+    <string name="action_foreground">foreground mode</string>
+    <string name="ring_the_device">ring the keyring</string>
     <string-array name="button_actions">
         <item>nothing</item>
         <item>ring the phone</item>
         <item>vibrate the phone</item>
         <item>capture my position</item>
-        <item>call a url or brodcast intent action</item>
+        <item>call a url or broadcast intent action</item>
+        <item>broadcast an intent</item>
     </string-array>
     <string-array name="button_actions_values">
         <item>NOTHING</item>
@@ -62,5 +69,6 @@
         <item>VIBRATE_PHONE</item>
         <item>CAPTURE_POSITION</item>
         <item>CUSTOM_ACTION</item>
+        <item>BROADCAST_INTENT</item>
     </string-array>
 </resources>

@@ -9,23 +9,23 @@ import android.os.Bundle;
 /**
  * Created by sylvek on 21/12/2015.
  */
-public class ConfirmAlertDialogFragment extends DialogFragment {
+public class AlertDialogFragment extends DialogFragment {
 
     public static final String TITLE = "title";
     public static final String MESSAGE = "message";
 
-    public static ConfirmAlertDialogFragment instance(int title)
+    public static AlertDialogFragment instance(int title)
     {
-        ConfirmAlertDialogFragment frag = new ConfirmAlertDialogFragment();
+        AlertDialogFragment frag = new AlertDialogFragment();
         Bundle args = new Bundle();
         args.putInt(TITLE, title);
         frag.setArguments(args);
         return frag;
     }
 
-    public static ConfirmAlertDialogFragment instance(int title, int message)
+    public static AlertDialogFragment instance(int title, int message)
     {
-        ConfirmAlertDialogFragment frag = new ConfirmAlertDialogFragment();
+        AlertDialogFragment frag = new AlertDialogFragment();
         Bundle args = new Bundle();
         args.putInt(TITLE, title);
         args.putInt(MESSAGE, message);
@@ -40,19 +40,11 @@ public class ConfirmAlertDialogFragment extends DialogFragment {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
                 .setTitle(title)
-                .setPositiveButton(android.R.string.ok,
+                .setNeutralButton(android.R.string.ok,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton)
                             {
-                                ((OnConfirmAlertDialogListener) getActivity()).doPositiveClick();
-                            }
-                        }
-                )
-                .setNegativeButton(android.R.string.cancel,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton)
-                            {
-                                ((OnConfirmAlertDialogListener) getActivity()).doNegativeClick();
+                                dialog.dismiss();
                             }
                         }
                 );
@@ -63,12 +55,5 @@ public class ConfirmAlertDialogFragment extends DialogFragment {
         }
 
         return builder.create();
-    }
-
-    public interface OnConfirmAlertDialogListener {
-
-        void doPositiveClick();
-
-        void doNegativeClick();
     }
 }

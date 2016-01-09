@@ -13,6 +13,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import net.sylvek.itracing2.Preferences;
+import net.sylvek.itracing2.database.Devices;
 
 /**
  * Created by sylvek on 14/12/2015.
@@ -22,7 +23,8 @@ public class CustomAction extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent)
     {
-        final String action = Preferences.getCustomAction(context);
+        final String address = intent.getStringExtra(Devices.ADDRESS);
+        final String action = Preferences.getCustomAction(context, address);
 
         if (action.startsWith("http://")) {
             new CallUrl<>(action).start();

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context="net.sylvek.itracing2.WelcomeActivity">
+      tools:context="net.sylvek.itracing2.DashboardActivity">
     <item
-            android:id="@+id/action_scan"
+            android:id="@+id/delete"
             android:orderInCategory="100"
             android:showAsAction="always"
-            android:title="@string/action_scan_start" tools:ignore="AppCompatResource"/>
+            android:icon="@android:drawable/ic_menu_delete"
+            android:title="@string/remove" tools:ignore="AppCompatResource"/>
 </menu>

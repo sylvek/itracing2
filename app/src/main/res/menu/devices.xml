@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="net.sylvek.itracing2.DevicesActivity">
+    <item
+            android:title="@string/preferences"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:id="@+id/action_preferences" tools:ignore="AppCompatResource"/>
+    <item
+            android:title="@string/feedback"
+            android:icon="@android:drawable/ic_menu_help"
+            android:id="@+id/action_feedback" tools:ignore="AppCompatResource"/>
+
+    <item
+            android:title="@string/donate"
+            android:icon="@android:drawable/ic_menu_more"
+            android:id="@+id/action_donate" tools:ignore="AppCompatResource"/>
+
+    <item
+            android:id="@+id/action_scan"
+            android:orderInCategory="100"
+            android:showAsAction="always"
+            android:icon="@android:drawable/ic_menu_search"
+            android:title="@string/action_scan_start" tools:ignore="AppCompatResource"/>
+</menu>

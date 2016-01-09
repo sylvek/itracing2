@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.widget.Toast;
 import net.sylvek.itracing2.Preferences;
 import net.sylvek.itracing2.R;
+import net.sylvek.itracing2.database.Devices;
 
 /**
  * Created by sylvek on 27/05/2015.
@@ -26,7 +27,8 @@ public class StartRingPhone extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent)
     {
         if (currentRingtone == null) {
-            Uri sound = Uri.parse(Preferences.getRingtone(context));
+            final String address = intent.getStringExtra(Devices.ADDRESS);
+            Uri sound = Uri.parse(Preferences.getRingtone(context, address));
             currentRingtone = RingtoneManager.getRingtone(context, sound);
         }
 
