@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <Preference
-            android:title="@string/start_immediate_alert"
-            android:summary="@string/immediate_alert_summary"
-            android:enabled="false"
-            android:key="action_button"/>
+    <net.sylvek.itracing2.CirclePercentPreference
+            android:key="circle_percent"
+            android:enabled="false"/>
     <ListPreference
             android:key="action_simple_button_list"
             android:title="@string/simple_button_action"
@@ -45,10 +43,4 @@
             android:title="@string/custom_action"
             android:summary="@string/custom_action_summary"
             android:key="custom_action"/>
-    <Preference
-            android:title="@string/battery_info"
-            android:key="battery_info"/>
-    <Preference
-            android:title="@string/rssi_info"
-            android:key="rssi_info"/>
 </PreferenceScreen>

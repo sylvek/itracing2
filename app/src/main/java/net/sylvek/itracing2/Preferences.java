@@ -15,10 +15,8 @@ public class Preferences {
     public static final String ACTION_DOUBLE_BUTTON_LIST = "action_double_button_list";
     public static final String ACTION_OUT_OF_BAND_LIST = "action_out_of_band_list";
     public static final String ACTION_ON_POWER_OFF = "action_on_power_off";
-    public static final String ACTION_BUTTON = "action_button";
-    public static final String BATTERY_INFO = "battery_info";
-    public static final String RSSI_INFO = "rssi_info";
     public static final String RINGTONE = "ring_tone";
+    public static final String CIRCLE_PERCENT = "circle_percent";
     public static final String FOREGROUND = "action_foreground";
     private static final String DOUBLE_BUTTON_DELAY = "double_button_delay";
     private static final String CUSTOM_ACTION = "custom_action";

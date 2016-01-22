@@ -7,6 +7,7 @@ import android.preference.PreferenceFragment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 import net.sylvek.itracing2.database.Devices;
 
 /**
@@ -15,6 +16,8 @@ import net.sylvek.itracing2.database.Devices;
 public class DashboardFragment extends PreferenceFragment {
 
     private OnDashboardListener presenter;
+
+    private boolean activated;
 
     public static DashboardFragment instance(final String address)
     {
@@ -33,21 +36,20 @@ public class DashboardFragment extends PreferenceFragment {
         final String address = getArguments().getString(Devices.ADDRESS);
         this.getPreferenceManager().setSharedPreferencesName(address);
         this.addPreferencesFromResource(R.xml.device_preferences);
-        findPreference(Preferences.ACTION_BUTTON).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference)
-            {
-                final boolean activate = preference.getTitle().equals(getString(R.string.start_immediate_alert));
-                preference.setTitle((activate) ? R.string.stop_immediate_alert : R.string.start_immediate_alert);
-                presenter.onImmediateAlert(address, activate);
-                return true;
-            }
-        });
         findPreference(Preferences.RINGTONE).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference)
             {
                 presenter.onRingStone();
+                return true;
+            }
+        });
+        findPreference(Preferences.CIRCLE_PERCENT).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference)
+            {
+                activated = (activated) ? false : true;
+                presenter.onImmediateAlert(address, activated);
                 return true;
             }
         });
@@ -96,22 +98,22 @@ public class DashboardFragment extends PreferenceFragment {
 
     public void setImmediateAlertEnabled(final boolean enabled)
     {
-        findPreference(Preferences.ACTION_BUTTON).setEnabled(enabled);
+        findPreference(Preferences.CIRCLE_PERCENT).setEnabled(enabled);
     }
 
-    public void setPercent(final String percent)
+    public void setPercent(final int percent)
     {
-        findPreference(Preferences.BATTERY_INFO).setSummary(percent);
+        ((CirclePercentPreference) findPreference(Preferences.CIRCLE_PERCENT)).setBatteryPercent(Float.valueOf(percent));
     }
 
-    public void setRssi(String rssi)
+    public void setRssi(int rssi)
     {
-        findPreference(Preferences.RSSI_INFO).setSummary(rssi);
+        ((CirclePercentPreference) findPreference(Preferences.CIRCLE_PERCENT)).setRssiValue(Float.valueOf(rssi));
     }
 
     public interface OnDashboardListener {
 
-        void onImmediateAlert(String address, boolean activate);
+        void onImmediateAlert(String address, boolean activated);
 
         void onDashboardStarted();
 

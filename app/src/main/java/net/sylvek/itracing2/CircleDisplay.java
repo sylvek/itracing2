@@ -455,6 +455,17 @@ public class CircleDisplay extends View implements OnGestureListener {
     }
 
     /**
+     * set the color of the front
+     *
+     * @param color
+     */
+    public void setInnerColor(int color)
+    {
+        mInnerCirclePaint.setColor(color);
+        invalidate();
+    }
+
+    /**
      * set the size of the center text in dp
      *
      * @param size

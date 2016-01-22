@@ -74,7 +74,7 @@ public class DashboardActivity extends CommonActivity implements DashboardFragme
                         @Override
                         public void run()
                         {
-                            dashboardFragment.setPercent(intent.getStringExtra(BluetoothLEService.BATTERY_LEVEL));
+                            dashboardFragment.setPercent(intent.getIntExtra(BluetoothLEService.BATTERY_LEVEL, 0));
                         }
                     });
                 }
@@ -94,7 +94,7 @@ public class DashboardActivity extends CommonActivity implements DashboardFragme
                         @Override
                         public void run()
                         {
-                            dashboardFragment.setRssi(intent.getStringExtra(BluetoothLEService.RSSI_RECEIVED));
+                            dashboardFragment.setRssi(intent.getIntExtra(BluetoothLEService.RSSI_RECEIVED, 0));
                         }
                     });
                 }

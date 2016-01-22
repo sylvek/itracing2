@@ -12,7 +12,6 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.content.ComponentName;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -89,10 +88,7 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
 
     private void selectDevice(String name, String address)
     {
-        final ContentValues device = new ContentValues();
-        device.put(Devices.NAME, name);
-        device.put(Devices.ADDRESS, address);
-        Devices.getDevicesHelperInstance(this).getWritableDatabase().insert(Devices.TABLE, null, device);
+        Devices.insert(this, name, address);
         devicesFragment.refresh();
     }
 
