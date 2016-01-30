@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">iTracing2</string>
+    <string name="ble_not_supported">извините Bluetooth LE не поддерживается на вашем устройстве</string>
+    <string name="action_scan_start">обнаружить</string>
+    <string name="beacon_not_found">​​брелок не найден</string>
+    <string name="action_connect">подключить</string>
+    <string name="start_immediate_alert">начать звон брелок</string>
+    <string name="stop_immediate_alert">остановить звон брелок</string>
+    <string name="link_background">ВСЕГДА-на</string>
+    <string name="stop_ring">стопорное кольцо</string>
+    <string name="stop_vibrate">остановить вибрацию</string>
+    <string name="simple_button_action">просто нажмите варианты</string>
+    <string name="simple_button_action_summary">Что означает кнопка действия?</string>
+    <string name="double_button_action">дважды нажмите варианты</string>
+    <string name="double_button_action_summary">Что означает кнопка действия?</string>
+    <string name="link_background_summary">позволяет активировать больше возможностей</string>
+    <string name="battery_info">Информация батарея</string>
+    <string name="immediate_alert_summary">нажмите здесь, чтобы предупредить связку ключей</string>
+    <string name="welcome_text">Добро пожаловать на iTracing2.\n\nЭто приложение позволяет вам общаться с вашим ISEE (Quintic ProXR) Bluetooth устройства.\n
+                Если, как я, беднейших приложение "iTracing" Вас беспокоит, наслаждаться использовать свой собственный вариант:) \n\n
+                Пожалуйста, нажмите на кнопку увеличительное стекло, чтобы найти вас ISEE устройство (это должно быть названо "Quintic ProXR"). \n\n
+                Если ничего не обнаружено, появляется окно, содержащее все обнаруженные совместимых устройств. \n
+                Если это окно пустое, вы должны перезагрузить ITAG (потому что это дешевое устройство) и повторите попытку. \n\n
+                Обратите внимание, что ссылка потери и особенность кнопку ITAG доступны только с опцией "фон" ссылка. \n\n
+                Имейте в виду, что я развивать iTracing2 только на мое свободное время ;-)</string>
+    <string name="donate">пожертвовать (PayPal)</string>
+    <string name="feedback">обратной связи</string>
+    <string name="donate_summary">чтобы поддержать мою работу :)</string>
+    <string name="feedback_summary">не стесняйтесь, чтобы улучшить этот продукт</string>
+    <string name="display_last_position">отобразить последнюю записанную позицию</string>
+    <string name="out_of_band_action">вне диапазона действия</string>
+    <string name="out_of_band_action_summary">что это действие?</string>
+    <string name="action_on_power_off">связь потеряна на мощности от</string>
+    <string name="action_on_power_off_summary">ссылка теряется, если брелок или Bluetooth является выключения</string>
+    <string name="ring_tone_summary">выберите мелодию для действий</string>
+    <string name="ring_tone">кольцо тон</string>
+    <string name="rssi_info">RSSI Информация</string>
+    <string name="actions">Брелок действия</string>
+    <string name="select_device">выберите устройство</string>
+    <string name="ring_tone_not_found">​​кольцо тон не найден! Пожалуйста, выберите другое, убедитесь, что у вас есть кольцо по умолчанию тон линии, либо, что громкость звука вверх.</string>
+    <string name="vibrator_not_found">вибратор не найден! пожалуйста, убедитесь, что у вас есть эта функция на вашем телефоне.</string>
+    <string name="something_goes_wrong">что-то идет не так!</string>
+    <string name="double_button_delay">Дважды нажмите задержка</string>
+    <string name="double_button_delay_summary">задержки между двумя щелчками (300 мс если пусто)</string>
+    <string name="default_double_button_delay">300</string>
+    <string name="custom_action">пользовательских действий</string>
+    <string name="custom_action_summary">http(s)://.. или намерение строка действия</string>
+    <string name="remove">удалить связку ключей</string>
+    <string name="confirm_remove_keyring">Подтвердите удалить эту связку</string>
+    <string name="confirm_change_name">Подтвердите, чтобы изменить имя связки ключей</string>
+    <string name="link_loss_disabled">отключить эту функцию может происходит звон свой брелок</string>
+    <string name="foreground_started">запущен в режиме переднего плана</string>
+    <string name="preferences">предпочтения</string>
+    <string name="action_foreground_summary">улучшает связь между смартфоном и устройств</string>
+    <string name="action_foreground">Режим план</string>
+    <string name="ring_the_device">кольцо в связку ключей</string>
+    <string-array name="button_actions">
+        <item>ничего</item>
+        <item>кольцо телефон</item>
+        <item>вибрировать телефон</item>
+        <item>захватить мое положение</item>
+        <item>вызвать URL или трансляции намерения действий</item>
+        <item>вещания умысел</item>
+    </string-array>
+    <string-array name="button_actions_values">
+        <item>NOTHING</item>
+        <item>RING_PHONE</item>
+        <item>VIBRATE_PHONE</item>
+        <item>CAPTURE_POSITION</item>
+        <item>CUSTOM_ACTION</item>
+        <item>BROADCAST_INTENT</item>
+    </string-array>
+</resources>
