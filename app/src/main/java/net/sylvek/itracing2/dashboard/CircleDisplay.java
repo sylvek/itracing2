@@ -1,4 +1,4 @@
-package net.sylvek.itracing2;
+package net.sylvek.itracing2.dashboard;
 
 import java.text.DecimalFormat;
 
@@ -838,6 +838,21 @@ public class CircleDisplay extends View implements OnGestureListener {
         dist = (float) Math.sqrt(Math.pow(xDist, 2.0) + Math.pow(yDist, 2.0));
 
         return dist;
+    }
+
+    public void startInfiniteLoop()
+    {
+        setDrawText(false);
+        showValue(100f, 100f, true);
+        mDrawAnimator.setRepeatCount(ObjectAnimator.INFINITE);
+        mDrawAnimator.start();
+    }
+
+    public void stopInfiniteLoop()
+    {
+        setDrawText(true);
+        mDrawAnimator.setRepeatCount(0);
+        mDrawAnimator.cancel();
     }
 
     /**

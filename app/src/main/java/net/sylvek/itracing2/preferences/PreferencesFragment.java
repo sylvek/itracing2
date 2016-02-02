@@ -1,11 +1,12 @@
-package net.sylvek.itracing2;
+package net.sylvek.itracing2.preferences;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
-import net.sylvek.itracing2.database.Devices;
+import net.sylvek.itracing2.Preferences;
+import net.sylvek.itracing2.R;
 
 /**
  * Created by sylvek on 18/05/2015.

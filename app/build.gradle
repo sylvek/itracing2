@@ -8,8 +8,8 @@ android {
         applicationId "net.sylvek.itracing2"
         minSdkVersion 18
         targetSdkVersion 21
-        versionCode 37
-        versionName "2.1.0"
+        versionCode 38
+        versionName "2.1.1"
     }
     signingConfigs {
         release {
@@ -29,7 +29,9 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.android.support:support-v13:23.1.0'
+    compile 'com.android.support:design:23.1.1'
 }
 
 gradle.taskGraph.whenReady { taskGraph ->

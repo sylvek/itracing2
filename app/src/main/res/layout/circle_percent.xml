@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="250dp"
+                android:layout_height="fill_parent"
                 android:padding="20dp">
-    <net.sylvek.itracing2.CircleDisplay
+    <net.sylvek.itracing2.dashboard.CircleDisplay
             android:id="@+id/circleDisplay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context="net.sylvek.itracing2.DashboardActivity">
+      tools:context="net.sylvek.itracing2.dashboard.DashboardActivity">
     <item
             android:id="@+id/delete"
             android:orderInCategory="100"

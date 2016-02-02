@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <net.sylvek.itracing2.CirclePercentPreference
-            android:key="circle_percent"
-            android:enabled="false"/>
     <ListPreference
             android:key="action_simple_button_list"
             android:title="@string/simple_button_action"

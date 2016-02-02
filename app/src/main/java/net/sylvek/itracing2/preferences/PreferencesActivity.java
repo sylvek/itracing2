@@ -1,4 +1,4 @@
-package net.sylvek.itracing2;
+package net.sylvek.itracing2.preferences;
 
 import android.content.ComponentName;
 import android.content.Intent;
@@ -6,6 +6,9 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import net.sylvek.itracing2.BluetoothLEService;
+import net.sylvek.itracing2.CommonActivity;
+import net.sylvek.itracing2.R;
 
 /**
  * Created by sylvek on 07/01/2016.
@@ -35,7 +38,7 @@ public class PreferencesActivity extends CommonActivity implements PreferencesFr
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

@@ -24,6 +24,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 import net.sylvek.itracing2.database.Devices;
+import net.sylvek.itracing2.devices.DevicesActivity;
 
 /**
  * Created by sylvek on 18/05/2015.

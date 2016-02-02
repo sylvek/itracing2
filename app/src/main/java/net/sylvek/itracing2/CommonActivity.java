@@ -1,13 +1,13 @@
 package net.sylvek.itracing2;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by sylvek on 28/12/2015.
  */
-public abstract class CommonActivity extends Activity {
+public abstract class CommonActivity extends AppCompatActivity {
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
@@ -17,7 +17,8 @@ public abstract class CommonActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.main);
-        getActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(android.R.drawable.ic_menu_close_clear_cancel);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         mSwipeRefreshLayout.setEnabled(false);
