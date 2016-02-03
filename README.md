@@ -12,6 +12,6 @@ several actions are available :
 
 Manipulate the camera is not allowed unless re-write a entire app (so, this is not my priority)
 
-Several users told me to add multi-devices support… [a beta version is available!](https://play.google.com/apps/testing/net.sylvek.itracing2)
+[you could try the beta version !](https://play.google.com/apps/testing/net.sylvek.itracing2)
 
 **don't remember that is a personal project and feel free to participate :)**
