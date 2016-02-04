@@ -14,4 +14,8 @@ Manipulate the camera is not allowed unless re-write a entire app (so, this is n
 
 [you could try the beta version !](https://play.google.com/apps/testing/net.sylvek.itracing2)
 
+# special thanks!
+
+- thanks to PAINTKILLER (se-sktv@mail.ru) to his russian translation :)
+
 **don't remember that is a personal project and feel free to participate :)**

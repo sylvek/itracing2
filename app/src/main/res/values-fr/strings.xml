@@ -48,6 +48,7 @@
     <string name="link_loss_disabled">désactiver cette option pourrait faire sonner votre trousseau de clés</string>
     <string name="foreground_started">démarré en premier plan</string>
     <string name="preferences">préférences</string>
+    <string name="dashboard">tableau de bord</string>
     <string name="action_foreground_summary">améliore le lien entre le téléphone et les trousseaux de clés</string>
     <string name="action_foreground">service en premier plan</string>
     <string name="ring_the_device">sonner le trousseau de clés</string>

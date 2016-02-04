@@ -1,4 +1,4 @@
-package net.sylvek.itracing2;
+package net.sylvek.itracing2.devices;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,7 +12,6 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.content.ComponentName;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,10 +21,23 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
+import net.sylvek.itracing2.AlertDialogFragment;
+import net.sylvek.itracing2.BluetoothLEService;
+import net.sylvek.itracing2.CommonActivity;
+import net.sylvek.itracing2.ConfirmAlertDialogFragment;
+import net.sylvek.itracing2.Preferences;
+import net.sylvek.itracing2.R;
+import net.sylvek.itracing2.dashboard.DashboardActivity;
 import net.sylvek.itracing2.database.Devices;
+import net.sylvek.itracing2.preferences.PreferencesActivity;
 
 public class DevicesActivity extends CommonActivity implements DevicesFragment.OnDevicesListener, DeviceAlertDialogFragment.OnConfirmAlertDialogListener, ConfirmAlertDialogFragment.OnConfirmAlertDialogListener {
 
@@ -89,10 +101,7 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
 
     private void selectDevice(String name, String address)
     {
-        final ContentValues device = new ContentValues();
-        device.put(Devices.NAME, name);
-        device.put(Devices.ADDRESS, address);
-        Devices.getDevicesHelperInstance(this).getWritableDatabase().insert(Devices.TABLE, null, device);
+        Devices.insert(this, name, address);
         devicesFragment.refresh();
     }
 
@@ -151,7 +160,7 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
                 if (!devices.isEmpty()) {
                     displayListScannedDevices();
                 } else {
-                    Toast.makeText(DevicesActivity.this, R.string.beacon_not_found, Toast.LENGTH_LONG).show();
+                    devicesFragment.snack(getString(R.string.beacon_not_found));
                 }
             }
         };
@@ -194,15 +203,13 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
         DeviceAlertDialogFragment.instance(name, address).show(getFragmentManager(), "dialog");
     }
 
-    @Override
-    public void onFeedback()
+    private void onFeedback()
     {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/sylvek/itracing2/issues"));
         startActivity(browserIntent);
     }
 
-    @Override
-    public void onDonate()
+    private void onDonate()
     {
         Preferences.setDonated(this, true);
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.me/SylvainMaucourt"));
@@ -222,12 +229,6 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
                 service.disconnect(address);
             }
         }
-    }
-
-    @Override
-    public void onPreferences()
-    {
-        startActivity(new Intent(this, PreferencesActivity.class));
     }
 
     private void displayListScannedDevices()
@@ -291,5 +292,30 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.devices, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        if (item.getItemId() == R.id.action_feedback) {
+            this.onFeedback();
+            return true;
+        }
+        if (item.getItemId() == R.id.action_donate) {
+            this.onDonate();
+            return true;
+        }
+        if (item.getItemId() == R.id.action_preferences) {
+            startActivity(new Intent(this, PreferencesActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

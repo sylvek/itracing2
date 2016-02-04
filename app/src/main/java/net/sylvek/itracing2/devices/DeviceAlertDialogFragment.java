@@ -1,4 +1,4 @@
-package net.sylvek.itracing2;
+package net.sylvek.itracing2.devices;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import net.sylvek.itracing2.R;
 
 /**
  * Created by sylvek on 29/12/2015.

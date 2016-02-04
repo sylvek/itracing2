@@ -70,6 +70,14 @@ public class Devices {
         Devices.getDevicesHelperInstance(context).getWritableDatabase().update(Devices.TABLE, contentValues, "address = ?", new String[]{address});
     }
 
+    public static void insert(Context context, String name, String address)
+    {
+        final ContentValues device = new ContentValues();
+        device.put(Devices.NAME, name);
+        device.put(Devices.ADDRESS, address);
+        Devices.getDevicesHelperInstance(context).getWritableDatabase().insert(Devices.TABLE, null, device);
+    }
+
     public static class DevicesHelper extends SQLiteOpenHelper {
 
         private DevicesHelper(Context context)

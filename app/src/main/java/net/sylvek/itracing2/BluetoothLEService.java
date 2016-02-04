@@ -24,6 +24,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 import net.sylvek.itracing2.database.Devices;
+import net.sylvek.itracing2.devices.DevicesActivity;
 
 /**
  * Created by sylvek on 18/05/2015.
@@ -115,8 +116,7 @@ public class BluetoothLEService extends Service {
         public void onReadRemoteRssi(BluetoothGatt gatt, int rssi, int status)
         {
             final Intent rssiIntent = new Intent(RSSI_RECEIVED);
-            final int quality = 2 * (rssi + 100);
-            rssiIntent.putExtra(RSSI_RECEIVED, quality + "%");
+            rssiIntent.putExtra(RSSI_RECEIVED, rssi);
             broadcaster.sendBroadcast(rssiIntent);
         }
 
@@ -220,7 +220,7 @@ public class BluetoothLEService extends Service {
             if (characteristic.getValue() != null && characteristic.getValue().length > 0) {
                 final Intent batteryLevel = new Intent(BATTERY_LEVEL);
                 final byte level = characteristic.getValue()[0];
-                batteryLevel.putExtra(BATTERY_LEVEL, Integer.valueOf(level) + "%");
+                batteryLevel.putExtra(BATTERY_LEVEL, Integer.valueOf(level));
                 broadcaster.sendBroadcast(batteryLevel);
             }
         }

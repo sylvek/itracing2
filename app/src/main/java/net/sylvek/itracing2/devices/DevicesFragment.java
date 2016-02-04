@@ -1,4 +1,4 @@
-package net.sylvek.itracing2;
+package net.sylvek.itracing2.devices;
 
 import android.app.Activity;
 import android.app.ListFragment;
@@ -7,17 +7,18 @@ import android.content.Context;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import net.sylvek.itracing2.R;
 import net.sylvek.itracing2.database.Devices;
 import net.sylvek.itracing2.database.SQLiteCursorLoader;
 
@@ -30,6 +31,7 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
 
     private OnDevicesListener presenter;
     private DevicesCursorAdapter mAdapter;
+    private CoordinatorLayout coordinatorLayout;
 
     public static DevicesFragment instance()
     {
@@ -40,42 +42,23 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        this.setHasOptionsMenu(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         getLoaderManager().initLoader(0, null, this);
-        return inflater.inflate(R.layout.devices, container, false);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
-    {
-        inflater.inflate(R.menu.devices, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        if (item.getItemId() == R.id.action_scan) {
-            this.presenter.onScanStart();
-            return true;
-        }
-        if (item.getItemId() == R.id.action_feedback) {
-            this.presenter.onFeedback();
-            return true;
-        }
-        if (item.getItemId() == R.id.action_donate) {
-            this.presenter.onDonate();
-            return true;
-        }
-        if (item.getItemId() == R.id.action_preferences) {
-            this.presenter.onPreferences();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        final View view = inflater.inflate(R.layout.devices, container, false);
+        this.coordinatorLayout = (CoordinatorLayout) view.findViewById(R.id.coordinatorLayout);
+        final FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                presenter.onScanStart();
+            }
+        });
+        return view;
     }
 
     @Override
@@ -157,9 +140,12 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
         getLoaderManager().restartLoader(0, null, this);
     }
 
-    public interface OnDevicesListener {
+    public void snack(String message)
+    {
+        Snackbar.make(this.coordinatorLayout, message, Snackbar.LENGTH_LONG).show();
+    }
 
-        void onScanStart();
+    public interface OnDevicesListener {
 
         void onDevicesStarted();
 
@@ -169,13 +155,9 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
 
         void onChangeDeviceName(String name, String address);
 
-        void onFeedback();
-
-        void onDonate();
-
         void onDeviceStateChanged(String address, boolean enabled);
 
-        void onPreferences();
+        void onScanStart();
     }
 
     class DevicesCursorAdapter extends SimpleCursorAdapter {
