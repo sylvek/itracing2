@@ -13,7 +13,8 @@
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText" android:layout_gravity="center_horizontal"/>
+            android:id="@+id/editText" android:layout_gravity="center_horizontal"
+        android:labelFor="@+id/editText" />
     <Button
             android:layout_marginTop="16dp"
             android:layout_width="match_parent"
