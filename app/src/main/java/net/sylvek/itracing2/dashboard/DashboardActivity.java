@@ -106,7 +106,7 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
             public void onClick(View view)
             {
 //                mFab.setImageResource((activated) ? android.R.drawable.ic_lock_silent_mode_off : android.R.drawable.ic_lock_silent_mode);
-                activated = (activated) ? false : true;
+                activated = !activated;
                 onImmediateAlert(address, activated);
             }
         });
