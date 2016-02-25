@@ -1,5 +1,8 @@
 package net.sylvek.itracing2;
 
+import java.util.Collections;
+import java.util.Set;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.RingtoneManager;
@@ -26,19 +29,19 @@ public class Preferences {
         return context.getSharedPreferences(address, Context.MODE_PRIVATE);
     }
 
-    public static String getActionSimpleButton(Context context, String address)
+    public static Set<String> getActionSimpleButton(Context context, String address)
     {
-        return getSharedPreferences(context, address).getString(ACTION_SIMPLE_BUTTON_LIST, null);
+        return getSharedPreferences(context, address).getStringSet(ACTION_SIMPLE_BUTTON_LIST, Collections.<String>emptySet());
     }
 
-    public static String getActionDoubleButton(Context context, String address)
+    public static Set<String> getActionDoubleButton(Context context, String address)
     {
-        return getSharedPreferences(context, address).getString(ACTION_DOUBLE_BUTTON_LIST, null);
+        return getSharedPreferences(context, address).getStringSet(ACTION_DOUBLE_BUTTON_LIST, Collections.<String>emptySet());
     }
 
-    public static String getActionOutOfBand(Context context, String address)
+    public static Set<String> getActionOutOfBand(Context context, String address)
     {
-        return getSharedPreferences(context, address).getString(ACTION_OUT_OF_BAND_LIST, null);
+        return getSharedPreferences(context, address).getStringSet(ACTION_OUT_OF_BAND_LIST, Collections.<String>emptySet());
     }
 
     public static boolean isActionOnPowerOff(Context context, String address)

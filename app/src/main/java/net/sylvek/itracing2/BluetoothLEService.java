@@ -105,8 +105,9 @@ public class BluetoothLEService extends Service {
             if (actionOnPowerOff || status == 8) {
                 Log.d(TAG, "onConnectionStateChange() address: " + address + " newState => " + newState);
                 if (newState == BluetoothProfile.STATE_DISCONNECTED) {
-                    String action = Preferences.getActionOutOfBand(getApplicationContext(), this.address);
-                    sendAction(OUT_OF_BAND, action);
+                    for (String action : Preferences.getActionOutOfBand(getApplicationContext(), this.address)) {
+                        sendAction(OUT_OF_BAND, action);
+                    }
                     enablePeerDeviceNotifyMe(gatt, false);
                 }
             }
@@ -188,8 +189,9 @@ public class BluetoothLEService extends Service {
                 Log.d(TAG, "onCharacteristicChanged() - double click");
                 lastChange = 0;
                 handler.removeCallbacks(r);
-                String action = Preferences.getActionDoubleButton(getApplicationContext(), this.address);
-                sendAction(DOUBLE_CLICK, action);
+                for (String action : Preferences.getActionDoubleButton(getApplicationContext(), this.address)) {
+                    sendAction(DOUBLE_CLICK, action);
+                }
             } else {
                 lastChange = now;
                 r = new Runnable() {
@@ -197,8 +199,9 @@ public class BluetoothLEService extends Service {
                     public void run()
                     {
                         Log.d(TAG, "onCharacteristicChanged() - simple click");
-                        String action = Preferences.getActionSimpleButton(getApplicationContext(), CustomBluetoothGattCallback.this.address);
-                        sendAction(SIMPLE_CLICK, action);
+                        for (String action : Preferences.getActionSimpleButton(getApplicationContext(), CustomBluetoothGattCallback.this.address)) {
+                            sendAction(SIMPLE_CLICK, action);
+                        }
                     }
                 };
                 handler.postDelayed(r, delayDoubleClick);

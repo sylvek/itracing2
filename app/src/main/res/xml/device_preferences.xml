@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListPreference
+    <MultiSelectListPreference
             android:key="action_simple_button_list"
             android:title="@string/simple_button_action"
             android:summary="@string/simple_button_action_summary"
             android:entries="@array/button_actions"
             android:entryValues="@array/button_actions_values"
-            android:defaultValue="NOTHING"/>
-    <ListPreference
+            android:defaultValue="@array/empty_array"/>
+    <MultiSelectListPreference
             android:key="action_double_button_list"
             android:title="@string/double_button_action"
             android:summary="@string/double_button_action_summary"
             android:entries="@array/button_actions"
             android:entryValues="@array/button_actions_values"
-            android:defaultValue="NOTHING"/>
-    <ListPreference
+            android:defaultValue="@array/empty_array"/>
+    <MultiSelectListPreference
             android:key="action_out_of_band_list"
             android:title="@string/out_of_band_action"
             android:summary="@string/out_of_band_action_summary"
             android:entries="@array/button_actions"
             android:entryValues="@array/button_actions_values"
-            android:defaultValue="NOTHING"/>
+            android:defaultValue="@array/empty_array"/>
     <CheckBoxPreference
             android:key="action_on_power_off"
             android:title="@string/action_on_power_off"
