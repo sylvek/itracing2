@@ -182,7 +182,7 @@ public class BluetoothLEService extends Service {
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic)
         {
             Log.d(TAG, "onCharacteristicChanged()");
-            final long delayDoubleClick = Preferences.getDoubleButtonDelay(getApplicationContext(), this.address);
+            final long delayDoubleClick = Preferences.getDoubleButtonDelay(getApplicationContext());
 
             final long now = SystemClock.elapsedRealtime();
             if (lastChange + delayDoubleClick > now) {

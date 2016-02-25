@@ -31,12 +31,6 @@
             android:summary="@string/ring_tone_summary"
             android:key="ring_tone"/>
     <EditTextPreference
-            android:title="@string/double_button_delay"
-            android:summary="@string/double_button_delay_summary"
-            android:inputType="number"
-            android:key="double_button_delay"
-            android:defaultValue="@string/default_double_button_delay"/>
-    <EditTextPreference
             android:title="@string/custom_action"
             android:summary="@string/custom_action_summary"
             android:key="custom_action"/>

@@ -24,6 +24,12 @@ public class Preferences {
     private static final String CUSTOM_ACTION = "custom_action";
     private static final String DONATED = "donated";
 
+    public static long getDoubleButtonDelay(Context context)
+    {
+        final String defaultDoubleButtonDelay = context.getString(R.string.default_double_button_delay);
+        return Long.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString(DOUBLE_BUTTON_DELAY, defaultDoubleButtonDelay));
+    }
+
     private static SharedPreferences getSharedPreferences(Context context, String address)
     {
         return context.getSharedPreferences(address, Context.MODE_PRIVATE);
@@ -58,12 +64,6 @@ public class Preferences {
     public static void setRingtone(Context context, String address, String uri)
     {
         getSharedPreferences(context, address).edit().putString(RINGTONE, uri).commit();
-    }
-
-    public static long getDoubleButtonDelay(Context context, String address)
-    {
-        final String defaultDoubleButtonDelay = context.getString(R.string.default_double_button_delay);
-        return Long.valueOf(getSharedPreferences(context, address).getString(DOUBLE_BUTTON_DELAY, defaultDoubleButtonDelay));
     }
 
     public static String getCustomAction(Context context, String address)
