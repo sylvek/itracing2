@@ -55,13 +55,17 @@
     <string-array name="button_actions">
         <item>faire sonner le téléphone</item>
         <item>faire vibrer le téléphone</item>
+        <item>arrêter la sonnerie</item>
+        <item>arrêter les vibrations</item>
         <item>capturer ma position</item>
         <item>appeler une URL</item>
         <item>envoyer un message technique</item>
     </string-array>
     <string-array name="button_actions_values">
-        <item>RING_PHONE</item>
-        <item>VIBRATE_PHONE</item>
+        <item>START_RING_PHONE</item>
+        <item>START_VIBRATE_PHONE</item>
+        <item>STOP_RING_PHONE</item>
+        <item>STOP_VIBRATE_PHONE</item>
         <item>CAPTURE_POSITION</item>
         <item>CUSTOM_ACTION</item>
         <item>BROADCAST_INTENT</item>

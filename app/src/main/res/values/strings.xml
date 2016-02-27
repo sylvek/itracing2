@@ -57,15 +57,19 @@
     <string name="action_foreground">foreground mode</string>
     <string name="ring_the_device">ring the keyring</string>
     <string-array name="button_actions">
-        <item>ring the phone</item>
-        <item>vibrate the phone</item>
+        <item>start ring the phone</item>
+        <item>start vibrate the phone</item>
+        <item>stop ring the phone</item>
+        <item>stop vibrate the phone</item>
         <item>capture my position</item>
         <item>call a url or broadcast intent action</item>
         <item>broadcast an intent</item>
     </string-array>
     <string-array name="button_actions_values">
-        <item>RING_PHONE</item>
-        <item>VIBRATE_PHONE</item>
+        <item>START_RING_PHONE</item>
+        <item>START_VIBRATE_PHONE</item>
+        <item>STOP_RING_PHONE</item>
+        <item>STOP_VIBRATE_PHONE</item>
         <item>CAPTURE_POSITION</item>
         <item>CUSTOM_ACTION</item>
         <item>BROADCAST_INTENT</item>
