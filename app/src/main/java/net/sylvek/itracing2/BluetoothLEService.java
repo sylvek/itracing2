@@ -54,8 +54,8 @@ public class BluetoothLEService extends Service {
     public static final long TRACK_REMOTE_RSSI_DELAY_MILLIS = 5000L;
     public static final int FOREGROUND_ID = 1664;
     public static final String OUT_OF_BAND = "out_of_band";
-    public static final String DOUBLE_CLICK = "double-click";
-    public static final String SIMPLE_CLICK = "simple-click";
+    public static final String DOUBLE_CLICK = "double_click";
+    public static final String SIMPLE_CLICK = "simple_click";
     public static final String BROADCAST_INTENT_ACTION = "BROADCAST_INTENT";
 
     private BluetoothDevice mDevice;
@@ -210,8 +210,9 @@ public class BluetoothLEService extends Service {
 
         private void sendAction(String source, String action)
         {
-            final Intent intent = new Intent(BROADCAST_INTENT_ACTION.equals(action) ? ACTION_PREFIX + source : ACTION_PREFIX + action);
+            final Intent intent = new Intent(BROADCAST_INTENT_ACTION.equals(action) ? ACTION_PREFIX + action + "." + source : ACTION_PREFIX + action);
             intent.putExtra(Devices.ADDRESS, this.address);
+            intent.putExtra(Devices.SOURCE, source);
             sendBroadcast(intent);
             Log.d(TAG, "onCharacteristicChanged() address: " + address + " - sendBroadcast action: " + intent.getAction());
         }

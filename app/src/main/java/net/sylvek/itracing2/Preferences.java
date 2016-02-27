@@ -14,6 +14,10 @@ import android.preference.PreferenceManager;
  */
 public class Preferences {
 
+    public static enum Source {
+        single_click, double_click, out_of_band;
+    }
+
     public static final String ACTION_SIMPLE_BUTTON_LIST = "action_simple_button_list";
     public static final String ACTION_DOUBLE_BUTTON_LIST = "action_double_button_list";
     public static final String ACTION_OUT_OF_BAND_LIST = "action_out_of_band_list";
@@ -55,20 +59,20 @@ public class Preferences {
         return getSharedPreferences(context, address).getBoolean(ACTION_ON_POWER_OFF, false);
     }
 
-    public static String getRingtone(Context context, String address)
+    public static String getRingtone(Context context, String address, String source)
     {
         final Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-        return getSharedPreferences(context, address).getString(RINGTONE, sound.toString());
+        return getSharedPreferences(context, address).getString(RINGTONE + "_" + source, sound.toString());
     }
 
-    public static void setRingtone(Context context, String address, String uri)
+    public static void setRingtone(Context context, String address, String source, String uri)
     {
-        getSharedPreferences(context, address).edit().putString(RINGTONE, uri).commit();
+        getSharedPreferences(context, address).edit().putString(RINGTONE + "_" + source, uri).commit();
     }
 
-    public static String getCustomAction(Context context, String address)
+    public static String getCustomAction(Context context, String address, String source)
     {
-        return getSharedPreferences(context, address).getString(CUSTOM_ACTION, "");
+        return getSharedPreferences(context, address).getString(CUSTOM_ACTION + "_" + source, "");
     }
 
     public static boolean clearAll(Context context, String address)
