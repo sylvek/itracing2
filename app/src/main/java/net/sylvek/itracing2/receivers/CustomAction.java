@@ -23,7 +23,8 @@ public class CustomAction extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent)
     {
         final String address = intent.getStringExtra(Devices.ADDRESS);
-        final String action = Preferences.getCustomAction(context, address);
+        final String source = intent.getStringExtra(Devices.SOURCE);
+        final String action = Preferences.getCustomAction(context, address, source);
 
         if (action.startsWith("http://")) {
             new CallUrl<>(action).start();

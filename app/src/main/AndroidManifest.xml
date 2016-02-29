@@ -35,12 +35,12 @@
         </receiver>
         <receiver android:name=".receivers.StartVibratePhone">
             <intent-filter>
-                <action android:name="net.sylvek.itracing2.action.VIBRATE_PHONE"/>
+                <action android:name="net.sylvek.itracing2.action.START_VIBRATE_PHONE"/>
             </intent-filter>
         </receiver>
         <receiver android:name=".receivers.StartRingPhone">
             <intent-filter>
-                <action android:name="net.sylvek.itracing2.action.RING_PHONE"/>
+                <action android:name="net.sylvek.itracing2.action.START_RING_PHONE"/>
             </intent-filter>
         </receiver>
         <receiver android:name=".receivers.CapturePosition">
@@ -53,7 +53,15 @@
                 <action android:name="net.sylvek.itracing2.action.CUSTOM_ACTION"/>
             </intent-filter>
         </receiver>
-        <receiver android:name=".receivers.StopRingPhone"/>
-        <receiver android:name=".receivers.StopVibratePhone"/>
+        <receiver android:name=".receivers.StopRingPhone">
+            <intent-filter>
+                <action android:name="net.sylvek.itracing2.action.STOP_RING_PHONE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receivers.StopVibratePhone">
+            <intent-filter>
+                <action android:name="net.sylvek.itracing2.action.STOP_VIBRATE_PHONE"/>
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

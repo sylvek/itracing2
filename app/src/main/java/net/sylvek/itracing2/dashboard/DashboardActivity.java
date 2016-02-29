@@ -32,7 +32,6 @@ import net.sylvek.itracing2.database.Devices;
  */
 public class DashboardActivity extends CommonActivity implements DevicePreferencesFragment.OnDevicePreferencesListener, DashboardFragment.OnDashboardListener, ConfirmAlertDialogFragment.OnConfirmAlertDialogListener {
 
-    public static final int REQUEST_CODE_RING_STONE = 5;
     private static final int NUM_PAGES = 2;
 
     private BluetoothLEService service;
@@ -157,13 +156,13 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
     }
 
     @Override
-    public void onRingStone()
+    public void onRingStone(int source)
     {
         Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_RINGTONE);
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, getString(R.string.ring_tone));
-        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, Uri.parse(Preferences.getRingtone(this, address)));
-        startActivityForResult(intent, REQUEST_CODE_RING_STONE);
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, Uri.parse(Preferences.getRingtone(this, address, Preferences.Source.values()[source].name())));
+        startActivityForResult(intent, source);
     }
 
     @Override
@@ -186,10 +185,24 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_RING_STONE) {
+        if (resultCode == Activity.RESULT_OK) {
+            final Preferences.Source source;
+            switch (requestCode) {
+                default:
+                case 0 /* single_click */:
+                    source = Preferences.Source.single_click;
+                    break;
+                case 1 /* double_click */:
+                    source = Preferences.Source.double_click;
+                    break;
+                case 2 /* out_of_band */:
+                    source = Preferences.Source.out_of_band;
+                    break;
+            }
+
             Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
             if (uri != null) {
-                Preferences.setRingtone(this, address, uri.toString());
+                Preferences.setRingtone(this, address, source.name(), uri.toString());
             }
         }
     }

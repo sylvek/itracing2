@@ -23,6 +23,7 @@ public class Devices {
     public static final String SELECT_DEVICES = "select * from devices";
     public static final String TABLE = "devices";
     public static final String ENABLED = "enabled";
+    public static final String SOURCE = "source";
 
     private static DevicesHelper instance;
 

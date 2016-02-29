@@ -33,11 +33,27 @@ public class DevicePreferencesFragment extends PreferenceFragment {
         final String address = getArguments().getString(Devices.ADDRESS);
         this.getPreferenceManager().setSharedPreferencesName(address);
         this.addPreferencesFromResource(R.xml.device_preferences);
-        findPreference(Preferences.RINGTONE).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+        findPreference(Preferences.RINGTONE + "_" + Preferences.Source.single_click).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference)
             {
-                presenter.onRingStone();
+                presenter.onRingStone(Preferences.Source.single_click.ordinal());
+                return true;
+            }
+        });
+        findPreference(Preferences.RINGTONE + "_" + Preferences.Source.double_click).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference)
+            {
+                presenter.onRingStone(Preferences.Source.double_click.ordinal());
+                return true;
+            }
+        });
+        findPreference(Preferences.RINGTONE + "_" + Preferences.Source.out_of_band).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference)
+            {
+                presenter.onRingStone(Preferences.Source.out_of_band.ordinal());
                 return true;
             }
         });
@@ -57,6 +73,6 @@ public class DevicePreferencesFragment extends PreferenceFragment {
 
     public interface OnDevicePreferencesListener {
 
-        void onRingStone();
+        void onRingStone(int source);
     }
 }

@@ -54,8 +54,8 @@ public class BluetoothLEService extends Service {
     public static final long TRACK_REMOTE_RSSI_DELAY_MILLIS = 5000L;
     public static final int FOREGROUND_ID = 1664;
     public static final String OUT_OF_BAND = "out_of_band";
-    public static final String DOUBLE_CLICK = "double-click";
-    public static final String SIMPLE_CLICK = "simple-click";
+    public static final String DOUBLE_CLICK = "double_click";
+    public static final String SIMPLE_CLICK = "simple_click";
     public static final String BROADCAST_INTENT_ACTION = "BROADCAST_INTENT";
 
     private BluetoothDevice mDevice;
@@ -105,8 +105,9 @@ public class BluetoothLEService extends Service {
             if (actionOnPowerOff || status == 8) {
                 Log.d(TAG, "onConnectionStateChange() address: " + address + " newState => " + newState);
                 if (newState == BluetoothProfile.STATE_DISCONNECTED) {
-                    String action = Preferences.getActionOutOfBand(getApplicationContext(), this.address);
-                    sendAction(OUT_OF_BAND, action);
+                    for (String action : Preferences.getActionOutOfBand(getApplicationContext(), this.address)) {
+                        sendAction(OUT_OF_BAND, action);
+                    }
                     enablePeerDeviceNotifyMe(gatt, false);
                 }
             }
@@ -181,15 +182,16 @@ public class BluetoothLEService extends Service {
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic)
         {
             Log.d(TAG, "onCharacteristicChanged()");
-            final long delayDoubleClick = Preferences.getDoubleButtonDelay(getApplicationContext(), this.address);
+            final long delayDoubleClick = Preferences.getDoubleButtonDelay(getApplicationContext());
 
             final long now = SystemClock.elapsedRealtime();
             if (lastChange + delayDoubleClick > now) {
                 Log.d(TAG, "onCharacteristicChanged() - double click");
                 lastChange = 0;
                 handler.removeCallbacks(r);
-                String action = Preferences.getActionDoubleButton(getApplicationContext(), this.address);
-                sendAction(DOUBLE_CLICK, action);
+                for (String action : Preferences.getActionDoubleButton(getApplicationContext(), this.address)) {
+                    sendAction(DOUBLE_CLICK, action);
+                }
             } else {
                 lastChange = now;
                 r = new Runnable() {
@@ -197,8 +199,9 @@ public class BluetoothLEService extends Service {
                     public void run()
                     {
                         Log.d(TAG, "onCharacteristicChanged() - simple click");
-                        String action = Preferences.getActionSimpleButton(getApplicationContext(), CustomBluetoothGattCallback.this.address);
-                        sendAction(SIMPLE_CLICK, action);
+                        for (String action : Preferences.getActionSimpleButton(getApplicationContext(), CustomBluetoothGattCallback.this.address)) {
+                            sendAction(SIMPLE_CLICK, action);
+                        }
                     }
                 };
                 handler.postDelayed(r, delayDoubleClick);
@@ -207,8 +210,9 @@ public class BluetoothLEService extends Service {
 
         private void sendAction(String source, String action)
         {
-            final Intent intent = new Intent(BROADCAST_INTENT_ACTION.equals(action) ? ACTION_PREFIX + source : ACTION_PREFIX + action);
+            final Intent intent = new Intent(BROADCAST_INTENT_ACTION.equals(action) ? ACTION_PREFIX + action + "." + source : ACTION_PREFIX + action);
             intent.putExtra(Devices.ADDRESS, this.address);
+            intent.putExtra(Devices.SOURCE, source);
             sendBroadcast(intent);
             Log.d(TAG, "onCharacteristicChanged() address: " + address + " - sendBroadcast action: " + intent.getAction());
         }

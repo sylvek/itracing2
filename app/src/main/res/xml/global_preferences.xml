@@ -4,4 +4,10 @@
             android:key="action_foreground"
             android:title="@string/action_foreground"
             android:summary="@string/action_foreground_summary"/>
+    <EditTextPreference
+            android:title="@string/double_button_delay"
+            android:summary="@string/double_button_delay_summary"
+            android:inputType="number"
+            android:key="double_button_delay"
+            android:defaultValue="@string/default_double_button_delay"/>
 </PreferenceScreen>

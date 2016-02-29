@@ -28,7 +28,8 @@ public class StartRingPhone extends BroadcastReceiver {
     {
         if (currentRingtone == null) {
             final String address = intent.getStringExtra(Devices.ADDRESS);
-            Uri sound = Uri.parse(Preferences.getRingtone(context, address));
+            final String source = intent.getStringExtra(Devices.SOURCE);
+            Uri sound = Uri.parse(Preferences.getRingtone(context, address, source));
             currentRingtone = RingtoneManager.getRingtone(context, sound);
         }
 
