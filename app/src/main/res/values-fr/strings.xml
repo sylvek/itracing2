@@ -25,8 +25,8 @@
     <string name="donate_summary">pour m\'aider dans mon travail :)</string>
     <string name="feedback_summary">votre aide est la bienvenue</string>
     <string name="display_last_position">afficher la dernière position enregistrée</string>
-    <string name="out_of_band_action">perte de la liaison entre les appareils</string>
-    <string name="out_of_band_action_summary">quelle est l\'action associée ?</string>
+    <string name="out_of_range_action">perte de la liaison entre les appareils</string>
+    <string name="out_of_range_action_summary">quelle est l\'action associée ?</string>
     <string name="action_on_power_off">perte de liaison à l\'extinction</string>
     <string name="action_on_power_off_summary">perte de liaison si porte-clés ou le bluetooth s\'éteint</string>
     <string name="ring_tone_summary">sélectionner la sonnerie en rapport aux actions</string>

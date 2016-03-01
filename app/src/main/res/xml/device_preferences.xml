@@ -34,11 +34,11 @@
                 android:summary="@string/custom_action_summary"
                 android:key="custom_action_double_click"/>
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/out_of_band_action">
+    <PreferenceCategory android:title="@string/out_of_range_action">
         <MultiSelectListPreference
                 android:key="action_out_of_range_list"
-                android:title="@string/out_of_band_action"
-                android:summary="@string/out_of_band_action_summary"
+                android:title="@string/out_of_range_action"
+                android:summary="@string/out_of_range_action_summary"
                 android:entries="@array/button_actions"
                 android:entryValues="@array/button_actions_values"
                 android:defaultValue="@array/empty_array"/>
