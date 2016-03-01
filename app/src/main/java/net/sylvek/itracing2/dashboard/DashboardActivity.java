@@ -195,8 +195,8 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
                 case 1 /* double_click */:
                     source = Preferences.Source.double_click;
                     break;
-                case 2 /* out_of_band */:
-                    source = Preferences.Source.out_of_band;
+                case 2 /* out_of_range */:
+                    source = Preferences.Source.out_of_range;
                     break;
             }
 

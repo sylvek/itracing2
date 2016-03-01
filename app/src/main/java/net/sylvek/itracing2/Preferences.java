@@ -14,13 +14,13 @@ import android.preference.PreferenceManager;
  */
 public class Preferences {
 
-    public static enum Source {
-        single_click, double_click, out_of_band;
+    public enum Source {
+        single_click, double_click, out_of_range
     }
 
     public static final String ACTION_SIMPLE_BUTTON_LIST = "action_simple_button_list";
     public static final String ACTION_DOUBLE_BUTTON_LIST = "action_double_button_list";
-    public static final String ACTION_OUT_OF_BAND_LIST = "action_out_of_band_list";
+    public static final String ACTION_OUT_OF_RANGE_LIST = "action_out_of_range_list";
     public static final String ACTION_ON_POWER_OFF = "action_on_power_off";
     public static final String RINGTONE = "ring_tone";
     public static final String FOREGROUND = "action_foreground";
@@ -51,7 +51,7 @@ public class Preferences {
 
     public static Set<String> getActionOutOfBand(Context context, String address)
     {
-        return getSharedPreferences(context, address).getStringSet(ACTION_OUT_OF_BAND_LIST, Collections.<String>emptySet());
+        return getSharedPreferences(context, address).getStringSet(ACTION_OUT_OF_RANGE_LIST, Collections.<String>emptySet());
     }
 
     public static boolean isActionOnPowerOff(Context context, String address)

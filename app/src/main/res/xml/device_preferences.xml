@@ -36,7 +36,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/out_of_band_action">
         <MultiSelectListPreference
-                android:key="action_out_of_band_list"
+                android:key="action_out_of_range_list"
                 android:title="@string/out_of_band_action"
                 android:summary="@string/out_of_band_action_summary"
                 android:entries="@array/button_actions"
@@ -45,15 +45,14 @@
         <CheckBoxPreference
                 android:key="action_on_power_off"
                 android:title="@string/action_on_power_off"
-                android:summary="@string/action_on_power_off_summary"
-                android:dependency="action_out_of_band_list"/>
+                android:summary="@string/action_on_power_off_summary"/>
         <Preference
                 android:title="@string/ring_tone"
                 android:summary="@string/ring_tone_summary"
-                android:key="ring_tone_out_of_band"/>
+                android:key="ring_tone_out_of_range"/>
         <EditTextPreference
                 android:title="@string/custom_action"
                 android:summary="@string/custom_action_summary"
-                android:key="custom_action_out_of_band"/>
+                android:key="custom_action_out_of_range"/>
     </PreferenceCategory>
 </PreferenceScreen>

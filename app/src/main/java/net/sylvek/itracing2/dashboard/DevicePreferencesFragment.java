@@ -49,11 +49,11 @@ public class DevicePreferencesFragment extends PreferenceFragment {
                 return true;
             }
         });
-        findPreference(Preferences.RINGTONE + "_" + Preferences.Source.out_of_band).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+        findPreference(Preferences.RINGTONE + "_" + Preferences.Source.out_of_range).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference)
             {
-                presenter.onRingStone(Preferences.Source.out_of_band.ordinal());
+                presenter.onRingStone(Preferences.Source.out_of_range.ordinal());
                 return true;
             }
         });
