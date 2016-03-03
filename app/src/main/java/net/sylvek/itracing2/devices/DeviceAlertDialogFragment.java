@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import net.sylvek.itracing2.BluetoothLEService;
 import net.sylvek.itracing2.R;
 
 /**
@@ -18,13 +20,15 @@ public class DeviceAlertDialogFragment extends DialogFragment {
 
     public static final String NAME = "name";
     public static final String ADDRESS = "address";
+    public static final String CHECKED = "checked";
 
-    public static DeviceAlertDialogFragment instance(String name, String address)
+    public static DeviceAlertDialogFragment instance(String name, String address, boolean checked)
     {
         DeviceAlertDialogFragment frag = new DeviceAlertDialogFragment();
         Bundle args = new Bundle();
         args.putString(NAME, name);
         args.putString(ADDRESS, address);
+        args.putBoolean(CHECKED, checked);
         frag.setArguments(args);
         return frag;
     }
@@ -34,6 +38,7 @@ public class DeviceAlertDialogFragment extends DialogFragment {
     {
         final String name = getArguments().getString(NAME);
         final String address = getArguments().getString(ADDRESS);
+        final boolean checked = getArguments().getBoolean(CHECKED);
 
         final LayoutInflater inflater = LayoutInflater.from(getActivity());
         final View alertView = inflater.inflate(R.layout.device_alertbox, null);
@@ -41,16 +46,10 @@ public class DeviceAlertDialogFragment extends DialogFragment {
         final EditText editText = (EditText) alertView.findViewById(R.id.editText);
         editText.setText(name);
 
-        final Button alert = (Button) alertView.findViewById(R.id.button);
-        alert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                ((OnConfirmAlertDialogListener) getActivity()).doNeutralClick(address);
-            }
-        });
+        final Button button1 = (Button) alertView.findViewById(R.id.button1);
+        button1.setEnabled(checked);
 
-        return new AlertDialog.Builder(getActivity())
+        final AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .setView(alertView)
                 .setPositiveButton(android.R.string.ok,
                         new DialogInterface.OnClickListener() {
@@ -69,6 +68,34 @@ public class DeviceAlertDialogFragment extends DialogFragment {
                         }
                 )
                 .create();
+
+        final Button alert = (Button) alertView.findViewById(R.id.button1);
+        alert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                final String initialText = getActivity().getString(R.string.start_immediate_alert);
+                if (alert.getText().equals(initialText)) {
+                    ((OnConfirmAlertDialogListener) getActivity()).doAlertClick(address, BluetoothLEService.HIGH_ALERT);
+                    alert.setText(R.string.stop_immediate_alert);
+                } else {
+                    ((OnConfirmAlertDialogListener) getActivity()).doAlertClick(address, BluetoothLEService.NO_ALERT);
+                    alert.setText(R.string.start_immediate_alert);
+                }
+            }
+        });
+
+        final Button delete = (Button) alertView.findViewById(R.id.button2);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                ((OnConfirmAlertDialogListener) getActivity()).doDeleteClick(address);
+                dialog.dismiss();
+            }
+        });
+
+        return dialog;
     }
 
     public interface OnConfirmAlertDialogListener {
@@ -77,6 +104,8 @@ public class DeviceAlertDialogFragment extends DialogFragment {
 
         void doNegativeClick();
 
-        void doNeutralClick(final String address);
+        void doAlertClick(final String address, final int alertType);
+
+        void doDeleteClick(final String address);
     }
 }

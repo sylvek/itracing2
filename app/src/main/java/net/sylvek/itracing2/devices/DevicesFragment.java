@@ -82,8 +82,9 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
             {
+                final TextView name = (TextView) view.findViewById(android.R.id.text1);
                 final TextView address = (TextView) view.findViewById(android.R.id.text2);
-                presenter.onDevice(address.getText().toString());
+                presenter.onDevice(name.getText().toString(), address.getText().toString());
             }
         });
         getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -92,7 +93,8 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
             {
                 final TextView name = (TextView) view.findViewById(android.R.id.text1);
                 final TextView address = (TextView) view.findViewById(android.R.id.text2);
-                presenter.onChangeDeviceName(name.getText().toString(), address.getText().toString());
+                final CheckBox enabled = (CheckBox) view.findViewById(android.R.id.selectedIcon);
+                presenter.onChangeDeviceName(name.getText().toString(), address.getText().toString(), enabled.isChecked());
                 return true;
             }
         });
@@ -151,9 +153,9 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
 
         void onDevicesStopped();
 
-        void onDevice(String address);
+        void onDevice(String name, String address);
 
-        void onChangeDeviceName(String name, String address);
+        void onChangeDeviceName(String name, String address, boolean checked);
 
         void onDeviceStateChanged(String address, boolean enabled);
 

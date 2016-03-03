@@ -40,6 +40,8 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
 
     private String address;
 
+    private String name;
+
     private ViewPager mPager;
 
     private TabLayout mTab;
@@ -116,7 +118,8 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
     {
         super.onResume();
         address = getIntent().getStringExtra(Devices.ADDRESS);
-        setTitle(address);
+        name = getIntent().getStringExtra(Devices.NAME);
+        setTitle(name);
     }
 
     private void onImmediateAlert(final String address, final boolean activate)

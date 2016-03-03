@@ -24,6 +24,7 @@ import android.os.IBinder;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 import net.sylvek.itracing2.AlertDialogFragment;
@@ -187,17 +188,18 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     }
 
     @Override
-    public void onDevice(String address)
+    public void onDevice(String name, String address)
     {
         final Intent intent = new Intent(this, DashboardActivity.class);
         intent.putExtra(Devices.ADDRESS, address);
+        intent.putExtra(Devices.NAME, name);
         startActivity(intent);
     }
 
     @Override
-    public void onChangeDeviceName(String name, String address)
+    public void onChangeDeviceName(String name, String address, boolean checked)
     {
-        DeviceAlertDialogFragment.instance(name, address).show(getFragmentManager(), "dialog");
+        DeviceAlertDialogFragment.instance(name, address, checked).show(getFragmentManager(), "dialog");
     }
 
     private void onFeedback()
@@ -275,9 +277,17 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     }
 
     @Override
-    public void doNeutralClick(String address)
+    public void doAlertClick(String address, int alertType)
     {
-        this.service.immediateAlert(address, BluetoothLEService.HIGH_ALERT);
+        this.service.immediateAlert(address, alertType);
+    }
+
+    @Override
+    public void doDeleteClick(String address)
+    {
+        service.remove(address);
+        Devices.removeDevice(this, address);
+        devicesFragment.refresh();
     }
 
     private boolean isMyServiceRunning(Class<?> serviceClass)

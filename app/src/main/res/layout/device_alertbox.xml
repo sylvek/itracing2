@@ -19,6 +19,12 @@
             android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ring_the_device"
-            android:id="@+id/button" android:layout_gravity="center_horizontal"/>
+            android:text="@string/start_immediate_alert"
+            android:id="@+id/button1" android:layout_gravity="center_horizontal"/>
+    <Button
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/remove"
+            android:id="@+id/button2" android:layout_gravity="center_horizontal"/>
 </LinearLayout>
