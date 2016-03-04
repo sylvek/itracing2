@@ -52,6 +52,7 @@
     <string name="action_foreground_summary">améliore le lien entre le téléphone et les trousseaux de clés</string>
     <string name="action_foreground">service en premier plan</string>
     <string name="ring_the_device">sonner le trousseau de clés</string>
+    <string name="events_history">historique</string>
     <string-array name="button_actions">
         <item>faire sonner le téléphone</item>
         <item>faire vibrer le téléphone</item>

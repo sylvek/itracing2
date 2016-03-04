@@ -25,6 +25,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 import net.sylvek.itracing2.database.Devices;
+import net.sylvek.itracing2.database.Events;
 import net.sylvek.itracing2.devices.DevicesActivity;
 
 /**
@@ -212,6 +213,7 @@ public class BluetoothLEService extends Service {
             intent.putExtra(Devices.ADDRESS, this.address);
             intent.putExtra(Devices.SOURCE, source.name());
             sendBroadcast(intent);
+            Events.insert(getApplicationContext(), source, address, action);
             Log.d(TAG, "onCharacteristicChanged() address: " + address + " - sendBroadcast action: " + intent.getAction());
         }
 
@@ -330,6 +332,7 @@ public class BluetoothLEService extends Service {
         final BluetoothGattCharacteristic characteristic = immediateAlertService.getCharacteristics().get(0);
         characteristic.setValue(alertType, BluetoothGattCharacteristic.FORMAT_UINT8, 0);
         this.bluetoothGatt.get(address).writeCharacteristic(characteristic);
+        Events.insert(getApplicationContext(), "immediate alert", address, "" + alertType);
     }
 
     private synchronized void somethingGoesWrong()

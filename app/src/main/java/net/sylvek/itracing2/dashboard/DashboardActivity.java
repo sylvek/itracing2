@@ -32,7 +32,7 @@ import net.sylvek.itracing2.database.Devices;
  */
 public class DashboardActivity extends CommonActivity implements DevicePreferencesFragment.OnDevicePreferencesListener, DashboardFragment.OnDashboardListener, ConfirmAlertDialogFragment.OnConfirmAlertDialogListener {
 
-    private static final int NUM_PAGES = 2;
+    private static final int NUM_PAGES = 3;
 
     private BluetoothLEService service;
 
@@ -78,6 +78,7 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
         mTab.setTabsFromPagerAdapter(pagerAdapter);
         mTab.getTabAt(0).setText(R.string.dashboard);
         mTab.getTabAt(1).setText(R.string.preferences);
+        mTab.getTabAt(2).setText(R.string.events_history);
         mTab.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab)
@@ -231,6 +232,8 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
                     return DashboardFragment.instance(address);
                 case 1:
                     return DevicePreferencesFragment.instance(address);
+                case 2:
+                    return EventsHistoryFragment.instance(address);
                 default:
                     throw new RuntimeException("no fragment for position " + position);
             }
