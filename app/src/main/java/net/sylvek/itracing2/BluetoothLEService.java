@@ -332,7 +332,7 @@ public class BluetoothLEService extends Service {
         final BluetoothGattCharacteristic characteristic = immediateAlertService.getCharacteristics().get(0);
         characteristic.setValue(alertType, BluetoothGattCharacteristic.FORMAT_UINT8, 0);
         this.bluetoothGatt.get(address).writeCharacteristic(characteristic);
-        Events.insert(getApplicationContext(), "immediate alert", address, "" + alertType);
+        Events.insert(getApplicationContext(), "immediate_alert", address, "" + alertType);
     }
 
     private synchronized void somethingGoesWrong()

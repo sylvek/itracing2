@@ -26,6 +26,7 @@ import net.sylvek.itracing2.ConfirmAlertDialogFragment;
 import net.sylvek.itracing2.Preferences;
 import net.sylvek.itracing2.R;
 import net.sylvek.itracing2.database.Devices;
+import net.sylvek.itracing2.database.Events;
 
 /**
  * Created by sylvek on 28/12/2015.
@@ -176,6 +177,7 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
             this.setRefreshing(false);
             this.service.remove(address);
             Devices.removeDevice(this, address);
+            Events.removeEvents(this, address);
             NavUtils.navigateUpFromSameTask(this);
         }
     }

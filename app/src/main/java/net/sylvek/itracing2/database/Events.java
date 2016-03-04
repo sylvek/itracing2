@@ -27,7 +27,7 @@ public class Events extends Database {
         Database.geDatabaseHelperInstance(context).getWritableDatabase().insert(Events.TABLE, null, event);
     }
 
-    public static void deleteAll(Context context, String address)
+    public static void removeEvents(Context context, String address)
     {
         Database.geDatabaseHelperInstance(context).getWritableDatabase().delete(Events.TABLE, "address = ?", new String[]{address});
     }

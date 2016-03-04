@@ -10,6 +10,7 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import net.sylvek.itracing2.R;
 import net.sylvek.itracing2.database.Database;
 import net.sylvek.itracing2.database.Devices;
@@ -39,6 +40,20 @@ public class EventsHistoryFragment extends ListFragment implements LoaderManager
         super.onActivityCreated(savedInstanceState);
         mAdapter = new EventsCursorAdapter(getActivity());
         setListAdapter(mAdapter);
+        getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
+            {
+
+            }
+        });
+        getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                return true;
+            }
+        });
     }
 
     @Override
