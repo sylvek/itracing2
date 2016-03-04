@@ -82,7 +82,13 @@ public class Preferences {
 
     public static boolean isForegroundEnabled(Context context)
     {
-        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(FOREGROUND, false);
+        return isSamsung() || PreferenceManager.getDefaultSharedPreferences(context).getBoolean(FOREGROUND, false);
+    }
+
+    public static boolean isSamsung()
+    {
+        final String manufacturer = android.os.Build.MANUFACTURER;
+        return "samsung".equals(manufacturer.toLowerCase());
     }
 
     public static boolean isDonated(Context context)

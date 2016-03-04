@@ -23,6 +23,13 @@ public class PreferencesFragment extends PreferenceFragment {
         return dashboardFragment;
     }
 
+    public void setForegroundBackground(final boolean checked)
+    {
+        final CheckBoxPreference preference = (CheckBoxPreference) findPreference(Preferences.FOREGROUND);
+        preference.setChecked(checked);
+        preference.setEnabled(!checked);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
