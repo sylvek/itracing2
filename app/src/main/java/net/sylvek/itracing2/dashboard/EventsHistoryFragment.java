@@ -21,15 +21,13 @@ import net.sylvek.itracing2.database.SQLiteCursorLoader;
  */
 public class EventsHistoryFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    public static final String TAG = EventsHistoryFragment.class.toString();
-
     private EventsCursorAdapter mAdapter;
 
     public static EventsHistoryFragment instance(final String address)
     {
         final EventsHistoryFragment instance = new EventsHistoryFragment();
         final Bundle arguments = new Bundle();
-        arguments.putString(Devices.ADDRESS, address);
+        arguments.putString(Events.ADDRESS, address);
         instance.setArguments(arguments);
         instance.setRetainInstance(true);
         return instance;
@@ -47,7 +45,7 @@ public class EventsHistoryFragment extends ListFragment implements LoaderManager
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         getLoaderManager().initLoader(0, null, this);
-        final View view = inflater.inflate(R.layout.devices, container, false);
+        final View view = inflater.inflate(R.layout.events, container, false);
         return view;
     }
 
