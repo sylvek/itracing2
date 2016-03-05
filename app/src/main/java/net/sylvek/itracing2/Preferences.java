@@ -14,12 +14,14 @@ import android.preference.PreferenceManager;
  */
 public class Preferences {
 
+    private static final String SAMSUNG_DEVICE = "samsung";
+
     public enum Source {
         single_click, double_click, out_of_range
     }
 
-    public static final String ACTION_SIMPLE_BUTTON_LIST = "action_simple_button_list";
-    public static final String ACTION_DOUBLE_BUTTON_LIST = "action_double_button_list";
+    public static final String ACTION_SIMPLE_BUTTON_LIST = "action_single_click_list";
+    public static final String ACTION_DOUBLE_BUTTON_LIST = "action_double_click_list";
     public static final String ACTION_OUT_OF_RANGE_LIST = "action_out_of_range_list";
     public static final String ACTION_ON_POWER_OFF = "action_on_power_off";
     public static final String RINGTONE = "ring_tone";
@@ -88,7 +90,7 @@ public class Preferences {
     public static boolean isSamsung()
     {
         final String manufacturer = android.os.Build.MANUFACTURER;
-        return "samsung".equals(manufacturer.toLowerCase());
+        return SAMSUNG_DEVICE.equals(manufacturer.toLowerCase());
     }
 
     public static boolean isDonated(Context context)

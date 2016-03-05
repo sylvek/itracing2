@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/simple_button_action">
         <MultiSelectListPreference
-                android:key="action_simple_button_list"
+                android:key="action_single_click_list"
                 android:title="@string/simple_button_action"
                 android:summary="@string/simple_button_action_summary"
                 android:entries="@array/button_actions"
@@ -19,7 +19,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/double_button_action">
         <MultiSelectListPreference
-                android:key="action_double_button_list"
+                android:key="action_double_click_list"
                 android:title="@string/double_button_action"
                 android:summary="@string/double_button_action_summary"
                 android:entries="@array/button_actions"
