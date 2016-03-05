@@ -11,6 +11,8 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import net.sylvek.itracing2.R;
+import net.sylvek.itracing2.database.Devices;
+import net.sylvek.itracing2.database.Events;
 
 /**
  * Created by sylvek on 12/06/2015.
@@ -58,6 +60,9 @@ public class CapturePosition extends BroadcastReceiver {
                     .setContentIntent(PendingIntent.getActivity(context, 0, mapIntent, PendingIntent.FLAG_UPDATE_CURRENT))
                     .build();
             notificationManager.notify(NOTIFICATION_ID, notification);
+
+            final String address = intent.getStringExtra(Devices.ADDRESS);
+            Events.insert(context, "position", address, position);
         }
     }
 }

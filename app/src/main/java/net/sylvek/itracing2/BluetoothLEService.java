@@ -213,7 +213,7 @@ public class BluetoothLEService extends Service {
             intent.putExtra(Devices.ADDRESS, this.address);
             intent.putExtra(Devices.SOURCE, source.name());
             sendBroadcast(intent);
-            Events.insert(getApplicationContext(), source, address, action);
+            Events.insert(getApplicationContext(), source.name(), address, action);
             Log.d(TAG, "onCharacteristicChanged() address: " + address + " - sendBroadcast action: " + intent.getAction());
         }
 
