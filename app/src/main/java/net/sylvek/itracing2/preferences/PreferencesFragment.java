@@ -20,6 +20,7 @@ public class PreferencesFragment extends PreferenceFragment {
         final PreferencesFragment dashboardFragment = new PreferencesFragment();
         Bundle arguments = new Bundle();
         dashboardFragment.setArguments(arguments);
+        dashboardFragment.setRetainInstance(true);
         return dashboardFragment;
     }
 

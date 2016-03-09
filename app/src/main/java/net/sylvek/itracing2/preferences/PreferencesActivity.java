@@ -16,8 +16,9 @@ import net.sylvek.itracing2.R;
  */
 public class PreferencesActivity extends CommonActivity implements PreferencesFragment.OnPreferencesListener {
 
+    public static final String TAG = "PREFERENCES_FRAGMENT_TAG";
+
     private BluetoothLEService service;
-    private PreferencesFragment preferencesFragment;
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
@@ -51,8 +52,7 @@ public class PreferencesActivity extends CommonActivity implements PreferencesFr
 
     private void showPreferences()
     {
-        this.preferencesFragment = PreferencesFragment.instance();
-        getFragmentManager().beginTransaction().replace(R.id.container, preferencesFragment).commit();
+        getFragmentManager().beginTransaction().replace(R.id.container, PreferencesFragment.instance(), TAG).commit();
     }
 
     @Override
@@ -61,7 +61,8 @@ public class PreferencesActivity extends CommonActivity implements PreferencesFr
         bindService(new Intent(this, BluetoothLEService.class), serviceConnection, BIND_AUTO_CREATE);
 
         if (Preferences.isSamsung()) {
-            this.preferencesFragment.setForegroundBackground(true);
+            final PreferencesFragment preferencesFragment = (PreferencesFragment) getFragmentManager().findFragmentByTag(TAG);
+            preferencesFragment.setForegroundBackground(true);
         }
     }
 
