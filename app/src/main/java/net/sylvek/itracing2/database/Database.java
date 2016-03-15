@@ -11,7 +11,7 @@ public class Database {
     public static final String DATABASE_NAME = "itracing2DB";
     public static final int DATABASE_VERSION = 3;
 
-    private static final String EVENTS_CREATE = "create table events ( _id integer primary key, address text not null, event text not null, option text not null, created datetime default CURRENT_TIMESTAMP);";
+    private static final String EVENTS_CREATE = "create table events ( _id integer primary key, address text not null, event text not null, option text not null, created datetime default (datetime('now','localtime')));";
     private static final String DEVICES_CREATE = "create table devices ( _id integer primary key, name text not null, address text not null, enabled boolean not null default 0);";
 
     public static final String SELECT_EVENTS = "select * from events where address = ? order by created desc";
