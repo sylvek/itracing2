@@ -26,19 +26,22 @@ public class StartRingPhone extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent)
     {
-        if (currentRingtone == null) {
-            final String address = intent.getStringExtra(Devices.ADDRESS);
-            final String source = intent.getStringExtra(Devices.SOURCE);
-            Uri sound = Uri.parse(Preferences.getRingtone(context, address, source));
-            currentRingtone = RingtoneManager.getRingtone(context, sound);
+        if (currentRingtone != null) {
+            currentRingtone.stop();
+            currentRingtone = null;
         }
+
+        final String address = intent.getStringExtra(Devices.ADDRESS);
+        final String source = intent.getStringExtra(Devices.SOURCE);
+        Uri sound = Uri.parse(Preferences.getRingtone(context, address, source));
+        currentRingtone = RingtoneManager.getRingtone(context, sound);
 
         if (currentRingtone == null) {
             Toast.makeText(context, R.string.ring_tone_not_found, Toast.LENGTH_LONG).show();
             return;
         }
 
-        AudioManager audioManager = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
+        AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         final int max = audioManager.getStreamMaxVolume(AudioManager.STREAM_RING);
         audioManager.setStreamVolume(AudioManager.STREAM_RING, max, 0);
 
