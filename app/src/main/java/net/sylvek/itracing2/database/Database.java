@@ -19,7 +19,7 @@ public class Database {
 
     private static DatabaseHelper instance;
 
-    public static synchronized DatabaseHelper geDatabaseHelperInstance(Context context)
+    public static synchronized DatabaseHelper getDatabaseHelperInstance(Context context)
     {
         if (instance == null) {
             instance = new DatabaseHelper(context);

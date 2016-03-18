@@ -1,8 +1,6 @@
 package net.sylvek.itracing2.devices;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -24,7 +22,6 @@ import android.os.IBinder;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 import net.sylvek.itracing2.AlertDialogFragment;
@@ -47,7 +44,6 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
 
     private static final long SCAN_PERIOD = 10000; // 10 seconds
 
-    private static final List<String> DEFAULT_DEVICE_NAME = new ArrayList<>();
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
@@ -66,13 +62,6 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     };
 
     private final Random random = new Random();
-
-    static {
-        DEFAULT_DEVICE_NAME.add("Quintic PROXR");
-        DEFAULT_DEVICE_NAME.add("Cigii IT-02 Smart Bluetooth Tracker");
-        DEFAULT_DEVICE_NAME.add("MLE-15");
-        DEFAULT_DEVICE_NAME.add("iTAG");
-    }
 
     private final DevicesFragment devicesFragment = DevicesFragment.instance();
 
@@ -171,7 +160,7 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     public void onDevicesStarted()
     {
         if (random.nextInt(100) > 80 && !Preferences.isDonated(this)) { // displayed 20% time
-            ConfirmAlertDialogFragment.instance(R.string.donate, R.string.donate_summary).show(getFragmentManager(), null);
+            ConfirmAlertDialogFragment.instance(R.string.donate, 0, R.string.donate_summary).show(getFragmentManager(), null);
         }
 
         // bind service
@@ -266,13 +255,18 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     }
 
     @Override
-    public void doPositiveClick()
+    public void doNegativeClick()
+    {
+    }
+
+    @Override
+    public void doPositiveClick(int returnCode)
     {
         onDonate();
     }
 
     @Override
-    public void doNegativeClick()
+    public void doNegativeClick(int returnCode)
     {
     }
 

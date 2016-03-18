@@ -57,6 +57,14 @@ public class DevicePreferencesFragment extends PreferenceFragment {
                 return true;
             }
         });
+        findPreference(Preferences.RINGTONE + "_" + Preferences.Source.connected).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference)
+            {
+                presenter.onRingStone(Preferences.Source.connected.ordinal());
+                return true;
+            }
+        });
     }
 
     @Override

@@ -31,9 +31,13 @@ import net.sylvek.itracing2.database.Events;
 /**
  * Created by sylvek on 28/12/2015.
  */
-public class DashboardActivity extends CommonActivity implements DevicePreferencesFragment.OnDevicePreferencesListener, DashboardFragment.OnDashboardListener, ConfirmAlertDialogFragment.OnConfirmAlertDialogListener {
+public class DashboardActivity extends CommonActivity implements DevicePreferencesFragment.OnDevicePreferencesListener, DashboardFragment.OnDashboardListener, ConfirmAlertDialogFragment.OnConfirmAlertDialogListener, EventsHistoryFragment.OnEventsHistoryListener {
 
     private static final int NUM_PAGES = 3;
+
+    //    private static final int CONFIRM_REMOVE_EVENTS = 0;
+    private static final int CONFIRM_REMOVE_KEYRING = 1;
+    public static final String EVENTS_HISTORY_FRAGMENT = "eventsHistoryFragment";
 
     private BluetoothLEService service;
 
@@ -171,19 +175,23 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
     }
 
     @Override
-    public void doPositiveClick()
+    public void doPositiveClick(int returnCode)
     {
-        if (Preferences.clearAll(this, address)) {
-            this.setRefreshing(false);
-            this.service.remove(address);
-            Devices.removeDevice(this, address);
-            Events.removeEvents(this, address);
-            NavUtils.navigateUpFromSameTask(this);
+        switch (returnCode) {
+            case CONFIRM_REMOVE_KEYRING:
+                if (Preferences.clearAll(this, address)) {
+                    this.setRefreshing(false);
+                    this.service.remove(address);
+                    Devices.removeDevice(this, address);
+                    Events.removeEvents(this, address);
+                    NavUtils.navigateUpFromSameTask(this);
+                }
+                break;
         }
     }
 
     @Override
-    public void doNegativeClick()
+    public void doNegativeClick(int returnCode)
     {
         // nothing to do.
     }
@@ -204,6 +212,9 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
                 case 2 /* out_of_range */:
                     source = Preferences.Source.out_of_range;
                     break;
+                case 3 /* connected */:
+                    source = Preferences.Source.connected;
+                    break;
             }
 
             Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
@@ -211,6 +222,18 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
                 Preferences.setRingtone(this, address, source.name(), uri.toString());
             }
         }
+    }
+
+    @Override
+    public void onExportEvents()
+    {
+        final String title = getString(R.string.app_name);
+        final String export = Events.export(this, this.address);
+        final Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_SUBJECT, title);
+        intent.putExtra(Intent.EXTRA_TEXT, export);
+        intent.setType("message/rfc822");
+        startActivity(Intent.createChooser(intent, title));
     }
 
     private class ScreenSlidePagerAdapter extends FragmentPagerAdapter {
@@ -246,7 +269,7 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
     public boolean onOptionsItemSelected(MenuItem item)
     {
         if (item.getItemId() == R.id.delete) {
-            ConfirmAlertDialogFragment.instance(R.string.confirm_remove_keyring).show(getFragmentManager(), "dialog");
+            ConfirmAlertDialogFragment.instance(R.string.confirm_remove_keyring, CONFIRM_REMOVE_KEYRING).show(getFragmentManager(), "dialog");
             return true;
         }
         return super.onOptionsItemSelected(item);

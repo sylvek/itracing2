@@ -130,6 +130,10 @@ public class BluetoothLEService extends Service {
             broadcaster.sendBroadcast(new Intent(SERVICES_DISCOVERED));
             if (BluetoothGatt.GATT_SUCCESS == status) {
 
+                for (String action : Preferences.getActionConnected(getApplicationContext(), this.address)) {
+                    sendAction(Preferences.Source.connected, action);
+                }
+
                 for (BluetoothGattService service : gatt.getServices()) {
                     if (IMMEDIATE_ALERT_SERVICE.equals(service.getUuid())) {
                         immediateAlertService = service;

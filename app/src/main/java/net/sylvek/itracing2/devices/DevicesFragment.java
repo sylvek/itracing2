@@ -114,7 +114,7 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
     {
         return new SQLiteCursorLoader(
                 getActivity(),
-                Database.geDatabaseHelperInstance(getActivity()),
+                Database.getDatabaseHelperInstance(getActivity()),
                 Devices.SELECT_DEVICES,
                 null
         );

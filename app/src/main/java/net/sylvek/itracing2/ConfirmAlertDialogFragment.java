@@ -13,21 +13,24 @@ public class ConfirmAlertDialogFragment extends DialogFragment {
 
     public static final String TITLE = "title";
     public static final String MESSAGE = "message";
+    public static final String RETURN_CODE = "return_code";
 
-    public static ConfirmAlertDialogFragment instance(int title)
+    public static ConfirmAlertDialogFragment instance(int title, int returnCode)
     {
         ConfirmAlertDialogFragment frag = new ConfirmAlertDialogFragment();
         Bundle args = new Bundle();
         args.putInt(TITLE, title);
+        args.putInt(RETURN_CODE, returnCode);
         frag.setArguments(args);
         return frag;
     }
 
-    public static ConfirmAlertDialogFragment instance(int title, int message)
+    public static ConfirmAlertDialogFragment instance(int title, int returnCode, int message)
     {
         ConfirmAlertDialogFragment frag = new ConfirmAlertDialogFragment();
         Bundle args = new Bundle();
         args.putInt(TITLE, title);
+        args.putInt(RETURN_CODE, returnCode);
         args.putInt(MESSAGE, message);
         frag.setArguments(args);
         return frag;
@@ -36,7 +39,8 @@ public class ConfirmAlertDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
-        int title = getArguments().getInt(TITLE);
+        final int title = getArguments().getInt(TITLE);
+        final int returncode = getArguments().getInt(RETURN_CODE);
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
                 .setTitle(title)
@@ -44,7 +48,7 @@ public class ConfirmAlertDialogFragment extends DialogFragment {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton)
                             {
-                                ((OnConfirmAlertDialogListener) getActivity()).doPositiveClick();
+                                ((OnConfirmAlertDialogListener) getActivity()).doPositiveClick(returncode);
                             }
                         }
                 )
@@ -52,7 +56,7 @@ public class ConfirmAlertDialogFragment extends DialogFragment {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton)
                             {
-                                ((OnConfirmAlertDialogListener) getActivity()).doNegativeClick();
+                                ((OnConfirmAlertDialogListener) getActivity()).doNegativeClick(returncode);
                             }
                         }
                 );
@@ -67,8 +71,8 @@ public class ConfirmAlertDialogFragment extends DialogFragment {
 
     public interface OnConfirmAlertDialogListener {
 
-        void doPositiveClick();
+        void doPositiveClick(int returnCode);
 
-        void doNegativeClick();
+        void doNegativeClick(int returnCode);
     }
 }

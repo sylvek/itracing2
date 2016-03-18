@@ -57,6 +57,11 @@
     <string name="action_foreground">фоновый режим</string>
     <string name="ring_the_device">Включить звонок на брелке</string>
     <string name="events_history">История событий</string>
+    <string name="connected_action">подключение действия</string>
+    <string name="connected_action_summary">Действие срабатывает, когда происходит соединение</string>
+    <string name="clear_events">очистить все события</string>
+    <string name="confirm_remove_events">Подтвердить удаление события</string>
+    <string name="export_events">экспорт</string>
     <string-array name="button_actions">
         <item>звонок в телефоне</item>
         <item>вибрация в телефоне</item>
