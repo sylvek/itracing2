@@ -22,6 +22,7 @@ import net.sylvek.itracing2.database.Database;
 import net.sylvek.itracing2.database.Devices;
 import net.sylvek.itracing2.database.Events;
 import net.sylvek.itracing2.database.SQLiteCursorLoader;
+import net.sylvek.itracing2.receivers.CapturePosition;
 
 /**
  * Created by sylvek on 04/03/2016.
@@ -63,8 +64,14 @@ public class EventsHistoryFragment extends ListFragment implements LoaderManager
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
             {
-                final String option = (String) view.findViewById(android.R.id.text1).getTag();
-                Toast.makeText(getActivity(), option, Toast.LENGTH_LONG).show();
+                final TextView textView = (TextView) view.findViewById(android.R.id.text1);
+                final String option = (String) textView.getTag();
+
+                if (CapturePosition.NAME.equals(textView.getText())) {
+                    startActivity(CapturePosition.getMapIntent(option));
+                } else {
+                    Toast.makeText(getActivity(), option, Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

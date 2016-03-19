@@ -24,6 +24,7 @@ public class CapturePosition extends BroadcastReceiver {
     static final int NOTIFICATION_ID = 453436;
 
     static final long MAX_AGE = 10000; // 10 seconds
+    public static final String NAME = "position";
 
     @Override
     public void onReceive(Context context, Intent intent)
@@ -49,8 +50,7 @@ public class CapturePosition extends BroadcastReceiver {
         if (bestLocation != null) {
             NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             final String position = bestLocation.getLatitude() + "," + bestLocation.getLongitude();
-            final Uri uri = Uri.parse("geo:" + position + "?z=17&q=" + position);
-            final Intent mapIntent = new Intent(Intent.ACTION_VIEW, uri);
+            final Intent mapIntent = getMapIntent(position);
 
             final Notification notification = new Notification.Builder(context)
                     .setContentText(context.getString(R.string.display_last_position))
@@ -62,7 +62,13 @@ public class CapturePosition extends BroadcastReceiver {
             notificationManager.notify(NOTIFICATION_ID, notification);
 
             final String address = intent.getStringExtra(Devices.ADDRESS);
-            Events.insert(context, "position", address, position);
+            Events.insert(context, NAME, address, position);
         }
+    }
+
+    public static Intent getMapIntent(String position)
+    {
+        final Uri uri = Uri.parse("geo:" + position + "?z=17&q=" + position);
+        return new Intent(Intent.ACTION_VIEW, uri);
     }
 }
