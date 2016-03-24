@@ -25,6 +25,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 import net.sylvek.itracing2.database.Devices;
+import net.sylvek.itracing2.database.Events;
 import net.sylvek.itracing2.devices.DevicesActivity;
 
 /**
@@ -129,6 +130,10 @@ public class BluetoothLEService extends Service {
             broadcaster.sendBroadcast(new Intent(SERVICES_DISCOVERED));
             if (BluetoothGatt.GATT_SUCCESS == status) {
 
+                for (String action : Preferences.getActionConnected(getApplicationContext(), this.address)) {
+                    sendAction(Preferences.Source.connected, action);
+                }
+
                 for (BluetoothGattService service : gatt.getServices()) {
                     if (IMMEDIATE_ALERT_SERVICE.equals(service.getUuid())) {
                         immediateAlertService = service;
@@ -212,6 +217,7 @@ public class BluetoothLEService extends Service {
             intent.putExtra(Devices.ADDRESS, this.address);
             intent.putExtra(Devices.SOURCE, source.name());
             sendBroadcast(intent);
+            Events.insert(getApplicationContext(), source.name(), address, action);
             Log.d(TAG, "onCharacteristicChanged() address: " + address + " - sendBroadcast action: " + intent.getAction());
         }
 
@@ -330,6 +336,7 @@ public class BluetoothLEService extends Service {
         final BluetoothGattCharacteristic characteristic = immediateAlertService.getCharacteristics().get(0);
         characteristic.setValue(alertType, BluetoothGattCharacteristic.FORMAT_UINT8, 0);
         this.bluetoothGatt.get(address).writeCharacteristic(characteristic);
+        Events.insert(getApplicationContext(), "immediate_alert", address, "" + alertType);
     }
 
     private synchronized void somethingGoesWrong()

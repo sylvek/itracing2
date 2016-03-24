@@ -19,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import net.sylvek.itracing2.R;
+import net.sylvek.itracing2.database.Database;
 import net.sylvek.itracing2.database.Devices;
 import net.sylvek.itracing2.database.SQLiteCursorLoader;
 
@@ -36,12 +37,6 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
     public static DevicesFragment instance()
     {
         return new DevicesFragment();
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -119,7 +114,7 @@ public class DevicesFragment extends ListFragment implements LoaderManager.Loade
     {
         return new SQLiteCursorLoader(
                 getActivity(),
-                Devices.getDevicesHelperInstance(getActivity()),
+                Database.getDatabaseHelperInstance(getActivity()),
                 Devices.SELECT_DEVICES,
                 null
         );

@@ -34,6 +34,23 @@
                 android:summary="@string/custom_action_summary"
                 android:key="custom_action_double_click"/>
     </PreferenceCategory>
+    <PreferenceCategory android:title="@string/connected_action">
+        <MultiSelectListPreference
+                android:key="action_connected_list"
+                android:title="@string/connected_action"
+                android:summary="@string/connected_action_summary"
+                android:entries="@array/button_actions"
+                android:entryValues="@array/button_actions_values"
+                android:defaultValue="@array/empty_array"/>
+        <Preference
+                android:title="@string/ring_tone"
+                android:summary="@string/ring_tone_summary"
+                android:key="ring_tone_connected"/>
+        <EditTextPreference
+                android:title="@string/custom_action"
+                android:summary="@string/custom_action_summary"
+                android:key="custom_action_connected"/>
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/out_of_range_action">
         <MultiSelectListPreference
                 android:key="action_out_of_range_list"
