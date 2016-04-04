@@ -20,7 +20,6 @@ import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.SystemClock;
-import android.preference.Preference;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -322,8 +321,28 @@ public class BluetoothLEService extends Service {
             handler.removeCallbacks(trackRemoteRssi);
         }
 
+        this.disconnect();
+
         super.onDestroy();
         Log.d(TAG, "onDestroy()");
+    }
+
+    public synchronized void disconnect()
+    {
+        final Cursor cursor = Devices.findDevices(this);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                final String address = cursor.getString(0);
+                if (Devices.isEnabled(this, address)) {
+                    Log.d(TAG, "disconnect() - to device " + address);
+                    if (this.bluetoothGatt.get(address) != null) {
+                        this.bluetoothGatt.get(address).disconnect();
+                    }
+                    this.bluetoothGatt.remove(address);
+                }
+            } while (cursor.moveToNext());
+        }
     }
 
     public void immediateAlert(String address, int alertType)
