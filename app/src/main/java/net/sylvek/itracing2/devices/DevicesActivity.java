@@ -133,6 +133,18 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (requestCode == REQUEST_ENABLE_BT) {
+            final BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+            mBluetoothAdapter = bluetoothManager.getAdapter();
+            if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
+                finish();
+            }
+        }
+    }
+
+    @Override
     public void onScanStart()
     {
         devices.clear();
