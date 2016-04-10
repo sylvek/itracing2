@@ -1,5 +1,5 @@
 # itracing2
-itracing2 is a free and open source application that allow to (really?) use iTag devices.
+itracing2 is a free and open source application that allows to (really?) use iTag devices.
 
 This application runs in background, so you do not have to launch it after each boot up.
 
