@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">iTracing2</string>
-    <string name="ble_not_supported">sorry bluetooth LE is not supported on your device</string>
-    <string name="action_scan_start">detect</string>
-    <string name="beacon_not_found">keyring not found</string>
-    <string name="action_connect">connect</string>
-    <string name="start_immediate_alert">start ringing the keyring</string>
-    <string name="stop_immediate_alert">stop ringing the keyring</string>
+    <string name="ble_not_supported">Készüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez legtöbbször hardveres korlátozás, amin nem tud szoftverfrissítés segíteni.</string>
+    <string name="action_scan_start">Keresés</string>
+    <string name="beacon_not_found">Nem található eszköz.</string>
+    <string name="action_connect">Kapcsolódás</string>
+    <string name="start_immediate_alert">Megcsipogtatás</string>
+    <string name="stop_immediate_alert">Csipogtatás állj</string>
     <string name="link_background">allways-on</string>
-    <string name="stop_ring">stop ring</string>
-    <string name="stop_vibrate">stop vibration</string>
-    <string name="simple_button_action">simple click options</string>
-    <string name="simple_button_action_summary">what is the button action ?</string>
-    <string name="double_button_action">double click options</string>
-    <string name="double_button_action_summary">what is the button action ?</string>
+    <string name="stop_ring">Csörgés állj</string>
+    <string name="stop_vibrate">Vibra állj</string>
+    <string name="simple_button_action">Egy klikk</string>
+    <string name="simple_button_action_summary">Ha az eszközön egyszer megnyomod a gombot, mi történjen?</string>
+    <string name="double_button_action">Dupla klikk</string>
+    <string name="double_button_action_summary">Ha az eszközön kétszer egymás után megnyomod a gombot, mi történjen?</string>
     <string name="link_background_summary">allows to activate more options</string>
-    <string name="battery_info">battery info</string>
+    <string name="battery_info">Elem töltöttsége</string>
     <string name="immediate_alert_summary">click here to alert the keyring</string>
     <string name="welcome_text">Welcome on iTracing2.\n\nThis application allows you to communicate with your iSee (Quintic PROXR) bluetooth device.\n
         If like me, the poorest application "iTracing" disturbs you, enjoy to use my own version :)\n\n
