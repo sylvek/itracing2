@@ -26,13 +26,35 @@
     <string name="remove">Eszköz eltávolítása</string>
     <string name="start_immediate_alert">Csippantás</string>
     <string name="immediate_alert_summary">Az eszközt meg tudod csipogtatni a kapcsolat kipróbálásához.</string>
-    <string name="stop_immediate_alert">Csippantás állj</string>
-    
+    <string name="stop_immediate_alert">Csippanás állj</string>
     <string name="simple_button_action">Klikkelés</string>
     <string name="simple_button_action_summary">Ha az eszközön egyszer megnyomod a gombot, mi történjen?</string>
     <string name="double_button_action">Duplaklikkelés</string>
     <string name="double_button_action_summary">Ha az eszközön kétszer egymás után megnyomod a gombot, mi történjen?</string>
-
+    <string-array name="button_actions_values">
+        <item>START_RING_PHONE</item>
+        <item>START_VIBRATE_PHONE</item>
+        <item>STOP_RING_PHONE</item>
+        <item>STOP_VIBRATE_PHONE</item>
+        <item>CAPTURE_POSITION</item>
+        <item>CUSTOM_ACTION</item>
+        <item>BROADCAST_INTENT</item>
+    </string-array>
+    <string-array name="button_actions">
+        <item>Csengőhang indít</item>
+        <item>Vibra indít</item>
+        <item>Csengőhang állj</item>
+        <item>Vibra állj</item>
+        <item>Helymeghatározás</item>
+<!-- TODO -->
+        <item>call a url or broadcast intent action</item>
+<!-- TODO -->
+        <item>broadcast an intent</item>
+    </string-array>
+<!-- needs context, where is this option appear? -->
+    <string name="stop_ring">Csörgés állj</string>
+<!-- needs context, where is this option appear? -->
+    <string name="stop_vibrate">Vibra állj</string>
     <string name="events_history">Előzmények</string>
 <!-- these are new, previously not existed texts for the events, as they should be translated too. NOT ALL events are here -->
     <string name="event_connected">Kapcsolódás</string>
@@ -62,27 +84,6 @@
         az elhagyás-ellenőrzés.\n
         \n
         Az alkalmazást szabadidőmben fejlesztem, forráskódja nyitott, adományokat szívesen fogadok. Köszönöm!</string>
-    <string name="stop_ring">Csörgés állj</string>
-    <string name="stop_vibrate">Vibra állj</string>
-    <string-array name="button_actions_values">
-        <item>START_RING_PHONE</item>
-        <item>START_VIBRATE_PHONE</item>
-        <item>STOP_RING_PHONE</item>
-        <item>STOP_VIBRATE_PHONE</item>
-        <item>CAPTURE_POSITION</item>
-        <item>CUSTOM_ACTION</item>
-        <item>BROADCAST_INTENT</item>
-    </string-array>
-    <string-array name="button_actions">
-        <item>start ring the phone</item>
-        <item>start vibrate the phone</item>
-        <item>stop ring the phone</item>
-        <item>stop vibrate the phone</item>
-        <item>capture my position</item>
-        <item>call a url or broadcast intent action</item>
-        <item>broadcast an intent</item>
-    </string-array>
-
     <string name="display_last_position">display the last recorded position</string>
     <string name="out_of_range_action">out of range action</string>
     <string name="out_of_range_action_summary">triggered when disconnection occurs</string>
