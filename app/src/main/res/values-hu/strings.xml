@@ -15,26 +15,29 @@
         az elhagyás-ellenőrzés.\n
         \n
         Az alkalmazást szabadidőmben fejlesztem, forráskódja nyitott, adományokat szívesen fogadok. Köszönöm!</string>
-    <string name="ble_not_supported">Készüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez legtöbbször hardveres korlátozás, amin nem tud szoftverfrissítés segíteni.</string>
+    <string name="feedback">Vélemény</string>
+    <string name="feedback_summary">Írj nekem hibajelentést vagy fejlesztési ötletet.</string>
+    <string name="donate">Adományozás</string>
+    <string name="donate_summary">Szívesen fogadok adományokat PayPal-on.</string>
+    <string name="preferences">Beállítások</string>
+    <string name="link_background">Folyamatos kapcsolat</string>
+    <string name="link_background_summary">Folyamatos kapcsolat fenntartása az eszközzel, mely szükséges egyes tevékenységekhez.</string>
+    <string name="ble_not_supported">Készüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez általában hardveres korlátozás, amin nem tud szoftverfrissítés segíteni.</string>
     <string name="action_scan_start">Keresés</string>
     <string name="beacon_not_found">Nem található eszköz.</string>
     <string name="action_connect">Kapcsolódás</string>
+    <string name="dashboard">Irányítópult</string>
     <string name="battery_info">Elem töltöttsége</string>
     <string name="start_immediate_alert">Megcsipogtatás</string>
-    <string name="immediate_alert_summary">Itt meg tudod csipogtatni az eszközt, hogy kipróbáld a kapcsolat működik-e.</string>
+    <string name="immediate_alert_summary">A kapcsolat kipróbálásához meg tudod csipogtatni az eszközt.</string>
     <string name="stop_immediate_alert">Csipogtatás állj</string>
-    <string name="link_background">allways-on</string>
     <string name="stop_ring">Csörgés állj</string>
     <string name="stop_vibrate">Vibra állj</string>
     <string name="simple_button_action">Egy klikk</string>
     <string name="simple_button_action_summary">Ha az eszközön egyszer megnyomod a gombot, mi történjen?</string>
     <string name="double_button_action">Dupla klikk</string>
     <string name="double_button_action_summary">Ha az eszközön kétszer egymás után megnyomod a gombot, mi történjen?</string>
-    <string name="link_background_summary">allows to activate more options</string>
-    <string name="donate">donate (PayPal)</string>
-    <string name="feedback">feedback</string>
-    <string name="donate_summary">to support my work :)</string>
-    <string name="feedback_summary">feel free to improve this product</string>
+
     <string name="display_last_position">display the last recorded position</string>
     <string name="out_of_range_action">out of range action</string>
     <string name="out_of_range_action_summary">triggered when disconnection occurs</string>
@@ -58,8 +61,6 @@
     <string name="confirm_change_name">Confirm to change the keyring name</string>
     <string name="link_loss_disabled">disable this feature may occurs ringing your key ring</string>
     <string name="foreground_started">started in foreground mode</string>
-    <string name="preferences">preferences</string>
-    <string name="dashboard">dashboard</string>
     <string name="action_foreground_summary">improves the link between the smartphone and the devices</string>
     <string name="action_foreground">foreground mode</string>
     <string name="ring_the_device">ring the keyring</string>
