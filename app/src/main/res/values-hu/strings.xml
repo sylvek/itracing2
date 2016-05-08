@@ -103,7 +103,7 @@
 <!-- needs context, where does this option appear? -->
     <string name="stop_vibrate">Vibra állj</string>
     <string name="events_history">Előzmények</string>
-<!-- these are NEW, previously not existed texts for the events, as they should be translated too. NOT ALL events are here -->
+<!-- these are NEW, previously not existing texts for the events, as they should be translated too. NOT ALL events are here, please complete -->
     <string name="event_connected">Kapcsolódás</string>
     <string name="event_out_of_range">Szétkapcsolódás</string>
     <string name="event_immediate_alert">Csippanás</string>
