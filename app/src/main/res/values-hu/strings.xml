@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">iTracing2</string>
-<!-- TODO recheck -->
     <string name="welcome_text">Üdvözöl az iTracing2 !\n
         \n
-        Ezzel az alkalmazással kapcsolódni tudsz az iSee (Quintic PROXR) bluetooth-os kulcstartós közelség-érzékelőkhöz és
+        Az alkalmazással kapcsolódni tudsz az iSee (Quintic PROXR) bluetooth-os kulcstartós közelség-érzékelőkhöz és
         hasonló kínai másolatokhoz.\n
         Ha, hozzám hasonlóan, zavar az iTracing app minősége, használd megelégedéssel az alkalmazásom.\n
         \n
@@ -12,15 +11,15 @@
         kínai másolatok esetében "iTag" szokott lenni.\n
         Ha nem talált semmit, próbáld újraindítani az eszközöd az elem kivételével, behelyezésével.\n
         \n
-        Egyes tevékenységek csak a folyamatos kapcsolat engedélyezése esetén elérhetőek, mint például a gombnyomás és
-        az elhagyás-ellenőrzés.\n
+        Egyes tevékenységek csak a Bluetooth Link Loss engedélyezése esetén elérhetőek, mint például a klikkelés és
+        a szétkapcsolódás-figyelés.\n
         \n
-        Az alkalmazást szabadidőmben fejlesztem, forráskódja nyitott, adományokat szívesen fogadok :) Köszönöm!</string>
+        Az alkalmazást szabadidőmben fejlesztem, adományokat szívesen fogadok :) Köszönöm!</string>
     <string name="ble_not_supported">Okoskészüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez általában hardveres korlátozás, amin nem tud rendszerfrissítés segíteni.</string>
     <string name="preferences">Beállítások</string>
 <!-- needs context, where is this setting? -->
-    <string name="link_background">Folyamatos kapcsolat</string>
-    <string name="link_background_summary">Háttérben kapcsolattartás az eszközzel, mely szükséges egyes tevékenységekhez.</string>
+    <string name="link_background">Bluetooth Link Loss</string>
+    <string name="link_background_summary">Folyamatos kapcsolattartás az eszközzel, mely szükséges egyes tevékenységekhez.</string>
     <string name="action_foreground">Futtatás szolgáltatásként</string>
     <string name="action_foreground_summary">Az előtérben indítás segít, hogy a rendszer ne ürítse a memóriából amikor más alkalmazást indítasz.</string>
 <!-- needs screenshot, where is this text? Is it a toast? -->
@@ -42,7 +41,7 @@
     <string name="confirm_change_name">Biztos, hogy átnevezed az eszközt?</string>
 <!-- ??? i tried this option in the app too, but didnt understand what does this do exactly? Could not understand the french version either, granted i am a beginner in french. -->
     <string name="link_loss_disabled">disable this feature may occurs ringing your key ring</string>
-<!-- if the dashboard only has the battery level and the radio distance, i would rename this tab to "status". I can translate dashboard only to "control center" to hungarian, but having 2 meters to read and nothing to set in not a _control_ center :) -->
+<!-- if the dashboard only has the battery level and the radio distance, i would rename this tab to "status". I can translate dashboard only to "control center" to hungarian, but having 2 gauges to read and nothing to set is not a _control_ center :) -->
     <string name="dashboard">Irányítópult</string>
     <string name="battery_info">Elemtöltöttség</string>
     <string name="rssi_info">Jelerősség</string>
@@ -104,7 +103,7 @@
 <!-- needs context, where does this option appear? -->
     <string name="stop_vibrate">Vibra állj</string>
     <string name="events_history">Előzmények</string>
-<!-- these are new, previously not existed texts for the events, as they should be translated too. NOT ALL events are here -->
+<!-- these are NEW, previously not existed texts for the events, as they should be translated too. NOT ALL events are here -->
     <string name="event_connected">Kapcsolódás</string>
     <string name="event_out_of_range">Szétkapcsolódás</string>
     <string name="event_immediate_alert">Csippanás</string>
