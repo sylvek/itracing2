@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">iTracing2</string>
+<!-- TODO recheck -->
+    <string name="welcome_text">Üdvözöl az iTracing2 !\n
+        \n
+        Ezzel az alkalmazással kapcsolódni tudsz az iSee (Quintic PROXR) bluetooth-os kulcstartós közelség-érzékelőkhöz és
+        hasonló kínai másolatokhoz.\n
+        Ha, hozzám hasonlóan, zavar az iTracing app minősége, használd megelégedéssel az alkalmazásom.\n
+        \n
+        Kezdésnek nyomj a nagyító ikonra az eszközök kereséséhez, melyek neve általában "Quintic PROXR" vagy
+        kínai másolatok esetében "iTag" szokott lenni.\n
+        Ha nem talált semmit, próbáld újraindítani az eszközöd az elem kivételével, behelyezésével.\n
+        \n
+        Egyes tevékenységek csak a folyamatos kapcsolat engedélyezése esetén elérhetőek, mint például a gombnyomás és
+        az elhagyás-ellenőrzés.\n
+        \n
+        Az alkalmazást szabadidőmben fejlesztem, forráskódja nyitott, adományokat szívesen fogadok :) Köszönöm!</string>
     <string name="ble_not_supported">Okoskészüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez általában hardveres korlátozás, amin nem tud rendszerfrissítés segíteni.</string>
     <string name="preferences">Beállítások</string>
 <!-- needs context, where is this setting? -->
@@ -104,22 +119,4 @@
 <!-- needs screenshot and the context, how is the data exported, is it saved in a file or shared to other apps like email or gdrive? -->
     <string name="export_events">Előzmények mentése</string>
     <string-array name="empty_array"/>
-
-
-<!-- TODO -->
-<!-- TODO -->
-    <string name="welcome_text">Üdvözöl az iTracing2 !\n
-        \n
-        Ezzel az alkalmazással kapcsolódni tudsz az iSee (Quintic PROXR) bluetooth-os kulcstartós közelség-érzékelőkhöz és
-        hasonló kínai másolatokhoz.\n
-        Ha, hozzám hasonlóan, zavar az iTracing app minősége, használd megelégedéssel az alkalmazásom.\n
-        \n
-        Kezdésnek nyomj a nagyító ikonra az eszközök kereséséhez, melyek neve általában "Quintic PROXR" vagy
-        kínai másolatok esetében "iTag" szokott lenni.\n
-        Ha nem talált semmit, próbáld újraindítani az eszközöd az elem kivételével, behelyezésével.\n
-        \n
-        Egyes tevékenységek csak a folyamatos kapcsolat engedélyezése esetén elérhetőek, mint például a gombnyomás és
-        az elhagyás-ellenőrzés.\n
-        \n
-        Az alkalmazást szabadidőmben fejlesztem, forráskódja nyitott, adományokat szívesen fogadok :) Köszönöm!</string>
 </resources>
