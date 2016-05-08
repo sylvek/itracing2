@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">iTracing2</string>
+    <string name="ble_not_supported">Okoskészüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez általában hardveres korlátozás, amin nem tud rendszerfrissítés segíteni.</string>
     <string name="preferences">Beállítások</string>
+<!-- needs screenshot, where is this setting? -->
     <string name="link_background">Folyamatos kapcsolat</string>
     <string name="link_background_summary">Háttérben kapcsolattartás az eszközzel, mely szükséges egyes tevékenységekhez.</string>
     <string name="double_button_delay">Duplaklikk ideje</string>
@@ -11,19 +13,26 @@
     <string name="feedback_summary">Írj nekem hibajelentést vagy fejlesztési ötletet.</string>
     <string name="donate">Adomány</string>
     <string name="donate_summary">Szívesen fogadok adományokat PayPal-on.</string>
+    <string name="action_scan_start">Keresés</string>
+    <string name="beacon_not_found">Nem található eszköz.</string>
+<!-- needs screenshot, what is the context? -->
+    <string name="select_device">Válassz eszközt</string>
+<!-- needs screenshot, what is the context? -->
+    <string name="action_connect">Kapcsolódás</string>
+<!-- needs confirmation, is this text only used for removing TAGS? because name is only "remove" and not "remove_device" but if i only translate the word remove, it would be ambiguous as this text is appearing in the options menu, even under the Events History if it says only remove the user dont understant what to remove -->
+    <string name="remove">Eszköz eltávolítása</string>
     <string name="events_history">Előzmények</string>
 <!-- these are new, previously not existed texts for the events, as they should be translated too. NOT ALL events are here -->
     <string name="event_connected">Kapcsolódás</string>
     <string name="event_out_of_range">Szétkapcsolódás</string>
-<!-- confirmation needed, is this the beeper-testing marked with a speaker icon in the app? -->
     <string name="event_immediate_alert">Csippanás</string>
     <string name="event_single_click">Klikkelés</string>
     <string name="event_double_click">Duplaklikkelés</string>
     <string name="event_position">Helymeghatározás</string>
     <string name="clear_events">Előzmények törlése</string>
-<!-- needs the context, what is the text on the buttons, ok, cancel, remove? -->
+<!-- needs screenshot and the context, what is the text on the buttons, ok, cancel, remove? -->
     <string name="confirm_remove_events">Biztos, hogy törölni akarod az előzményeket?</string>
-<!-- needs the context, how is the data exported, is it saved in a file or shared to other apps like email or gdrive? -->
+<!-- needs screenshot and the context, how is the data exported, is it saved in a file or shared to other apps like email or gdrive? -->
     <string name="export_events">Előzmények mentése</string>
     <string-array name="empty_array"/>
 
@@ -41,12 +50,6 @@
         az elhagyás-ellenőrzés.\n
         \n
         Az alkalmazást szabadidőmben fejlesztem, forráskódja nyitott, adományokat szívesen fogadok. Köszönöm!</string>
-    <string name="ble_not_supported">Készüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez általában hardveres korlátozás, amin nem tud szoftverfrissítés segíteni.</string>
-    <string name="action_scan_start">Keresés</string>
-    <string name="beacon_not_found">Nem található eszköz.</string>
-    <string name="select_device">Válassz eszközt</string>
-    <string name="remove">Eszköz eltávolítása</string>
-    <string name="action_connect">Kapcsolódás</string>
     <string name="dashboard">Irányítópult</string>
     <string name="battery_info">Elem töltöttsége</string>
     <string name="start_immediate_alert">Megcsipogtatás</string>
