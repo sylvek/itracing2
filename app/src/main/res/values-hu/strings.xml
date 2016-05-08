@@ -25,7 +25,7 @@
     <string name="action_connect">Kapcsolódás</string>
 <!-- needs screenshot, what is the text on the buttons, ok, cancel, remove? -->
     <string name="confirm_change_name">Biztos, hogy átnevezed az eszközt?</string>
-<!-- ??? i tried this option in the app too, but didnt understand what does this do exactly? -->
+<!-- ??? i tried this option in the app too, but didnt understand what does this do exactly? Could not understand the french version either, granted i am a beginner in french. -->
     <string name="link_loss_disabled">disable this feature may occurs ringing your key ring</string>
 <!-- if the dashboard only has the battery level and the radio distance, i would rename this tab to "status". I can translate dashboard only to "control center" to hungarian, but having 2 meters to read and nothing to set in not a _control_ center :) -->
     <string name="dashboard">Irányítópult</string>
@@ -40,7 +40,7 @@
     <string name="stop_immediate_alert">Csippanás állj</string>
 <!-- needs context, where does this option appear? -->
     <string name="ring_the_device">Csippantás</string>
-<!-- needs context, where does this option appear? -->
+<!-- needs context, where does this option appear? Is it on the title of the middle tab where there is "preferences" currently? -->
     <string name="actions">Események</string>
 <!-- needs screenshot for context -->
     <string name="something_goes_wrong">Valami hiba történt :(</string>
@@ -76,6 +76,10 @@
     </string-array>
     <string name="ring_tone">Csengőhang</string>
     <string name="ring_tone_summary">Az eseményhez választhatsz csengőhangot.</string>
+<!-- needs screenshot, where does this text appear? Is it checking if a file exists? Why does it say to turn up the volume then? -->
+    <string name="ring_tone_not_found">Nem létezik a beállított csengőhang.</string>
+<!-- needs screenshot, where does this text appear? Is this appear after setting vibra on? Why does the option appear then, the vibra should be checked before displaying options and if there is no vibra, dont display the option. -->
+    <string name="vibrator_not_found">Nincs vibramotor az okoskészülékben.</string>
 <!-- TODO -->
     <string name="custom_action">custom action</string>
 <!-- TODO -->
@@ -92,6 +96,8 @@
     <string name="event_single_click">Klikkelés</string>
     <string name="event_double_click">Duplaklikkelés</string>
     <string name="event_position">Helymeghatározás</string>
+<!-- needs screenshot, where does this option appear? -->
+    <string name="display_last_position">Mutasd az utolsó rögzített helyet.</string>
     <string name="clear_events">Előzmények törlése</string>
 <!-- needs screenshot, what is the text on the buttons, ok, cancel, remove? -->
     <string name="confirm_remove_events">Biztos, hogy törölni akarod az előzményeket?</string>
@@ -116,7 +122,4 @@
         az elhagyás-ellenőrzés.\n
         \n
         Az alkalmazást szabadidőmben fejlesztem, forráskódja nyitott, adományokat szívesen fogadok :) Köszönöm!</string>
-    <string name="display_last_position">display the last recorded position</string>
-    <string name="ring_tone_not_found">ring tone not found! please select an another, be sure you have a default ring tone, or that sound volume is up.</string>
-    <string name="vibrator_not_found">vibrator not found! please be sure that you have this feature on your phone.</string>
 </resources>
