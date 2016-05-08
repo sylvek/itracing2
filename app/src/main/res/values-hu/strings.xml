@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">iTracing2</string>
+    <string name="preferences">Beállítások</string>
+    <string name="link_background">Folyamatos kapcsolat</string>
+    <string name="link_background_summary">Háttérben kapcsolattartás az eszközzel, mely szükséges egyes tevékenységekhez.</string>
+    <string name="double_button_delay">Duplaklikk ideje</string>
+    <string name="double_button_delay_summary">Hány ezredmásodpercen belül kell kétszer megnyomni a gombot? Alapértelmezetten 300 ezredmp.</string>
+    <string name="default_double_button_delay">300</string>
+    <string name="feedback">Vélemény</string>
+    <string name="feedback_summary">Írj nekem hibajelentést vagy fejlesztési ötletet.</string>
+    <string name="donate">Adomány</string>
+    <string name="donate_summary">Szívesen fogadok adományokat PayPal-on.</string>
+    <string name="events_history">Előzmények</string>
+<!-- these are new, previously not existed texts for the events, as they should be translated too. NOT ALL events are here -->
+    <string name="event_connected">Kapcsolódás</string>
+    <string name="event_out_of_range">Szétkapcsolódás</string>
+<!-- confirmation needed, is this the beeper-testing marked with a speaker icon in the app? -->
+    <string name="event_immediate_alert">Csippanás</string>
+    <string name="event_single_click">Klikkelés</string>
+    <string name="event_double_click">Duplaklikkelés</string>
+    <string name="event_position">Helymeghatározás</string>
+    <string name="clear_events">Előzmények törlése</string>
+<!-- needs the context, what is the text on the buttons, ok, cancel, remove? -->
+    <string name="confirm_remove_events">Biztos, hogy törölni akarod az előzményeket?</string>
+<!-- needs the context, how is the data exported, is it saved in a file or shared to other apps like email or gdrive? -->
+    <string name="export_events">Előzmények mentése</string>
+    <string-array name="empty_array"/>
+
     <string name="welcome_text">Üdvözöl az iTracing2 !\n
         \n
         Ezzel az alkalmazással kapcsolódni tudsz az iSee (Quintic PROXR) bluetooth-os kulcstartós közelség-érzékelőkhöz és
@@ -15,16 +41,6 @@
         az elhagyás-ellenőrzés.\n
         \n
         Az alkalmazást szabadidőmben fejlesztem, forráskódja nyitott, adományokat szívesen fogadok. Köszönöm!</string>
-    <string name="feedback">Vélemény</string>
-    <string name="feedback_summary">Írj nekem hibajelentést vagy fejlesztési ötletet.</string>
-    <string name="donate">Adományozás</string>
-    <string name="donate_summary">Szívesen fogadok adományokat PayPal-on.</string>
-    <string name="preferences">Beállítások</string>
-    <string name="link_background">Folyamatos kapcsolat</string>
-    <string name="link_background_summary">Folyamatos kapcsolat fenntartása az eszközzel, mely szükséges egyes tevékenységekhez.</string>
-    <string name="double_button_delay">Dupla klikk ideje</string>
-    <string name="double_button_delay_summary">Hány ezredmásodperc alatt kell kétszer megnyomni a gombot, hogy dupla klikknek számítson? Alapértelmezett érték: 300</string>
-    <string name="default_double_button_delay">300</string>
     <string name="ble_not_supported">Készüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez általában hardveres korlátozás, amin nem tud szoftverfrissítés segíteni.</string>
     <string name="action_scan_start">Keresés</string>
     <string name="beacon_not_found">Nem található eszköz.</string>
@@ -60,21 +76,6 @@
         <item>call a url or broadcast intent action</item>
         <item>broadcast an intent</item>
     </string-array>
-
-    <string name="events_history">Előzmények</string>
-    <string name="clear_events">Előzmények törlése</string>
-<!-- needs the context, what is the text on the buttons, ok, cancel, remove? -->
-    <string name="confirm_remove_events">Biztos, hogy törölni akarod az előzményeket?</string>
-<!-- needs the context, how is the data exported, is it saved in a file or shared to other apps like email or gdrive? -->
-    <string name="export_events">Előzmények mentése</string>
-<!-- these are new, previously not existed texts for the events, as they should be translated too. NOT ALL events are here -->
-    <string name="event_single_click">Klikkelés</string>
-    <string name="event_connected">Kapcsolódás</string>
-    <string name="event_out_of_range">Szétkapcsolás</string>
-    <string name="event_position">Helymeghatározás</string>
-<!-- confirmation needed, is this the beeper-testing marked with a speaker icon in the app? -->
-    <string name="event_immediate_alert">Csippantás</string>
-    <string-array name="empty_array"/>
 
     <string name="display_last_position">display the last recorded position</string>
     <string name="out_of_range_action">out of range action</string>
