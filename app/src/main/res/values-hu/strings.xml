@@ -100,6 +100,8 @@
     <string-array name="empty_array"/>
 
 
+<!-- TODO -->
+<!-- TODO -->
     <string name="welcome_text">Üdvözöl az iTracing2 !\n
         \n
         Ezzel az alkalmazással kapcsolódni tudsz az iSee (Quintic PROXR) bluetooth-os kulcstartós közelség-érzékelőkhöz és
