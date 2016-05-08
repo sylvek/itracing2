@@ -19,8 +19,20 @@
     <string name="select_device">Válassz eszközt</string>
 <!-- needs screenshot, what is the context? -->
     <string name="action_connect">Kapcsolódás</string>
+<!-- if the dashboard only has the battery level and the radio distance, i would rename this tab to "status". I can translate dashboard only to "control center" to hungarian, but having 2 meters to read and nothing to set in not a _control_ center :) -->
+    <string name="dashboard">Irányítópult</string>
+    <string name="battery_info">Elem töltöttsége</string>
 <!-- needs confirmation, is this text only used for removing TAGS? because name is only "remove" and not "remove_device" but if i only translate the word remove, it would be ambiguous as this text is appearing in the options menu, even under the Events History if it says only remove the user dont understant what to remove -->
     <string name="remove">Eszköz eltávolítása</string>
+    <string name="start_immediate_alert">Csippantás</string>
+    <string name="immediate_alert_summary">Az eszközt meg tudod csipogtatni a kapcsolat kipróbálásához.</string>
+    <string name="stop_immediate_alert">Csippantás állj</string>
+    
+    <string name="simple_button_action">Klikkelés</string>
+    <string name="simple_button_action_summary">Ha az eszközön egyszer megnyomod a gombot, mi történjen?</string>
+    <string name="double_button_action">Duplaklikkelés</string>
+    <string name="double_button_action_summary">Ha az eszközön kétszer egymás után megnyomod a gombot, mi történjen?</string>
+
     <string name="events_history">Előzmények</string>
 <!-- these are new, previously not existed texts for the events, as they should be translated too. NOT ALL events are here -->
     <string name="event_connected">Kapcsolódás</string>
@@ -50,17 +62,8 @@
         az elhagyás-ellenőrzés.\n
         \n
         Az alkalmazást szabadidőmben fejlesztem, forráskódja nyitott, adományokat szívesen fogadok. Köszönöm!</string>
-    <string name="dashboard">Irányítópult</string>
-    <string name="battery_info">Elem töltöttsége</string>
-    <string name="start_immediate_alert">Megcsipogtatás</string>
-    <string name="immediate_alert_summary">A kapcsolat kipróbálásához meg tudod csipogtatni az eszközt.</string>
-    <string name="stop_immediate_alert">Csipogtatás állj</string>
     <string name="stop_ring">Csörgés állj</string>
     <string name="stop_vibrate">Vibra állj</string>
-    <string name="simple_button_action">Egy klikk</string>
-    <string name="simple_button_action_summary">Ha az eszközön egyszer megnyomod a gombot, mi történjen?</string>
-    <string name="double_button_action">Dupla klikk</string>
-    <string name="double_button_action_summary">Ha az eszközön kétszer egymás után megnyomod a gombot, mi történjen?</string>
     <string-array name="button_actions_values">
         <item>START_RING_PHONE</item>
         <item>START_VIBRATE_PHONE</item>
