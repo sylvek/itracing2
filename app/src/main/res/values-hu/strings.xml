@@ -22,9 +22,14 @@
     <string name="preferences">Beállítások</string>
     <string name="link_background">Folyamatos kapcsolat</string>
     <string name="link_background_summary">Folyamatos kapcsolat fenntartása az eszközzel, mely szükséges egyes tevékenységekhez.</string>
+    <string name="double_button_delay">Dupla klikk ideje</string>
+    <string name="double_button_delay_summary">Hány ezredmásodperc alatt kell kétszer megnyomni a gombot, hogy dupla klikknek számítson? Alapértelmezett érték: 300</string>
+    <string name="default_double_button_delay">300</string>
     <string name="ble_not_supported">Készüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez általában hardveres korlátozás, amin nem tud szoftverfrissítés segíteni.</string>
     <string name="action_scan_start">Keresés</string>
     <string name="beacon_not_found">Nem található eszköz.</string>
+    <string name="select_device">Válassz eszközt</string>
+    <string name="remove">Eszköz eltávolítása</string>
     <string name="action_connect">Kapcsolódás</string>
     <string name="dashboard">Irányítópult</string>
     <string name="battery_info">Elem töltöttsége</string>
@@ -37,48 +42,6 @@
     <string name="simple_button_action_summary">Ha az eszközön egyszer megnyomod a gombot, mi történjen?</string>
     <string name="double_button_action">Dupla klikk</string>
     <string name="double_button_action_summary">Ha az eszközön kétszer egymás után megnyomod a gombot, mi történjen?</string>
-
-    <string name="display_last_position">display the last recorded position</string>
-    <string name="out_of_range_action">out of range action</string>
-    <string name="out_of_range_action_summary">triggered when disconnection occurs</string>
-    <string name="action_on_power_off">link is lost on power off</string>
-    <string name="action_on_power_off_summary">the link is lost if keyring or bluetooth is powering off</string>
-    <string name="ring_tone_summary">select the ringtone for actions</string>
-    <string name="ring_tone">ring tone</string>
-    <string name="rssi_info">rssi info</string>
-    <string name="actions">keyring actions</string>
-    <string name="select_device">select a device</string>
-    <string name="ring_tone_not_found">ring tone not found! please select an another, be sure you have a default ring tone, or that sound volume is up.</string>
-    <string name="vibrator_not_found">vibrator not found! please be sure that you have this feature on your phone.</string>
-    <string name="something_goes_wrong">something goes wrong!</string>
-    <string name="double_button_delay">Double click delay</string>
-    <string name="double_button_delay_summary">delay between two clicks (300ms if empty)</string>
-    <string name="default_double_button_delay">300</string>
-    <string name="custom_action">custom action</string>
-    <string name="custom_action_summary">http(s)://.. or intent action string</string>
-    <string name="remove">remove the keyring</string>
-    <string name="confirm_remove_keyring">Confirm to remove this keyring</string>
-    <string name="confirm_change_name">Confirm to change the keyring name</string>
-    <string name="link_loss_disabled">disable this feature may occurs ringing your key ring</string>
-    <string name="foreground_started">started in foreground mode</string>
-    <string name="action_foreground_summary">improves the link between the smartphone and the devices</string>
-    <string name="action_foreground">foreground mode</string>
-    <string name="ring_the_device">ring the keyring</string>
-    <string name="events_history">events history</string>
-    <string name="connected_action">on connected action</string>
-    <string name="connected_action_summary">triggered when connection occurs</string>
-    <string name="clear_events">clear all events</string>
-    <string name="confirm_remove_events">Confirm events deletion</string>
-    <string name="export_events">export the events</string>
-    <string-array name="button_actions">
-        <item>start ring the phone</item>
-        <item>start vibrate the phone</item>
-        <item>stop ring the phone</item>
-        <item>stop vibrate the phone</item>
-        <item>capture my position</item>
-        <item>call a url or broadcast intent action</item>
-        <item>broadcast an intent</item>
-    </string-array>
     <string-array name="button_actions_values">
         <item>START_RING_PHONE</item>
         <item>START_VIBRATE_PHONE</item>
@@ -88,5 +51,52 @@
         <item>CUSTOM_ACTION</item>
         <item>BROADCAST_INTENT</item>
     </string-array>
+    <string-array name="button_actions">
+        <item>start ring the phone</item>
+        <item>start vibrate the phone</item>
+        <item>stop ring the phone</item>
+        <item>stop vibrate the phone</item>
+        <item>capture my position</item>
+        <item>call a url or broadcast intent action</item>
+        <item>broadcast an intent</item>
+    </string-array>
+
+    <string name="events_history">Előzmények</string>
+    <string name="clear_events">Előzmények törlése</string>
+<!-- needs the context, what is the text on the buttons, ok, cancel, remove? -->
+    <string name="confirm_remove_events">Biztos, hogy törölni akarod az előzményeket?</string>
+<!-- needs the context, how is the data exported, is it saved in a file or shared to other apps like email or gdrive? -->
+    <string name="export_events">Előzmények mentése</string>
+<!-- these are new, previously not existed texts for the events, as they should be translated too. NOT ALL events are here -->
+    <string name="event_single_click">Klikkelés</string>
+    <string name="event_connected">Kapcsolódás</string>
+    <string name="event_out_of_range">Szétkapcsolás</string>
+    <string name="event_position">Helymeghatározás</string>
+<!-- confirmation needed, is this the beeper-testing marked with a speaker icon in the app? -->
+    <string name="event_immediate_alert">Csippantás</string>
     <string-array name="empty_array"/>
+
+    <string name="display_last_position">display the last recorded position</string>
+    <string name="out_of_range_action">out of range action</string>
+    <string name="out_of_range_action_summary">triggered when disconnection occurs</string>
+    <string name="action_on_power_off">link is lost on power off</string>
+    <string name="action_on_power_off_summary">the link is lost if keyring or bluetooth is powering off</string>
+    <string name="ring_tone">ring tone</string>
+    <string name="ring_tone_summary">select the ringtone for actions</string>
+    <string name="ring_tone_not_found">ring tone not found! please select an another, be sure you have a default ring tone, or that sound volume is up.</string>
+    <string name="vibrator_not_found">vibrator not found! please be sure that you have this feature on your phone.</string>
+    <string name="rssi_info">rssi info</string>
+    <string name="actions">keyring actions</string>
+    <string name="something_goes_wrong">something goes wrong!</string>
+    <string name="custom_action">custom action</string>
+    <string name="custom_action_summary">http(s)://.. or intent action string</string>
+    <string name="confirm_remove_keyring">Confirm to remove this keyring</string>
+    <string name="confirm_change_name">Confirm to change the keyring name</string>
+    <string name="link_loss_disabled">disable this feature may occurs ringing your key ring</string>
+    <string name="foreground_started">started in foreground mode</string>
+    <string name="action_foreground_summary">improves the link between the smartphone and the devices</string>
+    <string name="action_foreground">foreground mode</string>
+    <string name="ring_the_device">ring the keyring</string>
+    <string name="connected_action">on connected action</string>
+    <string name="connected_action_summary">triggered when connection occurs</string>
 </resources>
