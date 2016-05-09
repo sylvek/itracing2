@@ -110,7 +110,7 @@
     <string name="clear_events">Előzmények törlése</string>
 <!-- needs screenshot, what is the text on the buttons, ok, cancel, remove? -->
     <string name="confirm_remove_events">Biztos, hogy törölni akarod az előzményeket?</string>
-<!-- needs screenshot and the context, how is the data exported, is it saved in a file or shared to other apps like email or gdrive? -->
-    <string name="export_events">Előzmények mentése</string>
+<!-- needs context, how is the data exported, is it saved in a file or shared to other apps like email or gdrive? update: i've read the java code, it sends an email via share, am i right? -->
+    <string name="export_events">Előzmények elemailezése</string>
     <string-array name="empty_array"/>
 </resources>
