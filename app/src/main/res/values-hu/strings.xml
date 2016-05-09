@@ -28,10 +28,10 @@
     <string name="double_button_delay_summary">Hány ezredmásodpercen belül kell kétszer megnyomni a gombot? Alapértelmezetten 300 ezredmp.</string>
     <string name="default_double_button_delay">300</string>
     <string name="feedback">Vélemény</string>
-    <string name="feedback_summary">Írj nekem hibajelentést vagy fejlesztési ötletet.</string>
+    <string name="feedback_summary">Írj nekem hibajelentést vagy fejlesztési ötletet.</string> <!-- unused? -->
     <string name="donate">Adomány</string>
-    <string name="donate_summary">Szívesen fogadok adományokat PayPal-on :)</string> <!-- also a toast! -->
-    <string name="action_scan_start">Keresés</string>
+    <string name="donate_summary">Szívesen fogadok adományokat PayPal-on :)</string> <!-- toast -->
+    <string name="action_scan_start">Keresés</string> <!-- unused? -->
     <string name="beacon_not_found">Nem található eszköz.</string>
 <!-- needs screenshot, what info is around this text? -->
     <string name="select_device">Válassz eszközt</string>
@@ -42,8 +42,8 @@
     <string name="link_loss_disabled">Kikapcsoltad a Bluetooth Link Loss-t, egyes eszközök ezt elvesztésnek gondolják és riasztanak.</string>
 <!-- if the dashboard only has the battery level and the radio distance, i would rename this tab to "status". I can translate dashboard only to "control center" to hungarian, but having 2 gauges to read and nothing to set is not a _control_ center :) -->
     <string name="dashboard">Irányítópult</string>
-    <string name="battery_info">Elemtöltöttség</string>
-    <string name="rssi_info">Jelerősség</string>
+    <string name="battery_info">Elemtöltöttség</string> <!-- unused? -->
+    <string name="rssi_info">Jelerősség</string> <!-- unused? -->
 <!-- needs confirmation, is this text only used for removing TAGS? because name is only "remove" and not "remove_device" but if i only translate the word remove, it would be ambiguous as this text is appearing in the options menu, even under the Events History if it says only remove the user dont understant what to remove -->
     <string name="remove">Eszköz eltávolítása</string>
 <!-- needs screenshot, what is the text on the buttons, ok, cancel, remove? -->
