@@ -32,7 +32,7 @@
     <string name="feedback">Vélemény</string>
     <string name="feedback_summary">Írj nekem hibajelentést vagy fejlesztési ötletet.</string>
     <string name="donate">Adomány</string>
-    <string name="donate_summary">Szívesen fogadok adományokat PayPal-on.</string>
+    <string name="donate_summary">Szívesen fogadok adományokat PayPal-on :)</string>
     <string name="action_scan_start">Keresés</string>
     <string name="beacon_not_found">Nem található eszköz.</string>
 <!-- needs screenshot, what info is around this text? -->
