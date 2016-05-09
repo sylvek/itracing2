@@ -15,22 +15,22 @@
         a szétkapcsolódás-figyelés.\n
         \n
         Az alkalmazást szabadidőmben fejlesztem, adományokat szívesen fogadok :) Köszönöm!</string>
-    <string name="something_goes_wrong">Nem sikerült megcsippantani az eszközt.</string>
-    <string name="ble_not_supported">Okoskészüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez általában hardveres korlátozás, amin nem tud rendszerfrissítés segíteni.</string>
+    <string name="something_goes_wrong">Nem sikerült megcsippantani az eszközt.</string> <!-- toast --> <!-- occurs at immediate alert only -->
+    <string name="ble_not_supported">Okoskészüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez általában hardveres korlátozás, amin nem tud rendszerfrissítés segíteni.</string> <!-- toast -->
     <string name="preferences">Beállítások</string>
 <!-- needs context, is this an intent? where is the text appear then? -->
     <string name="link_background">Bluetooth Link Loss</string>
     <string name="link_background_summary">Folyamatos kapcsolattartás az eszközzel, mely szükséges egyes tevékenységekhez.</string>
     <string name="action_foreground">Futtatás szolgáltatásként</string>
     <string name="action_foreground_summary">Az előtérben indítás segít, hogy a rendszer ne ürítse a memóriából amikor más alkalmazást indítasz.</string>
-    <string name="foreground_started">Szolgáltatásként futtatva</string>
+    <string name="foreground_started">Szolgáltatásként futtatva</string> <!-- notification -->
     <string name="double_button_delay">Duplaklikk ideje</string>
     <string name="double_button_delay_summary">Hány ezredmásodpercen belül kell kétszer megnyomni a gombot? Alapértelmezetten 300 ezredmp.</string>
     <string name="default_double_button_delay">300</string>
     <string name="feedback">Vélemény</string>
     <string name="feedback_summary">Írj nekem hibajelentést vagy fejlesztési ötletet.</string>
     <string name="donate">Adomány</string>
-    <string name="donate_summary">Szívesen fogadok adományokat PayPal-on :)</string>
+    <string name="donate_summary">Szívesen fogadok adományokat PayPal-on :)</string> <!-- also a toast! -->
     <string name="action_scan_start">Keresés</string>
     <string name="beacon_not_found">Nem található eszköz.</string>
 <!-- needs screenshot, what info is around this text? -->
@@ -53,7 +53,7 @@
     <string name="stop_immediate_alert">Csippanás állj</string>
 <!-- needs context, where does this option appear? -->
     <string name="ring_the_device">Csippantás</string>
-<!-- needs context, where does this option appear? Is it on the title of the middle tab where there is "preferences" currently? -->
+<!-- needs context, where does this option appear? Was this in the past on the title of the middle tab where there is "preferences" currently? -->
     <string name="actions">Események</string>
     <string name="connected_action">Kapcsolódás esetén</string>
     <string name="connected_action_summary">Ha az eszköz kapcsolódik, mi történjen?</string>
@@ -85,15 +85,13 @@
     </string-array>
     <string name="ring_tone">Csengőhang</string>
     <string name="ring_tone_summary">Az eseményhez választhatsz csengőhangot.</string>
-<!-- if it is checking if a file "physically" exists, then why does it say to turn up the volume? -->
+<!-- if it is checking if a file "physically" exists, then why does it say to turn up the volume? :) -->
     <string name="ring_tone_not_found">Nem létezik a beállított csengőhang.</string>
     <string name="vibrator_not_found">Nincs vibramotor az okoskészülékben.</string>
     <string name="custom_action">Meghivandó url vagy intent</string>
     <string name="custom_action_summary">HTTP GET url vagy intent action string</string>
-<!-- needs context, where does this option appear? -->
-    <string name="stop_ring">Csengés állj</string>
-<!-- needs context, where does this option appear? -->
-    <string name="stop_vibrate">Vibra állj</string>
+    <string name="stop_ring">Csengés állj</string> <!-- notification -->
+    <string name="stop_vibrate">Vibra állj</string> <!-- notification -->
     <string name="events_history">Előzmények</string>
 <!-- these are NEW, previously not existing texts for the events, as they should be translated too. NOT ALL events are here, please complete. update: i've parsed the java code, looks like i've got all, am i? -->
     <string name="event_connected">Kapcsolódás</string>
