@@ -83,10 +83,8 @@
         <item>Csengés állj</item>
         <item>Vibra állj</item>
         <item>Helymeghatározás</item>
-<!-- TODO -->
-        <item>call a url or broadcast intent action</item>
-<!-- TODO -->
-        <item>broadcast an intent</item>
+        <item>url vagy intent meghívása</item>
+        <item>Intent sugárzása</item>
     </string-array>
     <string name="ring_tone">Csengőhang</string>
     <string name="ring_tone_summary">Az eseményhez választhatsz csengőhangot.</string>
@@ -94,10 +92,8 @@
     <string name="ring_tone_not_found">Nem létezik a beállított csengőhang.</string>
 <!-- needs screenshot, where does this text appear? Is this appear after setting vibra on? Why does the option appear then, the vibra should be checked before displaying options and if there is no vibra, dont display the option. -->
     <string name="vibrator_not_found">Nincs vibramotor az okoskészülékben.</string>
-<!-- TODO -->
-    <string name="custom_action">custom action</string>
-<!-- TODO -->
-    <string name="custom_action_summary">http(s)://.. or intent action string</string>
+    <string name="custom_action">Meghivandó url vagy intent</string>
+    <string name="custom_action_summary">HTTP GET url vagy intent action string</string>
 <!-- needs context, where does this option appear? -->
     <string name="stop_ring">Csengés állj</string>
 <!-- needs context, where does this option appear? -->
