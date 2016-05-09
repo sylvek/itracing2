@@ -48,6 +48,7 @@
 <!-- needs confirmation, is this text only used for removing TAGS? because name is only "remove" and not "remove_device" but if i only translate the word remove, it would be ambiguous as this text is appearing in the options menu, even under the Events History if it says only remove the user dont understant what to remove -->
     <string name="remove">Eszköz eltávolítása</string>
 <!-- needs screenshot, what is the text on the buttons, ok, cancel, remove? -->
+<!-- unused? -->
     <string name="confirm_remove_keyring">Biztos, hogy el akarod távolítani az eszközt?</string>
     <string name="start_immediate_alert">Csippantás</string> <!-- image -->
 <!-- unused? -->
