@@ -23,8 +23,7 @@
     <string name="link_background_summary">Folyamatos kapcsolattartás az eszközzel, mely szükséges egyes tevékenységekhez.</string>
     <string name="action_foreground">Futtatás szolgáltatásként</string>
     <string name="action_foreground_summary">Az előtérben indítás segít, hogy a rendszer ne ürítse a memóriából amikor más alkalmazást indítasz.</string>
-<!-- needs screenshot, where is this text? Is it a toast? -->
-    <string name="foreground_started">Indítás szolgáltatásként</string>
+    <string name="foreground_started">Szolgáltatásként futtatva</string>
     <string name="double_button_delay">Duplaklikk ideje</string>
     <string name="double_button_delay_summary">Hány ezredmásodpercen belül kell kétszer megnyomni a gombot? Alapértelmezetten 300 ezredmp.</string>
     <string name="default_double_button_delay">300</string>
