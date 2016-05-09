@@ -14,7 +14,7 @@
         Egyes tevékenységek csak a Bluetooth Link Loss engedélyezése esetén elérhetőek, mint például a klikkelés és
         a szétkapcsolódás-figyelés.\n
         \n
-        Az alkalmazást szabadidőmben fejlesztem, véleményt és adományokat szívesen fogadok :) Köszönöm!</string>
+        Az alkalmazást szabadidőmben fejlesztem, adományokat szívesen fogadok :) Köszönöm!</string>
     <string name="ble_not_supported">Okoskészüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez általában hardveres korlátozás, amin nem tud rendszerfrissítés segíteni.</string>
     <string name="preferences">Beállítások</string>
 <!-- needs context, where is this setting? -->
