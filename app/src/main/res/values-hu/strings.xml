@@ -15,7 +15,6 @@
         a szétkapcsolódás-figyelés.\n
         \n
         Az alkalmazást szabadidőmben fejlesztem, adományokat szívesen fogadok :) Köszönöm!</string>
-    <string name="something_goes_wrong">Nem sikerült megcsippantani az eszközt.</string> <!-- toast --> <!-- occurs at immediate alert only -->
     <string name="ble_not_supported">Okoskészüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez általában hardveres korlátozás, amin nem tud rendszerfrissítés segíteni.</string> <!-- toast -->
     <string name="preferences">Beállítások</string>
 <!-- needs context, is this an intent? where is the text appear then? -->
@@ -56,6 +55,7 @@
     <string name="start_immediate_alert">Csippantás</string> <!-- image -->
 <!-- unused? -->
     <string name="immediate_alert_summary">Az eszközt a kapcsolat kipróbálásához meg tudod csipogtatni.</string>
+    <string name="something_goes_wrong">Nem sikerült megcsippantani az eszközt.</string> <!-- toast --> <!-- occurs at immediate alert only -->
     <string name="stop_immediate_alert">Csippanás állj</string> <!-- image -->
 <!-- needs context, where does this option appear? -->
 <!-- unused? -->
