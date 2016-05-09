@@ -33,7 +33,7 @@
 <!-- unused? -->
     <string name="feedback_summary">Írj nekem hibajelentést vagy fejlesztési ötletet.</string>
     <string name="donate">Adomány</string>
-    <string name="donate_summary">Szívesen fogadok adományokat PayPal-on :)</string> <!-- toast -->
+    <string name="donate_summary">Ha hasznosnak találod az alkalmazást, támogass PayPal-on :)</string> <!-- toast -->
 <!-- unused? -->
     <string name="action_scan_start">Keresés</string>
     <string name="beacon_not_found">Nem található eszköz.</string>
