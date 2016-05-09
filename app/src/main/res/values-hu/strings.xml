@@ -17,7 +17,7 @@
         Az alkalmazást szabadidőmben fejlesztem, adományokat szívesen fogadok :) Köszönöm!</string>
     <string name="ble_not_supported">Okoskészüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez általában hardveres korlátozás, amin nem tud rendszerfrissítés segíteni.</string>
     <string name="preferences">Beállítások</string>
-<!-- needs context, where is this setting? -->
+<!-- needs context, is this an intent? -->
     <string name="link_background">Bluetooth Link Loss</string>
     <string name="link_background_summary">Folyamatos kapcsolattartás az eszközzel, mely szükséges egyes tevékenységekhez.</string>
     <string name="action_foreground">Futtatás szolgáltatásként</string>
@@ -90,7 +90,7 @@
     <string name="ring_tone_summary">Az eseményhez választhatsz csengőhangot.</string>
 <!-- needs screenshot, where does this text appear? Is it checking if a file exists? Why does it say to turn up the volume then? -->
     <string name="ring_tone_not_found">Nem létezik a beállított csengőhang.</string>
-<!-- needs screenshot, where does this text appear? Is this appear after setting vibra on? Why does the option appear then, the vibra should be checked before displaying options and if there is no vibra, dont display the option. -->
+<!-- needs context, where does this text appear? Is this a toast after the an intent is called? -->
     <string name="vibrator_not_found">Nincs vibramotor az okoskészülékben.</string>
     <string name="custom_action">Meghivandó url vagy intent</string>
     <string name="custom_action_summary">HTTP GET url vagy intent action string</string>
