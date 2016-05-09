@@ -3,9 +3,8 @@
     <string name="app_name">iTracing2</string>
     <string name="welcome_text">Üdvözöl az iTracing2 !\n
         \n
-        Az alkalmazással kapcsolódni tudsz az iSee (Quintic PROXR) bluetooth-os kulcstartós közelség-érzékelőkhöz és
-        hasonló kínai másolatokhoz.\n
-        Ha, hozzám hasonlóan, zavar az iTracing app minősége, használd megelégedéssel az alkalmazásom.\n
+        Ez az alkalmazás a gyári iTracing helyett használható nem-hivatalos megoldás, mellyel kapcsolódni tudsz
+        az iSee (Quintic PROXR) bluetooth-os kulcstartós közelség-érzékelőkhöz és hasonló kínai másolatokhoz.\n
         \n
         Kezdésnek nyomj a nagyító ikonra az eszközök kereséséhez, melyek neve általában "Quintic PROXR" vagy
         kínai másolatok esetében "iTag" szokott lenni.\n
