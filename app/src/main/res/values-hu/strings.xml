@@ -15,9 +15,11 @@
         a szétkapcsolódás-figyelés.\n
         \n
         Az alkalmazást szabadidőmben fejlesztem, adományokat szívesen fogadok :) Köszönöm!</string>
+<!-- is this toast *only* thrown by BluetoothLEService ? -->
+    <string name="something_goes_wrong">Valami hiba történt :(</string>
     <string name="ble_not_supported">Okoskészüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez általában hardveres korlátozás, amin nem tud rendszerfrissítés segíteni.</string>
     <string name="preferences">Beállítások</string>
-<!-- needs context, is this an intent? -->
+<!-- needs context, is this an intent? where is the text appear then? -->
     <string name="link_background">Bluetooth Link Loss</string>
     <string name="link_background_summary">Folyamatos kapcsolattartás az eszközzel, mely szükséges egyes tevékenységekhez.</string>
     <string name="action_foreground">Futtatás szolgáltatásként</string>
@@ -56,8 +58,6 @@
     <string name="ring_the_device">Csippantás</string>
 <!-- needs context, where does this option appear? Is it on the title of the middle tab where there is "preferences" currently? -->
     <string name="actions">Események</string>
-<!-- needs screenshot for context -->
-    <string name="something_goes_wrong">Valami hiba történt :(</string>
     <string name="connected_action">Kapcsolódás esetén</string>
     <string name="connected_action_summary">Ha az eszköz kapcsolódik, mi történjen?</string>
     <string name="out_of_range_action">Szétkapcsolódás esetén</string>
@@ -88,9 +88,8 @@
     </string-array>
     <string name="ring_tone">Csengőhang</string>
     <string name="ring_tone_summary">Az eseményhez választhatsz csengőhangot.</string>
-<!-- needs screenshot, where does this text appear? Is it checking if a file exists? Why does it say to turn up the volume then? -->
+<!-- if it is checking if a file "physically" exists, then why does it say to turn up the volume? -->
     <string name="ring_tone_not_found">Nem létezik a beállított csengőhang.</string>
-<!-- needs context, where does this text appear? Is this a toast after the an intent is called? -->
     <string name="vibrator_not_found">Nincs vibramotor az okoskészülékben.</string>
     <string name="custom_action">Meghivandó url vagy intent</string>
     <string name="custom_action_summary">HTTP GET url vagy intent action string</string>
