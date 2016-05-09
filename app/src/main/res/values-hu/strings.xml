@@ -41,7 +41,7 @@
     <string name="action_connect">Kapcsolódás</string>
 <!-- needs screenshot, what is the text on the buttons, ok, cancel, remove? -->
     <string name="confirm_change_name">Biztos, hogy átnevezed az eszközt?</string>
-<!-- ??? i tried this option in the app too, but didnt understand what does this do exactly? Could not understand the french version either, granted i am a beginner in french. -->
+<!-- ??? i tried this option in the app too, but didnt understand what does this do exactly? Could not understand the french version either, granted i am a beginner in french. update: i've browsed the java code, and saw that this is controlled by the checkbox. Is that checkbox used to disable and enable the Bluetooth Link Loss? It should be written by words as an important feature the user needs to know. -->
     <string name="link_loss_disabled">disable this feature may occurs ringing your key ring</string>
 <!-- if the dashboard only has the battery level and the radio distance, i would rename this tab to "status". I can translate dashboard only to "control center" to hungarian, but having 2 gauges to read and nothing to set is not a _control_ center :) -->
     <string name="dashboard">Irányítópult</string>
