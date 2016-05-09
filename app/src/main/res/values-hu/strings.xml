@@ -49,11 +49,13 @@
 <!-- needs screenshot, what is the text on the buttons, ok, cancel, remove? -->
     <string name="confirm_remove_keyring">Biztos, hogy el akarod távolítani az eszközt?</string>
     <string name="start_immediate_alert">Csippantás</string>
-    <string name="immediate_alert_summary">Az eszközt a kapcsolat kipróbálásához meg tudod csipogtatni.</string>
+    <string name="immediate_alert_summary">Az eszközt a kapcsolat kipróbálásához meg tudod csipogtatni.</string> <!-- unused? -->
     <string name="stop_immediate_alert">Csippanás állj</string>
 <!-- needs context, where does this option appear? -->
+<!-- unused? -->
     <string name="ring_the_device">Csippantás</string>
 <!-- needs context, where does this option appear? Was this in the past on the title of the middle tab where there is "preferences" currently? -->
+<!-- unused? -->
     <string name="actions">Események</string>
     <string name="connected_action">Kapcsolódás esetén</string>
     <string name="connected_action_summary">Ha az eszköz kapcsolódik, mi történjen?</string>
@@ -86,8 +88,8 @@
     <string name="ring_tone">Csengőhang</string>
     <string name="ring_tone_summary">Az eseményhez választhatsz csengőhangot.</string>
 <!-- if it is checking if a file "physically" exists, then why does it say to turn up the volume? :) -->
-    <string name="ring_tone_not_found">Nem létezik a beállított csengőhang.</string>
-    <string name="vibrator_not_found">Nincs vibramotor az okoskészülékben.</string>
+    <string name="ring_tone_not_found">Nem létezik a beállított csengőhang.</string> <!-- intent toast -->
+    <string name="vibrator_not_found">Nincs vibramotor az okoskészülékben.</string> <!-- intent toast -->
     <string name="custom_action">Meghivandó url vagy intent</string>
     <string name="custom_action_summary">HTTP GET url vagy intent action string</string>
     <string name="stop_ring">Csengés állj</string> <!-- notification -->
@@ -100,9 +102,10 @@
     <string name="event_single_click">Klikkelés</string>
     <string name="event_double_click">Duplaklikkelés</string>
     <string name="event_position">Helymeghatározás</string>
-    <string name="display_last_position">Mutasd az utolsó rögzített helyet.</string>
+    <string name="display_last_position">Mutasd az utolsó rögzített helyet.</string> <!-- intent -->
     <string name="clear_events">Előzmények törlése</string>
 <!-- needs screenshot, what is the text on the buttons, ok, cancel, remove? -->
+<!-- unused? -->
     <string name="confirm_remove_events">Biztos, hogy törölni akarod az előzményeket?</string>
 <!-- needs context, how is the data exported, is it saved in a file or shared to other apps like email or gdrive? update: i've read the java code, it sends an email via share, am i right? -->
     <string name="export_events">Előzmények elemailezése</string>
