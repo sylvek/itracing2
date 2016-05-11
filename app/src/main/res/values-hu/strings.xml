@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">iTracing2</string>
+    <string name="welcome_text">Üdvözöl az iTracing2 !\n
+        \n
+        Ez az alkalmazás a gyári iTracing helyett használható nem-hivatalos megoldás, mellyel kapcsolódni tudsz
+        az iSee (Quintic PROXR) bluetooth-os kulcstartós közelség-érzékelőkhöz és hasonló kínai másolatokhoz.\n
+        \n
+        Kezdésnek nyomj a nagyító ikonra az eszközök kereséséhez, melyek neve általában "Quintic PROXR" vagy
+        kínai másolatok esetében "iTag" szokott lenni.\n
+        Ha nem talált semmit, próbáld újraindítani az eszközöd az elem kivételével, behelyezésével.\n
+        \n
+        Egyes tevékenységek csak a Bluetooth Link Loss engedélyezése esetén elérhetőek, mint például a klikkelés és
+        a szétkapcsolódás-figyelés.\n
+        \n
+        Az alkalmazást szabadidőmben fejlesztem, adományokat szívesen fogadok :) Köszönöm!</string>
+    <string name="ble_not_supported">Okoskészüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez általában hardveres korlátozás, amin nem tud rendszerfrissítés segíteni.</string> <!-- toast -->
+    <string name="preferences">Beállítások</string>
+<!-- needs context, is this an intent? where is the text appear then? -->
+<!-- unused? -->
+    <string name="link_background">Bluetooth Link Loss</string>
+<!-- needs context, is this an intent? where is the text appear then? -->
+<!-- unused? -->
+    <string name="link_background_summary">Folyamatos kapcsolattartás az eszközzel, mely szükséges egyes tevékenységekhez.</string>
+    <string name="action_foreground">Futtatás szolgáltatásként</string>
+    <string name="action_foreground_summary">Az előtérben indítás segít, hogy a rendszer ne ürítse a memóriából amikor más alkalmazást indítasz.</string>
+    <string name="foreground_started">Szolgáltatásként futtatva</string> <!-- notification -->
+    <string name="double_button_delay">Duplaklikk ideje</string>
+    <string name="double_button_delay_summary">Hány ezredmásodpercen belül kell kétszer megnyomni a gombot? Alapértelmezetten 300 ezredmp.</string>
+    <string name="default_double_button_delay">300</string>
+    <string name="feedback">Vélemény</string>
+<!-- unused? -->
+    <string name="feedback_summary">Írj nekem hibajelentést vagy fejlesztési ötletet.</string>
+    <string name="donate">Adomány</string>
+    <string name="donate_summary">Ha hasznosnak találod az alkalmazást, támogass PayPal-on :)</string> <!-- toast -->
+<!-- unused? -->
+    <string name="action_scan_start">Keresés</string>
+    <string name="beacon_not_found">Nem található eszköz.</string>
+<!-- needs screenshot, what info is around this text? -->
+    <string name="select_device">Válassz eszközt</string>
+<!-- needs screenshot, what info is around this text? -->
+<!-- unused? -->    
+    <string name="action_connect">Kapcsolódás</string>
+<!-- needs screenshot, what is the text on the buttons, ok, cancel, remove? -->
+    <string name="confirm_change_name">Biztos, hogy átnevezed az eszközt?</string>
+    <string name="link_loss_disabled">Kikapcsoltad a Bluetooth Link Loss-t, egyes eszközök ezt elvesztésnek gondolják és riasztanak.</string>
+<!-- needs confirmation, is this text only used for removing TAGS? because name is only "remove" and not "remove_device" but if i only translate the word remove, it would be ambiguous as this text is appearing in the options menu, even under the Events History if it says only remove the user dont understant what to remove -->
+    <string name="remove">Eszköz eltávolítása</string>
+<!-- needs screenshot, what is the text on the buttons, ok, cancel, remove? -->
+<!-- unused? -->
+    <string name="confirm_remove_keyring">Biztos, hogy el akarod távolítani az eszközt?</string>
+    <string name="start_immediate_alert">Csippantás</string> <!-- image -->
+<!-- unused? -->
+    <string name="immediate_alert_summary">Az eszközt a kapcsolat kipróbálásához meg tudod csipogtatni.</string>
+    <string name="something_goes_wrong">Nem sikerült megcsippantani az eszközt.</string> <!-- toast --> <!-- occurs at immediate alert only -->
+    <string name="stop_immediate_alert">Csippanás állj</string> <!-- image -->
+<!-- needs context, where does this option appear? -->
+<!-- unused? -->
+    <string name="ring_the_device">Csippantás</string>
+    <string name="dashboard">Műszerfal</string>
+<!-- unused? -->
+    <string name="battery_info">Elemtöltöttség</string>
+<!-- unused? -->
+    <string name="rssi_info">Jelerősség</string>
+<!-- needs context, where does this option appear? Was this in the past on the title of the middle tab where there is "preferences" currently? -->
+<!-- unused? -->
+    <string name="actions">Események</string>
+    <string name="connected_action">Kapcsolódás esetén</string>
+    <string name="connected_action_summary">Ha az eszköz kapcsolódik, mi történjen?</string>
+    <string name="out_of_range_action">Szétkapcsolódás esetén</string>
+    <string name="out_of_range_action_summary">Ha az eszköz távol kerül vagy rádiójelét árnyékolják?</string>
+    <string name="action_on_power_off">Lekapcsolás esetén</string>
+    <string name="action_on_power_off_summary">Ha az okoskészülék vagy az eszköz bluetooth lekapcsolódik?</string>
+    <string name="simple_button_action">Klikkelés esetén</string>
+    <string name="simple_button_action_summary">Ha az eszközön egyszer megnyomod a gombot, mi történjen?</string>
+    <string name="double_button_action">Duplaklikkelés esetén</string>
+    <string name="double_button_action_summary">Ha az eszközön kétszer egymás után megnyomod a gombot?</string>
+    <string-array name="button_actions_values">
+        <item>START_RING_PHONE</item>
+        <item>START_VIBRATE_PHONE</item>
+        <item>STOP_RING_PHONE</item>
+        <item>STOP_VIBRATE_PHONE</item>
+        <item>CAPTURE_POSITION</item>
+        <item>CUSTOM_ACTION</item>
+        <item>BROADCAST_INTENT</item>
+    </string-array>
+    <string-array name="button_actions">
+        <item>Csengés indít</item>
+        <item>Vibra indít</item>
+        <item>Csengés állj</item>
+        <item>Vibra állj</item>
+        <item>Helymeghatározás</item>
+        <item>url vagy intent meghívása</item>
+        <item>Intent sugárzása</item>
+    </string-array>
+    <string name="stop_ring">Csengés állj</string> <!-- notification -->
+    <string name="stop_vibrate">Vibra állj</string> <!-- notification -->
+    <string name="ring_tone_not_found">Nem létezik a beállított csengőhang.</string> <!-- intent toast -->
+    <string name="vibrator_not_found">Nincs vibramotor az okoskészülékben.</string> <!-- intent toast -->
+    <string name="display_last_position">Mutasd az utolsó rögzített helyet.</string> <!-- intent -->
+    <string name="ring_tone">Csengőhang</string>
+    <string name="ring_tone_summary">Az eseményhez választhatsz csengőhangot.</string>
+<!-- if it is checking if a file "physically" exists, then why does it say to turn up the volume? :) -->
+    <string name="custom_action">Meghivandó url vagy intent</string>
+    <string name="custom_action_summary">HTTP GET url vagy intent action string</string>
+    <string name="events_history">Előzmények</string>
+<!-- these are NEW, previously not existing texts for the events, as they should be translated too. NOT ALL events are here, please complete. update: i've parsed the java code, looks like i've got all, am i? -->
+    <string name="event_connected">Kapcsolódás</string>
+    <string name="event_out_of_range">Szétkapcsolódás</string>
+    <string name="event_immediate_alert">Csippanás</string>
+    <string name="event_single_click">Klikkelés</string>
+    <string name="event_double_click">Duplaklikkelés</string>
+    <string name="event_position">Helymeghatározás</string>
+    <string name="clear_events">Előzmények törlése</string>
+<!-- needs screenshot, what is the text on the buttons, ok, cancel, remove? -->
+<!-- unused? -->
+    <string name="confirm_remove_events">Biztos, hogy törölni akarod az előzményeket?</string>
+<!-- needs context, how is the data exported, is it saved in a file or shared to other apps like email or gdrive? update: i've read the java code, it sends an email via share, am i right? -->
+    <string name="export_events">Előzmények elemailezése</string>
+    <string-array name="empty_array"/>
+</resources>
