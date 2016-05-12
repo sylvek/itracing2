@@ -8,8 +8,8 @@ android {
         applicationId "net.sylvek.itracing2"
         minSdkVersion 18
         targetSdkVersion 21
-        versionCode 57
-        versionName "2.3.1"
+        versionCode 58
+        versionName "2.3.2"
     }
     signingConfigs {
         release {
