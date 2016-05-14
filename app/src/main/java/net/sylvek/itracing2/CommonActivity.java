@@ -18,7 +18,6 @@ public abstract class CommonActivity extends AppCompatActivity {
 
         setContentView(R.layout.main);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(android.R.drawable.ic_menu_close_clear_cancel);
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         mSwipeRefreshLayout.setEnabled(false);
