@@ -69,7 +69,6 @@
         <item>остановить вибрации</item>
         <item>сохранить мою позицию</item>
         <item>открыть URL или другое действие</item>
-        <item>назначить действие</item>
     </string-array>
     <string-array name="button_actions_values">
         <item>START_RING_PHONE</item>
@@ -78,7 +77,6 @@
         <item>STOP_VIBRATE_PHONE</item>
         <item>CAPTURE_POSITION</item>
         <item>CUSTOM_ACTION</item>
-        <item>BROADCAST_INTENT</item>
     </string-array>
     <string-array name="empty_array"/>
 </resources>

@@ -14,8 +14,6 @@ import android.preference.PreferenceManager;
  */
 public class Preferences {
 
-    private static final String SAMSUNG_DEVICE = "samsung";
-
     public enum Source {
         single_click, double_click, out_of_range, connected
     }
@@ -90,13 +88,7 @@ public class Preferences {
 
     public static boolean isForegroundEnabled(Context context)
     {
-        return isSamsung() || PreferenceManager.getDefaultSharedPreferences(context).getBoolean(FOREGROUND, false);
-    }
-
-    public static boolean isSamsung()
-    {
-        final String manufacturer = android.os.Build.MANUFACTURER;
-        return SAMSUNG_DEVICE.equals(manufacturer.toLowerCase());
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(FOREGROUND, true);
     }
 
     public static boolean isDonated(Context context)
