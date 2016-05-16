@@ -16,10 +16,10 @@
         Az alkalmazást szabadidőmben fejlesztem, adományokat szívesen fogadok :) Köszönöm!</string>
     <string name="ble_not_supported">Okoskészüléked nem tudja kezelni a Bluetooth Low Energy (BLE) szabványt, ez általában hardveres korlátozás, amin nem tud rendszerfrissítés segíteni.</string> <!-- toast -->
     <string name="preferences">Beállítások</string>
-<!-- needs context, is this an intent? where is the text appear then? -->
+<!-- needs context, is this an intent? -->
 <!-- unused? -->
     <string name="link_background">Bluetooth Link Loss</string>
-<!-- needs context, is this an intent? where is the text appear then? -->
+<!-- needs context, is this an intent? -->
 <!-- unused? -->
     <string name="link_background_summary">Folyamatos kapcsolattartás az eszközzel, mely szükséges egyes tevékenységekhez.</string>
     <string name="action_foreground">Futtatás szolgáltatásként</string>
@@ -36,25 +36,22 @@
 <!-- unused? -->
     <string name="action_scan_start">Keresés</string>
     <string name="beacon_not_found">Nem található eszköz.</string>
-<!-- needs screenshot, what info is around this text? -->
-    <string name="select_device">Válassz eszközt</string>
-<!-- needs screenshot, what info is around this text? -->
+    <string name="select_device">Válaszd ki az eszközt</string>
+<!-- needs screenshot -->
 <!-- unused? -->    
     <string name="action_connect">Kapcsolódás</string>
-<!-- needs screenshot, what is the text on the buttons, ok, cancel, remove? -->
-    <string name="confirm_change_name">Biztos, hogy átnevezed az eszközt?</string>
+    <string name="confirm_change_name">Átnevezheted az eszközt:</string>
     <string name="link_loss_disabled">Kikapcsoltad a Bluetooth Link Loss-t, egyes eszközök ezt elvesztésnek gondolják és riasztanak.</string>
-<!-- needs confirmation, is this text only used for removing TAGS? because name is only "remove" and not "remove_device" but if i only translate the word remove, it would be ambiguous as this text is appearing in the options menu, even under the Events History if it says only remove the user dont understant what to remove -->
     <string name="remove">Eszköz eltávolítása</string>
-<!-- needs screenshot, what is the text on the buttons, ok, cancel, remove? -->
+<!-- needs screenshot -->
 <!-- unused? -->
     <string name="confirm_remove_keyring">Biztos, hogy el akarod távolítani az eszközt?</string>
-    <string name="start_immediate_alert">Csippantás</string> <!-- image -->
+    <string name="start_immediate_alert">Csippantás</string>
 <!-- unused? -->
     <string name="immediate_alert_summary">Az eszközt a kapcsolat kipróbálásához meg tudod csipogtatni.</string>
     <string name="something_goes_wrong">Nem sikerült megcsippantani az eszközt.</string> <!-- toast --> <!-- occurs at immediate alert only -->
     <string name="stop_immediate_alert">Csippanás állj</string> <!-- image -->
-<!-- needs context, where does this option appear? -->
+<!-- needs screenshot -->
 <!-- unused? -->
     <string name="ring_the_device">Csippantás</string>
     <string name="dashboard">Műszerfal</string>
@@ -62,15 +59,15 @@
     <string name="battery_info">Elemtöltöttség</string>
 <!-- unused? -->
     <string name="rssi_info">Jelerősség</string>
-<!-- needs context, where does this option appear? Was this in the past on the title of the middle tab where there is "preferences" currently? -->
+<!-- needs screenshot -->
 <!-- unused? -->
     <string name="actions">Események</string>
     <string name="connected_action">Kapcsolódás esetén</string>
     <string name="connected_action_summary">Ha az eszköz kapcsolódik, mi történjen?</string>
     <string name="out_of_range_action">Szétkapcsolódás esetén</string>
     <string name="out_of_range_action_summary">Ha az eszköz távol kerül vagy rádiójelét árnyékolják?</string>
-    <string name="action_on_power_off">Lekapcsolás esetén</string>
-    <string name="action_on_power_off_summary">Ha az okoskészülék vagy az eszköz bluetooth lekapcsolódik?</string>
+    <string name="action_on_power_off">Lekapcsoláskor is?</string>
+    <string name="action_on_power_off_summary">Akkor is, ha az okoskészüléket vagy az eszköz bluetooth-t lekapcsolják?</string>
     <string name="simple_button_action">Klikkelés esetén</string>
     <string name="simple_button_action_summary">Ha az eszközön egyszer megnyomod a gombot, mi történjen?</string>
     <string name="double_button_action">Duplaklikkelés esetén</string>
@@ -95,12 +92,12 @@
     </string-array>
     <string name="stop_ring">Csengés állj</string> <!-- notification -->
     <string name="stop_vibrate">Vibra állj</string> <!-- notification -->
+<!-- if it is checking if a file "physically" exists, then why does it say to turn up the volume? :) -->
     <string name="ring_tone_not_found">Nem létezik a beállított csengőhang.</string> <!-- intent toast -->
     <string name="vibrator_not_found">Nincs vibramotor az okoskészülékben.</string> <!-- intent toast -->
     <string name="display_last_position">Mutasd az utolsó rögzített helyet.</string> <!-- intent -->
     <string name="ring_tone">Csengőhang</string>
     <string name="ring_tone_summary">Az eseményhez választhatsz csengőhangot.</string>
-<!-- if it is checking if a file "physically" exists, then why does it say to turn up the volume? :) -->
     <string name="custom_action">Meghivandó url vagy intent</string>
     <string name="custom_action_summary">HTTP GET url vagy intent action string</string>
     <string name="events_history">Előzmények</string>
@@ -112,10 +109,9 @@
     <string name="event_double_click">Duplaklikkelés</string>
     <string name="event_position">Helymeghatározás</string>
     <string name="clear_events">Előzmények törlése</string>
-<!-- needs screenshot, what is the text on the buttons, ok, cancel, remove? -->
+<!-- needs screenshot -->
 <!-- unused? -->
     <string name="confirm_remove_events">Biztos, hogy törölni akarod az előzményeket?</string>
-<!-- needs context, how is the data exported, is it saved in a file or shared to other apps like email or gdrive? update: i've read the java code, it sends an email via share, am i right? -->
     <string name="export_events">Előzmények elemailezése</string>
     <string-array name="empty_array"/>
 </resources>
