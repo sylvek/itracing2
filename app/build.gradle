@@ -13,10 +13,10 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file("../sylvek.key")
-            storePassword ''
+            storeFile file(project.keyStore)
+            storePassword project.password
             keyAlias "android"
-            keyPassword ''
+            keyPassword project.password
         }
     }
     buildTypes {
@@ -32,12 +32,4 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:support-v13:23.1.1'
     compile 'com.android.support:design:23.1.1'
-}
-
-gradle.taskGraph.whenReady { taskGraph ->
-    if (taskGraph.hasTask(':app:assembleRelease')) {
-        def pass = new String(System.console().readPassword("\nPlease enter key passphrase: "))
-        android.signingConfigs.release.storePassword = pass
-        android.signingConfigs.release.keyPassword = pass
-    }
 }
