@@ -1,0 +1,2 @@
+json_key_file "itracing2.json" # Path to the json secret file - Follow https://github.com/fastlane/supply#setup to get one
+package_name "net.sylvek.itracing2" # e.g. com.krausefx.app

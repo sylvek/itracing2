@@ -27,11 +27,11 @@ public class CustomAction extends BroadcastReceiver {
         final String action = Preferences.getCustomAction(context, address, source);
 
         if (action.startsWith("http://")) {
-            new CallUrl<>(action).start();
+            new CallUrl<>(action + "?address=" + address + "&source=" + source).start();
         }
 
         if (action.startsWith("https://")) {
-            new CallUrl<HttpsURLConnection>(action).start();
+            new CallUrl<HttpsURLConnection>(action + "?address=" + address + "&source=" + source).start();
         }
 
         if (!action.isEmpty()) {

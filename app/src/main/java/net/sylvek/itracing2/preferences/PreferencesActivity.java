@@ -8,7 +8,6 @@ import android.os.IBinder;
 import android.util.Log;
 import net.sylvek.itracing2.BluetoothLEService;
 import net.sylvek.itracing2.CommonActivity;
-import net.sylvek.itracing2.Preferences;
 import net.sylvek.itracing2.R;
 
 /**
@@ -59,11 +58,6 @@ public class PreferencesActivity extends CommonActivity implements PreferencesFr
     public void onPreferencesStarted()
     {
         bindService(new Intent(this, BluetoothLEService.class), serviceConnection, BIND_AUTO_CREATE);
-
-        if (Preferences.isSamsung()) {
-            final PreferencesFragment preferencesFragment = (PreferencesFragment) getFragmentManager().findFragmentByTag(TAG);
-            preferencesFragment.setForegroundBackground(true);
-        }
     }
 
     @Override

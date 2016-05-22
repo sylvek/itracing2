@@ -94,5 +94,8 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
-# keystore
+# custom
 sylvek.key
+itracing2.json
+fastlane/report.xml
+fastlane/README.md

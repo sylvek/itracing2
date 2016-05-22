@@ -89,6 +89,8 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     private void selectDevice(String name, String address)
     {
         Devices.insert(this, name, address);
+        Devices.setEnabled(this, address, true);
+        service.connect(address);
         devicesFragment.refresh();
     }
 

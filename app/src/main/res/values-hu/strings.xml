@@ -38,7 +38,7 @@
     <string name="beacon_not_found">Nem található eszköz.</string>
     <string name="select_device">Válaszd ki az eszközt</string>
 <!-- needs screenshot -->
-<!-- unused? -->    
+<!-- unused? -->
     <string name="action_connect">Kapcsolódás</string>
     <string name="confirm_change_name">Átnevezheted az eszközt:</string>
     <string name="link_loss_disabled">Kikapcsoltad a Bluetooth Link Loss-t, egyes eszközök ezt elvesztésnek gondolják és riasztanak.</string>
@@ -79,7 +79,6 @@
         <item>STOP_VIBRATE_PHONE</item>
         <item>CAPTURE_POSITION</item>
         <item>CUSTOM_ACTION</item>
-        <item>BROADCAST_INTENT</item>
     </string-array>
     <string-array name="button_actions">
         <item>Csengés indít</item>
@@ -88,7 +87,6 @@
         <item>Vibra állj</item>
         <item>Helymeghatározás</item>
         <item>url vagy intent meghívása</item>
-        <item>Intent sugárzása</item>
     </string-array>
     <string name="stop_ring">Csengés állj</string> <!-- notification -->
     <string name="stop_vibrate">Vibra állj</string> <!-- notification -->
@@ -102,12 +100,12 @@
     <string name="custom_action_summary">HTTP GET url vagy intent action string</string>
     <string name="events_history">Előzmények</string>
 <!-- these are NEW, previously not existing texts for the events, as they should be translated too. NOT ALL events are here, please complete. update: i've parsed the java code, looks like i've got all, am i? -->
-    <string name="event_connected">Kapcsolódás</string>
+<!--<string name="event_connected">Kapcsolódás</string>
     <string name="event_out_of_range">Szétkapcsolódás</string>
     <string name="event_immediate_alert">Csippanás</string>
     <string name="event_single_click">Klikkelés</string>
     <string name="event_double_click">Duplaklikkelés</string>
-    <string name="event_position">Helymeghatározás</string>
+    <string name="event_position">Helymeghatározás</string> -->
     <string name="clear_events">Előzmények törlése</string>
 <!-- needs screenshot -->
 <!-- unused? -->
