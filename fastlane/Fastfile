@@ -19,7 +19,7 @@ platform :android do
 
   desc "Deploy a new version to the Google Play"
   lane :deploy do |options|
-    gradle(task: "assembleRelease", flags: "-PkeyStore=../sylvek.key -Ppassword=#{options[:password]}")
+    gradle(task: "assembleRelease", flags: "-PkeyStore=#{options[:keystore]} -Ppassword=#{options[:password]}")
     supply
   end
 
