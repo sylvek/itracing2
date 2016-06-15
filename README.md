@@ -18,4 +18,4 @@ Manipulate the camera is not allowed unless re-write a entire app (so, this is n
 
 - thanks to PAINTKILLER (se-sktv@mail.ru) to his russian translation :)
 
-**don't remember that is a personal project and feel free to participate :)**
+**don't forget that is a personal project and feel free to participate :)**
