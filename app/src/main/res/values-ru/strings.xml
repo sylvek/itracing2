@@ -50,7 +50,7 @@
     <string name="confirm_remove_keyring">Подтвердите удаление брелка</string>
     <string name="confirm_change_name">Подтвердите смену имени брелка</string>
     <string name="link_loss_disabled">Отключено слежение за брелком</string>
-    <string name="foreground_started">Включить фоновый режим</string>
+    <string name="foreground_started">Фоновый режим включен</string>
     <string name="preferences">Настройки</string>
     <string name="dashboard">Статус</string>
     <string name="action_foreground_summary">Улучшает связь между смартфоном и устройством</string>
