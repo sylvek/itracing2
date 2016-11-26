@@ -99,3 +99,6 @@ sylvek.key
 itracing2.json
 fastlane/report.xml
 fastlane/README.md
+.bundle/
+.gem/
+Gemfile.lock
