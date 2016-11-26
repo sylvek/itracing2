@@ -68,6 +68,8 @@ public class BluetoothLEService extends Service {
 
     private long lastChange;
 
+    private UUID lastUuid;
+
     private Runnable r;
 
     private Handler handler = new Handler();
@@ -187,15 +189,17 @@ public class BluetoothLEService extends Service {
             final long delayDoubleClick = Preferences.getDoubleButtonDelay(getApplicationContext());
 
             final long now = SystemClock.elapsedRealtime();
-            if (lastChange + delayDoubleClick > now) {
+            if (lastChange + delayDoubleClick > now && characteristic.getUuid().equals(lastUuid)) {
                 Log.d(TAG, "onCharacteristicChanged() - double click");
                 lastChange = 0;
+                lastUuid = null;
                 handler.removeCallbacks(r);
                 for (String action : Preferences.getActionDoubleButton(getApplicationContext(), this.address)) {
                     sendAction(Preferences.Source.double_click, action);
                 }
             } else {
                 lastChange = now;
+                lastUuid = characteristic.getUuid();
                 r = new Runnable() {
                     @Override
                     public void run()
