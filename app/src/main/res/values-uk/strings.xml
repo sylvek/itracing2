@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">iTracing2</string>
+    <string name="ble_not_supported">Вибачте, bluetooth LE не підтримується Вашим пристроєм</string>
+    <string name="action_scan_start">Сканування</string>
+    <string name="beacon_not_found">Мітку не знайдено</string>
+    <string name="action_connect">З'єднання</string>
+    <string name="start_immediate_alert">Включити тривогу</string>
+    <string name="stop_immediate_alert">Виключити тривогу</string>
+    <string name="link_background">Завжди включено</string>
+    <string name="stop_ring">Припинити тривогу</string>
+    <string name="stop_vibrate">Припинити вібрацію</string>
+    <string name="simple_button_action">Одне натискання</string>
+    <string name="simple_button_action_summary">Виберіть дію для одного натискання</string>
+    <string name="double_button_action">Подвійне натискання</string>
+    <string name="double_button_action_summary">Виберіть дію для подвійного натискання</string>
+    <string name="link_background_summary">Включити додаткові можливості</string>
+    <string name="battery_info">Про батарейку</string>
+    <string name="immediate_alert_summary">Тривога мітки</string>
+    <string name="welcome_text">Запрошуєм в iTracing2.\n\n Ця програма допоможе в під'єднанні мітки до телефону (Quintic PROXR) по bluetooth.\n
+        Якщо у Вас є мітка Bluetooth LE , то програма &quot;iTracing&quot; допоможе комфортно ним користуватися:)\n\n
+        Будь  ласка ввімкніть мітку.\n\n
+        Повинно появитися вікно з інформацією.\n
+        Якщо вікно порожнє, то виключте/включіть мітку ITAG та повторіть спробу.\n\n
+        Якщо зв'язок періодично втрачається, включіть в меню налаштувань "Фоновий зв'язок".\n\n
+        Автор працює над програмою iTracing2 тільки в свій вільний час ;-)</string>
+    <string name="donate">Віддячити автору(PayPal)</string>
+    <string name="feedback">Відгуки</string>
+    <string name="donate_summary">для корекції моєї роботи:)</string>
+    <string name="feedback_summary">не стидайтися, це прискорить вихід нових версій. Дякую!</string>
+    <string name="display_last_position">Показати останнє місцеположення</string>
+    <string name="out_of_range_action">Втрата мітки</string>
+    <string name="out_of_range_action_summary">Дія при втраті зв'язку</string>
+    <string name="action_on_power_off">Відключити Bluetooth</string>
+    <string name="action_on_power_off_summary">Відключити Bluetooth при втраті зв'язку</string>
+    <string name="ring_tone_summary">Виберіть мелодію</string>
+    <string name="ring_tone">Мелодія</string>
+    <string name="rssi_info">Рівень сигналу</string>
+    <string name="actions">Дія мітки</string>
+    <string name="select_device">Виберіть мітку</string>
+    <string name="ring_tone_not_found">​Мелодію не знайдено! Виберіть мелодію.</string>
+    <string name="vibrator_not_found">Віброрежим не праює належним чином</string>
+    <string name="something_goes_wrong">Упс..., щось пішло не так!</string>
+    <string name="double_button_delay">Затримка подвійного натиску</string>
+    <string name="double_button_delay_summary">Затримка між двома натисками (300 мс якщо пусто)</string>
+    <string name="default_double_button_delay">300</string>
+    <string name="custom_action">Команда користувача</string>
+    <string name="custom_action_summary">Відкрити http(s)://.. чи прибити москаля</string>
+    <string name="remove">Видалити мітку</string>
+    <string name="confirm_remove_keyring">Підтвердити витирання мітк</string>
+    <string name="confirm_change_name">Підтвердіть зміну імені мітки</string>
+    <string name="link_loss_disabled">Відключити слідкування за міткою</string>
+    <string name="foreground_started">Включено фоновий режим</string>
+    <string name="preferences">Налаштування</string>
+    <string name="dashboard">Статусс</string>
+    <string name="action_foreground_summary">Поліпшує зв'язок між пристроями</string>
+    <string name="action_foreground">фоновий режим</string>
+    <string name="ring_the_device">Включити звук на мітці</string>
+    <string name="events_history">Історія подій</string>
+    <string name="connected_action">Після з'єднання</string>
+    <string name="connected_action_summary">Дія відбувається після з'єднання </string>
+    <string name="clear_events">Очистити журнал подій</string>
+    <string name="confirm_remove_events">Підтвердіть видалення</string>
+    <string name="export_events">експорт</string>
+    <string-array name="button_actions">
+        <item>дзвінок в телефоні</item>
+        <item>вібрація в телефоні</item>
+        <item>подзвонити</item>
+        <item>зупинити вібрацію</item>
+        <item>зберегти координати</item>
+        <item>відкрити URL чи прибити москаля</item>
+    </string-array>
+    <string-array name="button_actions_values">
+        <item>START_RING_PHONE</item>
+        <item>START_VIBRATE_PHONE</item>
+        <item>STOP_RING_PHONE</item>
+        <item>STOP_VIBRATE_PHONE</item>
+        <item>CAPTURE_POSITION</item>
+        <item>CUSTOM_ACTION</item>
+    </string-array>
+    <string-array name="empty_array"/>
+</resources>
