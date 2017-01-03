@@ -59,17 +59,21 @@
     <string name="confirm_remove_events">Confirmer la suppression des événements</string>
     <string name="export_events">exporter les événements</string>
     <string-array name="button_actions">
+        <item>toggle ring the phone</item>
         <item>faire sonner le téléphone</item>
-        <item>faire vibrer le téléphone</item>
         <item>arrêter la sonnerie</item>
+        <item>toggle vibrate the phone</item>
+        <item>faire vibrer le téléphone</item>
         <item>arrêter les vibrations</item>
         <item>capturer ma position</item>
         <item>appeler une URL ou une action</item>
     </string-array>
     <string-array name="button_actions_values">
+        <item>TOGGLE_RING_PHONE</item>
         <item>START_RING_PHONE</item>
-        <item>START_VIBRATE_PHONE</item>
         <item>STOP_RING_PHONE</item>
+        <item>TOGGLE_VIBRATE_PHONE</item>
+        <item>START_VIBRATE_PHONE</item>
         <item>STOP_VIBRATE_PHONE</item>
         <item>CAPTURE_POSITION</item>
         <item>CUSTOM_ACTION</item>
