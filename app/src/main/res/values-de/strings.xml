@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">iTracing2</string>
+    <string name="action_connect">verbinde</string>
+    <string name="action_foreground">Vordergrund Modus</string>
+    <string name="action_foreground_summary">verbessert die Verbindung zwischen Smartphonde und den Geräten</string>
+    <string name="action_on_power_off">Verbindung unterbrochen wenn abgeschaltet</string>
+    <string name="action_on_power_off_summary">die Verbindung ist unterbrochen, wenn der Schlüsselanhänger oder Bluetooth abgeschaltet wird</string>
+    <string name="action_scan_start">suchen</string>
+    <string name="actions">Aktionen Schlüsselanhänger</string>
+    <string name="battery_info">Batterie Info</string>
+    <string name="beacon_not_found">Schlüsselanhänger nicht gefunden</string>
+    <string name="ble_not_supported">leider ist Bluetooth LE auf ihrem Gerät nicht unterstützt</string>
+    <string name="clear_events">Alle Ereignisse löschen</string>
+    <string name="confirm_change_name">Bestätigen sie die Änderung des Namens des Schlüsselanhängers</string>
+    <string name="confirm_remove_events">Bestätigen sie das Löschen der Ereignisse</string>
+    <string name="confirm_remove_keyring">Bestätigen sie das entfernen des Schlüsselanhängers</string>
+    <string name="connected_action">Aktion beim Verbinden</string>
+    <string name="connected_action_summary">ausgelöst, wenn die Verbindung aufgebaut wird</string>
+    <string name="custom_action">benutzerdefinierte Aktion</string>
+    <string name="custom_action_summary">http(s)://.. oder intent action string</string>
+    <string name="display_last_position">zuletzt aufgezeichnete Position anzeigen</string>
+    <string name="donate_summary">ünterstützen sie meine Arbeit!</string>
+    <string name="donate">spenden(PayPal)</string>
+    <string name="double_button_action">Doppelklick Aktion</string>
+    <string name="double_button_delay">Doppelclick Verzögerung</string>
+    <string name="preferences">Einstellungen</string>
+    <string name="remove">Schlüsselanhänger entfernen</string>
+    <string name="ring_the_device">Schlüsselanhänger klingeln lassen</string>
+    <string name="ring_tone">Klingelton</string>
+    <string name="rssi_info">Signalqualität</string>
+    <string name="stop_ring">klingeln anhalten</string>
+    <string name="stop_vibrate">vibration anhalten</string>
+    <string name="simple_button_action">Einfachklick Optionen</string>
+    <string name="select_device">Wählen sie ein Gerät</string>
+    <string name="export_events">Ereignisse exportieren</string>
+    <string name="double_button_delay_summary">Verzögerung zwischen zwei Klicks (300ms, wenn leer)</string>
+    <string name="events_history">Ereignisshistorie</string>
+    <string name="immediate_alert_summary">Hier klicken, um den Schlüsselanhänger klingeln zu lassen</string>
+    <string name="link_background">immer an</string>
+    <string name="feedback_summary">Ihre Hilfe ist willkommen</string>
+    <string name="foreground_started">Im Vordergrund gestartet</string>
+    <string name="default_double_button_delay">300</string>
+    <string name="simple_button_action_summary">Wählen sie Aktionen</string>
+    <string name="double_button_action_summary">Wählen sie Aktionen</string>
+    <string name="link_loss_disabled">Deaktivieren der Option kann dazu führen, dass der Schlüsselanhänger klingelt</string>
+    <string name="ring_tone_not_found">Klingelton nicht gefunden! Bitte wähle einen anderen, stelle sicher, dass du einen Standard-Klingelton hast, und dass laut gestellt ist.</string>
+    <string name="ring_tone_summary">Klingelton für Aktionen auswählen</string>
+    <string name="something_goes_wrong">Irgendaws ist hier kaputt!</string>
+    <string name="start_immediate_alert">Beginne den Schlüsselanhänger klingeln zu lassen</string>
+    <string name="stop_immediate_alert">Stoppe das Klingeln des Schlüsselanhängers</string>
+    <string name="vibrator_not_found">Vibrator nicht gefunden. Stelle sicher, dass dein Gerät diese Eingenschaft besitzt.</string>
+    <string name="welcome_text">Willkommen zu iTracing2.  Diese Anwendung ermöglicht dir mit dem iSee (Quintic PROXR) bluetooth Gerät zu kommunizieren.          Wenn dich wie ich die schlechteste Anwendung \"iTracing\" stört, freu dich an meiner Version :)           Bitte klicke auf die Lupe, um dein iSee device zu finden (es sollte \"Quintic PROXR\" heissen).           Wenn kein Gerät erkannt wurde, sollte ein Dialog mit allen erkannten, kompatiblen Geräten erscheinen.          Wenn der Dialog leer ist, solltest du dein iTag neu starten (notwendig bei billigen Geräten) und es nochmal versuchen.           Beachte, dass \"verbindung verloren\" und iTag Knopf Eigenschaften nur mit \"Hintergrund-Verbindung\" Option funktionieren.           Bedenke, dass ich iTracing2 in meiner Freizeit entwickle ;-)</string>
+    <string name="out_of_range_action">Aktion bei Verbindung verloren</string>
+    <string name="out_of_range_action_summary">ausgelöst, wenn die Verbindung abgebaut wird</string>
+    <string name="link_background_summary">erlaubt weitere Optionen</string>
+    <string-array name="button_actions">
+        <item>Telefon klingeln an/abschalten</item>
+        <item>Starte Klingeln des Telefons</item>
+        <item>Stoppe Klingeln des Telefons</item>
+        <item>Vibration des Telefons an/abschalten</item>
+        <item>Starte Vibration des Telefons</item>
+        <item>Stoppe Vibration des Telefons</item>
+        <item>Meine Position erfassen</item>
+        <item>Eine URL ider einen broadcast intent aufrufen</item>
+    </string-array>
+    <string-array name="button_actions_values">
+        <item>TOGGLE_RING_PHONE</item>
+        <item>START_RING_PHONE</item>
+        <item>STOP_RING_PHONE</item>
+        <item>TOGGLE_VIBRATE_PHONE</item>
+        <item>START_VIBRATE_PHONE</item>
+        <item>STOP_VIBRATE_PHONE</item>
+        <item>CAPTURE_POSITION</item>
+        <item>CUSTOM_ACTION</item>
+    </string-array>
+</resources>

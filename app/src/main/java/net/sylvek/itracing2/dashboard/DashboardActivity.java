@@ -143,11 +143,11 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
     @Override
     public void onDashboardStopped()
     {
-        if (this.service != null) {
-            this.service.disconnect(this.address);
+        if (service != null) {
+            service.disconnect(this.address);
         }
 
-        this.setRefreshing(false);
+        setRefreshing(false);
 
         unbindService(serviceConnection);
     }
@@ -180,8 +180,8 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
         switch (returnCode) {
             case CONFIRM_REMOVE_KEYRING:
                 if (Preferences.clearAll(this, address)) {
-                    this.setRefreshing(false);
-                    this.service.remove(address);
+                    setRefreshing(false);
+                    service.remove(address);
                     Devices.removeDevice(this, address);
                     Events.removeEvents(this, address);
                     NavUtils.navigateUpFromSameTask(this);
