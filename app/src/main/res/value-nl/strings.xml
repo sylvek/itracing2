@@ -64,17 +64,21 @@
     <string name="confirm_remove_events">Bevestig dat je de gebeurtenissen wilt verwijderen.</string>
     <string name="export_events">Exporteer de gebeurtenissen</string>
     <string-array name="button_actions">
+        <item>Schakelen het luiden van de telefoon</item>
         <item>Laat de telefoon piepen</item>
-        <item>Laat de telefoon trillen</item>
         <item>Stop het piepen van de telefoon</item>
+        <item>Schakelt de telefoon trillen</item>
+        <item>Laat de telefoon trillen</item>
         <item>Stop het trillen van de telefoon</item>
         <item>Sla mijn positie op</item>
         <item>Open een URL of start een actie</item>
     </string-array>
     <string-array name="button_actions_values">
+        <item>TOGGLE_RING_PHONE</item>
         <item>START_RING_PHONE</item>
-        <item>START_VIBRATE_PHONE</item>
         <item>STOP_RING_PHONE</item>
+        <item>TOGGLE_VIBRATE_PHONE</item>
+        <item>START_VIBRATE_PHONE</item>
         <item>STOP_VIBRATE_PHONE</item>
         <item>CAPTURE_POSITION</item>
         <item>CUSTOM_ACTION</item>

@@ -22,9 +22,11 @@
     <string name="display_last_position">zuletzt aufgezeichnete Position anzeigen</string>
     <string name="donate_summary">ünterstützen sie meine Arbeit!</string>
     <string name="donate">spenden(PayPal)</string>
+    <string name="feedback">feedback</string>
     <string name="double_button_action">Doppelklick Aktion</string>
     <string name="double_button_delay">Doppelclick Verzögerung</string>
     <string name="preferences">Einstellungen</string>
+    <string name="dashboard">Instrumententafel</string>
     <string name="remove">Schlüsselanhänger entfernen</string>
     <string name="ring_the_device">Schlüsselanhänger klingeln lassen</string>
     <string name="ring_tone">Klingelton</string>
