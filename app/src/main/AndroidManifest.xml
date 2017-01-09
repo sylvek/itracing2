@@ -33,16 +33,6 @@
                 <action android:name="android.bluetooth.adapter.action.STATE_CHANGED"/>
             </intent-filter>
         </receiver>
-        <receiver android:name=".receivers.StartVibratePhone">
-            <intent-filter>
-                <action android:name="net.sylvek.itracing2.action.START_VIBRATE_PHONE"/>
-            </intent-filter>
-        </receiver>
-        <receiver android:name=".receivers.StartRingPhone">
-            <intent-filter>
-                <action android:name="net.sylvek.itracing2.action.START_RING_PHONE"/>
-            </intent-filter>
-        </receiver>
         <receiver android:name=".receivers.CapturePosition">
             <intent-filter>
                 <action android:name="net.sylvek.itracing2.action.CAPTURE_POSITION"/>
@@ -53,14 +43,18 @@
                 <action android:name="net.sylvek.itracing2.action.CUSTOM_ACTION"/>
             </intent-filter>
         </receiver>
-        <receiver android:name=".receivers.StopRingPhone">
-            <intent-filter>
-                <action android:name="net.sylvek.itracing2.action.STOP_RING_PHONE"/>
-            </intent-filter>
-        </receiver>
-        <receiver android:name=".receivers.StopVibratePhone">
+        <receiver android:name=".receivers.ToggleVibratePhone">
             <intent-filter>
                 <action android:name="net.sylvek.itracing2.action.STOP_VIBRATE_PHONE"/>
+                <action android:name="net.sylvek.itracing2.action.START_VIBRATE_PHONE"/>
+                <action android:name="net.sylvek.itracing2.action.TOGGLE_VIBRATE_PHONE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receivers.ToggleRingPhone">
+            <intent-filter>
+                <action android:name="net.sylvek.itracing2.action.TOGGLE_RING_PHONE"/>
+                <action android:name="net.sylvek.itracing2.action.STOP_RING_PHONE"/>
+                <action android:name="net.sylvek.itracing2.action.START_RING_PHONE"/>
             </intent-filter>
         </receiver>
     </application>

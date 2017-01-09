@@ -63,17 +63,21 @@
     <string name="confirm_remove_events">Confirm events deletion</string>
     <string name="export_events">export the events</string>
     <string-array name="button_actions">
+        <item>toggle ring the phone</item>
         <item>start ring the phone</item>
-        <item>start vibrate the phone</item>
         <item>stop ring the phone</item>
+        <item>toggle vibrate the phone</item>
+        <item>start vibrate the phone</item>
         <item>stop vibrate the phone</item>
         <item>capture my position</item>
         <item>call a url or broadcast intent action</item>
     </string-array>
     <string-array name="button_actions_values">
+        <item>TOGGLE_RING_PHONE</item>
         <item>START_RING_PHONE</item>
-        <item>START_VIBRATE_PHONE</item>
         <item>STOP_RING_PHONE</item>
+        <item>TOGGLE_VIBRATE_PHONE</item>
+        <item>START_VIBRATE_PHONE</item>
         <item>STOP_VIBRATE_PHONE</item>
         <item>CAPTURE_POSITION</item>
         <item>CUSTOM_ACTION</item>

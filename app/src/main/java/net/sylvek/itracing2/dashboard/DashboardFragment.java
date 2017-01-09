@@ -46,15 +46,15 @@ public class DashboardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         final View view = inflater.inflate(R.layout.circle_percent, container, false);
-        this.mCircleDisplay = (CircleDisplay) view.findViewById(R.id.circleDisplay);
-        this.mCircleDisplay.setValueWidthPercent(15f);
-        this.mCircleDisplay.setFormatDigits(1);
-        this.mCircleDisplay.setDimAlpha(80);
-        this.mCircleDisplay.setTouchEnabled(false);
-        this.mCircleDisplay.setStepSize(0.5f);
-        this.mCircleDisplay.setAnimDuration(1000);
-        this.mCircleDisplay.setTextSize(50f);
-        this.mCircleDisplay.startInfiniteLoop();
+        mCircleDisplay = (CircleDisplay) view.findViewById(R.id.circleDisplay);
+        mCircleDisplay.setValueWidthPercent(15f);
+        mCircleDisplay.setFormatDigits(1);
+        mCircleDisplay.setDimAlpha(80);
+        mCircleDisplay.setTouchEnabled(false);
+        mCircleDisplay.setStepSize(0.5f);
+        mCircleDisplay.setAnimDuration(1000);
+        mCircleDisplay.setTextSize(50f);
+        mCircleDisplay.startInfiniteLoop();
         return view;
     }
 
@@ -63,7 +63,7 @@ public class DashboardFragment extends Fragment {
     {
         super.onAttach(activity);
         if (activity instanceof OnDashboardListener) {
-            this.presenter = (OnDashboardListener) activity;
+            presenter = (OnDashboardListener) activity;
         } else {
             throw new ClassCastException("must implement OnDashboardListener");
         }
@@ -129,28 +129,28 @@ public class DashboardFragment extends Fragment {
 
     public void setBatteryPercent(float value)
     {
-        this.batteryPercent = value;
+        batteryPercent = value;
         updateBatteryPercent();
     }
 
     private void updateBatteryPercent()
     {
-        if (this.mCircleDisplay != null) {
-            this.mCircleDisplay.showValue(this.batteryPercent, 100f, true);
-            this.mCircleDisplay.setColor(getCalculatedColor(this.batteryPercent));
+        if (mCircleDisplay != null) {
+            mCircleDisplay.showValue(batteryPercent, 100f, true);
+            mCircleDisplay.setColor(getCalculatedColor(batteryPercent));
         }
     }
 
     private void setRssiValue(float value)
     {
-        this.rssiValue = value;
+        rssiValue = value;
         updateRssiColor();
     }
 
     private void updateRssiColor()
     {
-        if (this.mCircleDisplay != null) {
-            this.mCircleDisplay.setInnerColor(getCalculatedColor(this.rssiValue));
+        if (mCircleDisplay != null) {
+            mCircleDisplay.setInnerColor(getCalculatedColor(rssiValue));
         }
     }
 
