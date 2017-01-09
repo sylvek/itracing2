@@ -73,17 +73,21 @@
     <string name="double_button_action">Duplaklikkelés esetén</string>
     <string name="double_button_action_summary">Ha az eszközön kétszer egymás után megnyomod a gombot?</string>
     <string-array name="button_actions_values">
+        <item>TOGGLE_RING_PHONE</item>
         <item>START_RING_PHONE</item>
-        <item>START_VIBRATE_PHONE</item>
         <item>STOP_RING_PHONE</item>
+        <item>TOGGLE_VIBRATE_PHONE</item>
+        <item>START_VIBRATE_PHONE</item>
         <item>STOP_VIBRATE_PHONE</item>
         <item>CAPTURE_POSITION</item>
         <item>CUSTOM_ACTION</item>
     </string-array>
     <string-array name="button_actions">
+        <item>Válthat cseng a telefon</item>
         <item>Csengés indít</item>
-        <item>Vibra indít</item>
         <item>Csengés állj</item>
+        <item>Kampós rezeg a telefon</item>
+        <item>Vibra indít</item>
         <item>Vibra állj</item>
         <item>Helymeghatározás</item>
         <item>url vagy intent meghívása</item>

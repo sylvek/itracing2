@@ -63,17 +63,21 @@
     <string name="confirm_remove_events">Подтвердить удаление события</string>
     <string name="export_events">экспорт</string>
     <string-array name="button_actions">
+        <item>переключить телефон звонит</item>
         <item>звонок в телефоне</item>
-        <item>вибрация в телефоне</item>
         <item>отзвонить</item>
+        <item>тумблер вибрировать телефон</item>
+        <item>вибрация в телефоне</item>
         <item>остановить вибрации</item>
         <item>сохранить мою позицию</item>
         <item>открыть URL или другое действие</item>
     </string-array>
     <string-array name="button_actions_values">
+        <item>TOGGLE_RING_PHONE</item>
         <item>START_RING_PHONE</item>
-        <item>START_VIBRATE_PHONE</item>
         <item>STOP_RING_PHONE</item>
+        <item>TOGGLE_VIBRATE_PHONE</item>
+        <item>START_VIBRATE_PHONE</item>
         <item>STOP_VIBRATE_PHONE</item>
         <item>CAPTURE_POSITION</item>
         <item>CUSTOM_ACTION</item>
