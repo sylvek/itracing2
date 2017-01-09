@@ -83,10 +83,10 @@
         <item>CUSTOM_ACTION</item>
     </string-array>
     <string-array name="button_actions">
-        <item>toggle ring the phone</item>
+        <item>Válthat cseng a telefon</item>
         <item>Csengés indít</item>
         <item>Csengés állj</item>
-        <item>toggle vibrate the phone</item>
+        <item>Kampós rezeg a telefon</item>
         <item>Vibra indít</item>
         <item>Vibra állj</item>
         <item>Helymeghatározás</item>

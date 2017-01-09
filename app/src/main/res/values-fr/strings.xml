@@ -59,10 +59,10 @@
     <string name="confirm_remove_events">Confirmer la suppression des événements</string>
     <string name="export_events">exporter les événements</string>
     <string-array name="button_actions">
-        <item>toggle ring the phone</item>
+        <item>basculer en mode sonnerie</item>
         <item>faire sonner le téléphone</item>
         <item>arrêter la sonnerie</item>
-        <item>toggle vibrate the phone</item>
+        <item>basculer en mode vibration</item>
         <item>faire vibrer le téléphone</item>
         <item>arrêter les vibrations</item>
         <item>capturer ma position</item>

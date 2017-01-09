@@ -63,10 +63,10 @@
     <string name="confirm_remove_events">Підтвердіть видалення</string>
     <string name="export_events">експорт</string>
     <string-array name="button_actions">
-        <item>toggle ring the phone</item>
+        <item>ереключить телефон звонит</item>
         <item>дзвінок в телефоні</item>
         <item>подзвонити</item>
-        <item>toggle vibrate the phone</item>
+        <item>тумблер вибрировать телефон</item>
         <item>вібрація в телефоні</item>
         <item>зупинити вібрацію</item>
         <item>зберегти координати</item>
