@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">iTracing2</string>
+    <string name="ble_not_supported">bluetooth LE není bohužel na vašem zařízení podporován</string>
+    <string name="action_scan_start">hledej</string>
+    <string name="beacon_not_found">přívěsek nenalezen</string>
+    <string name="action_connect">připojit</string>
+    <string name="start_immediate_alert">začít prozvánění přívěsku</string>
+    <string name="stop_immediate_alert">zastavit prozvánění přívěsku</string>
+    <string name="link_background">vždy zapnuto</string>
+    <string name="stop_ring">zastavit zvonění</string>
+    <string name="stop_vibrate">zastavit vibrace</string>
+    <string name="simple_button_action">možnosti jednoho stisku</string>
+    <string name="simple_button_action_summary">co má tlačítko dělat?</string>
+    <string name="double_button_action">možnosti dvojího stisku</string>
+    <string name="double_button_action_summary">co má tlačítko dělat?</string>
+    <string name="link_background_summary">umožní aktivovat další volby</string>
+    <string name="battery_info">stav baterie</string>
+    <string name="immediate_alert_summary">klikněte sem pro prozvonění přívěsku</string>
+    <string name="welcome_text">Vítejte do iTracing2.\n\nTato aplikace vám dovolí komunikovat s vaším bluetooth přívěskem (iSee,Quintic PROXR,..) bluetooth.\n
+        Pokud stejně jako já vás trápí ubohá aplikace iTracing, použijte mou verzi:)\n\n
+        Prosím klikněte na ikonu lupy pro nalezení vašeho přívěsku (možná pod názvem Quintic PROXR").\n\n
+        Pokud není žádný nalezen, zobrazí se všecha kompatibilní zařízení.\n
+        Pokud se nic nezobrazí, restartujte váš přívěsek (protože je to laciné zařízení) a zkuste znovu.\n\n
+        Některé funkce (ztráta spojení, volny tlačítka) jsou dostupné pouze s povolenou volbou "spojení v pozadí".\n\n
+        Pamatujte, že vyvíjím iTracing2 pouze v mém volném čase ;-)</string>
+    <string name="donate">daruj (přes PayPal)</string>
+    <string name="feedback">zpětná vazba</string>
+    <string name="donate_summary">podpořit mou práci :)</string>
+    <string name="feedback_summary">pomožte zlepšít produkt</string>
+    <string name="display_last_position">zobrazit poslední uloženou pozici</string>
+    <string name="out_of_range_action">akce \'mimo dosah\'</string>
+    <string name="out_of_range_action_summary">spušteno při odpojení</string>
+    <string name="action_on_power_off">spojení je ztraceno s vypnutím</string>
+    <string name="action_on_power_off_summary">spojení je ztraceno pokud se vypíná přívěsek nebo bluetooth</string>
+    <string name="ring_tone_summary">vyber vyzvánění pro akce</string>
+    <string name="ring_tone">vyzvánění</string>
+    <string name="rssi_info">rssi informace</string>
+    <string name="actions">akce přívěsku</string>
+    <string name="select_device">vyberte zařízení</string>
+    <string name="ring_tone_not_found">vyzvánění nenalezeno! prosím vyberte jiné, ujistěte se že máte nastavené vychozí vyzvánění, nebo zkontrolujte hlasitost.</string>
+    <string name="vibrator_not_found">vibrator nenalezen! prosím ujistěte se zda ho vaše zařízení má.</string>
+    <string name="something_goes_wrong">něco nefunguje!</string>
+    <string name="double_button_delay">prodleva při dvojím stisku</string>
+    <string name="double_button_delay_summary">prodleva mezi dvěma stisky (300ms pokud není vyplněno)</string>
+    <string name="default_double_button_delay">300</string>
+    <string name="custom_action">vlastní akce</string>
+    <string name="custom_action_summary">http(s)://.. nebo zamýšlený řetezec akce</string>
+    <string name="remove">odebrat přívěsek</string>
+    <string name="confirm_remove_keyring">potvrďte odebrání přívěsku</string>
+    <string name="confirm_change_name">potvrďte změnu názvu přívěsku</string>
+    <string name="link_loss_disabled">vypnutím této vlastnosti může začít přívěsek vyzvánět</string>
+    <string name="foreground_started">spuštěn na popředí</string>
+    <string name="preferences">možnosti</string>
+    <string name="dashboard">dashboard</string>
+    <string name="action_foreground_summary">zlepšuje spojení mezi zařízením a přívěskem</string>
+    <string name="action_foreground">režim popředí</string>
+    <string name="ring_the_device">prozvonit přívěsek</string>
+    <string name="events_history">historie událostí</string>
+    <string name="connected_action">akce při navázání spojení</string>
+    <string name="connected_action_summary">spuštěna při navázání spojení</string>
+    <string name="clear_events">smazat všechny záznamy</string>
+    <string name="confirm_remove_events">potvrďte smazáná záznamů</string>
+    <string name="export_events">exportovat záznamy</string>
+    <string-array name="button_actions">
+        <item>toggle ring the phone</item>
+        <item>start ring the phone</item>
+        <item>stop ring the phone</item>
+        <item>toggle vibrate the phone</item>
+        <item>start vibrate the phone</item>
+        <item>stop vibrate the phone</item>
+        <item>capture my position</item>
+        <item>call a url or broadcast intent action</item>
+    </string-array>
+    <string-array name="button_actions_values">
+        <item>TOGGLE_RING_PHONE</item>
+        <item>START_RING_PHONE</item>
+        <item>STOP_RING_PHONE</item>
+        <item>TOGGLE_VIBRATE_PHONE</item>
+        <item>START_VIBRATE_PHONE</item>
+        <item>STOP_VIBRATE_PHONE</item>
+        <item>CAPTURE_POSITION</item>
+        <item>CUSTOM_ACTION</item>
+    </string-array>
+    <string-array name="empty_array"/>
+</resources>
