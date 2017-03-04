@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">iTracing2</string>
+    <string name="ble_not_supported">üzgünüm bluetooth LE cihazınızda desteklenmiyor</string>
+    <string name="action_scan_start">bulundu</string>
+    <string name="beacon_not_found">cihaz bulunamadı</string>
+    <string name="action_connect">bağlan</string>
+    <string name="start_immediate_alert">anahtarlıktan ses çıkar</string>
+    <string name="stop_immediate_alert">anahtarlıktaki sesi durdur</string>
+    <string name="link_background">her zaman açık</string>
+    <string name="stop_ring">çalmayı durdur</string>
+    <string name="stop_vibrate">titreşimi durdur</string>
+    <string name="simple_button_action">tek tıklama ayarları</string>
+    <string name="simple_button_action_summary">bu butonun görevi nedir ?</string>
+    <string name="double_button_action">çift tıklama ayarları</string>
+    <string name="double_button_action_summary">bu butonun görevi nedir ?</string>
+    <string name="link_background_summary">daha fazla ayarı aktive eder</string>
+    <string name="battery_info">pil bilgisi</string>
+    <string name="immediate_alert_summary">anahtarlıktan uyarı için tıklayın</string>
+    <string name="welcome_text">-iTracing2 ye hoşgeldiniz.\n\nBu uygulamayı iSee niz ile iletişim için kullanabilirsiniz.(Quintic PROXR) bluetooth aygıtı.\n
+        Benim gibiyseniz ve  "iTracing" gibi kötü bir uygulama sizi rahatsız ediyorsa, benim oluşturduğum versiyondan memnun kalacaksınız:)\n\n
+        iSee aygıtlarını bulmak için merceğe tıklayın(İsmi "Quintic PROXR" olmalı).\n\n
+        Eğer bir şey bulamadıysa, kutuda tüm bulunan cihazlar listelenecektir.\n
+        Bu kutucuk boş ise, iTag inizi yeniden başlatmalısınız(Çünkü ucuz olan cihaz) ve yeniden deneyin.\n\n
+        Şunu gözününde bulundurun, kayıp bağlantı ve iTag butonu özellği uygulama sadece "Arka Planda" Çalışıyorsa kullanılabilir.\n\n
+        Şunu unutmayın iTracing2 yi sadece boş zamanlarımda yazdım;-)</string>
+    <string name="donate">bağış(PayPal)</string>
+    <string name="feedback">yorum</string>
+    <string name="donate_summary">bana destek olun:)</string>
+    <string name="feedback_summary">bu ürünü geliştirebilirsiniz</string>
+    <string name="display_last_position">son kayıtlı lokasyonu göster</string>
+    <string name="out_of_range_action">kapsama alanı dışı</string>
+    <string name="out_of_range_action_summary">bağlantı koptuğunda tetiklenir</string>
+    <string name="action_on_power_off">kapanırsa bağlantı kaybolur</string>
+    <string name="action_on_power_off_summary">anahtarlığın gücü kesilirse bağlantı kaybolur</string>
+    <string name="ring_tone_summary">eylemler için zil sesi seçin</string>
+    <string name="ring_tone">zil sesi</string>
+    <string name="rssi_info">rssi bilgisi</string>
+    <string name="actions">anahtarlık eylemleri</string>
+    <string name="select_device">bir cihaz seçin</string>
+    <string name="ring_tone_not_found">zil sesi bulunamadı! lütfen bir başkasını seçin, varsayılan olarak bir tane olduğuna emin olun, yada sesin açık olduğuna.</string>
+    <string name="vibrator_not_found">titreşim bulunamadı! telefonunuzun böyle bir özelliği olduğuna emin olun.</string>
+    <string name="something_goes_wrong">bir şeyler yanlış gitti!</string>
+    <string name="double_button_delay">çift tıklama gecikmesi</string>
+    <string name="double_button_delay_summary">2 tıklama arasındaki gecikme(300ms boş geçilirse)</string>
+    <string name="default_double_button_delay">300</string>
+    <string name="custom_action">özel ayarlar</string>
+    <string name="custom_action_summary">http(s)://.. veya bir eylem yolu</string>
+    <string name="remove">anahtarlığı sil</string>
+    <string name="confirm_remove_keyring">anahtarlığın silineceğini onayla</string>
+    <string name="confirm_change_name">anahtarlığın ismini değiştirmeyi onayla</string>
+    <string name="link_loss_disabled">bu ayarı kapatmak anahtarlığın çalmasına sebep olabilir.</string>
+    <string name="foreground_started">ön planda başla</string>
+    <string name="preferences">ayarlar</string>
+    <string name="dashboard">panel</string>
+    <string name="action_foreground_summary">telefon ve cihaz arasındaki bağlantıyı güçlendirir</string>
+    <string name="action_foreground">önplan modu</string>
+    <string name="ring_the_device">anahtarlığı çaldır</string>
+    <string name="events_history">eylem geçmişi</string>
+    <string name="connected_action">bağlı eylem</string>
+    <string name="connected_action_summary">bağlantı sağlandığında tetiklenir</string>
+    <string name="clear_events">tüm uygulamaları temizler</string>
+    <string name="confirm_remove_events">eylemi silmeyi onayla</string>
+    <string name="export_events">eylemi çıkar</string>
+    <string-array name="button_actions">
+        <item>telefonu kısa çaldır</item>
+        <item>telefonu çaldır</item>
+        <item>sesi durdur</item>
+        <item>telefonu kısa titret</item>
+        <item>telefonu titret</item>
+        <item>titreşimi durdur</item>
+        <item>konumumu kaydet</item>
+        <item>bir url yada aksiyon metni çağır</item>
+    </string-array>
+    <string-array name="button_actions_values">
+        <item>TOGGLE_RING_PHONE</item>
+        <item>START_RING_PHONE</item>
+        <item>STOP_RING_PHONE</item>
+        <item>TOGGLE_VIBRATE_PHONE</item>
+        <item>START_VIBRATE_PHONE</item>
+        <item>STOP_VIBRATE_PHONE</item>
+        <item>CAPTURE_POSITION</item>
+        <item>CUSTOM_ACTION</item>
+    </string-array>
+    <string-array name="empty_array"/>
+</resources>
