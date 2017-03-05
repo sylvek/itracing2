@@ -102,3 +102,4 @@ fastlane/README.md
 .bundle/
 .gem/
 Gemfile.lock
+.gradletasknamecache
