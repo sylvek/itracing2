@@ -11,6 +11,14 @@ platform :android do
     gradle(task: "test")
   end
 
+  lane :screenshots do
+    gradle(task: "assembleDebug assembleAndroidTest")
+    screengrab(
+            locales: ['nl-NL', 'en-US', 'de-DE', 'fr-FR', 'hu-HU', 'ru-RU', 'tr-TR', 'uk-UA'],
+            clear_previous_screenshots: true
+        )
+  end
+
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
     gradle(task: "assembleRelease")

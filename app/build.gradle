@@ -8,8 +8,10 @@ android {
         applicationId "net.sylvek.itracing2"
         minSdkVersion 18
         targetSdkVersion 21
-        versionCode 68
-        versionName "2.3.12"
+        versionCode 69
+        versionName "2.3.13"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
         release {
@@ -36,4 +38,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:support-v13:23.1.1'
     compile 'com.android.support:design:23.1.1'
+    compile 'com.android.support:support-annotations:25.1.0'
+
+    testCompile 'junit:junit:4.12'
+    androidTestCompile 'tools.fastlane:screengrab:1.0.2'
 }
