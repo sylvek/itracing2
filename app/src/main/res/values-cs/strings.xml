@@ -33,6 +33,8 @@
     <string name="out_of_range_action_summary">spušteno při odpojení</string>
     <string name="action_on_power_off">spojení je ztraceno s vypnutím</string>
     <string name="action_on_power_off_summary">spojení je ztraceno pokud se vypíná přívěsek nebo bluetooth</string>
+    <string name="action_bip_out_of_range">iTag pípnutí</string>
+    <string name="action_bip_out_of_range_summary">pípnutí, pokud je mimo rozsah</string>
     <string name="ring_tone_summary">vyber vyzvánění pro akce</string>
     <string name="ring_tone">vyzvánění</string>
     <string name="rssi_info">rssi informace</string>

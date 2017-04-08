@@ -20,11 +20,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import net.sylvek.itracing2.BluetoothLEService;
-import net.sylvek.itracing2.CommonActivity;
-import net.sylvek.itracing2.ConfirmAlertDialogFragment;
-import net.sylvek.itracing2.Preferences;
-import net.sylvek.itracing2.R;
+import net.sylvek.itracing2.*;
 import net.sylvek.itracing2.database.Devices;
 import net.sylvek.itracing2.database.Events;
 
@@ -55,8 +51,7 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
-        public void onServiceConnected(ComponentName componentName, IBinder iBinder)
-        {
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
             if (iBinder instanceof BluetoothLEService.BackgroundBluetoothLEBinder) {
                 service = ((BluetoothLEService.BackgroundBluetoothLEBinder) iBinder).service();
                 service.connect(DashboardActivity.this.address);
@@ -64,15 +59,13 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
         }
 
         @Override
-        public void onServiceDisconnected(ComponentName componentName)
-        {
+        public void onServiceDisconnected(ComponentName componentName) {
             Log.d(BluetoothLEService.TAG, "onServiceDisconnected()");
         }
     };
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard);
 
@@ -86,20 +79,17 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
         mTab.getTabAt(2).setText(R.string.events_history);
         mTab.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab)
-            {
+            public void onTabSelected(TabLayout.Tab tab) {
                 mPager.setCurrentItem(tab.getPosition());
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab)
-            {
+            public void onTabUnselected(TabLayout.Tab tab) {
 
             }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab)
-            {
+            public void onTabReselected(TabLayout.Tab tab) {
 
             }
         });
@@ -110,8 +100,7 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
         mFab.hide();
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
 //                mFab.setImageResource((activated) ? android.R.drawable.ic_lock_silent_mode_off : android.R.drawable.ic_lock_silent_mode);
                 activated = !activated;
                 onImmediateAlert(address, activated);
@@ -120,29 +109,25 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
         address = getIntent().getStringExtra(Devices.ADDRESS);
         name = getIntent().getStringExtra(Devices.NAME);
         setTitle(name);
     }
 
-    private void onImmediateAlert(final String address, final boolean activate)
-    {
+    private void onImmediateAlert(final String address, final boolean activate) {
         service.immediateAlert(address, (activate) ? BluetoothLEService.HIGH_ALERT : BluetoothLEService.NO_ALERT);
     }
 
     @Override
-    public void onDashboardStarted()
-    {
+    public void onDashboardStarted() {
         // bind service
         bindService(new Intent(this, BluetoothLEService.class), serviceConnection, BIND_AUTO_CREATE);
     }
 
     @Override
-    public void onDashboardStopped()
-    {
+    public void onDashboardStopped() {
         if (service != null) {
             service.disconnect(this.address);
         }
@@ -153,20 +138,17 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
     }
 
     @Override
-    public void onImmediateAlertAvailable()
-    {
+    public void onImmediateAlertAvailable() {
         runOnUiThread(new Runnable() {
             @Override
-            public void run()
-            {
+            public void run() {
                 mFab.show();
             }
         });
     }
 
     @Override
-    public void onRingStone(int source)
-    {
+    public void onRingStone(int source) {
         Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_RINGTONE);
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, getString(R.string.ring_tone));
@@ -175,8 +157,12 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
     }
 
     @Override
-    public void doPositiveClick(int returnCode)
-    {
+    public void onOutOfRangerBip(Boolean enabled) {
+        service.setLinkLossNotificationLevel(address, (enabled) ? BluetoothLEService.HIGH_ALERT : BluetoothLEService.NO_ALERT);
+    }
+
+    @Override
+    public void doPositiveClick(int returnCode) {
         switch (returnCode) {
             case CONFIRM_REMOVE_KEYRING:
                 if (Preferences.clearAll(this, address)) {
@@ -191,14 +177,12 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
     }
 
     @Override
-    public void doNegativeClick(int returnCode)
-    {
+    public void doNegativeClick(int returnCode) {
         // nothing to do.
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
             final Preferences.Source source;
             switch (requestCode) {
@@ -225,8 +209,7 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
     }
 
     @Override
-    public void onExportEvents()
-    {
+    public void onExportEvents() {
         final String title = getString(R.string.app_name);
         final String export = Events.export(this, this.address);
         final Intent intent = new Intent(Intent.ACTION_SEND);
@@ -238,20 +221,17 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
 
     private class ScreenSlidePagerAdapter extends FragmentPagerAdapter {
 
-        public ScreenSlidePagerAdapter(FragmentManager fm)
-        {
+        public ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
         @Override
-        public int getCount()
-        {
+        public int getCount() {
             return NUM_PAGES;
         }
 
         @Override
-        public Fragment getItem(int position)
-        {
+        public Fragment getItem(int position) {
             switch (position) {
                 case 0:
                     return DashboardFragment.instance(address);
@@ -266,8 +246,7 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
+    public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.delete) {
             ConfirmAlertDialogFragment.instance(R.string.confirm_remove_keyring, CONFIRM_REMOVE_KEYRING).show(getFragmentManager(), "dialog");
             return true;
@@ -276,8 +255,7 @@ public class DashboardActivity extends CommonActivity implements DevicePreferenc
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         final MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.dashboard, menu);
         return true;

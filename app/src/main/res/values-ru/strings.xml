@@ -33,6 +33,8 @@
     <string name="out_of_range_action_summary">Какое действие выполнить при потере связи с брелком?</string>
     <string name="action_on_power_off">Отключение Bluetooth</string>
     <string name="action_on_power_off_summary">Отключить Bluetooth при разыве связи с брелком</string>
+    <string name="action_bip_out_of_range">iTag Звуковой сигнал</string>
+    <string name="action_bip_out_of_range_summary">Звуковой сигнал, если вне допустимого диапазона</string>
     <string name="ring_tone_summary">Выберите мелодию для озвучивания действий</string>
     <string name="ring_tone">Мелодия</string>
     <string name="rssi_info">RSS информация</string>

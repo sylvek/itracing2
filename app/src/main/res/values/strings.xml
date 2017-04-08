@@ -33,6 +33,8 @@
     <string name="out_of_range_action_summary">triggered when disconnection occurs</string>
     <string name="action_on_power_off">link is lost on power off</string>
     <string name="action_on_power_off_summary">the link is lost if keyring or bluetooth is powering off</string>
+    <string name="action_bip_out_of_range">iTag beep</string>
+    <string name="action_bip_out_of_range_summary">beep if out of range</string>
     <string name="ring_tone_summary">select the ringtone for actions</string>
     <string name="ring_tone">ring tone</string>
     <string name="rssi_info">rssi info</string>
