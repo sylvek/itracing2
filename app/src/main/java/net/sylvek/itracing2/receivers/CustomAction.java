@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.net.Uri;
 import net.sylvek.itracing2.Preferences;
 import net.sylvek.itracing2.database.Devices;
 import org.eclipse.paho.client.mqttv3.MqttClient;
@@ -19,6 +20,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.net.ssl.HttpsURLConnection;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * Created by sylvek on 14/12/2015.
@@ -43,6 +51,10 @@ public class CustomAction extends BroadcastReceiver {
 
         if (action.startsWith("mqtt://")) {
             new PublishMQTT(action, address + "," + source).start();
+        }
+
+        if (action.startsWith("tel:")) {
+            new Phone(context, action).start();
         }
 
         if (!action.isEmpty()) {
@@ -132,5 +144,24 @@ public class CustomAction extends BroadcastReceiver {
     private void readStream(InputStream in) throws IOException {
         // nothing to do.
         in.close();
+    }
+
+    private class Phone extends Thread {
+
+        private final Context context;
+        private final String action;
+
+        public Phone(Context context, String action) {
+            this.context = context;
+            this.action = action;
+        }
+
+        @Override
+        public void run() {
+            Intent callIntent = new Intent(Intent.ACTION_CALL);
+            callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+            callIntent.setData(Uri.parse(action));
+            context.startActivity(callIntent);
+        }
     }
 }
