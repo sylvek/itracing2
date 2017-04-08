@@ -14,6 +14,8 @@
     <string name="simple_button_action_summary">bu butonun görevi nedir ?</string>
     <string name="double_button_action">çift tıklama ayarları</string>
     <string name="double_button_action_summary">bu butonun görevi nedir ?</string>
+    <string name="action_bip_out_of_range">iTag bip</string>
+    <string name="action_bip_out_of_range_summary">Звуковой сигнал, если вне допустимого диапазона</string>
     <string name="link_background_summary">daha fazla ayarı aktive eder</string>
     <string name="battery_info">pil bilgisi</string>
     <string name="immediate_alert_summary">anahtarlıktan uyarı için tıklayın</string>

@@ -34,6 +34,8 @@
     <string name="out_of_range_action_summary">Gestart als de verbinding wordt verbroken</string>
     <string name="action_on_power_off">Verbinding wordt verbroken als de beacon uit gaat.</string>
     <string name="action_on_power_off_summary">De verbinding is verbroken als de beacon of bluetooth uit gaat.</string>
+    <string name="action_bip_out_of_range">iTag beep</string>
+    <string name="action_bip_out_of_range_summary">beep indien buiten bereik</string>
     <string name="ring_tone_summary">Kies een ring-tone voor de acties</string>
     <string name="ring_tone">ring-tone</string>
     <string name="rssi_info">RSSI informatie</string>

@@ -6,6 +6,8 @@
     <string name="action_foreground_summary">verbessert die Verbindung zwischen Smartphone und den Geräten</string>
     <string name="action_on_power_off">Verbindung unterbrochen wenn abgeschaltet</string>
     <string name="action_on_power_off_summary">die Verbindung ist unterbrochen, wenn der Schlüsselanhänger oder Bluetooth abgeschaltet wird</string>
+    <string name="action_bip_out_of_range">iTag peip</string>
+    <string name="action_bip_out_of_range_summary">Signalton, wenn außerhalb des Bereichs</string>
     <string name="action_scan_start">suchen</string>
     <string name="actions">Aktionen Schlüsselanhänger</string>
     <string name="battery_info">Batterie Info</string>

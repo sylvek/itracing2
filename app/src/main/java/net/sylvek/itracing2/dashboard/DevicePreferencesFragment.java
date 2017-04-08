@@ -65,6 +65,13 @@ public class DevicePreferencesFragment extends PreferenceFragment {
                 return true;
             }
         });
+        findPreference("action_itracing_bip_out_of_range").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object enabled) {
+                presenter.onOutOfRangerBip((Boolean) enabled);
+                return true;
+            }
+        });
     }
 
     @Override
@@ -82,5 +89,7 @@ public class DevicePreferencesFragment extends PreferenceFragment {
     public interface OnDevicePreferencesListener {
 
         void onRingStone(int source);
+
+        void onOutOfRangerBip(Boolean enabled);
     }
 }

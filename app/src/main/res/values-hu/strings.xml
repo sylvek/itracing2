@@ -68,6 +68,8 @@
     <string name="out_of_range_action_summary">Ha az eszköz távol kerül vagy rádiójelét árnyékolják?</string>
     <string name="action_on_power_off">Lekapcsoláskor is?</string>
     <string name="action_on_power_off_summary">Akkor is, ha az okoskészüléket vagy az eszköz bluetooth-t lekapcsolják?</string>
+    <string name="action_bip_out_of_range">iTag sípolás</string>
+    <string name="action_bip_out_of_range_summary">sípolás, ha a tartományon</string>
     <string name="simple_button_action">Klikkelés esetén</string>
     <string name="simple_button_action_summary">Ha az eszközön egyszer megnyomod a gombot, mi történjen?</string>
     <string name="double_button_action">Duplaklikkelés esetén</string>

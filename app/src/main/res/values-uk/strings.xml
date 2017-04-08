@@ -14,6 +14,8 @@
     <string name="simple_button_action_summary">Виберіть дію для одного натискання</string>
     <string name="double_button_action">Подвійне натискання</string>
     <string name="double_button_action_summary">Виберіть дію для подвійного натискання</string>
+    <string name="action_bip_out_of_range">iTag гудок</string>
+    <string name="action_bip_out_of_range_summary">звуковий сигнал, якщо поза діапазону</string>
     <string name="link_background_summary">Включити додаткові можливості</string>
     <string name="battery_info">Про батарейку</string>
     <string name="immediate_alert_summary">Тривога мітки</string>
