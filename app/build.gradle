@@ -34,11 +34,18 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url "https://repo.eclipse.org/content/repositories/paho-releases/"
+    }
+}
+
 dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:support-v13:23.1.1'
     compile 'com.android.support:design:23.1.1'
     compile 'com.android.support:support-annotations:25.1.0'
+    compile 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
 
     testCompile 'junit:junit:4.12'
     androidTestCompile 'tools.fastlane:screengrab:1.0.2'
