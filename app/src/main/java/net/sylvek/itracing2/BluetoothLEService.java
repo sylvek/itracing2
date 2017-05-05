@@ -65,6 +65,8 @@ public class BluetoothLEService extends Service {
 
     private UUID lastUuid;
 
+    private String lastAddress;
+
     private Runnable r;
 
     private Handler handler = new Handler();
@@ -183,10 +185,11 @@ public class BluetoothLEService extends Service {
             final long delayDoubleClick = Preferences.getDoubleButtonDelay(getApplicationContext());
 
             final long now = SystemClock.elapsedRealtime();
-            if (lastChange + delayDoubleClick > now && characteristic.getUuid().equals(lastUuid)) {
+            if (lastChange + delayDoubleClick > now && characteristic.getUuid().equals(lastUuid) && gatt.getDevice().getAddress().equals(lastAddress)) {
                 Log.d(TAG, "onCharacteristicChanged() - double click");
                 lastChange = 0;
                 lastUuid = null;
+                lastAddress = "";
                 handler.removeCallbacks(r);
                 for (String action : Preferences.getActionDoubleButton(getApplicationContext(), address)) {
                     sendAction(Preferences.Source.double_click, action);
@@ -194,6 +197,7 @@ public class BluetoothLEService extends Service {
             } else {
                 lastChange = now;
                 lastUuid = characteristic.getUuid();
+                lastAddress = gatt.getDevice().getAddress();
                 r = new Runnable() {
                     @Override
                     public void run() {
