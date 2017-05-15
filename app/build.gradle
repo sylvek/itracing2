@@ -8,8 +8,8 @@ android {
         applicationId "net.sylvek.itracing2"
         minSdkVersion 18
         targetSdkVersion 21
-        versionCode 71
-        versionName "2.4.1"
+        versionCode 72
+        versionName "2.4.2"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

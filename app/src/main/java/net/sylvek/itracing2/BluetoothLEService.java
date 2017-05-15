@@ -136,6 +136,7 @@ public class BluetoothLEService extends Service {
                         immediateAlertService = service;
                         broadcaster.sendBroadcast(new Intent(IMMEDIATE_ALERT_AVAILABLE));
                         gatt.readCharacteristic(getCharacteristic(gatt, IMMEDIATE_ALERT_SERVICE, ALERT_LEVEL_CHARACTERISTIC));
+                        setCharacteristicNotification(gatt, immediateAlertService.getCharacteristics().get(0), true);
                     }
 
                     if (BATTERY_SERVICE.equals(service.getUuid())) {
@@ -234,12 +235,10 @@ public class BluetoothLEService extends Service {
 
     private void setCharacteristicNotification(BluetoothGatt bluetoothgatt, BluetoothGattCharacteristic bluetoothgattcharacteristic, boolean flag) {
         bluetoothgatt.setCharacteristicNotification(bluetoothgattcharacteristic, flag);
-        if (FIND_ME_CHARACTERISTIC.equals(bluetoothgattcharacteristic.getUuid())) {
-            BluetoothGattDescriptor descriptor = bluetoothgattcharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIG);
-            if (descriptor != null) {
-                descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
-                bluetoothgatt.writeDescriptor(descriptor);
-            }
+        BluetoothGattDescriptor descriptor = bluetoothgattcharacteristic.getDescriptor(CLIENT_CHARACTERISTIC_CONFIG);
+        if (descriptor != null) {
+            descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
+            bluetoothgatt.writeDescriptor(descriptor);
         }
     }
 
