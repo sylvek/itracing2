@@ -75,14 +75,14 @@
         <item>Activar url o acción</item>
     </string-array>
     <string-array name="button_actions_values">
-        <item>CAMBIAR_TONO_LLAMADA</item>
-        <item>INICIAR_TONO_LLAMADA</item>
-        <item>DETENER_TONO_LLAMADA</item>
-        <item>CAMBIAR_VIBRACION</item>
-        <item>ACTIVAR_VIBRACION</item>
-        <item>DETENER_VIBRACION</item>
-        <item>CAPTURAR_POSICION</item>
-        <item>ACCION_PERSONALIZADA</item>
+        <item>TOGGLE_RING_PHONE</item>
+        <item>START_RING_PHONE</item>
+        <item>STOP_RING_PHONE</item>
+        <item>TOGGLE_VIBRATE_PHONE</item>
+        <item>START_VIBRATE_PHONE</item>
+        <item>STOP_VIBRATE_PHONE</item>
+        <item>CAPTURE_POSITION</item>
+        <item>CUSTOM_ACTION</item>
     </string-array>
     <string-array name="empty_array"/>
 </resources>
