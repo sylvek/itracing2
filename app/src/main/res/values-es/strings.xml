@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">iTracing2</string>
+    <string name="ble_not_supported">Bluetooth LE no está soportado en su dispositivo</string>
+    <string name="action_scan_start">Detectar</string>
+    <string name="beacon_not_found">Llavero no encontrado</string>
+    <string name="action_connect">Conectar</string>
+    <string name="start_immediate_alert">Iniciar el sonido del llavero</string>
+    <string name="stop_immediate_alert">Detener el sonido del llavero</string>
+    <string name="link_background">Siempre activo</string>
+    <string name="stop_ring">Detener tono de llamada</string>
+    <string name="stop_vibrate">Detener vibración</string>
+    <string name="simple_button_action">Opciones para una pulsación</string>
+    <string name="simple_button_action_summary">¿Cuál es la acción de la pulsación?</string>
+    <string name="double_button_action">Opciones para doble pulsación</string>
+    <string name="double_button_action_summary">¿Cuál es la acción de la pulsación?</string>
+    <string name="link_background_summary">Permite activar más opciones</string>
+    <string name="battery_info">Batería</string>
+    <string name="immediate_alert_summary">Pulse aquí para iniciar el llavero</string>
+    <string name="welcome_text">Bienvenido a iTracing2.\n\nEsta aplicación le permite comunicarse con su dispositivo Bluetooth.\n
+	Si como a mí, no le gustó la aplicación "iTracing", disfrute usando mi propia versión. :)\n\n
+	Pulse en el botón de la lupa para localizar su dispositivo.\n\n
+	Si no se detecta, aparecerá una ventana con todos los dispositivos compatibles.\n
+	Si esta ventana está vacía, deberá reiniciar su llavero y volver a intentarlo.\n\n
+	Observe que la característica de pérdida de enlace y botón del llavero están disponibles solamente con la opción "Siempre activo".\n\n
+	Tenga en cuenta que desarrollé iTracing2 durante mi tiempo libre. ;-)</string>
+    <string name="donate">Donar (PayPal)</string>
+    <string name="feedback">Soporte</string>
+    <string name="donate_summary">Para apoyar mi trabajo :)</string>
+    <string name="feedback_summary">No dude en mejorar este producto</string>
+    <string name="display_last_position">Mostrar la última posición registrada</string>
+    <string name="out_of_range_action">Acción cuando esté fuera de rango</string>
+    <string name="out_of_range_action_summary">Activado cuando se desconecte</string>
+    <string name="action_on_power_off">Desconectar al apagarse</string>
+    <string name="action_on_power_off_summary">El enlace se pierde si el llavero o el Bluetooth se apaga</string>
+    <string name="action_bip_out_of_range">Sonar el llavero</string>
+    <string name="action_bip_out_of_range_summary">Sonar si está fuera de rango</string>
+    <string name="ring_tone_summary">Seleccione el tono de llamada de la acción</string>
+    <string name="ring_tone">Tono de llamada</string>
+    <string name="rssi_info">Cobertura</string>
+    <string name="actions">Acciones del llavero</string>
+    <string name="select_device">Seleccione un dispositivo</string>
+    <string name="ring_tone_not_found">¡Tono de llamada no encontrado! Seleccione otro y compruebe que tiene un tono de llamada predefinido o tiene el volumen activado.</string>
+    <string name="vibrator_not_found">¡Vibración no disponible! Asegúrese de disponer de esta característica en su dispositivo.</string>
+    <string name="something_goes_wrong">¡Algo va mal!</string>
+    <string name="double_button_delay">Retardo de la doble pulsación</string>
+    <string name="double_button_delay_summary">Tiempo entre dos pulsaciones (300ms por defecto)</string>
+    <string name="default_double_button_delay">300</string>
+    <string name="custom_action">Acción personalizada</string>
+    <string name="custom_action_summary">http(s)://.. o acción</string>
+    <string name="remove">Eliminar llavero</string>
+    <string name="confirm_remove_keyring">Confirme para eliminar este llavero</string>
+    <string name="confirm_change_name">Nombre del llavero</string>
+    <string name="link_loss_disabled">Desactivar esta opción podría hacer sonar su llavero</string>
+    <string name="foreground_started">Iniciado en primer plano</string>
+    <string name="preferences">Ajustes</string>
+    <string name="dashboard">Tablero</string>
+    <string name="action_foreground_summary">Mejora el enlace entre los dispositivos</string>
+    <string name="action_foreground">Modo primer plano</string>
+    <string name="ring_the_device">Sonar el llavero</string>
+    <string name="events_history">Historial</string>
+    <string name="connected_action">Acción al conectar</string>
+    <string name="connected_action_summary">Activado cuando se realiza la conexión</string>
+    <string name="clear_events">Borrar eventos</string>
+    <string name="confirm_remove_events">Confirme el borrado de los eventos</string>
+    <string name="export_events">Exportar eventos</string>
+    <string-array name="button_actions">
+        <item>Cambiar estado del tono de llamada</item>
+        <item>Iniciar tono de llamada</item>
+        <item>Detener tono de llamada</item>
+        <item>Cambiar estado de la vibración</item>
+        <item>Activar vibración</item>
+        <item>Detener vibración</item>
+        <item>Capturar mi posición</item>
+        <item>Activar url o acción</item>
+    </string-array>
+    <string-array name="button_actions_values">
+        <item>CAMBIAR_TONO_LLAMADA</item>
+        <item>INICIAR_TONO_LLAMADA</item>
+        <item>DETENER_TONO_LLAMADA</item>
+        <item>CAMBIAR_VIBRACION</item>
+        <item>ACTIVAR_VIBRACION</item>
+        <item>DETENER_VIBRACION</item>
+        <item>CAPTURAR_POSICION</item>
+        <item>ACCION_PERSONALIZADA</item>
+    </string-array>
+    <string-array name="empty_array"/>
+</resources>
