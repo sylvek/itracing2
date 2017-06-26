@@ -277,8 +277,14 @@ public class BluetoothLEService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        setForegroundEnabled(Preferences.isForegroundEnabled(this));
-        connect();
+        this.setForegroundEnabled(Preferences.isForegroundEnabled(this));
+        this.connect();
+
+        if (intent.getData() != null) {
+            final String address = intent.getData().getHost();
+            this.immediateAlert(address, HIGH_ALERT);
+        }
+
         return START_STICKY;
     }
 
