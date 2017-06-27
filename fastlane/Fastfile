@@ -19,17 +19,18 @@ platform :android do
         )
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "assembleRelease")
-    crashlytics
-  end
-
   desc "Deploy a new version to the Google Play"
   lane :deploy do |options|
     gradle(task: "assembleRelease", flags: "-PkeyStore=#{options[:keystore]} -Ppassword=#{options[:password]}")
     supply
   end
+
+  desc "Deploy a new beta version to the Google Play"
+  lane :beta do |options|
+    gradle(task: "assembleRelease", flags: "-PkeyStore=#{options[:keystore]} -Ppassword=#{options[:password]}")
+    supply track: "beta"
+  end
+
 
   after_all do |lane|
   end
