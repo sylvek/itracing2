@@ -1,3 +1,7 @@
+# PLEASE CONSIDER THIS APP' AS NOT MAINTAINED
+I'm sorry, but time is missing to continue to maintain Itracing2 :(
+Feel free, to fork it and to add new feature :)
+
 # itracing2
 itracing2 is a free and open source application that allows to (really?) use iTag devices.
 
