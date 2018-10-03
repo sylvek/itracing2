@@ -58,5 +58,11 @@
                 <action android:name="net.sylvek.itracing2.action.START_RING_PHONE"/>
             </intent-filter>
         </receiver>
+        <receiver android:name=".receivers.ImmediateAlert">
+            <intent-filter>
+                <action android:name="net.sylvek.itracing2.action.IMMEDIATE_ALERT"/>
+                <data android:scheme="itag" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>
