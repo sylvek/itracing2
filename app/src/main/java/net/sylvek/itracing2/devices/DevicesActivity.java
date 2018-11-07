@@ -174,7 +174,7 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
     public void onDevicesStarted()
     {
         if (random.nextInt(100) > 80 && !Preferences.isDonated(this)) { // displayed 20% time
-            ConfirmAlertDialogFragment.instance(R.string.donate, 0, R.string.donate_summary).show(getFragmentManager(), null);
+            //ConfirmAlertDialogFragment.instance(R.string.donate, 0, R.string.donate_summary).show(getFragmentManager(), null);
         }
 
         // bind service
@@ -323,10 +323,10 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
             this.onFeedback();
             return true;
         }
-        if (item.getItemId() == R.id.action_donate) {
+        /*if (item.getItemId() == R.id.action_donate) {
             this.onDonate();
             return true;
-        }
+        }*/
         if (item.getItemId() == R.id.action_preferences) {
             startActivity(new Intent(this, PreferencesActivity.class));
             return true;
