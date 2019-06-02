@@ -13,11 +13,12 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
-    <application android:label="@string/app_name"
+    <application
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
         android:supportsRtl="true"
-                 android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         <activity android:name=".devices.DevicesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -32,16 +33,19 @@
         <receiver android:name=".receivers.LinkBackground">
             <intent-filter>
                 <action android:name="android.bluetooth.adapter.action.STATE_CHANGED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </receiver>
         <receiver android:name=".receivers.CapturePosition">
             <intent-filter>
                 <action android:name="net.sylvek.itracing2.action.CAPTURE_POSITION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </receiver>
         <receiver android:name=".receivers.CustomAction">
             <intent-filter>
                 <action android:name="net.sylvek.itracing2.action.CUSTOM_ACTION"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </receiver>
         <receiver android:name=".receivers.ToggleVibratePhone">
@@ -49,6 +53,7 @@
                 <action android:name="net.sylvek.itracing2.action.STOP_VIBRATE_PHONE"/>
                 <action android:name="net.sylvek.itracing2.action.START_VIBRATE_PHONE"/>
                 <action android:name="net.sylvek.itracing2.action.TOGGLE_VIBRATE_PHONE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </receiver>
         <receiver android:name=".receivers.ToggleRingPhone">
@@ -56,11 +61,13 @@
                 <action android:name="net.sylvek.itracing2.action.TOGGLE_RING_PHONE"/>
                 <action android:name="net.sylvek.itracing2.action.STOP_RING_PHONE"/>
                 <action android:name="net.sylvek.itracing2.action.START_RING_PHONE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </receiver>
         <receiver android:name=".receivers.ImmediateAlert">
             <intent-filter>
                 <action android:name="net.sylvek.itracing2.action.IMMEDIATE_ALERT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
                 <data android:scheme="itag" />
             </intent-filter>
         </receiver>
