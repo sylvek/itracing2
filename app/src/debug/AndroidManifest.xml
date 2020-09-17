@@ -12,5 +12,9 @@
 
     <!-- Allows changing locales -->
 <!--    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <!--  callIntent  -->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
 </manifest>
