@@ -1,15 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId "net.sylvek.itracing2"
         minSdkVersion 18
-        targetSdkVersion 25
-        versionCode 74
-        versionName "2.4.2"
+        targetSdkVersion 29
+        versionCode 75
+        versionName "2.5.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -44,12 +43,12 @@ repositories {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:support-v13:23.1.1'
-    compile 'com.android.support:design:23.1.1'
-    compile 'com.android.support:support-annotations:25.1.0'
-    compile 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
+    api 'com.android.support:appcompat-v7:23.1.1'
+    api 'com.android.support:support-v13:23.1.1'
+    api 'com.android.support:design:23.1.1'
+    api 'com.android.support:support-annotations:25.1.0'
+    api 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
 
-    testCompile 'junit:junit:4.12'
-    androidTestCompile 'tools.fastlane:screengrab:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'tools.fastlane:screengrab:1.0.2'
 }
