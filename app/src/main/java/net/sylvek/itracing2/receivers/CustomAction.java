@@ -1,18 +1,24 @@
 package net.sylvek.itracing2.receivers;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.net.Uri;
+
 import net.sylvek.itracing2.Preferences;
 import net.sylvek.itracing2.database.Devices;
+
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import javax.net.ssl.HttpsURLConnection;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,6 +28,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.net.ssl.HttpsURLConnection;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -161,6 +168,16 @@ public class CustomAction extends BroadcastReceiver {
             Intent callIntent = new Intent(Intent.ACTION_CALL);
             callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
             callIntent.setData(Uri.parse(action));
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
             context.startActivity(callIntent);
         }
     }
