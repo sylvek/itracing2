@@ -4,7 +4,8 @@
             android:key="action_foreground"
             android:title="@string/action_foreground"
             android:summary="@string/action_foreground_summary"
-            android:defaultValue="true"/>
+            android:enabled="false"
+            android:defaultValue="false"/>
     <EditTextPreference
             android:title="@string/double_button_delay"
             android:summary="@string/double_button_delay_summary"

@@ -277,7 +277,7 @@ public class BluetoothLEService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        this.setForegroundEnabled(Preferences.isForegroundEnabled(this));
+        this.setForegroundEnabled(/*Preferences.isForegroundEnabled(this)*/ false);
         this.connect();
 
         if (intent.getData() != null) {
