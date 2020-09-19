@@ -31,46 +31,5 @@
         <activity android:name=".preferences.PreferencesActivity" android:label="@string/preferences"
                   android:parentActivityName=".devices.DevicesActivity"/>
         <service android:name=".BluetoothLEService"/>
-        <receiver android:name=".receivers.LinkBackground">
-            <intent-filter>
-                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </receiver>
-        <receiver android:name=".receivers.CapturePosition">
-            <intent-filter>
-                <action android:name="net.sylvek.itracing2.action.CAPTURE_POSITION"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </receiver>
-        <receiver android:name=".receivers.CustomAction">
-            <intent-filter>
-                <action android:name="net.sylvek.itracing2.action.CUSTOM_ACTION"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </receiver>
-        <receiver android:name=".receivers.ToggleVibratePhone">
-            <intent-filter>
-                <action android:name="net.sylvek.itracing2.action.STOP_VIBRATE_PHONE"/>
-                <action android:name="net.sylvek.itracing2.action.START_VIBRATE_PHONE"/>
-                <action android:name="net.sylvek.itracing2.action.TOGGLE_VIBRATE_PHONE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </receiver>
-        <receiver android:name=".receivers.ToggleRingPhone">
-            <intent-filter>
-                <action android:name="net.sylvek.itracing2.action.TOGGLE_RING_PHONE"/>
-                <action android:name="net.sylvek.itracing2.action.STOP_RING_PHONE"/>
-                <action android:name="net.sylvek.itracing2.action.START_RING_PHONE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </receiver>
-        <receiver android:name=".receivers.ImmediateAlert">
-            <intent-filter>
-                <action android:name="net.sylvek.itracing2.action.IMMEDIATE_ALERT"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="itag" />
-            </intent-filter>
-        </receiver>
     </application>
 </manifest>

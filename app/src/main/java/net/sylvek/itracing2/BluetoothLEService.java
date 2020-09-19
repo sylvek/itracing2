@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.bluetooth.*;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Binder;
 import android.os.Build;
@@ -19,6 +20,12 @@ import android.widget.Toast;
 import net.sylvek.itracing2.database.Devices;
 import net.sylvek.itracing2.database.Events;
 import net.sylvek.itracing2.devices.DevicesActivity;
+import net.sylvek.itracing2.receivers.CapturePosition;
+import net.sylvek.itracing2.receivers.CustomAction;
+import net.sylvek.itracing2.receivers.ImmediateAlert;
+import net.sylvek.itracing2.receivers.LinkBackground;
+import net.sylvek.itracing2.receivers.ToggleRingPhone;
+import net.sylvek.itracing2.receivers.ToggleVibratePhone;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -280,6 +287,7 @@ public class BluetoothLEService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        this.registerReceivers();
         this.setForegroundEnabled(Preferences.isForegroundEnabled(this));
         this.connect();
 
@@ -289,6 +297,48 @@ public class BluetoothLEService extends Service {
         }
 
         return START_STICKY;
+    }
+
+    private void registerReceivers() {
+        IntentFilter f1 = new IntentFilter();
+        f1.addAction("net.sylvek.itracing2.action.CAPTURE_POSITION");
+        f1.addCategory("android.intent.category.DEFAULT");
+        registerReceiver(new CapturePosition(), f1);
+        Log.d(TAG, "CapturePosition() - registered with: " + f1);
+
+        IntentFilter f2 = new IntentFilter();
+        f2.addAction("net.sylvek.itracing2.action.CUSTOM_ACTION");
+        f2.addCategory("android.intent.category.DEFAULT");
+        registerReceiver(new CustomAction(), f2);
+        Log.d(TAG, "CustomAction() - registered with: " + f2);
+
+        IntentFilter f3 = new IntentFilter();
+        f3.addAction("net.sylvek.itracing2.action.STOP_VIBRATE_PHONE");
+        f3.addAction("net.sylvek.itracing2.action.START_VIBRATE_PHONE");
+        f3.addAction("net.sylvek.itracing2.action.TOGGLE_VIBRATE_PHONE");
+        f3.addCategory("android.intent.category.DEFAULT");
+        registerReceiver(new ToggleVibratePhone(), f3);
+        Log.d(TAG, "ToggleVibratePhone() - registered with: " + f3);
+
+        IntentFilter f4 = new IntentFilter();
+        f4.addAction("net.sylvek.itracing2.action.TOGGLE_RING_PHONE");
+        f4.addAction("net.sylvek.itracing2.action.STOP_RING_PHONE");
+        f4.addAction("net.sylvek.itracing2.action.START_RING_PHONE");
+        f4.addCategory("android.intent.category.DEFAULT");
+        registerReceiver(new ToggleRingPhone(), f4);
+        Log.d(TAG, "ToggleRingPhone() - registered with: " + f4);
+
+        IntentFilter f5 = new IntentFilter();
+        f5.addAction("net.sylvek.itracing2.action.IMMEDIATE_ALERT");
+        f5.addCategory("android.intent.category.DEFAULT");
+        registerReceiver(new ImmediateAlert(), f5);
+        Log.d(TAG, "ImmediateAlert() - registered with: " + f5);
+
+        IntentFilter f6 = new IntentFilter();
+        f6.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
+        f6.addCategory("android.intent.category.DEFAULT");
+        registerReceiver(new LinkBackground(), f6);
+        Log.d(TAG, "LinkBackground() - registered with: " + f6);
     }
 
     public void setForegroundEnabled(boolean enabled) {
@@ -310,7 +360,7 @@ public class BluetoothLEService extends Service {
     }
 
     private String getNotificationChannel(NotificationManager notificationManager) {
-        String channelId = "channelid";
+        String channelId = "channel-itracing2";
         String channelName = getResources().getString(R.string.app_name);
         NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH);
         channel.setImportance(NotificationManager.IMPORTANCE_NONE);

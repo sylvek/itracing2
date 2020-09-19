@@ -67,6 +67,7 @@ public class CapturePosition extends BroadcastReceiver {
             final Intent mapIntent = getMapIntent(position);
 
             final Notification notification = new Notification.Builder(context)
+                    .setChannelId("channel-itracing2")
                     .setContentText(context.getString(R.string.display_last_position))
                     .setContentTitle(context.getString(R.string.app_name))
                     .setSmallIcon(R.drawable.ic_launcher)

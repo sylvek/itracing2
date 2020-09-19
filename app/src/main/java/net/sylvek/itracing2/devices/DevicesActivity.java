@@ -127,7 +127,7 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
         showDevices();
 
         if (!isMyServiceRunning(BluetoothLEService.class)) {
-            startService(new Intent(this, BluetoothLEService.class));
+            startForegroundService(new Intent(this, BluetoothLEService.class));
         }
     }
 
