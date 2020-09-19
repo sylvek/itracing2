@@ -1,12 +1,15 @@
 package net.sylvek.itracing2;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.bluetooth.*;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Binder;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.SystemClock;
@@ -277,7 +280,7 @@ public class BluetoothLEService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        this.setForegroundEnabled(/*Preferences.isForegroundEnabled(this)*/ false);
+        this.setForegroundEnabled(Preferences.isForegroundEnabled(this));
         this.connect();
 
         if (intent.getData() != null) {
@@ -290,7 +293,10 @@ public class BluetoothLEService extends Service {
 
     public void setForegroundEnabled(boolean enabled) {
         if (enabled) {
+            final NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            final String channelId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? getNotificationChannel(notificationManager) : "";
             final Notification notification = new Notification.Builder(this)
+                    .setChannelId(channelId)
                     .setSmallIcon(R.drawable.ic_launcher)
                     .setContentTitle(getText(R.string.app_name))
                     .setTicker(getText(R.string.foreground_started))
@@ -301,6 +307,16 @@ public class BluetoothLEService extends Service {
         } else {
             stopForeground(true);
         }
+    }
+
+    private String getNotificationChannel(NotificationManager notificationManager) {
+        String channelId = "channelid";
+        String channelName = getResources().getString(R.string.app_name);
+        NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH);
+        channel.setImportance(NotificationManager.IMPORTANCE_NONE);
+        channel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+        notificationManager.createNotificationChannel(channel);
+        return channelId;
     }
 
     @Override
