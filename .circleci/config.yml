@@ -10,4 +10,8 @@ jobs:
     steps:
       - checkout
       - run:
-          command: "./gradlew assembleRelease -PkeyStore=$KEYSTORE -Ppassword=$PASSWORD"
+          command: "echo $KEYSTORE | base64 --decode > /tmp/keystore"
+      - run:
+          command: "./gradlew assembleRelease -PkeyStore=/tmp/keystore -Ppassword=$PASSWORD"
+      - store_artifacts:
+          path: ~/project/app/build/outputs/apk/release/app-release.apk
