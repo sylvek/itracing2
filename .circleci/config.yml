@@ -1,0 +1,17 @@
+version: 2.1
+
+orbs:
+ android: circleci/android@0.2.1
+
+jobs:
+  build:
+    executor: android/android
+        
+    steps:
+      - checkout
+      - run:
+          command: "echo $KEYSTORE | base64 --decode > /tmp/keystore"
+      - run:
+          command: "./gradlew assembleRelease -PkeyStore=/tmp/keystore -Ppassword=$PASSWORD"
+      - store_artifacts:
+          path: ~/project/app/build/outputs/apk/release/app-release.apk
