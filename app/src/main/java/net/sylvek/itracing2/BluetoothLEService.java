@@ -344,7 +344,7 @@ public class BluetoothLEService extends Service {
     public void setForegroundEnabled(boolean enabled) {
         if (enabled) {
             final NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-            final String channelId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? getNotificationChannel(notificationManager) : "";
+            final String channelId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? getNotificationChannel(notificationManager) : null;
             final Notification notification = new Notification.Builder(this)
                     .setChannelId(channelId)
                     .setSmallIcon(R.drawable.ic_launcher)

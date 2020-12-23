@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -127,7 +128,11 @@ public class DevicesActivity extends CommonActivity implements DevicesFragment.O
         showDevices();
 
         if (!isMyServiceRunning(BluetoothLEService.class)) {
-            startForegroundService(new Intent(this, BluetoothLEService.class));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                startForegroundService(new Intent(this, BluetoothLEService.class));
+            } else {
+                startService(new Intent(this, BluetoothLEService.class));
+            }
         }
     }
 
