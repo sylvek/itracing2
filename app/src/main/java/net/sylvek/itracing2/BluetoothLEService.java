@@ -343,17 +343,18 @@ public class BluetoothLEService extends Service {
 
     public void setForegroundEnabled(boolean enabled) {
         if (enabled) {
-            final NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-            final String channelId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? getNotificationChannel(notificationManager) : null;
-            final Notification notification = new Notification.Builder(this)
-                    .setChannelId(channelId)
+            final Notification.Builder notification = new Notification.Builder(this)
                     .setSmallIcon(R.drawable.ic_launcher)
                     .setContentTitle(getText(R.string.app_name))
                     .setTicker(getText(R.string.foreground_started))
                     .setContentText(getText(R.string.foreground_started))
                     .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, DevicesActivity.class), 0))
-                    .setShowWhen(false).build();
-            startForeground(FOREGROUND_ID, notification);
+                    .setShowWhen(false);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                final NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                notification.setChannelId(getNotificationChannel(notificationManager));
+            }
+            startForeground(FOREGROUND_ID, notification.build());
         } else {
             stopForeground(true);
         }
