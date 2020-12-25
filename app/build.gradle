@@ -5,10 +5,10 @@ android {
 
     defaultConfig {
         applicationId "net.sylvek.itracing2"
-        minSdkVersion 26
+        minSdkVersion 24
         targetSdkVersion 29
-        versionCode 79
-        versionName "2.5.4"
+        versionCode 80
+        versionName "2.5.5"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
