@@ -26,6 +26,7 @@ import net.sylvek.itracing2.receivers.ImmediateAlert;
 import net.sylvek.itracing2.receivers.LinkBackground;
 import net.sylvek.itracing2.receivers.ToggleRingPhone;
 import net.sylvek.itracing2.receivers.ToggleVibratePhone;
+import net.sylvek.itracing2.receivers.TogglePlayPause;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -339,6 +340,12 @@ public class BluetoothLEService extends Service {
         f6.addCategory("android.intent.category.DEFAULT");
         registerReceiver(new LinkBackground(), f6);
         Log.d(TAG, "LinkBackground() - registered with: " + f6);
+
+        IntentFilter f7 = new IntentFilter();
+        f7.addAction("net.sylvek.itracing2.action.TOGGLE_PLAY_PAUSE");
+        f7.addCategory("android.intent.category.DEFAULT");
+        registerReceiver(new TogglePlayPause(), f7);
+        Log.d(TAG, "TogglePlayPause() - registered with: " + f7);
     }
 
     public void setForegroundEnabled(boolean enabled) {
