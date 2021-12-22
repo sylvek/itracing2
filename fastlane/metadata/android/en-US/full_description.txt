@@ -1,0 +1,8 @@
+<i>itracing2</i> is a free and open source application that allows to (really?) use iTag devices. This application runs in background, so you do not have to launch it after each boot up.
+
+Several actions are available:
+
+- Capture your current position
+- Ringing your phone
+- Vibrate your phone
+- Call a custom URL (GET action)
