@@ -17,6 +17,7 @@ In 2021, [Apple released his AirTags](https://en.wikipedia.org/wiki/AirTag) 😮
 If you want to learn more about BLE, there a lot of article on internet.
 - [A Practical Guide to BLE Throughput](https://interrupt.memfault.com/blog/ble-throughput-primer)
 - [List of Bluetooth profiles](https://en.wikipedia.org/wiki/List_of_Bluetooth_profiles)
+- [List of Service Class IDs](https://docs.microsoft.com/en-us/windows/uwp/devices-sensors/aep-service-class-ids)
 
 iTracing2 implementes ["Proximity Profile"](https://en.wikipedia.org/wiki/List_of_Bluetooth_profiles#Proximity_Profile_(PXP)) and should be compatible with a lot of devices.. **BUT** because [chinese iTag are so badly built](https://github.com/sylvek/itracing2/wiki/MLE-15), i hardcoded some stuff. _(prefer [Quintic PROXPR](https://github.com/sylvek/itracing2/wiki/Quintic-PROXR) chip if you can)_
 
