@@ -31,10 +31,10 @@ This application runs in background, so you do not have to launch it after each 
 
 Several actions are available :
 
-* Capture your current position
+* Capture your current position _(to work on Lineage OS, you need a Map application like OSMAnd or RMap)_
 * Ringing your phone
 * Vibrate your phone
 * Call a custom URL (`GET` action)
-* Call someone (not working anymore 🤔)
+* Call someone _(you need to explicitly give permission by navigating on permissions setting)_
 * Play/Pause audio playlist
-* And so one.. by [capturing custom event](https://github.com/sylvek/itracing2/wiki#custom-action).
+* And so one.. by [capturing custom event](https://github.com/sylvek/itracing2/wiki#custom-action) and plug [Tasker](https://github.com/sylvek/itracing2/wiki/Tasker)
