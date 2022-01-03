@@ -1,5 +1,7 @@
 # itracing2 
 
+[Available on F-Droid](https://f-droid.org/en/packages/net.sylvek.itracing2/) ❤️
+
 ## History 📓
 itracing2 is a free and open source application allowing to manage "iTag" devices.
 
