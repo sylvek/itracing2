@@ -21,7 +21,7 @@ If you want to learn more about BLE, there a lot of article on internet.
 
 iTracing2 implementes ["Proximity Profile"](https://en.wikipedia.org/wiki/List_of_Bluetooth_profiles#Proximity_Profile_(PXP)) and should be compatible with a lot of devices.. **BUT** because [chinese iTag are so badly built](https://github.com/sylvek/itracing2/wiki/MLE-15), i hardcoded some stuff. _(prefer [Quintic PROXPR](https://github.com/sylvek/itracing2/wiki/Quintic-PROXR) chip if you can)_
 
-## How that work?
+## How that works?
 
 [Read me on WIKI](https://github.com/sylvek/itracing2/wiki)
 
@@ -33,6 +33,6 @@ Several actions are available :
 * Ringing your phone
 * Vibrate your phone
 * Call a custom URL (`GET` action)
-* Call someone (not working under ANDROID 10+)
+* Call someone (not working anymore 🤔)
 * Play/Pause audio playlist
 * And so one.. by [capturing custom event](https://github.com/sylvek/itracing2/wiki#custom-action).
