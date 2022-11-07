@@ -67,7 +67,7 @@ public class CustomAction extends BroadcastReceiver {
 
         // mqtt://login:password@broker:1883/my/topic
         // mqtts://login:password@broker:1883/my/topic
-        private static final String PATTERN = "^(?<protocol>mqtt[s]*):\\/\\/((?<login>[a-zA-Z-0-9]+):(?<password>[a-zA-Z-0-9]+))?@?(?<host>[.a-z0-9-]+):?(?<port>\\d+)?\\/(?<topic>[/a-zA-Z0-9-]+)$";
+        private static final String PATTERN = "^(?<protocol>mqtt[s]*:\\/\\/)((?<login>[a-zA-Z-0-9]+):(?<password>[a-zA-Z-0-9]+))?@?(?<host>[.a-z0-9-]+):?(?<port>\\d+)?\\/(?<topic>[/a-zA-Z0-9-]+)$";
 
         private final Pattern pattern = Pattern.compile(PATTERN);
 
@@ -92,20 +92,22 @@ public class CustomAction extends BroadcastReceiver {
                 String port = matcher.group("port");
                 String topic = matcher.group("topic");
 
-                if (port == null && protocol.equals("mqtt")) {
+                if (port == null && protocol.equals("mqtt://")) {
                     port = "1883";
                 }
-                else if (port == null && protocol.equals("mqtts")){
+                else if (port == null && protocol.equals("mqtts://")){
                     port = "8883";
                 }
 
-                if (protocol.equals("mqtts")) {
-                    protocol = "ssl";
+                if (protocol.equals("mqtts://")) {
+                    protocol = "ssl://";
+                }
+                else if (protocol.equals("mqtt://")) {
+                    protocol = "tcp://";
                 }
 
-
                 try {
-                    final MqttClient client = new MqttClient(protocol + "://" + host + ":" + port,
+                    final MqttClient client = new MqttClient(protocol + host + ":" + port,
                             MqttClient.generateClientId(),
                             new MemoryPersistence()
                     );
