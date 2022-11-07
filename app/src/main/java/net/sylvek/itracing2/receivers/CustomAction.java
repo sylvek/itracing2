@@ -5,6 +5,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.net.Uri;
@@ -72,7 +74,7 @@ public class CustomAction extends BroadcastReceiver {
     private class PublishMQTT extends Thread {
 
         // mqtt://login:password@broker:1883/my/topic
-        private static final String PATTERN = "^mqtt:\\/\\/(([a-zA-Z-0-9]+):([a-zA-Z-0-9]+))?@?([.a-z0-9]+):?(\\d+)?\\/([/a-zA-Z0-9]+)$";
+        private static final String PATTERN = "^(?<protocol>mqtt):\\/\\/((?<login>[a-zA-Z-0-9]+):(?<password>[a-zA-Z-0-9]+))?@?(?<host>[.a-z0-9-]+):?(?<port>\\d+)?\\/(?<topic>[/a-zA-Z0-9-]+)$";
 
         private final Pattern pattern = Pattern.compile(PATTERN);
 
@@ -85,22 +87,24 @@ public class CustomAction extends BroadcastReceiver {
             this.payload = payload;
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         public void run() {
             final Matcher matcher = pattern.matcher(this.domain);
             if (matcher.matches()) {
-                String login = matcher.group(2);
-                String password = matcher.group(3);
-                String host = matcher.group(4);
-                String port = matcher.group(5);
-                String topic = matcher.group(6);
+                String protocol = matcher.group("protocol");
+                String login = matcher.group("login");
+                String password = matcher.group("password");
+                String host = matcher.group("host");
+                String port = matcher.group("port");
+                String topic = matcher.group("topic");
 
                 if (port == null) {
                     port = "1883";
                 }
 
                 try {
-                    final MqttClient client = new MqttClient("tcp://" + host + ":" + port,
+                    final MqttClient client = new MqttClient(protocol + "://" + host + ":" + port,
                             MqttClient.generateClientId(),
                             new MemoryPersistence()
                     );
