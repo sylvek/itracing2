@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -67,7 +68,7 @@ public class CustomAction extends BroadcastReceiver {
 
         // mqtt://login:password@broker:1883/my/topic
         // mqtts://login:password@broker:1883/my/topic
-        private static final String PATTERN = "^(?<protocol>mqtt[s]*:\\/\\/)((?<login>[a-zA-Z-0-9]+):(?<password>[a-zA-Z-0-9]+))?@?(?<host>[.a-z0-9-]+):?(?<port>\\d+)?\\/(?<topic>[/a-zA-Z0-9-]+)$";
+        private static final String PATTERN = "^(?<protocol>mqtts?://)((?<login>[a-zA-Z-0-9]+):(?<password>[a-zA-Z-0-9]+))?@?(?<host>[.a-z0-9-]+):?(?<port>\\d+)?/(?<topic>[/a-zA-Z0-9-]+)$";
 
         private final Pattern pattern = Pattern.compile(PATTERN);
 
@@ -92,17 +93,17 @@ public class CustomAction extends BroadcastReceiver {
                 String port = matcher.group("port");
                 String topic = matcher.group("topic");
 
-                if (port == null && protocol.equals("mqtt://")) {
+                if (port == null && Objects.equals(protocol, "mqtt://")) {
                     port = "1883";
                 }
-                else if (port == null && protocol.equals("mqtts://")){
+                else if (port == null && Objects.equals(protocol, "mqtts://")){
                     port = "8883";
                 }
 
-                if (protocol.equals("mqtts://")) {
+                if (Objects.equals(protocol, "mqtts://")) {
                     protocol = "ssl://";
                 }
-                else if (protocol.equals("mqtt://")) {
+                else if (Objects.equals(protocol, "mqtt://")) {
                     protocol = "tcp://";
                 }
 
