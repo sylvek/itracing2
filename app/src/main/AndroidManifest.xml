@@ -20,7 +20,8 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+        android:usesCleartextTraffic="true">
         <activity android:name=".devices.DevicesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
